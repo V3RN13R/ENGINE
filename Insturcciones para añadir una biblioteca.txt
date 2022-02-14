@@ -1,0 +1,22 @@
+> Añadir Proyecto
+> Quitar el cpp (si lo hubiera), y el proyecto de la solución
+> Cambiar los archivos de proyecto (vcxproj y derivados) a Projects
+  y cpp a Src
+> Añadir proyecto existente y añadir cpp (si lo hubiera)
+> Cambiar la configuración del proyecto añadido:
+	Directorio de Salida: $(SolutionDir)Lib\$(Platform)\$(Configuration)\
+	Directorio intermedio: $(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\
+	Nombre de destino (en DEBUG): $(ProjectName)_d
+	Tipo de configuración: Biblioteca estática (.lib)
+> Seleccionar el proyecto principal > Añadir > Referencia > (La bibioteca que hemos creado)
+> Propiedades del proyecto principal > Directorios de VC++ > Directorios de archicvos de inclusión >
+  Editar, y añadimos $(SolutionDir)Src\BibiotecaEncuestión\
+
+El código de los .h de las bibliotecas debe ir entre:
+#pragma once
+#ifndef _BIBLIOTECA_BIBLIOTECA_H
+#define _BIBLIOTECA_BIBLIOTECA_H
+
+//Código de la bibioteca
+
+#endif

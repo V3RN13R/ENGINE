@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ENGINE", "Projects\ENGINE\ENGINE.vcxproj", "{C7EFFA9B-D465-418F-ADE0-0A3987915019}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MiBiblioteca", "Projects\MiBiblioteca\MiBiblioteca.vcxproj", "{9085B30A-8064-4D3A-B239-9201FC788658}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -15,6 +17,10 @@ Global
 		{C7EFFA9B-D465-418F-ADE0-0A3987915019}.Debug|x64.Build.0 = Debug|x64
 		{C7EFFA9B-D465-418F-ADE0-0A3987915019}.Release|x64.ActiveCfg = Release|x64
 		{C7EFFA9B-D465-418F-ADE0-0A3987915019}.Release|x64.Build.0 = Release|x64
+		{9085B30A-8064-4D3A-B239-9201FC788658}.Debug|x64.ActiveCfg = Debug|x64
+		{9085B30A-8064-4D3A-B239-9201FC788658}.Debug|x64.Build.0 = Debug|x64
+		{9085B30A-8064-4D3A-B239-9201FC788658}.Release|x64.ActiveCfg = Release|x64
+		{9085B30A-8064-4D3A-B239-9201FC788658}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,10 +2,11 @@
 //
 
 #include <iostream>
+#include "MiBiblioteca.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	MiBiblioteca::Saluda("Pedro Pablo");
     return 0;
 }
 
