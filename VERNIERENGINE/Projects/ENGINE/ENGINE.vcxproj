@@ -14,7 +14,7 @@
     <ClCompile Include="..\..\Src\ENGINE\ENGINE.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MiBiblioteca\MiBiblioteca.vcxproj">
+    <ProjectReference Include="..\RenderEngine\RenderEngine.vcxproj">
       <Project>{9085b30a-8064-4d3a-b239-9201fc788658}</Project>
     </ProjectReference>
   </ItemGroup>
@@ -56,13 +56,13 @@
     <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <OutDir>$(SolutionDir)Exes</OutDir>
     <TargetName>$(ProjectName)_d</TargetName>
-    <IncludePath>$(SolutionDir)Src\MiBiblioteca\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Src\RenderEngine\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <OutDir>$(SolutionDir)Exes</OutDir>
-    <IncludePath>$(SolutionDir)Src\MiBiblioteca\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Src\RenderEngine\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

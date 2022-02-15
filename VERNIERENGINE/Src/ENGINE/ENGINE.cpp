@@ -2,11 +2,11 @@
 //
 
 #include <iostream>
-#include "MiBiblioteca.h"
+#include "RenderEngine.h"
 
 int main()
 {
-	MiBiblioteca::Saluda("Pedro Pablo");
+	RenderEngine::Saluda("Pedro Pablo");
     return 0;
 }
 
