@@ -1,9 +1,9 @@
 #pragma once
 #ifndef _RENDERENGINE_RENDERENGINE_H
 #define _RENDERENGINE_RENDERENGINE_H
-class RenderEngine {
+class RenderMain {
 
 public:
-	static void Saluda(const char* nombre);
+	static void SaludaOgre();
 };
 #endif
