@@ -2,16 +2,15 @@
 //
 
 #include <iostream>
-#include "RenderEngine.h"
+#include "RenderMain.h"
 #include <OgreRoot.h>
 
-int main()
+void RenderMain::SaludaOgre()
 {
 	Ogre::Root* root;
 	root = new Ogre::Root();
 	std::cout << "Hola\n";
 	//RenderEngine::Saluda("Pedro Pablo");
-	return 0;
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
