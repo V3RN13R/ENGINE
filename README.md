@@ -9,4 +9,4 @@ Aquí se encontrarán los enlaces para aquellos que requieran información sobre
 
 ### Bats
 
-[*OgreBuild.bat*](https://github.com/V3RN13R/ENGINE/blob/main/DevelopersREADME/OgreBuild%20bat.md)
+[*OgreBuild.bat*](https://github.com/V3RN13R/ENGINE/blob/main/DevelopersREADME/OgreBuildbat.md)
