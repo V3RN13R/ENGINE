@@ -8,5 +8,9 @@ En este documento se recoge la información acerca de el motor desarrollado por 
 Aquí se encontrarán los enlaces para aquellos que requieran información sobre el funcionamiento de herramientas o funciones externas al motor.
 
 ### Bats
+* [Dependencies.bat](https://github.com/V3RN13R/ENGINE/blob/main/DevelopersREADME/DependenciesBat.md) llamará a :
 
-[*OgreBuild.bat*](https://github.com/V3RN13R/ENGINE/blob/main/DevelopersREADME/OgreBuildbat.md)
+    * [*OgreBuild.bat*](https://github.com/V3RN13R/ENGINE/blob/main/DevelopersREADME/OgreBuildbat.md)
+
+    * [*BulletBuild.bat*](https://github.com/V3RN13R/ENGINE/blob/main/DevelopersREADME/BulletBuildbat.md)
+
