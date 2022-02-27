@@ -1,6 +1,6 @@
 @echo off
 ::Guardamos la direccion a los 3 directorios que necesitamos
-set BuildPlace=.\build\x64
+set BuildPlace=.\Build\x64
 set DllsPlace=.\..\..\..\..\Exes\
 set CompilePlace=..\..\Src
 
