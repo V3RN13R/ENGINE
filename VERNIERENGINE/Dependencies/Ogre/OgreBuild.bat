@@ -1,7 +1,7 @@
 @echo off
 ::Guardamos la direccion a los 3 directorios que necesitamos
 set BuildPlace=.\build\x64
-set DllsPlace=.\..\..\..\..\Exes
+set DllsPlace=.\..\..\..\..\Exes\
 set CompilePlace=..\..\Src
 
 :: Creamos la carpeta build
@@ -30,5 +30,5 @@ XCOPY /y /s .\bin\release\RenderSystem_GL.dll %DllsPlace%
 XCOPY /y /s .\bin\debug\SDL2.dll %DllsPlace%
 XCOPY /y /s .\bin\release\zlib.dll %DllsPlace%
 
-cd..
+cd ..\..
 echo Dlls movidas
