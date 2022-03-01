@@ -14,9 +14,15 @@
     <ClCompile Include="..\..\Src\ENGINE\ENGINE.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PhysicsEngine\PhysicsEngine.vcxproj">
+      <Project>{49f3719d-440e-40ff-96f9-741a1cee3247}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\RenderEngine\RenderEngine.vcxproj">
       <Project>{9085b30a-8064-4d3a-b239-9201fc788658}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Src\ENGINE\ENGINE.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -56,13 +62,13 @@
     <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <OutDir>$(SolutionDir)Exes</OutDir>
     <TargetName>$(ProjectName)_d</TargetName>
-    <IncludePath>$(SolutionDir)Src\RenderEngine\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Src\PhysicsEngine\;$(SolutionDir)Src\RenderEngine\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <OutDir>$(SolutionDir)Exes</OutDir>
-    <IncludePath>$(SolutionDir)Src\RenderEngine\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Src\PhysicsEngine\;$(SolutionDir)Src\RenderEngine\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
