@@ -18,9 +18,15 @@
     <ClCompile Include="..\..\Src\RenderEngine\RenderMain.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="WindowRender.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\RenderEngine\RenderMain.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowRender.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
