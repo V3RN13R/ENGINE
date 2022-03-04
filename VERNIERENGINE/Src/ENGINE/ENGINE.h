@@ -20,4 +20,5 @@ private:
 
 	RenderMain* _ogre;
 	PhysicsManager* _physics;
+
 };

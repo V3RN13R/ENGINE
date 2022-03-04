@@ -1,18 +1,21 @@
 // ENGINE.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
+
+
+#include "OgreRoot.h"
+#include <iostream>
+
 #include "ENGINE.h"
 #include "RenderMain.h"
 #include "PhysicsManager.h"
-
 
 VernierEngine* VernierEngine::_instance = nullptr;
 
 VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	// Render Manager
-	if (!RenderMain::setUpInstance(_appName)) {
+	/*if (!RenderMain::setUpInstance(_appName)) {
 		throw std::exception("ERROR: Couldn't load RenderMain\n");
 	}
-	_ogre = RenderMain::getInstance();
+	_ogre = RenderMain::getInstance();*/
 
 	// Physics
 	if (!PhysicsManager::setUpInstance()) {
@@ -24,15 +27,16 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 
 void VernierEngine::processFrame()
 {
-	//Bucle principal del motor
-	RenderMain::getInstance().update();
-	PhysicsManager::getInstance().update();
+	std::cout <<  "updating...\n";
+	//Bucle incipal del motor
+	/*RenderMain::getInstance().update();
+	PhysicsManager::getInstance().update();*/
 }
 
 VernierEngine::~VernierEngine()
 {
-	RenderMain::clean();
-	PhysicsManager::clean();
+	/*RenderMain::clean();
+	PhysicsManager::clean();*/
 }
 
 
