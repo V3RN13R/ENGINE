@@ -1,15 +1,23 @@
 #include "WindowRender.h"
+//#include "OgreShaderGenerator.h"
 #include <Ogre.h>
 #include <SDL.h>
 #include <SDL_syswm.h>
 #include <assert.h>
 #include <iostream>
+
+std::unique_ptr<WindowRender>  WindowRender::_instance;
+
+WindowRender::WindowRender(std::string name) :_wName(name)
+{
+	setUpOgreRoot();
+}
+
 void WindowRender::setUpOgreRoot()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 #ifdef _DEBUG
-
-	_root = new Ogre::Root("plugins_d.cfg");
+	_root = new Ogre::Root(/*"plugins_d.cfg"*/);
 #else
 	_root = new Ogre::Root();
 
@@ -19,6 +27,17 @@ void WindowRender::setUpOgreRoot()
 	_root->initialise(false);
 	setUpWindow();
 	_mSceneManager = _root->createSceneManager();
+		
+	_mSceneManager->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
+
+	
+	/*if (Ogre::RTShader::ShaderGenerator::initialize())
+	{
+		Ogre::RTShader::ShaderGenerator* shadergen = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
+		shadergen->addSceneManager(_mSceneManager);
+	}*/
+
+	_mSceneManager->setAmbientLight(Ogre::ColourValue(.3, .3, .3));
 }
 
 void WindowRender::setUpWindow()
@@ -51,7 +70,20 @@ void WindowRender::setUpWindow()
 	//SDL_ShowCursor(false);//De momento que se vea si se quiere ocultar desmutear esta linea
 }
 
-WindowRender::WindowRender(std::string name):_wName(name)
+bool WindowRender::setUpInstance(std::string name)
+{
+	assert(_instance.get() == nullptr);
+	_instance.reset(new WindowRender(name));
+	return _instance.get();
+}
+
+WindowRender* WindowRender::getInstance()
+{
+	assert(_instance.get() != nullptr);
+		return _instance.get();
+}
+
+void WindowRender::closeWindow()
 {
 }
 

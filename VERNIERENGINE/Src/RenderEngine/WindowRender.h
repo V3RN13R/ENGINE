@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 #include <string>
 namespace Ogre {
 	class Root;
@@ -14,6 +15,8 @@ class WindowRender
 {
 
 private:
+	static std::unique_ptr<WindowRender> _instance;
+
 	Ogre::Root* _root = nullptr;
 	Ogre::SceneManager* _mSceneManager = nullptr;
 	Ogre::RenderWindow* _rWindow = nullptr;
@@ -28,15 +31,16 @@ public:
 	WindowRender(std::string name);
 	~WindowRender();
 	void closeWindow();
-	void setUpInstance(std::string name);
+	bool setUpInstance(std::string name);
 
 #pragma region Getters
 	Ogre::Root* getRoot() { return _root; }
 	Ogre::SceneManager* getSceneManager() { return _mSceneManager; }
 	Ogre::RenderWindow* getRenderWindow() { return _rWindow; }
 	SDL_Window* getSDLWindow() { return _sDLWindow; }
-	//getInstance
+	int getScreenWidth() { return screen_width_; };
+	int getScreenHeight() { return screen_height_; };
+	static WindowRender* getInstance();
 #pragma endregion
 
 };
-

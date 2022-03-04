@@ -39,8 +39,6 @@ VernierEngine::~VernierEngine()
 	PhysicsManager::clean();*/
 }
 
-
-
 int main()
 {
 	VernierEngine::setupInstance("ElDeLosMonos");
