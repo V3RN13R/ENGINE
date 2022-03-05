@@ -10,7 +10,7 @@ std::unique_ptr<RenderMain>  RenderMain::_instance;
 RenderMain* RenderMain::setUpInstance(const std::string& appName)
 {
 	assert(_instance.get() == nullptr);
-	_instance.reset(new RenderMain());
+	_instance.reset(new RenderMain(appName));
 	return _instance.get();
 }
 
@@ -20,8 +20,8 @@ RenderMain* RenderMain::getInstance()
 	return _instance.get();
 }
 
-bool RenderMain::init(const std::string& appName)
+bool RenderMain::init()
 {
-	WindowRender* _windowRender = new WindowRender(appName);
+	WindowRender* _windowRender = new WindowRender(_appName);
 	return true;
 }

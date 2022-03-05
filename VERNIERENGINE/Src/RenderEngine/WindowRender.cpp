@@ -22,8 +22,11 @@ void WindowRender::setUpOgreRoot()
 	_root = new Ogre::Root();
 
 #endif // _DEBUG
-	if (_root->showConfigDialog(nullptr) || _root->restoreConfig())
+	//_root->showConfigDialog(NULL);
+	if (!_root->showConfigDialog(NULL))
 		return;
+
+
 	_root->initialise(false);
 	setUpWindow();
 	_mSceneManager = _root->createSceneManager();
@@ -59,13 +62,14 @@ void WindowRender::setUpWindow()
 	}
 
 	Ogre::NameValuePairList params;
-	params["FSAA"] = true;
+	//params["FSAA"] = true;
 	params["vsync"] = true;
-	params["gamma"] = true;
+	//params["gamma"] = true;
 	params["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));
 
 	_rWindow = _root->createRenderWindow(_wName.c_str(), screen_width_, screen_height_, false, &params);
-
+	//_rWindow->setActive(true);
+	//_rWindow->setVisible(true);
 	SDL_SetWindowGrab(_sDLWindow, SDL_bool(false));
 	//SDL_ShowCursor(false);//De momento que se vea si se quiere ocultar desmutear esta linea
 }

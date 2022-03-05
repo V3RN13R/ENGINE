@@ -22,8 +22,8 @@ private:
 	Ogre::RenderWindow* _rWindow = nullptr;
 	SDL_Window* _sDLWindow = nullptr;
 	std::string _wName = "motorcito";
-	int screen_width_ = 1920;
-	int screen_height_ = 1080;
+	int screen_width_ = 840;
+	int screen_height_ = 600;
 	void setUpOgreRoot();
 	void setUpWindow();
 protected:

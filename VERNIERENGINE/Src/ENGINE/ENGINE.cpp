@@ -3,6 +3,7 @@
 
 #include "OgreRoot.h"
 #include <iostream>
+#include <cstdlib>
 
 #include "ENGINE.h"
 #include "RenderMain.h"
@@ -12,16 +13,17 @@ VernierEngine* VernierEngine::_instance = nullptr;
 
 VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	// Render Manager
-	/*if (!RenderMain::setUpInstance(_appName)) {
+	if (!RenderMain::setUpInstance(_appName)) {
 		throw std::exception("ERROR: Couldn't load RenderMain\n");
 	}
-	_ogre = RenderMain::getInstance();*/
-
+	_ogre = RenderMain::getInstance();
+	_ogre->init();
+	
 	// Physics
-	if (!PhysicsManager::setUpInstance()) {
-		throw std::exception("ERROR: Couldn't load PhysicsManager\n");
-	}
-	_physics = PhysicsManager::getInstance();
+	//if (!PhysicsManager::setUpInstance()) {
+	//	throw std::exception("ERROR: Couldn't load PhysicsManager\n");
+	//}
+	//_physics = PhysicsManager::getInstance();
 
 }
 
@@ -41,7 +43,7 @@ VernierEngine::~VernierEngine()
 
 int main()
 {
-	VernierEngine::setupInstance("ElDeLosMonos");
+	VernierEngine::setupInstance("WildLess");
     return 0;
 }
 
