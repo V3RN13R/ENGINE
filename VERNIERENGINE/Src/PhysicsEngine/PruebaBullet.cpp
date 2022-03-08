@@ -16,10 +16,12 @@ subject to the following restrictions:
 ///-----includes_start-----
 #include "btBulletDynamicsCommon.h"
 #include <stdio.h>
+#include "PruebaBullet.h"
+#include <iostream>
 
 /// This is a Hello World program for running a basic Bullet physics simulation
 
-int main(int argc, char** argv)
+void PruebaBullet::mainPhys()
 {
 	///-----includes_end-----
 
@@ -177,4 +179,5 @@ int main(int argc, char** argv)
 
 	//next line is optional: it will be cleared by the destructor when the array goes out of scope
 	collisionShapes.clear();
+	std::cout << "Prueba terminada";
 }

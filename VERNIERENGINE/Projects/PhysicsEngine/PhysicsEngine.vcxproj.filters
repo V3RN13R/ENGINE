@@ -32,5 +32,8 @@
     <ClInclude Include="..\..\Src\PhysicsEngine\PhysicsManager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Src\PhysicsEngine\PruebaBullet.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

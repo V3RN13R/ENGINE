@@ -8,6 +8,7 @@
 #include "ENGINE.h"
 #include "RenderMain.h"
 #include "PhysicsManager.h"
+#include "PruebaBullet.h"
 
 VernierEngine* VernierEngine::_instance = nullptr;
 
@@ -25,6 +26,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	//}
 	//_physics = PhysicsManager::getInstance();
 
+	PruebaBullet::mainPhys();
 }
 
 void VernierEngine::processFrame()
