@@ -21,6 +21,9 @@
     <ClCompile Include="..\..\Src\PhysicsEngine\PhysicsManager.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\PhysicsEngine\PruebaBullet.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\PhysicsEngine\RigidBody.h">

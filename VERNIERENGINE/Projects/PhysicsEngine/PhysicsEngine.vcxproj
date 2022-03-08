@@ -61,6 +61,10 @@
     <Link>
       <SubSystem>Console</SubSystem>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\Bullet\Build\$(Platform)\lib\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>BulletCollision_Debug.lib; BulletDynamics_Debug.lib; LinearMath_Debug.lib</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -77,9 +81,14 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\Bullet\Build\$(Platform)\lib\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>BulletCollision.lib; BulletDynamics.lib; LinearMath.lib</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\PhysicsEngine\PhysicsManager.cpp" />
+    <ClCompile Include="..\..\Src\PhysicsEngine\PruebaBullet.cpp" />
     <ClCompile Include="..\..\Src\PhysicsEngine\RigidBody.cpp" />
   </ItemGroup>
   <ItemGroup>
