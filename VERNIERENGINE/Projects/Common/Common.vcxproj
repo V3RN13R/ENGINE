@@ -143,26 +143,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Src\Common_\Component.cpp" />
-    <ClCompile Include="..\..\Src\Common_\Entity.cpp" />
-    <ClCompile Include="..\..\Src\Common_\Manager.cpp" />
-    <ClCompile Include="..\..\Src\Common_\TEST-Componente1.cpp" />
-    <ClCompile Include="..\..\Src\Common_\TEST-Componente2.cpp" />
-    <ClCompile Include="..\..\Src\Common_\Transform.cpp" />
-    <ClCompile Include="..\..\Src\Common_\Vector3D.cpp" />
+    <ClCompile Include="..\..\Src\Common\Component.cpp" />
+    <ClCompile Include="..\..\Src\Common\Entity.cpp" />
+    <ClCompile Include="..\..\Src\Common\Factory.cpp" />
+    <ClCompile Include="..\..\Src\Common\FactoryManager.cpp" />
+    <ClCompile Include="..\..\Src\Common\Manager.cpp" />
+    <ClCompile Include="..\..\Src\Common\TEST-Componente1.cpp" />
+    <ClCompile Include="..\..\Src\Common\TEST-Componente2.cpp" />
+    <ClCompile Include="..\..\Src\Common\Transform.cpp" />
+    <ClCompile Include="..\..\Src\Common\Vector3D.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Src\Common_\Component.h" />
-    <ClInclude Include="..\..\Src\Common_\ecs.h" />
-    <ClInclude Include="..\..\Src\Common_\ecs_defs.h" />
-    <ClInclude Include="..\..\Src\Common_\Entity.h" />
-    <ClInclude Include="..\..\Src\Common_\Manager.h" />
-    <ClInclude Include="..\..\Src\Common_\mpl.h" />
-    <ClInclude Include="..\..\Src\Common_\TEST-Componente1.h" />
-    <ClInclude Include="..\..\Src\Common_\TEST-Componente2.h" />
-    <ClInclude Include="..\..\Src\Common_\Transform.h" />
-    <ClInclude Include="..\..\Src\Common_\Vector3D.h" />
+    <ClInclude Include="..\..\Src\Common\Component.h" />
+    <ClInclude Include="..\..\Src\Common\ecs.h" />
+    <ClInclude Include="..\..\Src\Common\ecs_defs.h" />
+    <ClInclude Include="..\..\Src\Common\Entity.h" />
+    <ClInclude Include="..\..\Src\Common\Factory.h" />
+    <ClInclude Include="..\..\Src\Common\FactoryManager.h" />
+    <ClInclude Include="..\..\Src\Common\Manager.h" />
+    <ClInclude Include="..\..\Src\Common\mpl.h" />
+    <ClInclude Include="..\..\Src\Common\TEST-Componente1.h" />
+    <ClInclude Include="..\..\Src\Common\TEST-Componente2.h" />
+    <ClInclude Include="..\..\Src\Common\Transform.h" />
+    <ClInclude Include="..\..\Src\Common\Vector3D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
