@@ -9,6 +9,8 @@
 #include "RenderMain.h"
 #include "PhysicsManager.h"
 
+//#include <SDL.h>
+
 VernierEngine* VernierEngine::_instance = nullptr;
 
 VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
@@ -18,6 +20,8 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	}
 	_ogre = RenderMain::getInstance();
 	_ogre->init();
+	//windowRender = _ogre->GetWindowRender();
+	//_sDLWindow = windowRender->getSdlWindow();
 	
 	// Physics
 	//if (!PhysicsManager::setUpInstance()) {
@@ -30,10 +34,18 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 void VernierEngine::processFrame()
 {
 	std::cout <<  "updating...\n";
+
 	//Bucle incipal del motor
 	/*RenderMain::getInstance().update();
 	PhysicsManager::getInstance().update();*/
 }
+
+void VernierEngine::pollEvents()
+{
+	_ogre->WindowUpdate();
+}
+
+
 
 VernierEngine::~VernierEngine()
 {
@@ -41,9 +53,14 @@ VernierEngine::~VernierEngine()
 	PhysicsManager::clean();*/
 }
 
+
 int main()
 {
+	
 	VernierEngine::setupInstance("WildLess");
+	while (true) {
+		VernierEngine::getInstance()->pollEvents();
+	}
     return 0;
 }
 

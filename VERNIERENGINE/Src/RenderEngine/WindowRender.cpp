@@ -74,6 +74,7 @@ void WindowRender::setUpWindow()
 	//SDL_ShowCursor(false);//De momento que se vea si se quiere ocultar desmutear esta linea
 }
 
+
 bool WindowRender::setUpInstance(std::string name)
 {
 	assert(_instance.get() == nullptr);
@@ -87,9 +88,46 @@ WindowRender* WindowRender::getInstance()
 		return _instance.get();
 }
 
+void WindowRender::updateWindow()
+{
+	if (_sDLWindow == nullptr) {
+		std::cout << "Sale del updateWindow";
+		return;  // SDL events not initialized
+
+	}
+	SDL_Event event;
+	while (SDL_PollEvent(&event))
+	{
+		switch (event.type)
+		{
+		case SDL_QUIT:
+			std::cout << "La X del mapa\n";
+
+			_root->queueEndRendering();
+			SDL_DestroyWindow(_sDLWindow);
+			break;
+		case SDL_KEYDOWN:
+			if (event.key.keysym.sym == SDLK_ESCAPE) {
+				_root->queueEndRendering();
+				SDL_DestroyWindow(_sDLWindow);
+			}
+			break;
+		case SDL_WINDOWEVENT:
+			if (event.window.windowID == SDL_GetWindowID(_sDLWindow)) {
+			}
+			break;
+		default:
+			//llamar a InputManager
+			break;
+		}
+	}
+}
+
 void WindowRender::closeWindow()
 {
 }
+
+
 
 WindowRender::~WindowRender()
 {
