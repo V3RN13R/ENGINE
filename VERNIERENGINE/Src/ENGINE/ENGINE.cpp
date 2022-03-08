@@ -46,6 +46,10 @@ VernierEngine::~VernierEngine()
 int main()
 {
 	VernierEngine::setupInstance("WildLess");
+	while (true)
+	{
+
+	}
     return 0;
 }
 
