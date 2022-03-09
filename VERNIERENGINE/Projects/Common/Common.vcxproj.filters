@@ -13,69 +13,75 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="ecs">
-      <UniqueIdentifier>{32595a56-c0ff-4ede-9cf6-58ae0ce31923}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="components">
-      <UniqueIdentifier>{aeaddf72-6a11-46d3-be44-dfa1f4280836}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Common_\Component.cpp">
-      <Filter>ecs</Filter>
+    <ClCompile Include="..\..\Src\Common\Component.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Common_\Entity.cpp">
-      <Filter>ecs</Filter>
+    <ClCompile Include="..\..\Src\Common\Entity.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Common_\Manager.cpp">
-      <Filter>ecs</Filter>
+    <ClCompile Include="..\..\Src\Common\FactoryManager.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Common_\TEST-Componente1.cpp">
-      <Filter>components</Filter>
+    <ClCompile Include="..\..\Src\Common\Manager.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Common_\TEST-Componente2.cpp">
-      <Filter>components</Filter>
+    <ClCompile Include="..\..\Src\Common\TEST-Componente1.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Common_\Transform.cpp">
-      <Filter>components</Filter>
+    <ClCompile Include="..\..\Src\Common\TEST-Componente2.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Common_\Vector3D.cpp">
-      <Filter>components</Filter>
+    <ClCompile Include="..\..\Src\Common\Transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Common\Vector3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Common\Factory.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Src\Common_\ecs.h">
-      <Filter>ecs</Filter>
+    <ClInclude Include="..\..\Src\Common\Component.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Common_\ecs_defs.h">
-      <Filter>ecs</Filter>
+    <ClInclude Include="..\..\Src\Common\ecs.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Common_\Manager.h">
-      <Filter>ecs</Filter>
+    <ClInclude Include="..\..\Src\Common\ecs_defs.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Common_\Component.h">
-      <Filter>ecs</Filter>
+    <ClInclude Include="..\..\Src\Common\Entity.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Common_\TEST-Componente1.h">
-      <Filter>components</Filter>
+    <ClInclude Include="..\..\Src\Common\FactoryManager.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Common_\TEST-Componente2.h">
-      <Filter>components</Filter>
+    <ClInclude Include="..\..\Src\Common\Manager.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Common_\Transform.h">
-      <Filter>components</Filter>
+    <ClInclude Include="..\..\Src\Common\mpl.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Common_\Vector3D.h">
-      <Filter>components</Filter>
+    <ClInclude Include="..\..\Src\Common\TEST-Componente1.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Common_\mpl.h">
-      <Filter>ecs</Filter>
+    <ClInclude Include="..\..\Src\Common\TEST-Componente2.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Common_\Entity.h">
-      <Filter>ecs</Filter>
+    <ClInclude Include="..\..\Src\Common\Transform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\Vector3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\Factory.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

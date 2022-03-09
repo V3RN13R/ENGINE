@@ -30,6 +30,7 @@ protected:
 public:
 	WindowRender(std::string name);
 	~WindowRender();
+	void BORRAR();
 	void closeWindow();
 	bool setUpInstance(std::string name);
 

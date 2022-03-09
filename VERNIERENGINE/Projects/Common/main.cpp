@@ -1,7 +1,7 @@
-#include "../../Src/Common_/TEST-Componente1.h"
-#include "../../Src/Common_/TEST-Componente2.h"
-#include "../../Src/Common_/Entity.h"
-#include "../../Src/Common_/Manager.h"
+#include "../../Src/Common/TEST-Componente1.h"
+#include "../../Src/Common/TEST-Componente2.h"
+#include "../../Src/Common/Entity.h"
+#include "../../Src/Common/Manager.h"
 
 
 // Prueba para comprobar que la arquitectura EC funciona.

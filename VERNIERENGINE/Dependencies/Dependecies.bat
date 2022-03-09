@@ -6,4 +6,5 @@ call OgreBuild.bat
 cd ..\Bullet\
 call BulletBuild.bat
 ::Al terminar el OgreBuildbat se encuentra en dependecies\bullet por lo que desplazamos una atras
-cd ..
+cd ..\Lua\
+call LuaBuild.bat

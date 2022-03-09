@@ -22,6 +22,7 @@ RenderMain* RenderMain::getInstance()
 bool RenderMain::init()
 {
 	_windowRender = new WindowRender(_appName);
+	Ogre::Entity* ogreEnt_ = _windowRender->getSceneManager()->createEntity(Ogre::SceneManager::PrefabType::PT_SPHERE);
 	return true;
 }
 
