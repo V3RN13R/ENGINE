@@ -4,7 +4,6 @@
 #include "RenderMain.h"
 #include "WindowRender.h"
 #include <OgreRoot.h>
-
 std::unique_ptr<RenderMain>  RenderMain::_instance;
 
 RenderMain* RenderMain::setUpInstance(const std::string& appName)
@@ -22,7 +21,20 @@ RenderMain* RenderMain::getInstance()
 
 bool RenderMain::init()
 {
-	WindowRender* _windowRender = new WindowRender(_appName);
+	_windowRender = new WindowRender(_appName);
 	Ogre::Entity* ogreEnt_ = _windowRender->getSceneManager()->createEntity(Ogre::SceneManager::PrefabType::PT_SPHERE);
 	return true;
 }
+
+WindowRender* RenderMain::GetWindowRender()
+{
+	return _windowRender;
+}
+
+void RenderMain::WindowUpdate()
+{
+	_windowRender->updateWindow();
+}
+
+
+

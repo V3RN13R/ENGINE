@@ -4,6 +4,8 @@
 
 class RenderMain;
 class PhysicsManager;
+class WindowRender;
+class SDL_Window;
 
 class VernierEngine {
 public:
@@ -13,6 +15,8 @@ public:
 	VernierEngine(const std::string& appName);
 
 	void processFrame();
+	void pollEvents();
+	
 	~VernierEngine();
 private:
 	static VernierEngine* _instance;
@@ -20,5 +24,6 @@ private:
 
 	RenderMain* _ogre;
 	PhysicsManager* _physics;
-
+	WindowRender* _windowRender;
+	SDL_Window* _sDLWindow;
 };

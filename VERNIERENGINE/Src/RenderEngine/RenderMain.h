@@ -4,7 +4,7 @@
 
 #include <memory>
 #include <string>
-
+class WindowRender;
 class RenderMain {
 
 public:
@@ -12,8 +12,11 @@ public:
 	static RenderMain* setUpInstance(const std::string& appName);
 	static RenderMain* getInstance();
 	bool init();
+	WindowRender* GetWindowRender();
+	void WindowUpdate();
 private:
 	std::string _appName;
 	static std::unique_ptr<RenderMain> _instance;
+	WindowRender* _windowRender;
 };
 #endif
