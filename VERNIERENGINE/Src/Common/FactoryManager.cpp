@@ -35,8 +35,8 @@ Component* FactoryManager::findAndCreate(const std::string& name)
 template<typename T>
 void FactoryManager::addFactory(const std::string& name)
 {
-	//_map[(name == "") ? T::GetName() : name] = &FactoryManager::createComponent<T>;
-	_map[name] = &FactoryManager::createComponent<T>;
+	//_map[(name == "") ? "paco" : name] = FactoryManager::createComponent<T>;
+	_map[name] = FactoryManager::getInstance()->createComponent<T>();
 }
 
 void FactoryManager::initEngineFactories()

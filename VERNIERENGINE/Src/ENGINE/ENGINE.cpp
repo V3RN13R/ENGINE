@@ -9,7 +9,7 @@
 #include "RenderMain.h"
 #include "PhysicsManager.h"
 #include "PruebaBullet.h"
-
+#include "FactoryManager.h"
 //#include <SDL.h>
 
 VernierEngine* VernierEngine::_instance = nullptr;
@@ -21,6 +21,9 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	}
 	_ogre = RenderMain::getInstance();
 	_ogre->init();
+
+	FactoryManager::setUpInstance();
+
 	//windowRender = _ogre->GetWindowRender();
 	//_sDLWindow = windowRender->getSdlWindow();
 	

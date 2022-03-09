@@ -10,7 +10,7 @@ public:
 	static FactoryManager* getInstance();
 	static bool setUpInstance();
 
-	//static void clean();  ?�?�
+	//static void clean(); 
 
 	Component* findAndCreate(const std::string& name);  //pasarle argumentos�
 
@@ -21,7 +21,7 @@ public:
 
 private:
 	template<typename T>
-	static Component* createComponent() { return new T(); };
+	Component* createComponent() { return new T(); };
 	
 	static FactoryManager* _instance;
 	std::map<std::string, Component*> _map;
