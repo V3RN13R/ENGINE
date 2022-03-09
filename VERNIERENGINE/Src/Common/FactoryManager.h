@@ -2,7 +2,6 @@
 #include <map>
 #include <string>
 #include "Component.h"
-#include "Factory.h"
 
 class FactoryManager {
 public:
@@ -11,14 +10,20 @@ public:
 	static FactoryManager* getInstance();
 	static bool setUpInstance();
 
-	//static void clean();  ?¿?¿
+	//static void clean();  ?ï¿½?ï¿½
 
-	Component* findAndCreate(const std::string& name);  //pasarle argumentos¿
+	Component* findAndCreate(const std::string& name);  //pasarle argumentosï¿½
 
-	void addFactory(const std::string& name, Factory* factory);
+	template<typename T>
+	void addFactory(const std::string& name);
+
+	void initEngineFactories();
 
 private:
+	template<typename T>
+	static Component* createComponent() { return new T(); };
+	
 	static FactoryManager* _instance;
-	std::map<std::string, Factory*> _map;
+	std::map<std::string, Component*> _map;
 
 };
