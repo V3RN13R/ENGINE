@@ -109,6 +109,14 @@
     <ClInclude Include="..\..\Src\Common\Transform.h" />
     <ClInclude Include="..\..\Src\Common\Vector3D.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PhysicsEngine\PhysicsEngine.vcxproj">
+      <Project>{49f3719d-440e-40ff-96f9-741a1cee3247}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\RenderEngine\RenderEngine.vcxproj">
+      <Project>{9085b30a-8064-4d3a-b239-9201fc788658}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

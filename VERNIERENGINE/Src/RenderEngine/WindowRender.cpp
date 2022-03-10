@@ -5,6 +5,7 @@
 #include <SDL_syswm.h>
 #include <assert.h>
 #include <iostream>
+#include "RenderMain.h"
 
 std::unique_ptr<WindowRender>  WindowRender::_instance;
 
@@ -16,12 +17,7 @@ WindowRender::WindowRender(std::string name) :_wName(name)
 void WindowRender::setUpOgreRoot()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
-#ifdef _DEBUG
-	_root = new Ogre::Root(/*"plugins_d.cfg"*/);
-#else
-	_root = new Ogre::Root();
-
-#endif // _DEBUG
+	_root = RenderMain::getInstance()->getRoot();
 	//_root->showConfigDialog(NULL);
 	if (!_root->showConfigDialog(NULL))
 		return;
@@ -29,7 +25,7 @@ void WindowRender::setUpOgreRoot()
 
 	_root->initialise(false);
 	setUpWindow();
-	_mSceneManager = _root->createSceneManager();
+	_mSceneManager = RenderMain::getInstance()->getSceneManager();
 		
 	//_mSceneManager->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
 

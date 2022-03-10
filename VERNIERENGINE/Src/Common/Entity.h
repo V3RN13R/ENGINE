@@ -9,22 +9,24 @@
 #include "ecs.h"
 
 class Manager;
-
+namespace Ogre {
+	class SceneNode;
+}
 class Entity {
 	friend Manager;
 
 public:
 
 	Entity(Manager* mngr) :
-		active_(true), //
-		mngr_(mngr), //
-		cmpArray_(), //
-		groups_() //
+		_active(true), //
+		_mngr(mngr), //
+		_cmpArray(), //
+		_groups() //
 	{
 	}
 
 	virtual ~Entity() {
-		for (auto c : components_) {
+		for (auto c : _components) {
 			delete c;
 		}
 	}
@@ -36,12 +38,12 @@ public:
 		c->init();
 		constexpr auto id = ecs::cmpIdx<T>;
 
-		if (cmpArray_[id] != nullptr) {
+		if (_cmpArray[id] != nullptr) {
 			removeComponent<T>();
 		}
 
-		cmpArray_[id] = c;
-		components_.emplace_back(c);
+		_cmpArray[id] = c;
+		_components.emplace_back(c);
 
 		return c;
 	}
@@ -49,13 +51,13 @@ public:
 	template<typename T>
 	void removeComponent() {
 		auto id = ecs::cmpIdx<T>;
-		if (cmpArray_[id] != nullptr) {
-			Component* old_cmp = cmpArray_[id];
-			cmpArray_[id] = nullptr;
-			components_.erase( //
+		if (_cmpArray[id] != nullptr) {
+			Component* old_cmp = _cmpArray[id];
+			_cmpArray[id] = nullptr;
+			_components.erase( //
 				std::find_if( //
-					components_.begin(), //
-					components_.end(), //
+					_components.begin(), //
+					_components.end(), //
 					[old_cmp](const Component* c) { //
 						return c == old_cmp;
 					}));
@@ -66,66 +68,67 @@ public:
 	template<typename T>
 	inline T* getComponent() {
 		auto id = ecs::cmpIdx<T>;
-		return static_cast<T*>(cmpArray_[id]);
+		return static_cast<T*>(_cmpArray[id]);
 	}
 
 	template<typename T>
 	inline bool hasComponent() {
 		auto id = ecs::cmpIdx<T>;
-		return cmpArray_[id] != nullptr;
+		return _cmpArray[id] != nullptr;
 	}
 
 	inline void setMngr(Manager* mngr) {
-		mngr_ = mngr;
+		_mngr = mngr;
 	}
 
 	inline Manager* getMngr() {
-		return mngr_;
+		return _mngr;
 	}
 
 	inline bool isActive() const {
-		return active_;
+		return _active;
 	}
 
 	inline void setActive(bool state) {
-		active_ = state;
+		_active = state;
 	}
 
 	template<typename T>
 	inline bool hasGroup() {
-		return groups_[ecs::grpIdx<T>];
+		return _groups[ecs::grpIdx<T>];
 	}
 
 	template<typename T>
 	inline void setGroup(bool state) {
-		groups_[ecs::grpIdx<T>] = state;
+		_groups[ecs::grpIdx<T>] = state;
 	}
 
 	inline void resetGroups() {
-		groups_.reset();
+		_groups.reset();
 	}
 
 
 	void update() {
-		std::size_t n = components_.size();
+		std::size_t n = _components.size();
 		for (auto i = 0u; i < n; i++) {
-			components_[i]->update();
+			_components[i]->update();
 		}
 	}
 
 	void render() {
-		std::size_t n = components_.size();
+		std::size_t n = _components.size();
 		for (auto i = 0u; i < n; i++) {
-			components_[i]->render();
+			_components[i]->render();
 		}
 	}
 
 private:
 
-	bool active_;
-	Manager* mngr_;
-	std::vector<Component*> components_;
-	std::array<Component*, ecs::maxComponent> cmpArray_;
-	std::bitset<ecs::maxGroup> groups_;
+	bool _active;
+	Manager* _mngr;
+	std::vector<Component*> _components;
+	std::array<Component*, ecs::maxComponent> _cmpArray;
+	std::bitset<ecs::maxGroup> _groups;
+	Ogre::SceneNode* _oNode;
 };
 

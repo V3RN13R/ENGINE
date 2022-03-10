@@ -31,9 +31,44 @@ WindowRender* RenderMain::GetWindowRender()
 	return _windowRender;
 }
 
+Ogre::Root* RenderMain::getRoot()
+{
+	if (_root == nullptr)
+	{
+#ifdef _DEBUG
+		_root = new Ogre::Root(/*"plugins_d.cfg"*/);
+#else
+		_root = new Ogre::Root();
+
+#endif // _DEBUG
+	}
+	return _root;
+}
+
+Ogre::SceneManager* RenderMain::getSceneManager()
+{
+	if (_mSceneManager == nullptr) {
+		_mSceneManager=_root->createSceneManager();
+	}
+	return _mSceneManager;
+}
+
 bool RenderMain::updateWindow()
 {
 	return _windowRender->updateWindow();
+}
+
+Ogre::SceneNode* RenderMain::addSceneNode(std::string name, Ogre::SceneNode* parent)
+{
+	if(!parent)
+	return _mSceneManager->getRootSceneNode()->createChildSceneNode(name);
+	else
+		return parent->createChildSceneNode(name);
+}
+
+Ogre::SceneNode* RenderMain::getSceneNodeByName(std::string name)
+{
+	return _mSceneManager->getSceneNode(name);
 }
 
 
