@@ -19,7 +19,7 @@ public:
 		return entity_;
 	}
 
-	virtual void init() {
+	virtual bool init() {
 	}
 
 	virtual void update() {
