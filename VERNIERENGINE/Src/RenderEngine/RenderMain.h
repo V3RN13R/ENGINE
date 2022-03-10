@@ -13,7 +13,7 @@ public:
 	static RenderMain* getInstance();
 	bool init();
 	WindowRender* GetWindowRender();
-	void WindowUpdate();
+	bool updateWindow();
 private:
 	std::string _appName;
 	static std::unique_ptr<RenderMain> _instance;

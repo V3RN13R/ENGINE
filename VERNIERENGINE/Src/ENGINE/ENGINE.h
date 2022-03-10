@@ -15,7 +15,7 @@ public:
 	VernierEngine(const std::string& appName);
 
 	void processFrame();
-	void pollEvents();
+	bool updateWindow();
 	
 	~VernierEngine();
 private:

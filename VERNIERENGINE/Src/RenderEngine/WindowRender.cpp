@@ -40,12 +40,6 @@ void WindowRender::setUpOgreRoot()
 	}*/
 	BORRAR();
 	//_mSceneManager->setAmbientLight(Ogre::ColourValue(.3, .3, .3));
-	//--------------------------------BORRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR----------------------------------
-	//_root->startRendering();
-	while (true) {
-		_root->renderOneFrame();
-		updateWindow();
-	}
 }
 
 void WindowRender::setUpWindow()
@@ -93,11 +87,11 @@ WindowRender* WindowRender::getInstance()
 		return _instance.get();
 }
 
-void WindowRender::updateWindow()
+bool WindowRender::updateWindow()
 {
-
+	bool continueRender = true;
 	if (_sDLWindow == nullptr) {
-		return;  // SDL events not initialized
+		return false;  // SDL events not initialized
 
 	}
 	SDL_Event event;
@@ -107,12 +101,13 @@ void WindowRender::updateWindow()
 		{
 		case SDL_QUIT:
 			std::cout << "La X del mapa\n";
-
+			continueRender = false;
 			_root->queueEndRendering();
 			SDL_DestroyWindow(_sDLWindow);
 			break;
 		case SDL_KEYDOWN:
 			if (event.key.keysym.sym == SDLK_ESCAPE) {
+				continueRender = false;
 				_root->queueEndRendering();
 				SDL_DestroyWindow(_sDLWindow);
 			}
@@ -126,7 +121,8 @@ void WindowRender::updateWindow()
 			break;
 		}
 	}
-	
+	_root->renderOneFrame();
+	return continueRender;
 }
 
 void WindowRender::closeWindow()

@@ -31,9 +31,9 @@ WindowRender* RenderMain::GetWindowRender()
 	return _windowRender;
 }
 
-void RenderMain::WindowUpdate()
+bool RenderMain::updateWindow()
 {
-	_windowRender->updateWindow();
+	return _windowRender->updateWindow();
 }
 
 

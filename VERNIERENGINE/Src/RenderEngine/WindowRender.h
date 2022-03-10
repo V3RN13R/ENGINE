@@ -42,7 +42,7 @@ public:
 	int getScreenWidth() { return screen_width_; };
 	int getScreenHeight() { return screen_height_; };
 	static WindowRender* getInstance();
-	void updateWindow();
+	bool updateWindow();
 #pragma endregion
 
 };

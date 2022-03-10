@@ -45,9 +45,9 @@ void VernierEngine::processFrame()
 	PhysicsManager::getInstance().update();*/
 }
 
-void VernierEngine::pollEvents()
+bool VernierEngine::updateWindow()
 {
-	_ogre->WindowUpdate();
+	return _ogre->updateWindow();
 }
 
 
@@ -63,9 +63,9 @@ int main()
 {
 	
 	VernierEngine::setupInstance("WildLess");
-	while (true) {
-		//VernierEngine::getInstance()->pollEvents();
-	}
+	do {
+	
+	}while(VernierEngine::getInstance()->updateWindow());
     return 0;
 }
 
