@@ -2,6 +2,7 @@
 #include <map>
 #include <string>
 #include "Component.h"
+#include <memory>
 
 class FactoryManager {
 public:
@@ -23,7 +24,7 @@ private:
 	template<typename T>
 	Component* createComponent() { return new T(); };
 	
-	static FactoryManager* _instance;
+	static std::unique_ptr<FactoryManager> _instance;
 	std::map<std::string, Component*> _map;
 
 };

@@ -1,6 +1,7 @@
 #include "FactoryManager.h"
 #include "Transform.h"
 #include "..//PhysicsEngine/RigidBody.h"
+std::unique_ptr<FactoryManager>  FactoryManager::_instance;
 
 FactoryManager::~FactoryManager()
 {
@@ -12,13 +13,13 @@ FactoryManager::~FactoryManager()
 
 FactoryManager* FactoryManager::getInstance()
 {
-	return _instance;
+	return _instance.get();
 }
 
 bool FactoryManager::setUpInstance()
 {
 	if (_instance == nullptr) {
-		_instance = new FactoryManager();
+		_instance.reset(new FactoryManager());
 		return true;
 	}
 	return false;
