@@ -7,6 +7,7 @@
 namespace Ogre {
 	class Root;
 	class SceneManager;
+	class SceneNode;
 }
 class WindowRender;
 class RenderMain {
@@ -20,6 +21,8 @@ public:
 	Ogre::Root* getRoot();
 	Ogre::SceneManager* getSceneManager();
 	bool updateWindow();
+	Ogre::SceneNode* addSceneNode(std::string name, Ogre::SceneNode* parent=nullptr);
+	Ogre::SceneNode* getSceneNodeByName(std::string name);
 private:
 	std::string _appName;
 	Ogre::Root* _root = nullptr;

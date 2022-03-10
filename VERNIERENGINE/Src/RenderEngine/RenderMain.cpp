@@ -58,5 +58,18 @@ bool RenderMain::updateWindow()
 	return _windowRender->updateWindow();
 }
 
+Ogre::SceneNode* RenderMain::addSceneNode(std::string name, Ogre::SceneNode* parent)
+{
+	if(!parent)
+	return _mSceneManager->getRootSceneNode()->createChildSceneNode(name);
+	else
+		return parent->createChildSceneNode(name);
+}
+
+Ogre::SceneNode* RenderMain::getSceneNodeByName(std::string name)
+{
+	return _mSceneManager->getSceneNode(name);
+}
+
 
 
