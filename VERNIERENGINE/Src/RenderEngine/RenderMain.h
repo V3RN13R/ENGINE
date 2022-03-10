@@ -4,6 +4,10 @@
 
 #include <memory>
 #include <string>
+namespace Ogre {
+	class Root;
+	class SceneManager;
+}
 class WindowRender;
 class RenderMain {
 
@@ -13,9 +17,13 @@ public:
 	static RenderMain* getInstance();
 	bool init();
 	WindowRender* GetWindowRender();
+	Ogre::Root* getRoot();
+	Ogre::SceneManager* getSceneManager();
 	bool updateWindow();
 private:
 	std::string _appName;
+	Ogre::Root* _root = nullptr;
+	Ogre::SceneManager* _mSceneManager = nullptr;
 	static std::unique_ptr<RenderMain> _instance;
 	WindowRender* _windowRender;
 };

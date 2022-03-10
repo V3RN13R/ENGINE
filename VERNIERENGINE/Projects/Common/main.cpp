@@ -7,17 +7,17 @@
 // Prueba para comprobar que la arquitectura EC funciona.
 
 int main() {
-	std::unique_ptr<Manager> mngr_;
-	mngr_.reset(new Manager());
+	std::unique_ptr<Manager> _mngr;
+	_mngr.reset(new Manager());
 
-	auto* prueba1 = mngr_->addEntity();
+	auto* prueba1 = _mngr->addEntity();
 	prueba1->addComponent<TESTComponente1>();
 
-	auto* prueba2 = mngr_->addEntity();
+	auto* prueba2 = _mngr->addEntity();
 	prueba2->addComponent<TESTComponente2>();
 
 	while (true)
-		mngr_->update();
+		_mngr->update();
 
 	return 0;
 }
