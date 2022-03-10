@@ -4,8 +4,8 @@ class Entity;
 
 class Component {
 public:
-	Component() :
-		entity_(nullptr) {
+	Component(Entity* e = nullptr) :
+		entity_(e) {
 	}
 
 	virtual ~Component() {
@@ -20,6 +20,7 @@ public:
 	}
 
 	virtual bool init() {
+		return false;
 	}
 
 	virtual void update() {
