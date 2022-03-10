@@ -19,26 +19,23 @@ enum PrefabType {
 
 class MeshRenderer : public Component {
 private:
-	Ogre::SceneNode* node_;
-	Ogre::SceneManager* mSM_;
-	Ogre::Entity* ogreEnt_;
-	std::string materialName_;
+	Ogre::SceneNode* _node;
+	Ogre::SceneManager* _mSceneManager;
+	Ogre::Entity* _ogreEnt;
+	std::string _materialName;
 
-	bool firstEnable_ = true;
-	bool visible_ = true;
+	bool _firstEnable = true;
+	bool _visible = true;
 public:
 	MeshRenderer(Entity* e = nullptr);
 	~MeshRenderer();
 
 	static std::string GetName() { return "MeshRenderer"; }
 
-	virtual bool init();
+	virtual bool init() { return false; }
 
-	void setMeshByPrefab(PrefabType prefab);
-	void setMeshByName(const std::string& name);
-
-	Ogre::SceneManager* getSceneManager() { return mSM_; }
-	Ogre::Entity* getOgreEntity() { return ogreEnt_; }
+	Ogre::SceneManager* getSceneManager() { return _mSceneManager; }
+	Ogre::Entity* getOgreEntity() { return _ogreEnt; }
 
 	Ogre::Mesh* getMesh() const;
 
@@ -48,4 +45,5 @@ public:
 	virtual void onEnable(); //override
 
 	virtual void onDisable(); //override
+	bool start(std::string mesh);
 };

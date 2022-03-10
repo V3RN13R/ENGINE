@@ -165,20 +165,20 @@ void WindowRender::BORRAR() {
 	mLightNode->attachObject(luz);
 
 	mLightNode->setDirection(Ogre::Vector3(1, -1, -1));  //vec3.normalise();
-	Ogre::Entity* e = _mSceneManager->createEntity(Ogre::SceneManager::PrefabType::PT_SPHERE);
+	//Ogre::Entity* e = _mSceneManager->createEntity(Ogre::SceneManager::PrefabType::PT_SPHERE);
 
-	Ogre::SceneNode* node = _mSceneManager->getRootSceneNode()->createChildSceneNode();
+	//Ogre::SceneNode* node = _mSceneManager->getRootSceneNode()->createChildSceneNode();
 
-	node->attachObject(e);
+	//node->attachObject(e);
 
-	node->setPosition(0, 100, 0);
+	//node->setPosition(0, 100, 0);
 
-	Ogre::Entity* e2 = _mSceneManager->createEntity(Ogre::SceneManager::PrefabType::PT_PLANE);
+	/*Ogre::Entity* e2 = _mSceneManager->createEntity(Ogre::SceneManager::PrefabType::PT_PLANE);
 
 	Ogre::SceneNode* node2 = _mSceneManager->getRootSceneNode()->createChildSceneNode();
 
 	node2->attachObject(e2);
 
-	node2->setPosition(0, -100, 0);
+	node2->setPosition(0, -100, 0);*/
 
 }
