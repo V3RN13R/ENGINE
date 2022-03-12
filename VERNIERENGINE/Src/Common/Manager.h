@@ -16,8 +16,8 @@ public:
 	virtual ~Manager();
 
 	// entities
-	Entity* addEntity() {
-		Entity* e = new Entity(this);
+	Entity* addEntity(std::string name) {
+		Entity* e = new Entity(this,name);
 		if (e != nullptr) {
 			e->resetGroups();
 			entities_.emplace_back(e);

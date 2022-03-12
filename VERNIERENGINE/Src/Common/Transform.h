@@ -3,57 +3,67 @@
 #include "Component.h"
 #include "Vector3D.h"
 class Component;
+
 class Transform : public Component {
+	enum Axis :uint8_t { x, y, z };
 public:
 	Transform() :
-		pos_(), vel_(), width_(), height_(), rotation_() {
+		_position(), _scale(), _rotation() {
 	}
 
-	Transform(Vector3D pos, Vector3D vel, float width, float height, float rotation);
+	Transform(Vector3D position, Vector3D scale, Vector3D rotation);
 
 	virtual ~Transform() {
 	}
 
 	Vector3D& getPos() {
-		return pos_;
+		return _position;
 	}
 
-	Vector3D& getVel() {
-		return vel_;
+	void setPosition(Vector3D position)
+	{
+		_position = position;
 	}
 
 	float getH() const {
-		return height_;
+		return _scale.getY();
 	}
 
 	void setH(float height) {
-		height_ = height;
+		_scale.setY(height);
 	}
 
 	float getW() const {
-		return width_;
+		return _scale.getX();
 	}
 
 	void setW(float width) {
-		width_ = width;
+		_scale.setX(width);
 	}
 
-	float getRot() const {
-		return rotation_;
+	Vector3D getRot() const {
+		return _rotation;
 	}
 
-	void setRot(float rot) {
-		rotation_ = rot;
+	void rotate(Vector3D rotation);
+	void rotate(float degree, uint8_t axis);
+
+	void setRotation(Vector3D rotation);
+
+	void setScale(Vector3D scale)
+	{
+		_scale = scale;
 	}
 
-	void update() override {
-		pos_ = pos_ + vel_;
+	Vector3D getScale()
+	{
+		return _scale;
 	}
+
+	void update() override;
 
 private:
-	Vector3D pos_;
-	Vector3D vel_;
-	float width_;
-	float height_;
-	float rotation_;
+	Vector3D _position;
+	Vector3D _scale;
+	Vector3D _rotation;
 };

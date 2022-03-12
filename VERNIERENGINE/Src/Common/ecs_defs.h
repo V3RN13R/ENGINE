@@ -7,12 +7,14 @@ class Transform;
 class Vector3D;
 class TESTComponente1;
 class TESTComponente2;
+class MeshRenderer;
 
 #define _CMPS_LIST_  \
 	Transform,\
 	Vector3D,\
 	TESTComponente1,\
-	TESTComponente2
+	TESTComponente2,\
+	MeshRenderer
 
 
 // groups

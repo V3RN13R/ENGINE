@@ -10,10 +10,10 @@ int main() {
 	std::unique_ptr<Manager> _mngr;
 	_mngr.reset(new Manager());
 
-	auto* prueba1 = _mngr->addEntity();
+	auto* prueba1 = _mngr->addEntity("");
 	prueba1->addComponent<TESTComponente1>();
 
-	auto* prueba2 = _mngr->addEntity();
+	auto* prueba2 = _mngr->addEntity("2");
 	prueba2->addComponent<TESTComponente2>();
 
 	while (true)

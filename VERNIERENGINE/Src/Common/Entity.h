@@ -17,13 +17,8 @@ class Entity {
 
 public:
 
-	Entity(Manager* mngr) :
-		_active(true), //
-		_mngr(mngr), //
-		_cmpArray(), //
-		_groups() //
-	{
-	}
+	Entity(Manager* mngr, std::string entityName);
+		
 
 	virtual ~Entity() {
 		for (auto c : _components) {
@@ -122,6 +117,16 @@ public:
 		}
 	}
 
+	std::string getName()
+	{
+		return _entityName;
+	}
+
+	Ogre::SceneNode* getNode()
+	{
+		return _oNode;
+	}
+
 private:
 
 	bool _active;
@@ -130,5 +135,6 @@ private:
 	std::array<Component*, ecs::maxComponent> _cmpArray;
 	std::bitset<ecs::maxGroup> _groups;
 	Ogre::SceneNode* _oNode;
+	std::string _entityName;
 };
 

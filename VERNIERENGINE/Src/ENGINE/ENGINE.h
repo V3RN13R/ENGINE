@@ -1,11 +1,14 @@
 #pragma once
 
 #include <string>
+#include <memory>
 
 class RenderMain;
 class PhysicsManager;
 class WindowRender;
 class SDL_Window;
+class Manager;
+class Transform;
 
 class VernierEngine {
 public:
@@ -26,4 +29,7 @@ private:
 	PhysicsManager* _physics;
 	WindowRender* _windowRender;
 	SDL_Window* _sDLWindow;
+	std::unique_ptr<Manager> _mngr;
+	Transform* tr = nullptr;
+	Transform* tr2 = nullptr;
 };
