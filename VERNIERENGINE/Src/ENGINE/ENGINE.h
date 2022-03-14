@@ -17,8 +17,7 @@ public:
 
 	VernierEngine(const std::string& appName);
 
-	void processFrame();
-	bool updateWindow();
+	bool processFrame();
 	
 	~VernierEngine();
 private:
@@ -27,8 +26,6 @@ private:
 
 	RenderMain* _ogre;
 	PhysicsManager* _physics;
-	WindowRender* _windowRender;
-	SDL_Window* _sDLWindow;
 	std::unique_ptr<Manager> _mngr;
 	Transform* tr = nullptr;
 	Transform* tr2 = nullptr;

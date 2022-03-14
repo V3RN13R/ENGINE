@@ -83,8 +83,16 @@ WindowRender* WindowRender::getInstance()
 		return _instance.get();
 }
 
-bool WindowRender::updateWindow()
+void WindowRender::updateWindow()
 {
+	_root->renderOneFrame();
+}
+
+void WindowRender::closeWindow()
+{
+}
+
+bool WindowRender::ExitWindow() {
 	bool continueRender = true;
 	if (_sDLWindow == nullptr) {
 		return false;  // SDL events not initialized
@@ -117,18 +125,13 @@ bool WindowRender::updateWindow()
 			break;
 		}
 	}
-	_root->renderOneFrame();
 	return continueRender;
 }
-
-void WindowRender::closeWindow()
-{
-}
-
 
 
 WindowRender::~WindowRender()
 {
+	delete _sDLWindow;
 	_root->destroySceneManager(_mSceneManager);
 	delete _root;
 }

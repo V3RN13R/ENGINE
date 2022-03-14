@@ -32,8 +32,13 @@ PhysicsManager::PhysicsManager(){
 }
 PhysicsManager::~PhysicsManager()
 {
+	delete collConfig;
+	delete collDispatcher;
+	delete broadPhaseInterface;
+	delete constraintSolver;
+	delete dynamicsWorld;
 }
-;
+
 
 void PhysicsManager::init(const Vector3D gravity)
 {
@@ -55,4 +60,9 @@ void PhysicsManager::init(const Vector3D gravity)
 	dynamicsWorld->setDebugDrawer(mDebugDrawer_);
 #endif // DEBUG
 */
+}
+
+void PhysicsManager::clean()
+{
+	delete this;
 }
