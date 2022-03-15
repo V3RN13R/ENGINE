@@ -20,9 +20,11 @@ public:
 	WindowRender* GetWindowRender();
 	Ogre::Root* getRoot();
 	Ogre::SceneManager* getSceneManager();
-	bool updateWindow();
+	void updateWindow();
 	Ogre::SceneNode* addSceneNode(std::string name, Ogre::SceneNode* parent=nullptr);
 	Ogre::SceneNode* getSceneNodeByName(std::string name);
+	void clean();
+	bool pollEvents();
 private:
 	std::string _appName;
 	Ogre::Root* _root = nullptr;

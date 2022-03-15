@@ -28,6 +28,7 @@ public:
 	// 
 	//inicializa todas las variables fisicas asi como el "mundo" a partir de dichas variables
 	void init(const Vector3D gravity);
+	void clean();
 private:
 	PhysicsManager();
 	virtual ~PhysicsManager();

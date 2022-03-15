@@ -53,10 +53,11 @@ Ogre::SceneManager* RenderMain::getSceneManager()
 	return _mSceneManager;
 }
 
-bool RenderMain::updateWindow()
+void RenderMain::updateWindow()
 {
-	return _windowRender->updateWindow();
+	_windowRender->updateWindow();
 }
+
 
 Ogre::SceneNode* RenderMain::addSceneNode(std::string name, Ogre::SceneNode* parent)
 {
@@ -69,6 +70,20 @@ Ogre::SceneNode* RenderMain::addSceneNode(std::string name, Ogre::SceneNode* par
 Ogre::SceneNode* RenderMain::getSceneNodeByName(std::string name)
 {
 	return _mSceneManager->getSceneNode(name);
+}
+//--------------------------------PROVISIONAL-------------------------------
+bool RenderMain::pollEvents() {
+	return _windowRender->ExitWindow();
+}
+
+/*RenderMain::~RenderMain()
+{
+	//delete _windowRender;
+}*/
+
+void RenderMain::clean()
+{
+	delete this;
 }
 
 

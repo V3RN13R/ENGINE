@@ -51,8 +51,13 @@ PhysicsManager::PhysicsManager(){
 }
 PhysicsManager::~PhysicsManager()
 {
+	delete collConfig;
+	delete collDispatcher;
+	delete broadPhaseInterface;
+	delete constraintSolver;
+	delete dynamicsWorld;
 }
-;
+
 
 void PhysicsManager::init(const Vector3D gravity)
 {
@@ -90,4 +95,9 @@ void PhysicsManager::init(const Vector3D gravity)
 	btRigidBody* body2 = new btRigidBody(rbInfo2);
 	body2->setRestitution(0.2);
 	dynamicsWorld->addRigidBody(body2);
+}
+
+void PhysicsManager::clean()
+{
+	delete this;
 }

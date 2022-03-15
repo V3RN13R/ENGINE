@@ -26,6 +26,7 @@ private:
 	int screen_height_ = 600;
 	void setUpOgreRoot();
 	void setUpWindow();
+
 protected:
 public:
 	WindowRender(std::string name);
@@ -33,7 +34,7 @@ public:
 	void BORRAR();
 	void closeWindow();
 	bool setUpInstance(std::string name);
-
+	bool ExitWindow();
 #pragma region Getters
 	Ogre::Root* getRoot() { return _root; }
 	Ogre::SceneManager* getSceneManager() { return _mSceneManager; }
@@ -42,7 +43,7 @@ public:
 	int getScreenWidth() { return screen_width_; };
 	int getScreenHeight() { return screen_height_; };
 	static WindowRender* getInstance();
-	bool updateWindow();
+	void updateWindow();
 #pragma endregion
 
 };
