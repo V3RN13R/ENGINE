@@ -21,6 +21,7 @@ public:
 
 	btDiscreteDynamicsWorld* getDynamicsWorld() { return dynamicsWorld; }
 	std::vector<btCollisionShape*> getCollisionShapes() { return collisionShapes; }
+	void stepPhysics();
 	//void trackRigidBodyWithName(btRigidBody* body, std::string physicsCubeName) { physicsAccessors.insert({ std::string("cube"), body }); }
 	// 
 	// 
