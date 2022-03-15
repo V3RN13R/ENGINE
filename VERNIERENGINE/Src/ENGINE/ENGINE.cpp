@@ -50,6 +50,10 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	tr2 = ent2->addComponent<Transform>();
 	tr2->setPosition(Vector3D(0, -2, 0));
 	tr2->rotate(-90, 0);
+
+
+
+
 }
 
 bool VernierEngine::processFrame()
@@ -58,6 +62,7 @@ bool VernierEngine::processFrame()
 	if (_ogre->pollEvents()) {
 		//InputManager::getInstance()->Update();
 		//PhysicsManager::getInstance()->Update();
+		_physics->stepPhysics();
 		_mngr->update();
 		tr->setPosition(Vector3D(tr->getPos().getX(), tr->getPos().getY() - 0.0001, tr->getPos().getZ()));
 		tr2->rotate(0.01, 2);

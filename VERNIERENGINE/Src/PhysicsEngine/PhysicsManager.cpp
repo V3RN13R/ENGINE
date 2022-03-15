@@ -5,6 +5,7 @@
 #include <btBulletDynamicsCommon.h>
 
 #include "Vector3D.h"
+#include <iostream>
 
 PhysicsManager* PhysicsManager::_instance = nullptr;
 PhysicsManager* PhysicsManager::getInstance()
@@ -41,6 +42,8 @@ void PhysicsManager::stepPhysics()
 			else {
 				trans = obj->getWorldTransform();
 			}
+			btVector3 v3 = body->getLinearVelocity();
+			std::cout << "Y: " << v3.getY();
 		}
 	}
 }
