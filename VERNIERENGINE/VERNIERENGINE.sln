@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysicsEngine", "Projects\P
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Common", "Projects\Common\Common.vcxproj", "{B7C268C4-6DF9-4667-849B-9D96E7B8C922}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SoundEngine", "Projects\SoundEngine\SoundEngine\SoundEngine.vcxproj", "{E314F640-1737-4BA9-BB55-F80AB0AAE22C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -33,6 +35,10 @@ Global
 		{B7C268C4-6DF9-4667-849B-9D96E7B8C922}.Debug|x64.Build.0 = Debug|x64
 		{B7C268C4-6DF9-4667-849B-9D96E7B8C922}.Release|x64.ActiveCfg = Release|x64
 		{B7C268C4-6DF9-4667-849B-9D96E7B8C922}.Release|x64.Build.0 = Release|x64
+		{E314F640-1737-4BA9-BB55-F80AB0AAE22C}.Debug|x64.ActiveCfg = Debug|x64
+		{E314F640-1737-4BA9-BB55-F80AB0AAE22C}.Debug|x64.Build.0 = Debug|x64
+		{E314F640-1737-4BA9-BB55-F80AB0AAE22C}.Release|x64.ActiveCfg = Release|x64
+		{E314F640-1737-4BA9-BB55-F80AB0AAE22C}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
