@@ -297,6 +297,7 @@ void SoundManager::playAudio(const char* filename, Audio* audio, uint8_t loop, i
 	/* Lock callback function */
 	SDL_LockAudioDevice(gDevice->device);
 
+
 	if (loop == 1)
 	{
 		addMusic((Audio*)(gDevice->want).userdata, newAudio);
@@ -307,7 +308,6 @@ void SoundManager::playAudio(const char* filename, Audio* audio, uint8_t loop, i
 	}
 
 	SDL_UnlockAudioDevice(gDevice->device);
-
 }
 
 void SoundManager::addMusic(Audio* root, Audio* newAudio)

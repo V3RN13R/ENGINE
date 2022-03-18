@@ -1,12 +1,12 @@
-#include <SDL.h>
+//#include <SDL.h>
 #include "SoundManager.h"
 
-void main()
+int main(int argv, char** args) 
 {
 	/* Initialize only SDL Audio on default device */
 	if (SDL_Init(SDL_INIT_AUDIO) < 0)
 	{
-		return;
+		return 1;
 	}
 	
 	SoundManager* _sm = new SoundManager();
@@ -15,7 +15,7 @@ void main()
 
 	/* Play music and a sound */
 	_sm->playMusic("highlands.wav", SDL_MIX_MAXVOLUME);
-	_sm->playSound("door1.wav", SDL_MIX_MAXVOLUME / 2);
+	_sm->playSound("sounds_door1.wav", SDL_MIX_MAXVOLUME / 2);
 
 	/* While using delay for showcase, don't actually do this in your project */
 	SDL_Delay(1000);
@@ -29,12 +29,12 @@ void main()
 	SDL_Delay(1000);
 	_sm->unpauseAudio();
 
-	_sm->playSound("door2.wav", SDL_MIX_MAXVOLUME / 2);
+	_sm->playSound("sounds_door2.wav", SDL_MIX_MAXVOLUME / 2);
 	SDL_Delay(2000);
 
 	/* Caching sound example, create, play from Memory, clear */
 
-	auto* sound = _sm->createAudio("door1.wav", 0, SDL_MIX_MAXVOLUME / 2);
+	auto* sound = _sm->createAudio("sounds_door1.wav", 0, SDL_MIX_MAXVOLUME / 2);
 	_sm->playSoundFromMemory(sound, SDL_MIX_MAXVOLUME);
 	SDL_Delay(2000);
 
@@ -51,5 +51,5 @@ void main()
 
 	SDL_Quit();
 
-	return;
+	return 0;
 }
