@@ -51,6 +51,13 @@ void Manager::update() {
 		entities_[i]->update();
 }
 
+void Manager::fixedUpdate()
+{
+	auto n = entities_.size();
+	for (auto i = 0u; i < n; i++)
+		entities_[i]->fixedUpdate();
+}
+
 void Manager::render() {
 	auto n = entities_.size();
 	for (auto i = 0u; i < n; i++)

@@ -61,9 +61,11 @@ public:
 	}
 
 	void update() override;
-
+	void fixedUpdate() override;
 private:
 	Vector3D _position;
+	Vector3D _glbposition;
 	Vector3D _scale;
 	Vector3D _rotation;
+	Vector3D _glrotation;
 };

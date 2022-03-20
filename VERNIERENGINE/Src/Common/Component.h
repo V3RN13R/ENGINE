@@ -23,9 +23,14 @@ public:
 		return false;
 	}
 
-	virtual void update() {
+	virtual void preUpdate() {
 	}
-
+	virtual void update() {
+	}	
+	virtual void lateUpdate() {
+	}
+	virtual void fixedUpdate() {
+	}
 	virtual void render() {
 	}
 

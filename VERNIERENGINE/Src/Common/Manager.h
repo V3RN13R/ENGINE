@@ -41,6 +41,7 @@ public:
 	}
 
 	void update();
+	void fixedUpdate();
 	void render();
 	void refresh();
 

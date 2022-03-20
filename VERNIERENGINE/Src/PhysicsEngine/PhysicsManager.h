@@ -9,11 +9,18 @@ class btSequentialImpulseConstraintSolver;
 class btDiscreteDynamicsWorld;
 class btRigidBody;
 class OgreDebugDrawer;
-class Vector3D;
 class CollisionObject;
 class btCollisionObject;
 class btCollisionShape;
-
+class Vector3D;
+class btVector3;
+enum ColliderType
+{
+	CT_BOX,
+	CT_SPHERE,
+	CT_TRIMESH,
+	CT_HULL
+};
 class PhysicsManager {
 public:
 	static PhysicsManager* getInstance();
@@ -29,6 +36,8 @@ public:
 	//inicializa todas las variables fisicas asi como el "mundo" a partir de dichas variables
 	void init(const Vector3D gravity);
 	void clean();
+	btRigidBody* addSphereRigidbody(float mass, float radius, btVector3 pos);
+	btRigidBody* addBoxRigidbody(float mass, btVector3 pos, btVector3 size );
 private:
 	PhysicsManager();
 	virtual ~PhysicsManager();

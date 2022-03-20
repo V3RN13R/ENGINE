@@ -89,12 +89,10 @@
   <ItemGroup>
     <ClCompile Include="..\..\Src\PhysicsEngine\PhysicsManager.cpp" />
     <ClCompile Include="..\..\Src\PhysicsEngine\PruebaBullet.cpp" />
-    <ClCompile Include="..\..\Src\PhysicsEngine\RigidBody.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\PhysicsEngine\PhysicsManager.h" />
     <ClInclude Include="..\..\Src\PhysicsEngine\PruebaBullet.h" />
-    <ClInclude Include="..\..\Src\PhysicsEngine\RigidBody.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

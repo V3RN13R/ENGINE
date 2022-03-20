@@ -11,6 +11,7 @@
 #include "PruebaBullet.h"
 #include "FactoryManager.h"
 #include "../../Src/Common/Transform.h"
+#include "../../Src/Common/Rigidbody.h"
 #include "../../Src/Common/Manager.h"
 #include "../../Src/Common/MeshRenderer.h"
 //#include <SDL.h>
@@ -38,17 +39,21 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 
 	Entity* ent = _mngr->addEntity("Prueba");
 	MeshRenderer* mr = ent->addComponent<MeshRenderer>(ent);
+	Rigidbody* rb = ent->addComponent<Rigidbody>(ent);
+	tr = ent->addComponent<Transform>();
+	tr->setPosition(Vector3D(0,400,10));
+	rb->addSphereRigidbody(1, 50, {0,400,10});//falta obtener radio mediante la mesh
 	mr->start("Sphere");
 	mr->onEnable();
-	tr = ent->addComponent<Transform>();
-	tr->setPosition(Vector3D(0,1,0));
 
 	Entity* ent2 = _mngr->addEntity("Prueba2");
 	MeshRenderer* mr2 = ent2->addComponent<MeshRenderer>(ent2);
+	tr2 = ent2->addComponent<Transform>();
+	Rigidbody* rb2 = ent2->addComponent<Rigidbody>(ent2);
+	tr2->setPosition(Vector3D(0, -2, 0));
+	rb2->addBoxRigidbody(0, {0,-2,0}, { 1000,10,1000 });//falta obtener size mediante la mesh
 	mr2->start("Plane");
 	mr2->onEnable();
-	tr2 = ent2->addComponent<Transform>();
-	tr2->setPosition(Vector3D(0, -2, 0));
 	tr2->rotate(-90, 0);
 
 
@@ -63,8 +68,9 @@ bool VernierEngine::processFrame()
 		//InputManager::getInstance()->Update();
 		//PhysicsManager::getInstance()->Update();
 		_physics->stepPhysics();
+		_mngr->fixedUpdate();
 		_mngr->update();
-		tr->setPosition(Vector3D(tr->getPos().getX(), tr->getPos().getY() - 0.0001, tr->getPos().getZ()));
+		//tr->setPosition(Vector3D(tr->getPos().getX(), tr->getPos().getY() - 0.0001, tr->getPos().getZ()));
 		tr2->rotate(0.01, 2);
 		_ogre->updateWindow();
 	}

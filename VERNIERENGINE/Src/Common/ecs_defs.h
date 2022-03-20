@@ -1,5 +1,3 @@
-// This file is part of the course TPV2@UCM - Samir Genaim
-
 #pragma once
 
 // components -- forward declaration, i.e., assume they are defined somewhere
@@ -8,13 +6,14 @@ class Vector3D;
 class TESTComponente1;
 class TESTComponente2;
 class MeshRenderer;
-
+class Rigidbody;
 #define _CMPS_LIST_  \
 	Transform,\
 	Vector3D,\
 	TESTComponente1,\
 	TESTComponente2,\
-	MeshRenderer
+	MeshRenderer,\
+	Rigidbody
 
 
 // groups

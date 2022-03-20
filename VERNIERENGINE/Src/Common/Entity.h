@@ -110,6 +110,13 @@ public:
 		}
 	}
 
+	void fixedUpdate() {
+		std::size_t n = _components.size();
+		for (auto i = 0u; i < n; i++) {
+			_components[i]->fixedUpdate();
+		}
+	}
+
 	void render() {
 		std::size_t n = _components.size();
 		for (auto i = 0u; i < n; i++) {

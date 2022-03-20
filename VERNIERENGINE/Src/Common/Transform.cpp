@@ -1,6 +1,7 @@
 #include "Transform.h"
 #include <Ogre.h>
 #include "Entity.h"
+#include "RigidBody.h"
 //#include "RenderMain.h"
 
 Transform::Transform(Vector3D position, Vector3D scale, Vector3D rotation) : _position(position), _scale(scale), _rotation(rotation)
@@ -51,5 +52,13 @@ void Transform::setRotation(Vector3D rotation)
 
 void Transform::update() //Falta bullet
 {
-	entity_->getNode()->setPosition(Ogre::Vector3(_position.getX() * 100, _position.getY() * 100, _position.getZ() * 100));
+	entity_->getNode()->setPosition(Ogre::Vector3(_position.getX(), _position.getY() , _position.getZ()));
+}
+
+void Transform::fixedUpdate()
+{
+
+	if (entity_->hasComponent<Rigidbody>()) {
+		setPosition(entity_->getComponent<Rigidbody>()->getPosition());
+}
 }
