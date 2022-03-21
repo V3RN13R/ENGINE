@@ -27,6 +27,9 @@
   <ItemGroup>
     <ClInclude Include="..\..\Src\ENGINE\ENGINE.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Src\ENGINE\Prueba.lua" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -79,11 +82,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src\Common;$(SolutionDir)Dependencies\Ogre\Build\x64\include;$(SolutionDir)Dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Build\x64\Dependencies\include\SDL2</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Exes;$(SolutionDir)Dependencies\Lua\Src;$(SolutionDir)Src\Common;$(SolutionDir)Dependencies\Ogre\Build\x64\include;$(SolutionDir)Dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Build\x64\Dependencies\include\SDL2</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\Lua\Src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -94,13 +98,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src\Common;$(SolutionDir)Dependencies\Ogre\Build\x64\include;$(SolutionDir)Dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Build\x64\Dependencies\include\SDL2</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Exes;$(SolutionDir)Dependencies\Lua\Src;$(SolutionDir)Src\Common;$(SolutionDir)Dependencies\Ogre\Build\x64\include;$(SolutionDir)Dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Build\x64\Dependencies\include\SDL2</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\Lua\Src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

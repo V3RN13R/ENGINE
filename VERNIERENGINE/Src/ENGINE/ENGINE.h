@@ -18,6 +18,7 @@ public:
 	VernierEngine(const std::string& appName);
 
 	bool processFrame();
+	//bool CheckLua(lua_State* L, int r);
 	
 	~VernierEngine();
 private:

@@ -15,6 +15,19 @@
 #include "Manager.h"
 #include "MeshRenderer.h"
 #include "Camera.h"
+
+//LUA
+extern "C"
+{
+#include "lua.h"
+#include "lualib.h"
+#include "lauxlib.h"
+}
+
+//#ifdef _WIN32
+#pragma comment(lib, "liblua53.a")
+//#endif
+
 //#include <SDL.h>
 
 VernierEngine* VernierEngine::_instance = nullptr;
@@ -30,7 +43,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	_mngr.reset(new Manager());
 
 	FactoryManager::setUpInstance();
-	 //Physics
+	//Physics
 	if (!PhysicsManager::setUpInstance()) {
 		throw std::exception("ERROR: Couldn't load PhysicsManager\n");
 	}
@@ -47,8 +60,8 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	MeshRenderer* mr = ent->addComponent<MeshRenderer>(ent);
 	Rigidbody* rb = ent->addComponent<Rigidbody>(ent);
 	tr = ent->addComponent<Transform>();
-	tr->setPosition(Vector3D(0,400,10));
-	rb->addSphereRigidbody(1, 50, {0,400,10});//falta obtener radio mediante la mesh
+	tr->setPosition(Vector3D(0, 400, 10));
+	rb->addSphereRigidbody(1, 50, { 0,400,10 });//falta obtener radio mediante la mesh
 	mr->start("Sphere");
 	mr->onEnable();
 
@@ -57,7 +70,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	tr2 = ent2->addComponent<Transform>();
 	Rigidbody* rb2 = ent2->addComponent<Rigidbody>(ent2);
 	tr2->setPosition(Vector3D(0, -2, 0));
-	rb2->addBoxRigidbody(0, {0,-2,0}, { 1000,10,1000 });//falta obtener size mediante la mesh
+	rb2->addBoxRigidbody(0, { 0,-2,0 }, { 1000,10,1000 });//falta obtener size mediante la mesh
 	mr2->start("Plane");
 	mr2->onEnable();
 	tr2->rotate(-90, 0);
@@ -69,7 +82,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 
 bool VernierEngine::processFrame()
 {
-	std::cout <<  "updating...\n";
+	std::cout << "updating...\n";
 	if (_ogre->pollEvents()) {
 		//InputManager::getInstance()->Update();
 		//PhysicsManager::getInstance()->Update();
@@ -93,15 +106,100 @@ VernierEngine::~VernierEngine()
 	//_physics->clean();
 }
 
+//bool VernierEngine::CheckLua(lua_State* L, int r)
+//{
+//	if (r != LUA_OK)
+//	{
+//		std::string errormsg = lua_tostring(L, -1);
+//		std::cout << errormsg << std::endl;
+//		return false;
+//	}
+//	return true;
+//}
 
 int main()
 {
+
+	struct Player
+	{
+		std::string title;
+		std::string name;
+		std::string family;
+		int level;
+	} player;
+
+	lua_State* L = luaL_newstate();
+	luaL_openlibs(L);
+
+	luaL_dofile(L, "Prueba.lua");
+
+	// Stage 1: Just read simple variables
+	std::cout << "[CPP] Stage 1 - Read Simple Variables" << std::endl;
+	lua_getglobal(L, "a");
+	if (lua_isnumber(L, -1)) std::cout << "[CPP S1] a = " << (int)lua_tointeger(L, -1) << std::endl;
+	lua_getglobal(L, "b");
+	if (lua_isnumber(L, -1)) std::cout << "[CPP S1] b = " << (int)lua_tointeger(L, -1) << std::endl;
+	lua_getglobal(L, "c");
+	if (lua_isnumber(L, -1)) std::cout << "[CPP S1] c = " << (int)lua_tointeger(L, -1) << std::endl;
+	lua_getglobal(L, "d");
+	if (lua_isstring(L, -1)) std::cout << "[CPP S1] d = " << lua_tostring(L, -1) << std::endl << std::endl;
+
+	// Stage 2: Read Table Object
+	std::cout << "[CPP] Stage 2 - Read Table (Key/Value pairs)" << std::endl;
+	lua_getglobal(L, "player");
+	if (lua_istable(L, -1))
+	{
+		lua_pushstring(L, "Name");
+		lua_gettable(L, -2);
+		player.name = lua_tostring(L, -1);
+		lua_pop(L, 1);
+
+		lua_pushstring(L, "Family");
+		lua_gettable(L, -2);
+		player.family = lua_tostring(L, -1);
+		lua_pop(L, 1);
+
+		lua_pushstring(L, "Title");
+		lua_gettable(L, -2);
+		player.title = lua_tostring(L, -1);
+		lua_pop(L, 1);
+
+		lua_pushstring(L, "Level");
+		lua_gettable(L, -2);
+		player.level = (int)lua_tointeger(L, -1);
+		lua_pop(L, 1);
+	}
+	std::cout << "[CPP S2] " << player.title << " " << player.name << " of " << player.family << " [Lvl: " << player.level << "]" << std::endl << std::endl;
+
+	// Stage 3: Call Lua Function
+	std::cout << "[CPP] Stage 3 - Call Lua Function" << std::endl;
+	lua_getglobal(L, "CalledFromCPP1");
+	if (lua_isfunction(L, -1))
+	{
+		lua_pushnumber(L, 5.0f);
+		lua_pushnumber(L, 6.0f);
+		lua_pushstring(L, "Bwa ha ha!");
+		std::cout << "[CPP S3] Calling 'CalledFromCPP1' in lua script" << std::endl;
+	}
+
+	// Stage 4: Call Lua Function, which calls C++ Function
+	std::cout << "[CPP] Stage 4 - Call Lua Function, whcih in turn calls C++ Function" << std::endl;
+	lua_getglobal(L, "CalledFromCPP2");
+	if (lua_isfunction(L, -1))
+	{
+		lua_pushnumber(L, 5.0f);
+		lua_pushnumber(L, 6.0f);
+		std::cout << "[CPP S4] Calling 'CalledFromCPP2' in lua script" << std::endl;
+	}
+
+	lua_getglobal(L, "CreatePlane");
+
 	bool stay = true;
 	VernierEngine::setupInstance("WildLess");
 	do {
 		stay = VernierEngine::getInstance()->processFrame();
 	} while (stay);
-    return 0;
+	return 0;
 }
 
 bool VernierEngine::setupInstance(const std::string& appName)
