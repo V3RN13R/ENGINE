@@ -84,6 +84,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Src\Common\Camera.cpp" />
     <ClCompile Include="..\..\Src\Common\Component.cpp" />
     <ClCompile Include="..\..\Src\Common\Entity.cpp" />
     <ClCompile Include="..\..\Src\Common\FactoryManager.cpp" />
@@ -94,9 +95,9 @@
     <ClCompile Include="..\..\Src\Common\TEST-Componente2.cpp" />
     <ClCompile Include="..\..\Src\Common\Transform.cpp" />
     <ClCompile Include="..\..\Src\Common\Vector3D.cpp" />
-    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Src\Common\Camera.h" />
     <ClInclude Include="..\..\Src\Common\Component.h" />
     <ClInclude Include="..\..\Src\Common\ecs.h" />
     <ClInclude Include="..\..\Src\Common\ecs_defs.h" />

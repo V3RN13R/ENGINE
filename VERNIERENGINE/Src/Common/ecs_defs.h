@@ -7,13 +7,15 @@ class TESTComponente1;
 class TESTComponente2;
 class MeshRenderer;
 class Rigidbody;
+class Camera;
 #define _CMPS_LIST_  \
 	Transform,\
 	Vector3D,\
 	TESTComponente1,\
 	TESTComponente2,\
 	MeshRenderer,\
-	Rigidbody
+	Rigidbody,\
+	Camera
 
 
 // groups

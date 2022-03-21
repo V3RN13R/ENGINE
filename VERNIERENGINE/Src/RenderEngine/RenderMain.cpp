@@ -53,6 +53,11 @@ Ogre::SceneManager* RenderMain::getSceneManager()
 	return _mSceneManager;
 }
 
+Ogre::RenderWindow* RenderMain::getRenderWindow()
+{
+	return _windowRender->getRenderWindow();
+}
+
 void RenderMain::updateWindow()
 {
 	_windowRender->updateWindow();

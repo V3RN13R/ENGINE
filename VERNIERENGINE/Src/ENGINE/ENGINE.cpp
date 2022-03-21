@@ -10,10 +10,11 @@
 #include "PhysicsManager.h"
 #include "PruebaBullet.h"
 #include "FactoryManager.h"
-#include "../../Src/Common/Transform.h"
-#include "../../Src/Common/Rigidbody.h"
-#include "../../Src/Common/Manager.h"
-#include "../../Src/Common/MeshRenderer.h"
+#include "Transform.h"
+#include "Rigidbody.h"
+#include "Manager.h"
+#include "MeshRenderer.h"
+#include "Camera.h"
 //#include <SDL.h>
 
 VernierEngine* VernierEngine::_instance = nullptr;
@@ -36,7 +37,12 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	_physics = PhysicsManager::getInstance();
 
 	PruebaBullet::mainPhys();
-
+	Entity* camera = _mngr->addEntity("Camera");
+	Camera* c = camera->addComponent<Camera>();
+	Transform* t = camera->addComponent<Transform>();
+	c->start();
+	t->setPosition({ 0, 500, 10 });
+	c->setBckgColor({ 1,0,0 });
 	Entity* ent = _mngr->addEntity("Prueba");
 	MeshRenderer* mr = ent->addComponent<MeshRenderer>(ent);
 	Rigidbody* rb = ent->addComponent<Rigidbody>(ent);
