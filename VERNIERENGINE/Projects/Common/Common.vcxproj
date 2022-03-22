@@ -88,8 +88,10 @@
     <ClCompile Include="..\..\Src\Common\Component.cpp" />
     <ClCompile Include="..\..\Src\Common\Entity.cpp" />
     <ClCompile Include="..\..\Src\Common\FactoryManager.cpp" />
+    <ClCompile Include="..\..\Src\Common\Light.cpp" />
     <ClCompile Include="..\..\Src\Common\Manager.cpp" />
     <ClCompile Include="..\..\Src\Common\MeshRenderer.cpp" />
+    <ClCompile Include="..\..\Src\Common\ResourceManager.cpp" />
     <ClCompile Include="..\..\Src\Common\RigidBody.cpp" />
     <ClCompile Include="..\..\Src\Common\TEST-Componente1.cpp" />
     <ClCompile Include="..\..\Src\Common\TEST-Componente2.cpp" />
@@ -103,9 +105,11 @@
     <ClInclude Include="..\..\Src\Common\ecs_defs.h" />
     <ClInclude Include="..\..\Src\Common\Entity.h" />
     <ClInclude Include="..\..\Src\Common\FactoryManager.h" />
+    <ClInclude Include="..\..\Src\Common\Light.h" />
     <ClInclude Include="..\..\Src\Common\Manager.h" />
     <ClInclude Include="..\..\Src\Common\MeshRenderer.h" />
     <ClInclude Include="..\..\Src\Common\mpl.h" />
+    <ClInclude Include="..\..\Src\Common\ResourceManager.h" />
     <ClInclude Include="..\..\Src\Common\RigidBody.h" />
     <ClInclude Include="..\..\Src\Common\TEST-Componente1.h" />
     <ClInclude Include="..\..\Src\Common\TEST-Componente2.h" />

@@ -36,6 +36,8 @@ public:
 	void closeWindow();
 	bool setUpInstance(std::string name);
 	bool ExitWindow();
+	//Ogre::Light* createLigth(Ogre::LightTypes type = (Ogre::LightTypes)0);
+	void setAmbientLight(float x, float y, float z);
 #pragma region Getters
 	Ogre::Root* getRoot() { return _root; }
 	Ogre::SceneManager* getSceneManager() { return _mSceneManager; }
