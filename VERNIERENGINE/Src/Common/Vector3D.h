@@ -35,6 +35,7 @@ public:
 	Vector3D(float x, float y, float z) :
 		x_(x), y_(y), z_(z) {
 	}
+	Vector3D(std::string) {}
 
 	~Vector3D() {
 	}

@@ -86,7 +86,9 @@
   <ItemGroup>
     <ClCompile Include="..\..\Src\Common\Component.cpp" />
     <ClCompile Include="..\..\Src\Common\Entity.cpp" />
+    <ClCompile Include="..\..\Src\Common\Factory.cpp" />
     <ClCompile Include="..\..\Src\Common\FactoryManager.cpp" />
+    <ClCompile Include="..\..\Src\Common\InitFactories.cpp" />
     <ClCompile Include="..\..\Src\Common\Manager.cpp" />
     <ClCompile Include="..\..\Src\Common\MeshRenderer.cpp" />
     <ClCompile Include="..\..\Src\Common\RigidBody.cpp" />
@@ -101,6 +103,7 @@
     <ClInclude Include="..\..\Src\Common\ecs.h" />
     <ClInclude Include="..\..\Src\Common\ecs_defs.h" />
     <ClInclude Include="..\..\Src\Common\Entity.h" />
+    <ClInclude Include="..\..\Src\Common\Factory.h" />
     <ClInclude Include="..\..\Src\Common\FactoryManager.h" />
     <ClInclude Include="..\..\Src\Common\Manager.h" />
     <ClInclude Include="..\..\Src\Common\MeshRenderer.h" />

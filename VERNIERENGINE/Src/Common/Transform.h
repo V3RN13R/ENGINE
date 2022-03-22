@@ -12,6 +12,8 @@ public:
 	}
 
 	Transform(Vector3D position, Vector3D scale, Vector3D rotation);
+	
+	Transform(std::map<std::string, std::string> args);
 
 	virtual ~Transform() {
 	}

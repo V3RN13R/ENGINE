@@ -8,6 +8,10 @@ Transform::Transform(Vector3D position, Vector3D scale, Vector3D rotation) : _po
 {
 }
 
+Transform::Transform(std::map<std::string, std::string> args) : _position(args["position"]), _scale(args["scale"]), _rotation(args["rotation"])
+{
+}
+
 void Transform::rotate(Vector3D rotation)
 {
 	entity_->getNode()->pitch(Ogre::Degree(rotation.getX()));
