@@ -24,12 +24,6 @@ extern "C"
 #include "lauxlib.h"
 }
 
-//#ifdef _WIN32
-#pragma comment(lib, "liblua53.a")
-//#endif
-
-//#include <SDL.h>
-
 VernierEngine* VernierEngine::_instance = nullptr;
 
 VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
