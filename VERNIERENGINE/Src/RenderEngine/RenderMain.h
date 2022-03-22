@@ -15,6 +15,8 @@ class RenderMain {
 
 public:
 	RenderMain(const std::string& appName) { _appName = appName; }
+	~RenderMain();
+
 	static RenderMain* setUpInstance(const std::string& appName);
 	static RenderMain* getInstance();
 	bool init();

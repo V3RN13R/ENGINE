@@ -38,11 +38,28 @@ PhysicsManager::PhysicsManager(){
 }
 PhysicsManager::~PhysicsManager()
 {
+	std::cout << "HOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLA" << "\n";
+
 	delete collConfig;
 	delete collDispatcher;
 	delete broadPhaseInterface;
 	delete constraintSolver;
 	delete dynamicsWorld;
+	delete mDebugDrawer_;
+
+	for (int x = 0; x < collisionShapes.size(); x++) {
+		delete collisionShapes[x];
+	}
+	collisionShapes.clear();
+
+	for (std::map<const btCollisionObject*, std::pair<CollisionObject*, CollisionObject*>>::iterator itr = contacts.begin(); itr != contacts.end(); itr++)
+	{
+		std::cout << contacts.size() << "\n";
+		delete (itr->first);
+		delete (itr->second.first);
+		delete (itr->second.second);
+	}
+	contacts.clear();
 }
 
 

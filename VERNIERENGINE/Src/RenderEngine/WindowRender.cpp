@@ -131,8 +131,9 @@ bool WindowRender::ExitWindow() {
 
 WindowRender::~WindowRender()
 {
-	delete _sDLWindow;
+	_root->getRenderSystem()->destroyRenderWindow(_wName.c_str());//esto borra la _rWindow
 	_root->destroySceneManager(_mSceneManager);
+	SDL_DestroyWindow(_sDLWindow);
 	delete _root;
 }
 

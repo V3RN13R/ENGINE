@@ -5,6 +5,7 @@
 #include <iostream>
 #include <cstdlib>
 
+
 #include "ENGINE.h"
 #include "RenderMain.h"
 #include "PhysicsManager.h"
@@ -102,8 +103,9 @@ bool VernierEngine::processFrame()
 
 VernierEngine::~VernierEngine()
 {
-	//_ogre->clean();
-	//_physics->clean();
+	_ogre->clean();//borra el RenderMain
+	_physics->clean();
+	delete _instance;
 }
 
 //bool VernierEngine::CheckLua(lua_State* L, int r)
@@ -119,6 +121,8 @@ VernierEngine::~VernierEngine()
 
 int main()
 {
+
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
 	struct Player
 	{
@@ -199,6 +203,10 @@ int main()
 	do {
 		stay = VernierEngine::getInstance()->processFrame();
 	} while (stay);
+
+
+	//se acaba el programa
+	std::cout << "Hola\n";
 	return 0;
 }
 
