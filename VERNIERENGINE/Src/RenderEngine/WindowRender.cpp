@@ -90,6 +90,7 @@ void WindowRender::updateWindow()
 
 void WindowRender::closeWindow()
 {
+
 }
 
 bool WindowRender::ExitWindow() {
@@ -128,6 +129,18 @@ bool WindowRender::ExitWindow() {
 	return continueRender;
 }
 
+//Ogre::Light* WindowRender::createLigth(Ogre::LightTypes type)
+//{
+//	Light* light = _mSceneManager->createLight();
+//	light.setType((Light::LightTyes)type);
+//
+//	return light;
+//}
+
+void WindowRender::setAmbientLight(float x, float y, float z)
+{
+	_mSceneManager->setAmbientLight(Ogre::ColourValue(x, y, z));
+}
 
 WindowRender::~WindowRender()
 {

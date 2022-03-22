@@ -1,6 +1,7 @@
 ﻿#include "MeshRenderer.h"
 #include "Entity.h"
 #include "RenderMain.h"
+
 #include <Ogre.h>
 
 using OgrePrefab = Ogre::SceneManager::PrefabType;
