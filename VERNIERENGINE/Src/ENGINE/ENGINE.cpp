@@ -99,8 +99,14 @@ bool VernierEngine::processFrame()
 
 VernierEngine::~VernierEngine()
 {
-	_ogre->clean();//borra el RenderMain
-	_physics->clean();
+	RenderMain::deleteInstance();//borra el RenderMain
+	_ogre = nullptr;
+	PhysicsManager::deleteInstance();
+	_physics = nullptr;
+	FactoryManager::deleteInstance();
+
+	delete _mngr.get();
+	_mngr.release();
 }
 
 //bool VernierEngine::CheckLua(lua_State* L, int r)

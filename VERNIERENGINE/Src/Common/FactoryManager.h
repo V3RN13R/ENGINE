@@ -10,8 +10,8 @@ public:
 
 	static FactoryManager* getInstance();
 	static bool setUpInstance();
+	static void deleteInstance(); 
 
-	//static void clean(); 
 
 	Component* findAndCreate(const std::string& name);  //pasarle argumentos�
 
@@ -21,10 +21,12 @@ public:
 	void initEngineFactories();
 
 private:
+	static FactoryManager* _instance;
+
+
 	template<typename T>
 	Component* createComponent() { return new T(); };
 	
-	static std::unique_ptr<FactoryManager> _instance;
 	std::map<std::string, Component*> _map;
 
 };

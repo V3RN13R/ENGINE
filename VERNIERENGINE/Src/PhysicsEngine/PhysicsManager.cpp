@@ -38,27 +38,26 @@ PhysicsManager::PhysicsManager(){
 }
 PhysicsManager::~PhysicsManager()
 {
-	std::cout << "HOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLAHOLA" << "\n";
 
+	delete dynamicsWorld;
 	delete collConfig;
 	delete collDispatcher;
 	delete broadPhaseInterface;
 	delete constraintSolver;
-	//delete dynamicsWorld;
 	delete mDebugDrawer_;
 
-	/*for (int x = 0; x < collisionShapes.size(); x++) {
+	for (int x = 0; x < collisionShapes.size(); x++) {
 		delete collisionShapes[x];
-	}*/
+	}
 	collisionShapes.clear();
 
-	/*for (std::map<const btCollisionObject*, std::pair<CollisionObject*, CollisionObject*>>::iterator itr = contacts.begin(); itr != contacts.end(); itr++)
+	for (std::map<const btCollisionObject*, std::pair<CollisionObject*, CollisionObject*>>::iterator itr = contacts.begin(); itr != contacts.end(); itr++)
 	{
 		std::cout << contacts.size() << "\n";
 		delete (itr->first);
 		delete (itr->second.first);
 		delete (itr->second.second);
-	}*/
+	}
 	contacts.clear();
 }
 
@@ -72,8 +71,7 @@ void PhysicsManager::init(const Vector3D gravity)
 	broadPhaseInterface = new btDbvtBroadphase();
 	constraintSolver = new btSequentialImpulseConstraintSolver();
 
-	dynamicsWorld = new btDiscreteDynamicsWorld(collDispatcher, broadPhaseInterface,
-		constraintSolver, collConfig);
+	dynamicsWorld = new btDiscreteDynamicsWorld(collDispatcher, broadPhaseInterface,constraintSolver, collConfig);
 
 	dynamicsWorld->setGravity(btVector3(gravity.getX(), gravity.getY(), gravity.getZ()));
 /*
@@ -86,9 +84,9 @@ void PhysicsManager::init(const Vector3D gravity)
 
 }
 
-void PhysicsManager::clean()
+void PhysicsManager::deleteInstance()
 {
-	delete this;
+	delete _instance;
 }
 
 btRigidBody* PhysicsManager::addSphereRigidbody(float mass,float radius, btVector3 pos)

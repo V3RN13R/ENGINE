@@ -1,7 +1,9 @@
 #include "FactoryManager.h"
 #include "Transform.h"
 #include "RigidBody.h"
-std::unique_ptr<FactoryManager>  FactoryManager::_instance;
+
+
+FactoryManager*  FactoryManager::_instance;
 
 FactoryManager::~FactoryManager()
 {
@@ -13,16 +15,21 @@ FactoryManager::~FactoryManager()
 
 FactoryManager* FactoryManager::getInstance()
 {
-	return _instance.get();
+	return _instance;
 }
 
 bool FactoryManager::setUpInstance()
 {
 	if (_instance == nullptr) {
-		_instance.reset(new FactoryManager());
+		_instance = new FactoryManager();
 		return true;
 	}
 	return false;
+}
+
+void FactoryManager::deleteInstance()
+{
+	delete _instance;
 }
 
 Component* FactoryManager::findAndCreate(const std::string& name)
