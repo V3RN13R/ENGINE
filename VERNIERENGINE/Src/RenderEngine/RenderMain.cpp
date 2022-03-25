@@ -90,7 +90,8 @@ bool RenderMain::pollEvents() {
 
 void RenderMain::clean()
 {
-	delete this;
+	//delete _instance.get();
+	_instance.release();
 }
 RenderMain::~RenderMain()
 {

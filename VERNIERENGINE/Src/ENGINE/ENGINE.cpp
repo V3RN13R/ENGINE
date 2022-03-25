@@ -95,11 +95,12 @@ bool VernierEngine::processFrame()
 
 
 
+
+
 VernierEngine::~VernierEngine()
 {
 	_ogre->clean();//borra el RenderMain
 	_physics->clean();
-	delete _instance;
 }
 
 //bool VernierEngine::CheckLua(lua_State* L, int r)
@@ -198,7 +199,7 @@ int main()
 		stay = VernierEngine::getInstance()->processFrame();
 	} while (stay);
 
-
+	delete VernierEngine::getInstance();
 	//se acaba el programa
 	std::cout << "Hola\n";
 	return 0;
