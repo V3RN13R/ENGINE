@@ -9,7 +9,7 @@ Manager::Manager() {
 
 Manager::~Manager() {
 	for (auto e : entities_) {
-		delete e;
+		//delete e;
 	}
 }
 

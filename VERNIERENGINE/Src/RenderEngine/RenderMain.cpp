@@ -83,14 +83,12 @@ bool RenderMain::pollEvents() {
 
 
 
-/*RenderMain::~RenderMain()
-{
-	//delete _windowRender;
-}*/
+
 
 void RenderMain::clean()
 {
-	delete this;
+	delete _instance.get();
+	_instance.release();
 }
 RenderMain::~RenderMain()
 {

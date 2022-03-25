@@ -29,6 +29,7 @@ public:
 	Ogre::SceneNode* getSceneNodeByName(std::string name);
 	void clean();
 	bool pollEvents();
+
 private:
 	std::string _appName;
 	Ogre::Root* _root = nullptr;

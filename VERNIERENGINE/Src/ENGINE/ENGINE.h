@@ -25,8 +25,8 @@ private:
 	static VernierEngine* _instance;
 	std::string _appName;
 
-	RenderMain* _ogre;
-	PhysicsManager* _physics;
+	RenderMain* _ogre = nullptr;
+	PhysicsManager* _physics = nullptr;
 	std::unique_ptr<Manager> _mngr;
 	Transform* tr = nullptr;
 	Transform* tr2 = nullptr;

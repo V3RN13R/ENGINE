@@ -108,13 +108,13 @@ bool WindowRender::ExitWindow() {
 			std::cout << "La X del mapa\n";
 			continueRender = false;
 			_root->queueEndRendering();
-			SDL_DestroyWindow(_sDLWindow);
+			//SDL_DestroyWindow(_sDLWindow);
 			break;
 		case SDL_KEYDOWN:
 			if (event.key.keysym.sym == SDLK_ESCAPE) {
 				continueRender = false;
-				_root->queueEndRendering();
-				SDL_DestroyWindow(_sDLWindow);
+				//_root->queueEndRendering();
+				//SDL_DestroyWindow(_sDLWindow);
 			}
 			break;
 		case SDL_WINDOWEVENT:
@@ -147,6 +147,7 @@ WindowRender::~WindowRender()
 	_root->getRenderSystem()->destroyRenderWindow(_wName.c_str());//esto borra la _rWindow
 	_root->destroySceneManager(_mSceneManager);
 	SDL_DestroyWindow(_sDLWindow);
+	SDL_Quit();
 	delete _root;
 }
 
