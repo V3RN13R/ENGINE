@@ -4,6 +4,12 @@
 #include "PhysicsManager.h"
 #include <btBulletDynamicsCommon.h>
 
+Rigidbody::~Rigidbody()
+{
+	/*PhysicsManager::getInstance()->getDynamicsWorld()->removeRigidBody(_brb);
+	delete _brb;*/
+}
+
 void Rigidbody::addSphereRigidbody (float mass,float radius,Vector3D pos,bool statc)
 {
 	_brb = PhysicsManager::getInstance()->addSphereRigidbody(mass, radius, {pos.getX(),pos.getY(),pos.getZ()});

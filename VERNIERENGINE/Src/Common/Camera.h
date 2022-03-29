@@ -15,6 +15,7 @@ namespace Ogre {
 class Camera : public Component {
 private:
 	Ogre::Camera* _camera=nullptr;
+	Ogre::SceneNode* mNodeCamera;
 	float _nearClipDist = 1;
 	float _farClipDist = 100000;
 	Vector3D _looking = new Vector3D(0, 0, 0);
@@ -23,7 +24,7 @@ private:
 	Ogre::Viewport* _vp;
 public:
 	Camera() {};
-	virtual ~Camera() {};
+	virtual ~Camera();
 	void setNearClipDist(float n) { _nearClipDist = n; }
 	void setFarClipDist(float n) { _farClipDist = n; }
 	void setAspectRatio(float n) { _aspectRatio = n; }

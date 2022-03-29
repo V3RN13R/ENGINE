@@ -6,7 +6,7 @@ class Rigidbody: public Component
 {
 public:
 	Rigidbody(Entity* e = nullptr) {};
-	~Rigidbody() {};
+	~Rigidbody();
 	void addSphereRigidbody (float mass,float radius,Vector3D pos, bool statc=false);
 	void addBoxRigidbody(float mass, Vector3D pos, Vector3D size, bool statc=false);
 	//virtual void preUpdate() override;

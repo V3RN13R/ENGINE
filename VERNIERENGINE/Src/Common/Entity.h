@@ -20,11 +20,7 @@ public:
 	Entity(Manager* mngr, std::string entityName);
 		
 
-	virtual ~Entity() {
-		for (auto c : _components) {
-			delete c;
-		}
-	}
+	virtual ~Entity();
 
 	template<typename T, typename ...Ts>
 	T* addComponent(Ts &&... args) {

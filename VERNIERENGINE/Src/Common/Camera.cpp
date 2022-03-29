@@ -3,6 +3,14 @@
 #include "RenderMain.h"
 #include <Ogre.h>
 
+
+Camera::~Camera() {
+	
+	RenderMain::getInstance()->getSceneManager()->destroyCamera(_camera);
+	//RenderMain::getInstance()->getSceneManager()->destroySceneNode(mNodeCamera);
+	//delete _camera;
+}
+
 void Camera::setBckgColor(Vector3D color)
 {
 	_bckgColor = color;
@@ -15,7 +23,7 @@ void Camera::start() {
 	_camera->setNearClipDistance(_nearClipDist);
 	_camera->setFarClipDistance(_farClipDist);
 	_camera->setAutoAspectRatio(true);
-	Ogre::SceneNode* mNodeCamera = entity_->getNode()->createChildSceneNode();
+	mNodeCamera = entity_->getNode()->createChildSceneNode();
 	mNodeCamera->attachObject(_camera);
 
 	mNodeCamera->setPosition(0, 500, 1000);

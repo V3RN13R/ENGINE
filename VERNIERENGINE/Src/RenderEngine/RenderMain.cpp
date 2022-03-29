@@ -86,6 +86,8 @@ bool RenderMain::pollEvents() {
 
 
 
+
+
 void RenderMain::deleteInstance()
 {
 	delete _instance;
@@ -95,6 +97,7 @@ RenderMain::~RenderMain()
 	//_instance, al ser un unique pointer se borra solo
 	//delete _root; //_root lo tiene que borrar WindowRender que es el que lo crea
 	//delete _mSceneManager; //Se borra desde WindowRender
+	_mSceneManager->destroyAllMovableObjects();
 	delete _windowRender;
 }
 
