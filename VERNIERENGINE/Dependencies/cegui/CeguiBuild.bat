@@ -1,4 +1,13 @@
 echo off
+::Descargamos dependencias
+mkdir delete
+cd ./delete
+cmake ../
+MOVE /Y cegui-dependencies-0.8.x ../
+cd ..
+RENAME cegui-dependencies-0.8.x ceguiDependencies
+RMDIR /S /Q delete
+::guardamos direcotrios necesarios
 set CEGUIDir=%CD%\
 echo CEGUIDIR== %CEGUIDir%
 cd ..
@@ -18,7 +27,7 @@ cd .\build\x64
 cmake -DCEGUI_BUILD_GLEW:BOOL="1" -DCEGUI_BUILD_EXPAT:BOOL="1" -DCEGUI_BUILD_LUA:BOOL="0" -DCEGUI_BUILD_GLM:BOOL="1" -DCEGUI_BUILD_GLFW:BOOL="1" -DCEGUI_BUILD_PCRE:BOOL="1" -DCEGUI_BUILD_FREEIMAGE:BOOL="1" -DCEGUI_BUILD_DEVIL:BOOL="1" -DCEGUI_BUILD_FREETYPE2:BOOL="1" -DCEGUI_BUILD_SILLY:BOOL="1" %CEGUIDir%\ceguiDependencies
 msbuild "CEGUI-DEPS.sln" /p:configuration=Debug /maxcpucount
 msbuild "CEGUI-DEPS.sln" /p:configuration=Release /maxcpucount
-XCOPY /y /s .\dependencies %CEGUIDir%\CEGUI\Src\dependencies
+XCOPY /y /s .\dependencies %CEGUIDir%\CEGUI\Src\dependencies\
 echo DIRCURR== %CD%
 :: Por fin podemos hacer cosas sobre cegui
 cd %CEGUIDir%\CEGUI
