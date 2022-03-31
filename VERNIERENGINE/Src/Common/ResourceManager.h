@@ -17,7 +17,7 @@ public:
 	~ResourceManager();
 
 	static bool init(std::string assetsPath);
-	static ResourceManager* instance();
+	static ResourceManager* getInstance();
 
 	void setUp();
 };

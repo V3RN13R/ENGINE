@@ -114,7 +114,7 @@ bool ResourceManager::init(std::string assetsPath)
 	return _instance.get();
 }
 
-ResourceManager* ResourceManager::instance()
+ResourceManager* ResourceManager::getInstance()
 {
 	assert(_instance.get() != nullptr);
 	return _instance.get();

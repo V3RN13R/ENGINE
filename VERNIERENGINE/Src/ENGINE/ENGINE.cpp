@@ -16,6 +16,9 @@
 #include "Manager.h"
 #include "MeshRenderer.h"
 #include "Camera.h"
+#include "Light.h"
+#include "ResourceManager.h"
+
 
 //LUA
 extern "C"
@@ -28,6 +31,13 @@ extern "C"
 VernierEngine* VernierEngine::_instance = nullptr;
 
 VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
+
+	////Resources
+	//readAssetsPath();
+	//ResourceManager::init(_assetsPath);
+	//ResourceManager::getInstance()->setUp(); //Carga de recursos
+
+
 	// Render Manager
 	if (!RenderMain::setUpInstance(_appName)) {
 		throw std::exception("ERROR: Couldn't load RenderMain\n");
@@ -45,6 +55,15 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	_physics = PhysicsManager::getInstance();
 
 	PruebaBullet::mainPhys();
+
+
+	//Entity* light = _mngr->addEntity("Light");
+	//Light* l = light->addComponent<Light>();
+	//Transform* tLight = light->addComponent<Transform>();
+	//l->setDiffuseColor(Vector3D(1, 0, 0));
+	////l->start();
+	//tLight->setPosition({ 0, 500, 10 });
+
 	Entity* camera = _mngr->addEntity("Camera");
 	Camera* c = camera->addComponent<Camera>();
 	Transform* t = camera->addComponent<Transform>();
@@ -71,8 +90,6 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	tr2->rotate(-90, 0);
 
 
-
-
 }
 
 bool VernierEngine::processFrame()
@@ -93,10 +110,6 @@ bool VernierEngine::processFrame()
 }
 
 
-
-
-
-
 VernierEngine::~VernierEngine()
 {
 
@@ -110,6 +123,21 @@ VernierEngine::~VernierEngine()
 
 	RenderMain::deleteInstance();//borra el RenderMain
 	_ogre = nullptr;
+}
+
+void VernierEngine::readAssetsPath()
+{	
+	std::ifstream file;
+	try
+	{
+		file.open("AssetsPath.txt"); //Ver que contiene la ruta correcta desde el juego
+		std::getline(file, _assetsPath);
+		file.close();
+	}
+	catch (std::exception e)
+	{
+		std::cout << "ERROR: no se ha podido abrir el archivo que contiene la ruta de los assets\n";
+	}
 }
 
 //bool VernierEngine::CheckLua(lua_State* L, int r)

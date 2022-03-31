@@ -1,9 +1,17 @@
 #pragma once
 
-
 #include <cmath>
 #include <ostream>
 
+namespace Ogre {
+	template<int dims, typename T>
+	class Vector;
+	typedef float Real;
+	typedef Vector<3, Real> Vector3;
+	class Quaternion;
+	class Matrix4;
+	class Matrix3;
+}
 
 /*
  * A class implementing a 2-dimensional vector and corresponding
@@ -155,6 +163,7 @@ public:
 	inline float operator *(const Vector3D& d) const {
 		return d.x_ * x_ + d.y_ * y_ + d.z_ * z_;
 	}
+
 
 private:
 	float x_;  // first coordinate
