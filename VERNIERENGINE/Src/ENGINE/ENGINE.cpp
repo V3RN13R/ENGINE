@@ -32,12 +32,6 @@ VernierEngine* VernierEngine::_instance = nullptr;
 
 VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 
-	////Resources
-	//readAssetsPath();
-	//ResourceManager::init(_assetsPath);
-	//ResourceManager::getInstance()->setUp(); //Carga de recursos
-
-
 	// Render Manager
 	if (!RenderMain::setUpInstance(_appName)) {
 		throw std::exception("ERROR: Couldn't load RenderMain\n");
@@ -46,6 +40,11 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	_ogre->init();
 
 	_mngr.reset(new Manager());
+
+	////Resources
+	readAssetsPath();
+	ResourceManager::init(_assetsPath);
+	ResourceManager::getInstance()->setUp(); //Carga de recursos
 
 	FactoryManager::setUpInstance();
 	//Physics
