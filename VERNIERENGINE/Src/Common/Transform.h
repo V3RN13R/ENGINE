@@ -2,6 +2,7 @@
 
 #include "Component.h"
 #include "Vector3D.h"
+#include <map>
 class Component;
 
 class Transform : public Component {

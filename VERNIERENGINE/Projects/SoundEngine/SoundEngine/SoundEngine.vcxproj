@@ -94,13 +94,11 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Src\SoundEngine\SoundEffect.cpp" />
     <ClCompile Include="..\..\..\Src\SoundEngine\SoundManager.cpp" />
     <ClCompile Include="..\..\..\Src\SoundEngine\Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\SoundEngine\Music.h" />
-    <ClInclude Include="..\..\..\Src\SoundEngine\SoundEffect.h" />
     <ClInclude Include="..\..\..\Src\SoundEngine\SoundManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

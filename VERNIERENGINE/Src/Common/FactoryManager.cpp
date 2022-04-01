@@ -1,7 +1,7 @@
 #include "FactoryManager.h"
 #include "Transform.h"
 #include "RigidBody.h"
-
+#include "Factory.h"
 
 FactoryManager*  FactoryManager::_instance;
 
@@ -32,7 +32,7 @@ void FactoryManager::deleteInstance()
 	delete _instance;
 }
 
-Component* FactoryManager::findAndCreate(const std::string& name)
+Component* FactoryManager::findAndCreate(const std::string& name, std::map<std::string, std::string> args)
 {
 	std::map<std::string, Factory*>::iterator it = _map.find(name);
 	if (it != _map.end())

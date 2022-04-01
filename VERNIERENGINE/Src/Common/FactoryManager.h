@@ -22,5 +22,6 @@ public:
 private:
 	static FactoryManager* _instance;	
 	std::map<std::string, Factory*> _map;
-
+	template<typename T>
+	Component* createComponent() { return new T(); };
 };
