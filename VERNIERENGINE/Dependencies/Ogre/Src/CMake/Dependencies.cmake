@@ -111,7 +111,7 @@ if(OGRE_BUILD_DEPENDENCIES AND NOT EXISTS ${OGREDEPS_PATH})
     if(MSVC OR MINGW OR SKBUILD) # other platforms dont need this
         message(STATUS "Building SDL2")
         file(DOWNLOAD
-            https://libsdl.org/release/SDL2-2.0.20.tar.gz
+            https://github.com/libsdl-org/SDL/archive/refs/heads/main.zip
             ${PROJECT_BINARY_DIR}/SDL2-2.0.20.tar.gz)
         execute_process(COMMAND ${CMAKE_COMMAND} 
             -E tar xf SDL2-2.0.20.tar.gz WORKING_DIRECTORY ${PROJECT_BINARY_DIR})
@@ -119,7 +119,7 @@ if(OGRE_BUILD_DEPENDENCIES AND NOT EXISTS ${OGREDEPS_PATH})
             -E make_directory ${PROJECT_BINARY_DIR}/SDL2-build)
         execute_process(COMMAND ${BUILD_COMMAND_COMMON}
             -DSDL_STATIC=FALSE
-            ${PROJECT_BINARY_DIR}/SDL2-2.0.20
+            ${PROJECT_BINARY_DIR}/SDL-main
             WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/SDL2-build)
         execute_process(COMMAND ${CMAKE_COMMAND}
             --build ${PROJECT_BINARY_DIR}/SDL2-build ${BUILD_COMMAND_OPTS})
@@ -128,17 +128,17 @@ if(OGRE_BUILD_DEPENDENCIES AND NOT EXISTS ${OGREDEPS_PATH})
     if(MSVC OR MINGW OR SKBUILD) # other platforms dont need this
       message(STATUS "Building zlib") # only needed for Assimp
       file(DOWNLOAD
-          http://zlib.net/zlib-1.2.11.tar.gz
-          ${PROJECT_BINARY_DIR}/zlib-1.2.11.tar.gz
-          EXPECTED_MD5 1c9f62f0778697a09d36121ead88e08e)
+          http://zlib.net/zlib-1.2.12.tar.gz
+          ${PROJECT_BINARY_DIR}/zlib-1.2.12.tar.gz
+          EXPECTED_MD5 5fc414a9726be31427b440b434d05f78)
       execute_process(COMMAND ${CMAKE_COMMAND}
-          -E tar xf zlib-1.2.11.tar.gz WORKING_DIRECTORY ${PROJECT_BINARY_DIR})
+          -E tar xf zlib-1.2.12.tar.gz WORKING_DIRECTORY ${PROJECT_BINARY_DIR})
       execute_process(COMMAND ${BUILD_COMMAND_COMMON}
           -DBUILD_SHARED_LIBS=${OGREDEPS_SHARED}
-          ${PROJECT_BINARY_DIR}/zlib-1.2.11
-          WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/zlib-1.2.11)
+          ${PROJECT_BINARY_DIR}/zlib-1.2.12
+          WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/zlib-1.2.12)
       execute_process(COMMAND ${CMAKE_COMMAND}
-          --build ${PROJECT_BINARY_DIR}/zlib-1.2.11 ${BUILD_COMMAND_OPTS})
+          --build ${PROJECT_BINARY_DIR}/zlib-1.2.12 ${BUILD_COMMAND_OPTS})
 
       message(STATUS "Building Assimp")
       file(DOWNLOAD

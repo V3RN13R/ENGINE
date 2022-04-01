@@ -25,6 +25,7 @@ class PhysicsManager {
 public:
 	static PhysicsManager* getInstance();
 	static bool setUpInstance();
+	static void deleteInstance();
 
 	btDiscreteDynamicsWorld* getDynamicsWorld() { return dynamicsWorld; }
 	std::vector<btCollisionShape*> getCollisionShapes() { return collisionShapes; }
@@ -35,7 +36,6 @@ public:
 	// 
 	//inicializa todas las variables fisicas asi como el "mundo" a partir de dichas variables
 	void init(const Vector3D gravity);
-	void clean();
 	btRigidBody* addSphereRigidbody(float mass, float radius, btVector3 pos);
 	btRigidBody* addBoxRigidbody(float mass, btVector3 pos, btVector3 size );
 private:

@@ -38,11 +38,68 @@ PhysicsManager::PhysicsManager(){
 }
 PhysicsManager::~PhysicsManager()
 {
+
+	//delete dynamicsWorld;
+	//delete collConfig;
+	//delete collDispatcher;
+	//delete broadPhaseInterface;
+	//delete constraintSolver;
+	//delete mDebugDrawer_;
+
+	//for (int x = 0; x < collisionShapes.size(); x++) {
+	//	delete collisionShapes[x];
+	//}
+	//collisionShapes.clear();
+
+	///*int i;
+	//for (i = dynamicsWorld->getNumCollisionObjects() - 1; i >= 0; i--)
+	//{
+	//	btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[i];
+	//	dynamicsWorld->removeCollisionObject(obj);
+	//	delete obj;
+	//}*/
+	//
+	//for (std::map<const btCollisionObject*, std::pair<CollisionObject*, CollisionObject*>>::iterator itr = contacts.begin(); itr != contacts.end(); itr++)
+	//{
+	//	std::cout << contacts.size() << "\n";
+	//	delete (itr->first);
+	//	delete (itr->second.first);
+	//	delete (itr->second.second);
+	//}
+	//contacts.clear();
+
+
+	//cleanup in the reverse order of creation/initialization
+
+		//remove the rigidbodies from the dynamics world and delete them
+	int i;
+	for (i = dynamicsWorld->getNumCollisionObjects() - 1; i >= 0; i--)
+	{
+		btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[i];
+		dynamicsWorld->removeCollisionObject(obj);
+		delete obj;
+	}
+
+	//delete collision shapes
+	for (unsigned int j = 0; j < collisionShapes.size(); j++)
+	{
+		btCollisionShape* shape = collisionShapes[j];
+		delete shape;
+	}
+
+
+	delete dynamicsWorld;
 	delete collConfig;
 	delete collDispatcher;
 	delete broadPhaseInterface;
 	delete constraintSolver;
-	delete dynamicsWorld;
+	delete mDebugDrawer_;
+	
+
+
+
+	
+
 }
 
 
@@ -55,8 +112,7 @@ void PhysicsManager::init(const Vector3D gravity)
 	broadPhaseInterface = new btDbvtBroadphase();
 	constraintSolver = new btSequentialImpulseConstraintSolver();
 
-	dynamicsWorld = new btDiscreteDynamicsWorld(collDispatcher, broadPhaseInterface,
-		constraintSolver, collConfig);
+	dynamicsWorld = new btDiscreteDynamicsWorld(collDispatcher, broadPhaseInterface,constraintSolver, collConfig);
 
 	dynamicsWorld->setGravity(btVector3(gravity.getX(), gravity.getY(), gravity.getZ()));
 /*
@@ -69,9 +125,9 @@ void PhysicsManager::init(const Vector3D gravity)
 
 }
 
-void PhysicsManager::clean()
+void PhysicsManager::deleteInstance()
 {
-	delete this;
+	delete _instance;
 }
 
 btRigidBody* PhysicsManager::addSphereRigidbody(float mass,float radius, btVector3 pos)

@@ -90,6 +90,7 @@ void WindowRender::updateWindow()
 
 void WindowRender::closeWindow()
 {
+
 }
 
 bool WindowRender::ExitWindow() {
@@ -107,13 +108,13 @@ bool WindowRender::ExitWindow() {
 			std::cout << "La X del mapa\n";
 			continueRender = false;
 			_root->queueEndRendering();
-			SDL_DestroyWindow(_sDLWindow);
+			//SDL_DestroyWindow(_sDLWindow);
 			break;
 		case SDL_KEYDOWN:
 			if (event.key.keysym.sym == SDLK_ESCAPE) {
 				continueRender = false;
-				_root->queueEndRendering();
-				SDL_DestroyWindow(_sDLWindow);
+				//_root->queueEndRendering();
+				//SDL_DestroyWindow(_sDLWindow);
 			}
 			break;
 		case SDL_WINDOWEVENT:
@@ -128,36 +129,50 @@ bool WindowRender::ExitWindow() {
 	return continueRender;
 }
 
+//Ogre::Light* WindowRender::createLigth(Ogre::LightTypes type)
+//{
+//	Light* light = _mSceneManager->createLight();
+//	light.setType((Light::LightTyes)type);
+//
+//	return light;
+//}
+
+void WindowRender::setAmbientLight(float x, float y, float z)
+{
+	_mSceneManager->setAmbientLight(Ogre::ColourValue(x, y, z));
+}
 
 WindowRender::~WindowRender()
 {
-	delete _sDLWindow;
+	_root->getRenderSystem()->destroyRenderWindow(_wName.c_str());//esto borra la _rWindow
 	_root->destroySceneManager(_mSceneManager);
+	SDL_DestroyWindow(_sDLWindow);
+	SDL_Quit();
 	delete _root;
 }
 
 
 void WindowRender::BORRAR() {
-	Ogre::Camera* mCamera;
+	//Ogre::Camera* mCamera;
 
-	mCamera = _mSceneManager->createCamera("MainCam");
+	//mCamera = _mSceneManager->createCamera("MainCam");
 
-	mCamera->setNearClipDistance(1);
-	mCamera->setFarClipDistance(100000);
-	mCamera->setAutoAspectRatio(true);
-	Ogre::SceneNode* mNodeCamera = _mSceneManager->getRootSceneNode()->createChildSceneNode();
-	mNodeCamera->attachObject(mCamera);
+	//mCamera->setNearClipDistance(1);
+	//mCamera->setFarClipDistance(100000);
+	//mCamera->setAutoAspectRatio(true);
+	//Ogre::SceneNode* mNodeCamera = _mSceneManager->getRootSceneNode()->createChildSceneNode();
+	//mNodeCamera->attachObject(mCamera);
 
-	mNodeCamera->setPosition(0, 500, 1000);
-	mNodeCamera->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
+	//mNodeCamera->setPosition(0, 500, 1000);
+	//mNodeCamera->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
 
-	Ogre::Viewport* vp = _rWindow->addViewport(mCamera);
+	//Ogre::Viewport* vp = _rWindow->addViewport(mCamera);
 
-	vp->setBackgroundColour(Ogre::ColourValue(0, 0, 1));
+	//vp->setBackgroundColour(Ogre::ColourValue(0, 0, 1));
 
-	mCamera->setAspectRatio(
-		Ogre::Real(vp->getActualWidth()) /
-		Ogre::Real(vp->getActualHeight()));
+	//mCamera->setAspectRatio(
+	//	Ogre::Real(vp->getActualWidth()) /
+	//	Ogre::Real(vp->getActualHeight()));
 	_mSceneManager->setAmbientLight(Ogre::ColourValue(.5, .5, .5));
 	Ogre::Light* luz = _mSceneManager->createLight("Luz");
 	luz->setType(Ogre::Light::LT_DIRECTIONAL);

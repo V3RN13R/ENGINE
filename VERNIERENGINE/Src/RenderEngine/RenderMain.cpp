@@ -4,19 +4,20 @@
 #include "RenderMain.h"
 #include "WindowRender.h"
 #include <OgreRoot.h>
-std::unique_ptr<RenderMain>  RenderMain::_instance;
 
+
+RenderMain* RenderMain::_instance = nullptr;
 RenderMain* RenderMain::setUpInstance(const std::string& appName)
 {
-	assert(_instance.get() == nullptr);
-	_instance.reset(new RenderMain(appName));
-	return _instance.get();
+	assert(_instance == nullptr);
+	_instance = new RenderMain(appName);
+	return _instance;
 }
 
 RenderMain* RenderMain::getInstance()
 {
-	assert(_instance.get() != nullptr);
-	return _instance.get();
+	assert(_instance != nullptr);
+	return _instance;
 }
 
 bool RenderMain::init()
@@ -53,6 +54,11 @@ Ogre::SceneManager* RenderMain::getSceneManager()
 	return _mSceneManager;
 }
 
+Ogre::RenderWindow* RenderMain::getRenderWindow()
+{
+	return _windowRender->getRenderWindow();
+}
+
 void RenderMain::updateWindow()
 {
 	_windowRender->updateWindow();
@@ -76,15 +82,23 @@ bool RenderMain::pollEvents() {
 	return _windowRender->ExitWindow();
 }
 
-/*RenderMain::~RenderMain()
-{
-	//delete _windowRender;
-}*/
 
-void RenderMain::clean()
+
+
+
+
+
+void RenderMain::deleteInstance()
 {
-	delete this;
+	delete _instance;
 }
-
+RenderMain::~RenderMain()
+{
+	//_instance, al ser un unique pointer se borra solo
+	//delete _root; //_root lo tiene que borrar WindowRender que es el que lo crea
+	//delete _mSceneManager; //Se borra desde WindowRender
+	_mSceneManager->destroyAllMovableObjects();
+	delete _windowRender;
+}
 
 
