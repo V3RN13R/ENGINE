@@ -1,4 +1,7 @@
 #pragma once
+#include <vector>
+
+enum class MessageType { MOVIMIENTO };
 
 class Entity;
 
@@ -33,9 +36,10 @@ public:
 	}
 	virtual void render() {
 	}
+	virtual void sendEvent(MessageType msg) = 0;
 
+	virtual void receiveEvent(MessageType msg) = 0;
 protected:
 	Entity* entity_;
-
 };
 

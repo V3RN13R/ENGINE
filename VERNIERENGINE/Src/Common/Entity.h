@@ -8,6 +8,8 @@
 #include "Component.h"
 #include "ecs.h"
 
+
+
 class Manager;
 namespace Ogre {
 	class SceneNode;
@@ -128,6 +130,12 @@ public:
 	Ogre::SceneNode* getNode()
 	{
 		return _oNode;
+	}
+
+	void sendMessage(MessageType msg) {
+		for (Component* c : _components) {
+			c->receiveEvent(msg);
+		}
 	}
 
 private:

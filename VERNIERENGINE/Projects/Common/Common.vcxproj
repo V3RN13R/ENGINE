@@ -65,6 +65,9 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\Bullet\Build\$(Platform)\lib\$(Configuration)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -82,6 +85,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\Bullet\Build\$(Platform)\lib\$(Configuration)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\Common\Camera.cpp" />
@@ -91,6 +97,7 @@
     <ClCompile Include="..\..\Src\Common\Light.cpp" />
     <ClCompile Include="..\..\Src\Common\Manager.cpp" />
     <ClCompile Include="..\..\Src\Common\MeshRenderer.cpp" />
+    <ClCompile Include="..\..\Src\Common\MovementPlayer.cpp" />
     <ClCompile Include="..\..\Src\Common\ResourceManager.cpp" />
     <ClCompile Include="..\..\Src\Common\RigidBody.cpp" />
     <ClCompile Include="..\..\Src\Common\TEST-Componente1.cpp" />
@@ -108,6 +115,7 @@
     <ClInclude Include="..\..\Src\Common\Light.h" />
     <ClInclude Include="..\..\Src\Common\Manager.h" />
     <ClInclude Include="..\..\Src\Common\MeshRenderer.h" />
+    <ClInclude Include="..\..\Src\Common\MovementPlayer.h" />
     <ClInclude Include="..\..\Src\Common\mpl.h" />
     <ClInclude Include="..\..\Src\Common\ResourceManager.h" />
     <ClInclude Include="..\..\Src\Common\RigidBody.h" />
