@@ -71,14 +71,16 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	c->start();
 	t->setPosition({ 0, 500, 10 });
 	c->setBckgColor({ 1,0,0 });
-	Entity* ent = _mngr->addEntity("Prueba");
-	MeshRenderer* mr = ent->addComponent<MeshRenderer>(ent);
-	Rigidbody* rb = ent->addComponent<Rigidbody>(ent);
-	tr = ent->addComponent<Transform>();
-	tr->setPosition(Vector3D(0, 400, 10));
-	rb->addSphereRigidbody(1, 50, { 0,400,10 });//falta obtener radio mediante la mesh
-	mr->start("Sphere");
-	mr->onEnable();
+
+
+	//Entity* ent = _mngr->addEntity("Prueba");
+	//MeshRenderer* mr = ent->addComponent<MeshRenderer>(ent);
+	//Rigidbody* rb = ent->addComponent<Rigidbody>(ent);
+	//tr = ent->addComponent<Transform>();
+	//tr->setPosition(Vector3D(0, 400, 10));
+	//rb->addSphereRigidbody(1, 50, { 0,400,10 });//falta obtener radio mediante la mesh
+	//mr->start("Sphere");
+	//mr->onEnable();
 
 	Entity* ent2 = _mngr->addEntity("Prueba2");
 	MeshRenderer* mr2 = ent2->addComponent<MeshRenderer>(ent2);
@@ -91,6 +93,13 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	tr2->rotate(-90, 0);
 
 	Monkey* mnk = new Monkey(nullptr, "MONKEY");
+	MeshRenderer* mrMnk = mnk->addComponent<MeshRenderer>(mnk);
+	Rigidbody* rbMnk = mnk->addComponent<Rigidbody>(mnk);
+	Transform* trMnk = mnk->addComponent<Transform>();
+	trMnk->setPosition(Vector3D(0, 300, 10));
+	rbMnk->addSphereRigidbody(1, 50, { 0,300,10 });//falta obtener radio mediante la mesh
+	mrMnk->start("Sphere");
+	mrMnk->onEnable();
 	_mngr->addEntity(mnk);
 	mnk->addListener(mnk);
 	Transform* tr1 = mnk->addComponent<Transform>();
@@ -107,7 +116,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 bool VernierEngine::processFrame()
 {
 	//std::cout << "updating...\n";
-	if (_ogre->pollEvents()) {
+	if (/*_ogre->pollEvents()*/  _mngr->keyPressed()) {
 		//InputManager::getInstance()->Update();
 		//PhysicsManager::getInstance()->Update();
 		_physics->stepPhysics();

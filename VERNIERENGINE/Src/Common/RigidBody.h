@@ -16,6 +16,8 @@ public:
 	//virtual void sendEvent(MessageType msg) {}
 	//virtual void receiveEvent(MessageType msg) {}
 	//virtual void lateUpdate() override;
+
+	void setVelocity(Vector3D dir);
 private:
 	btRigidBody* _brb=nullptr;
 	float _mass = 1;
