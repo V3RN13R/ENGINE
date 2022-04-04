@@ -50,10 +50,7 @@ public:
 
 	void setRotation(Vector3D rotation);
 
-	void setScale(Vector3D scale)
-	{
-		_scale = scale;
-	}
+	void setScale(Vector3D scale);
 
 	Vector3D getScale()
 	{

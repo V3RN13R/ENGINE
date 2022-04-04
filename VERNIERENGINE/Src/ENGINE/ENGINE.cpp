@@ -93,6 +93,15 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	Monkey* mnk = new Monkey(nullptr, "MONKEY");
 	_mngr->addEntity(mnk);
 	mnk->addListener(mnk);
+	Transform* tr1 = mnk->addComponent<Transform>();
+	tr1->setPosition(Vector3D(150, 500, 0));
+	tr1->setScale({ 100, 100, 100 });
+	//tr1->setRotation(Vector3D(270, 0, 0));
+
+	MeshRenderer* mr1 = mnk->addComponent<MeshRenderer>();
+	mr1->start("piedra.mesh");
+	mr1->setMaterial("Material/piedra");
+	mr1->onEnable();
 }
 
 bool VernierEngine::processFrame()

@@ -38,7 +38,8 @@ bool MeshRenderer::start(std::string mesh)
 		_ogreEnt = _mSceneManager->createEntity(Ogre::SceneManager::PrefabType::PT_CUBE);
 	else if (mesh == "Plane")
 		_ogreEnt = _mSceneManager->createEntity(Ogre::SceneManager::PrefabType::PT_PLANE);
-
+	else
+		_ogreEnt = _mSceneManager->createEntity(mesh);
 	return true;
 }
 

@@ -1,0 +1,172 @@
+material Practica1/rojo {
+	technique {
+		pass {
+			diffuse 1 0 0
+		}
+	}
+}
+material Practica1/marron {
+	technique {
+		pass {
+			diffuse 0.4 0.2 0.1
+		}
+	}
+}
+material Practica1/amarillo {
+	technique {
+		pass {
+			diffuse 1 1 0
+		}
+	}
+}
+material Practica1/azul {
+	technique {
+		pass {
+			diffuse 0 1 1
+		}
+	}
+}
+material Practica1/damas {
+technique {
+pass {
+texture_unit {
+texture checker.png
+}
+}
+}
+} 
+material Practica1/corcho {
+technique {
+pass {
+texture_unit {
+texture terrain_texture.jpg
+}
+}
+}
+} 
+material Practica1/esponja {
+	technique {
+		pass {
+		diffuse 0.5 0.5 0
+		texture_unit {
+			texture BumpyMetal.jpg
+			colour_op add
+			}
+		}
+	}
+} 
+material Practica1/naranja {
+	technique {
+		pass {
+		diffuse 1 0.4 0
+		}
+	}
+} 
+
+material Practica1/water {
+	technique {
+		pass {
+		diffuse 0.5 0.5 0.5
+		texture_unit {
+			texture Water02.jpg
+			colour_op add
+			scroll_anim -0.1 0.0
+			}
+		}
+	}
+} 
+
+material Practica1/piedras {
+	technique {
+		pass {
+		diffuse 0.5 0.5 0.5
+		texture_unit {
+			texture BeachStones.jpg
+			colour_op modulate		
+			}
+		}
+	}
+} 
+
+material Practica1/cabeza {
+	technique {
+		pass {
+		diffuse 0.5 0.5 0.5
+		texture_unit {
+		texture spotlight_image.png
+		colour_op add
+		env_map spherical
+		}
+	}
+}
+}
+material Practica1/Panel
+{
+technique
+{
+pass
+{
+lighting off
+texture_unit
+{
+texture 10points.png
+tex_address_mode clamp
+}
+}
+}
+}
+material Practica1/Smoke
+{
+technique
+{
+pass
+{
+lighting off
+scene_blend alpha_blend
+depth_write off
+diffuse vertexcolour
+texture_unit
+{
+texture smoke.png
+tex_address_mode clamp
+}
+}
+}
+}
+material Practica1/space{
+technique
+{
+pass{
+lighting off
+texture_unit // Texture unit 0
+{
+tex_coord_set 0
+texture lightMap.jpg // nombre del archivo de la imagen
+}
+texture_unit // Texture unit 1 (this is a multitexture pass)
+{
+tex_coord_set 0
+texture spaceSky.jpg // nombre del archivo de la imagen
+rotate_anim 0.01
+colour_op modulate // Los colores de esta imagen se suman con …
+tex_address_mode clamp
+}
+}
+}
+}
+material Practica1/agua{
+technique {
+pass {
+lighting off
+diffuse 1 1 1
+texture_unit {
+texture Water02.jpg
+scroll_anim -0.1 0.0
+}
+texture_unit {
+texture BeachStones.jpg
+colour_op modulate
+}
+}
+}
+}

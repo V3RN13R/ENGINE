@@ -55,6 +55,11 @@ void Transform::update() //Falta bullet
 	entity_->getNode()->setPosition(Ogre::Vector3(_position.getX(), _position.getY() , _position.getZ()));
 }
 
+void Transform::setScale(Vector3D vec) {
+	_scale = vec;
+	entity_->getNode()->setScale(_scale.getX(), _scale.getY(), _scale.getZ());
+}
+
 void Transform::fixedUpdate()
 {
 
