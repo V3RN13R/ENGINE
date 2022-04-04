@@ -98,7 +98,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 bool VernierEngine::processFrame()
 {
 	//std::cout << "updating...\n";
-	if (_ogre->pollEvents()) {
+	if (/*_ogre->pollEvents()*/  _mngr->keyPressed()) {
 		//InputManager::getInstance()->Update();
 		//PhysicsManager::getInstance()->Update();
 		_physics->stepPhysics();

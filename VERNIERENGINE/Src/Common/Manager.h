@@ -2,7 +2,7 @@
 
 #pragma once
 
-enum class MessageType { MOVIMIENTO, MOVERW, MOVERA, MOVERS, MOVERD, W, A, S, D };
+enum class MessageType { DEFAULT ,MOVIMIENTO, MOVERW, MOVERA, MOVERS, MOVERD, W, A, S, D };
 
 #include <initializer_list>
 #include <vector>
