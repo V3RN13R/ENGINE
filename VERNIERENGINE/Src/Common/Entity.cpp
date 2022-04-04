@@ -6,6 +6,7 @@
 
 std::vector<Entity*> Entity::_listeners = std::vector<Entity*>(0, nullptr);
 
+
 Entity::Entity(Manager* mngr, std::string entityName) : _active(true), //
 _mngr(mngr), //
 _cmpArray(), //

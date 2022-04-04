@@ -21,7 +21,7 @@ public:
 	typedef std::map<std::string, FMOD::Sound*> SoundMap;
 	typedef std::map<int, FMOD::Channel*> ChannelMap;
 private:
-	SoundManager();
+	SoundManager() {};
 	virtual ~SoundManager();
 	static SoundManager* _instance;
 

@@ -93,6 +93,7 @@
     <ClCompile Include="..\..\Src\Common\Camera.cpp" />
     <ClCompile Include="..\..\Src\Common\Component.cpp" />
     <ClCompile Include="..\..\Src\Common\Entity.cpp" />
+    <ClCompile Include="..\..\Src\Common\Factory.cpp" />
     <ClCompile Include="..\..\Src\Common\FactoryManager.cpp" />
     <ClCompile Include="..\..\Src\Common\InputManager.cpp" />
     <ClCompile Include="..\..\Src\Common\Light.cpp" />
@@ -100,6 +101,10 @@
     <ClCompile Include="..\..\Src\Common\MeshRenderer.cpp" />
     <ClCompile Include="..\..\Src\Common\Monkey.cpp" />
     <ClCompile Include="..\..\Src\Common\MovementPlayer.cpp" />
+    <ClCompile Include="..\..\Src\Common\InitFactories.cpp" />
+    <ClCompile Include="..\..\Src\Common\Light.cpp" />
+    <ClCompile Include="..\..\Src\Common\Manager.cpp" />
+    <ClCompile Include="..\..\Src\Common\MeshRenderer.cpp" />
     <ClCompile Include="..\..\Src\Common\ResourceManager.cpp" />
     <ClCompile Include="..\..\Src\Common\RigidBody.cpp" />
     <ClCompile Include="..\..\Src\Common\TEST-Componente1.cpp" />
@@ -113,6 +118,7 @@
     <ClInclude Include="..\..\Src\Common\ecs.h" />
     <ClInclude Include="..\..\Src\Common\ecs_defs.h" />
     <ClInclude Include="..\..\Src\Common\Entity.h" />
+    <ClInclude Include="..\..\Src\Common\Factory.h" />
     <ClInclude Include="..\..\Src\Common\FactoryManager.h" />
     <ClInclude Include="..\..\Src\Common\InputManager.h" />
     <ClInclude Include="..\..\Src\Common\Light.h" />

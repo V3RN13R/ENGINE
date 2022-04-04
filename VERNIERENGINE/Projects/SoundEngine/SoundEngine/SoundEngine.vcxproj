@@ -98,6 +98,7 @@
     <ClCompile Include="..\..\..\Src\SoundEngine\Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Src\SoundEngine\Music.h" />
     <ClInclude Include="..\..\..\Src\SoundEngine\SoundManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

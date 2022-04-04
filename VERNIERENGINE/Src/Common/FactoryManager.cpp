@@ -2,12 +2,13 @@
 #include "Transform.h"
 #include "RigidBody.h"
 
+#include "Factory.h"
 
 FactoryManager*  FactoryManager::_instance;
 
 FactoryManager::~FactoryManager()
 {
-	for (std::pair<std::string, Component*> i : _map) {
+	for (std::pair<std::string, Factory*> i : _map) {
 		delete i.second;
 	}
 	_map.clear();
@@ -34,20 +35,20 @@ void FactoryManager::deleteInstance()
 
 Component* FactoryManager::findAndCreate(const std::string& name)
 {
-	std::map<std::string, Component*>::iterator it = _map.find(name);
+	delete _instance;
+}
+
+Component* FactoryManager::findAndCreate(const std::string& name, std::map<std::string, std::string> args)
+{
+	std::map<std::string, Factory*>::iterator it = _map.find(name);
 	if (it != _map.end())
-		return _map[name];	//aqu� se pasarian los argumentos
+		return (*it).second->createComponent(args);
+
 	throw "ERROR: NO SE HA PODIDO LEER EL COMPONENTE: " + name + "\n";
+
 }
 
-template<typename T>
-void FactoryManager::addFactory(const std::string& name)
+void FactoryManager::addFactory(const std::string& name, Factory* fact)
 {
-	//_map[(name == "") ? "paco" : name] = FactoryManager::createComponent<T>;
-	_map[name] = FactoryManager::getInstance()->createComponent<T>();
-}
-
-void FactoryManager::initEngineFactories()
-{
-	FactoryManager::getInstance()->addFactory<Transform>("Transform");
+	_map[name] = fact;
 }
