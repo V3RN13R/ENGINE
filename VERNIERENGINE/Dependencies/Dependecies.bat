@@ -8,3 +8,7 @@ call BulletBuild.bat
 ::Al terminar el OgreBuildbat se encuentra en dependecies\bullet por lo que desplazamos una atras
 cd ..\Lua\
 call LuaBuild.bat
+cd ..\..\Fmod\
+call build.bat
+cd ..\cegui\
+call CeguiBuild.bat
