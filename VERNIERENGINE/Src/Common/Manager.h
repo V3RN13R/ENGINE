@@ -25,6 +25,14 @@ public:
 		return e;
 	}
 
+	Entity* addEntity(Entity* ent) {
+		if (ent != nullptr) {
+			ent->resetGroups();
+			entities_.emplace_back(ent);
+		}
+		return ent;
+	}
+
 	// handlers
 	template<typename T>
 	inline void setHandler(Entity* e) {

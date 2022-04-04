@@ -18,6 +18,8 @@
 #include "Camera.h"
 #include "Light.h"
 #include "ResourceManager.h"
+#include "Entity.h"
+#include "Monkey.h"
 
 
 //LUA
@@ -88,12 +90,14 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	mr2->onEnable();
 	tr2->rotate(-90, 0);
 
-
+	Monkey* mnk = new Monkey(nullptr, "MONKEY");
+	_mngr->addEntity(mnk);
+	mnk->addListener(mnk);
 }
 
 bool VernierEngine::processFrame()
 {
-	std::cout << "updating...\n";
+	//std::cout << "updating...\n";
 	if (_ogre->pollEvents()) {
 		//InputManager::getInstance()->Update();
 		//PhysicsManager::getInstance()->Update();
@@ -230,7 +234,7 @@ int main()
 	//lua_getglobal(L, "CreatePlane");
 
 	bool stay = true;
-	VernierEngine::setupInstance("WildLess");
+	VernierEngine::setupInstance("WildLessss");
 	do {
 		stay = VernierEngine::getInstance()->processFrame();
 	} while (stay);

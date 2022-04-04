@@ -94,9 +94,11 @@
     <ClCompile Include="..\..\Src\Common\Component.cpp" />
     <ClCompile Include="..\..\Src\Common\Entity.cpp" />
     <ClCompile Include="..\..\Src\Common\FactoryManager.cpp" />
+    <ClCompile Include="..\..\Src\Common\InputManager.cpp" />
     <ClCompile Include="..\..\Src\Common\Light.cpp" />
     <ClCompile Include="..\..\Src\Common\Manager.cpp" />
     <ClCompile Include="..\..\Src\Common\MeshRenderer.cpp" />
+    <ClCompile Include="..\..\Src\Common\Monkey.cpp" />
     <ClCompile Include="..\..\Src\Common\MovementPlayer.cpp" />
     <ClCompile Include="..\..\Src\Common\ResourceManager.cpp" />
     <ClCompile Include="..\..\Src\Common\RigidBody.cpp" />
@@ -112,9 +114,11 @@
     <ClInclude Include="..\..\Src\Common\ecs_defs.h" />
     <ClInclude Include="..\..\Src\Common\Entity.h" />
     <ClInclude Include="..\..\Src\Common\FactoryManager.h" />
+    <ClInclude Include="..\..\Src\Common\InputManager.h" />
     <ClInclude Include="..\..\Src\Common\Light.h" />
     <ClInclude Include="..\..\Src\Common\Manager.h" />
     <ClInclude Include="..\..\Src\Common\MeshRenderer.h" />
+    <ClInclude Include="..\..\Src\Common\Monkey.h" />
     <ClInclude Include="..\..\Src\Common\MovementPlayer.h" />
     <ClInclude Include="..\..\Src\Common\mpl.h" />
     <ClInclude Include="..\..\Src\Common\ResourceManager.h" />

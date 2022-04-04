@@ -62,6 +62,8 @@ public:
 
 	void update() override;
 	void fixedUpdate() override;
+	//virtual void sendEvent(MessageType msg) {}
+	//virtual void receiveEvent(MessageType msg) {}
 private:
 	Vector3D _position;
 	Vector3D _glbposition;

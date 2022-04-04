@@ -13,6 +13,8 @@ public:
 
 	virtual void fixedUpdate() override;
 	Vector3D getPosition();
+	//virtual void sendEvent(MessageType msg) {}
+	//virtual void receiveEvent(MessageType msg) {}
 	//virtual void lateUpdate() override;
 private:
 	btRigidBody* _brb=nullptr;

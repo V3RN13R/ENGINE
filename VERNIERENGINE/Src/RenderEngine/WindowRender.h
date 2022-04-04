@@ -11,6 +11,7 @@ namespace Ogre {
 	class Light;
 	enum LightTypes;
 }
+class InputManager;
 class SDL_Window;
 class WindowRender
 {
@@ -22,6 +23,7 @@ private:
 	Ogre::SceneManager* _mSceneManager = nullptr;
 	Ogre::RenderWindow* _rWindow = nullptr;
 	SDL_Window* _sDLWindow = nullptr;
+	InputManager* _iM = nullptr;
 	std::string _wName = "motorcito";
 	int screen_width_ = 840;
 	int screen_height_ = 600;

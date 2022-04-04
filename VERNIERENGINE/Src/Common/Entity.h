@@ -8,7 +8,7 @@
 #include "Component.h"
 #include "ecs.h"
 
-
+enum class MessageType { MOVIMIENTO, MOVERW, MOVERA, MOVERS, MOVERD, W, A, S, D};
 
 class Manager;
 namespace Ogre {
@@ -130,19 +130,20 @@ public:
 	Ogre::SceneNode* getNode()
 	{
 		return _oNode;
-	}
+	} 
 
-	void sendMessage(MessageType msg) {
-		for (Component* c : _components) {
-			c->receiveEvent(msg);
-		}
-	}
+	static void keyPressed();
+
+	virtual void receiveEvent(MessageType msg){}
+
+	void addListener(Entity* entity) { _listeners.emplace_back(entity); }
 
 private:
 
 	bool _active;
 	Manager* _mngr;
 	std::vector<Component*> _components;
+	static std::vector<Entity*> _listeners;
 	std::array<Component*, ecs::maxComponent> _cmpArray;
 	std::bitset<ecs::maxGroup> _groups;
 	Ogre::SceneNode* _oNode;
