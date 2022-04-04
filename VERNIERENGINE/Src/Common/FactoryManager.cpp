@@ -33,11 +33,6 @@ void FactoryManager::deleteInstance()
 	delete _instance;
 }
 
-Component* FactoryManager::findAndCreate(const std::string& name)
-{
-	delete _instance;
-}
-
 Component* FactoryManager::findAndCreate(const std::string& name, std::map<std::string, std::string> args)
 {
 	std::map<std::string, Factory*>::iterator it = _map.find(name);

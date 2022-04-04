@@ -70,7 +70,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	Transform* t = camera->addComponent<Transform>();
 	c->start();
 	t->setPosition({ 0, 500, 10 });
-	c->setBckgColor({ 1,0,0 });
+	c->setBckgColor({ 0.8,0.1,0.9 });
 
 
 	//Entity* ent = _mngr->addEntity("Prueba");
@@ -90,7 +90,9 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	rb2->addBoxRigidbody(0, { 0,-2,0 }, { 1000,10,1000 });//falta obtener size mediante la mesh
 	mr2->start("Plane");
 	mr2->onEnable();
+	tr2->setScale(Vector3D(25, 25, 25));
 	tr2->rotate(-90, 0);
+	mr2->setMaterial("Practica1/marron");
 
 	Monkey* mnk = new Monkey(nullptr, "MONKEY");
 	//MeshRenderer* mrMnk = mnk->addComponent<MeshRenderer>(mnk);
@@ -103,13 +105,23 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	//mrMnk->onEnable();
 	_mngr->addEntity(mnk);
 	mnk->addListener(mnk);
-	
+
 	//tr1->setRotation(Vector3D(270, 0, 0));
 
 	MeshRenderer* mr1 = mnk->addComponent<MeshRenderer>();
 	mr1->start("piedra.mesh");
 	mr1->setMaterial("Material/piedra");
 	mr1->onEnable();
+
+	Entity* arbol = _mngr->addEntity("ARBOL");
+	Transform* trArb = arbol->addComponent<Transform>();
+	trArb->setPosition(Vector3D(-200, 0, -400));
+	trArb->setScale({ 100, 650, 100 });
+	trArb->setRotation({ 0, 0, 0 });
+	MeshRenderer* mrArb = arbol->addComponent<MeshRenderer>();
+	mrArb->start("tree2.mesh");
+	mrArb->setMaterial("Practica1/naranja");
+	mrArb->onEnable();
 }
 
 bool VernierEngine::processFrame()
@@ -146,7 +158,7 @@ VernierEngine::~VernierEngine()
 }
 
 void VernierEngine::readAssetsPath()
-{	
+{
 	std::ifstream file;
 	try
 	{

@@ -8,7 +8,7 @@ material Practica1/rojo {
 material Practica1/marron {
 	technique {
 		pass {
-			diffuse 0.4 0.2 0.1
+			diffuse 0.2 0.1 0.0
 		}
 	}
 }

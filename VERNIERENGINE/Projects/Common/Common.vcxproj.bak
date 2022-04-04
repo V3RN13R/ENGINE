@@ -96,6 +96,7 @@
     <ClCompile Include="..\..\Src\Common\Factory.cpp" />
     <ClCompile Include="..\..\Src\Common\FactoryManager.cpp" />
     <ClCompile Include="..\..\Src\Common\InputManager.cpp" />
+    <ClCompile Include="..\..\Src\Common\MeshRenderer.cpp" />
     <ClCompile Include="..\..\Src\Common\Monkey.cpp" />
     <ClCompile Include="..\..\Src\Common\MovementPlayer.cpp" />
     <ClCompile Include="..\..\Src\Common\InitFactories.cpp" />
