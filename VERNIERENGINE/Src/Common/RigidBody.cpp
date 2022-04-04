@@ -28,3 +28,11 @@ Vector3D Rigidbody::getPosition()
 {
 	return Vector3D(_brb->getCenterOfMassTransform().getOrigin().getX(), _brb->getCenterOfMassTransform().getOrigin().getY(), _brb->getCenterOfMassTransform().getOrigin().getZ());
 }
+
+
+void Rigidbody::setVelocity(Vector3D dir) {
+	//_brb->setLinearVelocity(btVector3(dir.getX(), dir.getY(), dir.getZ()));
+	_brb->applyCentralForce(btVector3(dir.getX(), dir.getY(), dir.getZ()));
+
+	std::cout << "Vel X bullet: " << _brb->getWorldTransform().getOrigin().getX() << "\n";
+};
