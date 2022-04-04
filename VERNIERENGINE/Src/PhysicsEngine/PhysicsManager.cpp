@@ -30,9 +30,21 @@ bool PhysicsManager::setUpInstance() {
 void PhysicsManager::stepPhysics()
 {
 	dynamicsWorld->stepSimulation(1.f / 60.f, 10);
+	for (int j = dynamicsWorld->getNumCollisionObjects() - 1; j >= 0; j--) {
+		btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[j];
+		btRigidBody* body = btRigidBody::upcast(obj);
+		btTransform trans;
+
+		if (body && body->getMotionState()) {
+			body->getMotionState()->getWorldTransform(trans);
+		}
+		else {
+			trans = obj->getWorldTransform();
+		}
+	}
 }
 
-PhysicsManager::PhysicsManager(){
+PhysicsManager::PhysicsManager() {
 	//registerComponent("RigidBody", 0, []() -> RigidBody * { return new RigidBody(); });
 
 }
@@ -94,11 +106,11 @@ PhysicsManager::~PhysicsManager()
 	delete broadPhaseInterface;
 	delete constraintSolver;
 	delete mDebugDrawer_;
-	
 
 
 
-	
+
+
 
 }
 
@@ -112,16 +124,16 @@ void PhysicsManager::init(const Vector3D gravity)
 	broadPhaseInterface = new btDbvtBroadphase();
 	constraintSolver = new btSequentialImpulseConstraintSolver();
 
-	dynamicsWorld = new btDiscreteDynamicsWorld(collDispatcher, broadPhaseInterface,constraintSolver, collConfig);
+	dynamicsWorld = new btDiscreteDynamicsWorld(collDispatcher, broadPhaseInterface, constraintSolver, collConfig);
 
 	dynamicsWorld->setGravity(btVector3(gravity.getX(), gravity.getY(), gravity.getZ()));
-/*
-#ifdef _DEBUG
-	mDebugDrawer_ = new OgreDebugDrawer(OgreContext::getInstance()->getSceneManager());
-	mDebugDrawer_->setDebugMode(btIDebugDraw::DBG_DrawWireframe);
-	dynamicsWorld->setDebugDrawer(mDebugDrawer_);
-#endif // DEBUG
-*/
+	/*
+	#ifdef _DEBUG
+		mDebugDrawer_ = new OgreDebugDrawer(OgreContext::getInstance()->getSceneManager());
+		mDebugDrawer_->setDebugMode(btIDebugDraw::DBG_DrawWireframe);
+		dynamicsWorld->setDebugDrawer(mDebugDrawer_);
+	#endif // DEBUG
+	*/
 
 }
 
@@ -130,14 +142,22 @@ void PhysicsManager::deleteInstance()
 	delete _instance;
 }
 
-btRigidBody* PhysicsManager::addSphereRigidbody(float mass,float radius, btVector3 pos)
+btRigidBody* PhysicsManager::addSphereRigidbody(float mass, float radius, btVector3 pos)
 {
 	btTransform startTransform;
 	startTransform.setIdentity();
 	startTransform.setOrigin(pos);
-	btRigidBody* rb = new btRigidBody(mass, new btDefaultMotionState(startTransform), new btSphereShape(radius), btVector3(0, 0, 0));
-	 dynamicsWorld->addRigidBody(rb);
-	 return rb;
+
+	btCollisionShape* sphereShape = new btSphereShape(radius);
+	btScalar massSphere(mass);
+	btVector3 sphereLocalInertia(1, 1, 1);
+	sphereShape->calculateLocalInertia(massSphere, sphereLocalInertia);
+
+
+	btRigidBody* rb = new btRigidBody(mass, new btDefaultMotionState(startTransform), sphereShape, btVector3(0, 0, 0));
+	//rb->setDamping(0, 0);
+	dynamicsWorld->addRigidBody(rb);
+	return rb;
 }
 
 btRigidBody* PhysicsManager::addBoxRigidbody(float mass, btVector3 pos, btVector3 size)
@@ -146,7 +166,7 @@ btRigidBody* PhysicsManager::addBoxRigidbody(float mass, btVector3 pos, btVector
 	btTransform startTransform;
 	startTransform.setIdentity();
 	startTransform.setOrigin(pos);
-	btRigidBody* rb = new btRigidBody(mass, new btDefaultMotionState(startTransform), new btBoxShape(size) , btVector3(0, 0, 0));
+	btRigidBody* rb = new btRigidBody(mass, new btDefaultMotionState(startTransform), new btBoxShape(size), btVector3(0, 0, 0));
 	dynamicsWorld->addRigidBody(rb);
 	return rb;
 }

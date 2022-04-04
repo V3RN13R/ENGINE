@@ -2,6 +2,8 @@
 
 #pragma once
 
+enum class MessageType { DEFAULT ,MOVIMIENTO, MOVERW, MOVERA, MOVERS, MOVERD, W, A, S, D };
+
 #include <initializer_list>
 #include <vector>
 #include <list>
@@ -25,6 +27,14 @@ public:
 		return e;
 	}
 
+	Entity* addEntity(Entity* ent) {
+		if (ent != nullptr) {
+			ent->resetGroups();
+			entities_.emplace_back(ent);
+		}
+		return ent;
+	}
+
 	// handlers
 	template<typename T>
 	inline void setHandler(Entity* e) {
@@ -44,6 +54,7 @@ public:
 	void fixedUpdate();
 	void render();
 	void refresh();
+	bool keyPressed();
 
 private:
 

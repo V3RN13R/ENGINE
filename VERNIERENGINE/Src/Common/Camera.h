@@ -31,4 +31,6 @@ public:
 	void setLooking(Vector3D look) { _looking = look; }
 	void setBckgColor(Vector3D color);
 	void start();
+	//virtual void sendEvent(MessageType msg){}
+	//virtual void receiveEvent(MessageType msg){}
 };

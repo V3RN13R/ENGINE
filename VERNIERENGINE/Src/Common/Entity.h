@@ -8,9 +8,8 @@
 #include "Component.h"
 #include "ecs.h"
 
-
-
 class Manager;
+enum class MessageType;
 namespace Ogre {
 	class SceneNode;
 }
@@ -20,7 +19,7 @@ class Entity {
 public:
 
 	Entity(Manager* mngr, std::string entityName);
-		
+
 
 	virtual ~Entity();
 
@@ -132,12 +131,19 @@ public:
 		return _oNode;
 	}
 
-	void sendMessage(MessageType msg) {
-		for (Component* c : _components) {
-			c->receiveEvent(msg);
-		}
-	}
 
+	virtual void receiveEvent(MessageType msg, Entity* e) {};
+
+	static std::vector<Entity*> _listeners;
+
+	static void addListener(Entity* entity) { _listeners.emplace_back(entity); }
+
+
+
+
+
+protected:
+	Ogre::SceneNode* _oNode;
 private:
 
 	bool _active;
@@ -145,7 +151,6 @@ private:
 	std::vector<Component*> _components;
 	std::array<Component*, ecs::maxComponent> _cmpArray;
 	std::bitset<ecs::maxGroup> _groups;
-	Ogre::SceneNode* _oNode;
 	std::string _entityName;
 };
 

@@ -3,6 +3,7 @@
 #include "Manager.h"
 
 #include <algorithm>
+#include <SDL.h>
 
 Manager::Manager() {
 }
@@ -45,12 +46,56 @@ void Manager::refresh() {
 	//entities_.erase(toRemove, entities_.end());
 }
 
+
+bool Manager::keyPressed() {
+	SDL_Event event;
+	while (SDL_PollEvent(&event)) {
+		if (event.type == SDL_QUIT) {
+			return false;
+		}
+		
+
+
+		if (event.type == SDL_KEYDOWN) {
+			//se mira qué tecla se ha preisonado
+			if (event.key.keysym.sym == SDLK_ESCAPE) {
+				return false;
+			}
+
+
+
+			MessageType tecla = MessageType::DEFAULT;
+			if (event.key.keysym.sym == SDLK_w) {
+				tecla = MessageType::W;
+			}
+			else if (event.key.keysym.sym == SDLK_a) {
+				tecla = MessageType::A;
+			}
+			else if (event.key.keysym.sym == SDLK_s) {
+				tecla = MessageType::S;
+			}
+			else if (event.key.keysym.sym == SDLK_d) {
+				tecla = MessageType::D;
+			}
+
+
+			//si es una tecla válida se envia el mensaje correspondiente
+			if (tecla != MessageType::DEFAULT) {
+				for (Entity* e : Entity::_listeners) {
+					e->receiveEvent(tecla, e);
+				}
+			}
+		}
+	}
+	return true;
+}
+
 void Manager::update() {
+	//keyPressed();
 	auto n = entities_.size();
 	for (auto i = 0u; i < n; i++)
 		entities_[i]->update();
 }
-
 void Manager::fixedUpdate()
 {
 	auto n = entities_.size();

@@ -50,10 +50,7 @@ public:
 
 	void setRotation(Vector3D rotation);
 
-	void setScale(Vector3D scale)
-	{
-		_scale = scale;
-	}
+	void setScale(Vector3D scale);
 
 	Vector3D getScale()
 	{
@@ -62,6 +59,8 @@ public:
 
 	void update() override;
 	void fixedUpdate() override;
+	//virtual void sendEvent(MessageType msg) {}
+	//virtual void receiveEvent(MessageType msg) {}
 private:
 	Vector3D _position;
 	Vector3D _glbposition;
