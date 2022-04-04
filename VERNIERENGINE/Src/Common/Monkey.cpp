@@ -11,7 +11,9 @@ void Monkey::receiveEvent(MessageType msg, Entity* e) {
 	}
 	if (msg == MessageType::A) {
 		std::cout << "TECLA A\n";
-		
+		Rigidbody* rb = getComponent<Rigidbody>();
+		rb->setVelocity(Vector3D(-1000, 0, 0));
+		std::cout << "Posición mono: " << rb->getPosition().getX() << " ," << rb->getPosition().getY() << "\n";
 	}
 	if (msg == MessageType::S) {
 		std::cout << "TECLA S\n";
@@ -20,6 +22,6 @@ void Monkey::receiveEvent(MessageType msg, Entity* e) {
 		std::cout << "TECLA D\n";
 		Rigidbody* rb = getComponent<Rigidbody>();
 		rb->setVelocity(Vector3D(1000, 0, 0));
-		std::cout << "Posición mono: " << rb->getPosition().getX() << "\n";
+		std::cout << "Posición mono: " << rb->getPosition().getX() <<" ,"  << rb->getPosition().getY() << "\n";
 	}
 }

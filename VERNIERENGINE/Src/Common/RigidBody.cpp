@@ -13,6 +13,7 @@ Rigidbody::~Rigidbody()
 void Rigidbody::addSphereRigidbody (float mass,float radius,Vector3D pos,bool statc)
 {
 	_brb = PhysicsManager::getInstance()->addSphereRigidbody(mass, radius, {pos.getX(),pos.getY(),pos.getZ()});
+	
 }
 
 void Rigidbody::addBoxRigidbody(float mass, Vector3D pos, Vector3D size, bool statc)
@@ -34,5 +35,5 @@ void Rigidbody::setVelocity(Vector3D dir) {
 	//_brb->setLinearVelocity(btVector3(dir.getX(), dir.getY(), dir.getZ()));
 	_brb->applyCentralForce(btVector3(dir.getX(), dir.getY(), dir.getZ()));
 
-	std::cout << "Vel X bullet: " << _brb->getWorldTransform().getOrigin().getX() << "\n";
+	std::cout << "Vel X bullet: " << _brb->getLinearVelocity().getX() << "\n";
 };

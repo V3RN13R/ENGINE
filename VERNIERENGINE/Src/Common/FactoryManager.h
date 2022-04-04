@@ -22,7 +22,7 @@ public:
 
 private:
 	static FactoryManager* _instance;
-
+	
 
 	template<typename T>
 	Component* createComponent() { return new T(); };

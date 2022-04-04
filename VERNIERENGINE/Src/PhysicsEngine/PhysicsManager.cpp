@@ -30,6 +30,18 @@ bool PhysicsManager::setUpInstance() {
 void PhysicsManager::stepPhysics()
 {
 	dynamicsWorld->stepSimulation(1.f / 60.f, 10);
+	for (int j = dynamicsWorld->getNumCollisionObjects() - 1; j >= 0; j--) {
+		btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[j];
+		btRigidBody* body = btRigidBody::upcast(obj);
+		btTransform trans;
+
+		if (body && body->getMotionState()) {
+			body->getMotionState()->getWorldTransform(trans);
+		}
+		else {
+			trans = obj->getWorldTransform();
+		}
+	}
 }
 
 PhysicsManager::PhysicsManager(){
@@ -135,7 +147,15 @@ btRigidBody* PhysicsManager::addSphereRigidbody(float mass,float radius, btVecto
 	btTransform startTransform;
 	startTransform.setIdentity();
 	startTransform.setOrigin(pos);
-	btRigidBody* rb = new btRigidBody(mass, new btDefaultMotionState(startTransform), new btSphereShape(radius), btVector3(0, 0, 0));
+
+	btCollisionShape* sphereShape = new btSphereShape(radius);
+	btScalar massSphere(1.);
+	btVector3 sphereLocalInertia(1, 1, 1);
+	sphereShape->calculateLocalInertia(massSphere, sphereLocalInertia);
+	
+
+	btRigidBody* rb = new btRigidBody(mass, new btDefaultMotionState(startTransform), sphereShape, btVector3(0, 0, 0));
+	
 	 dynamicsWorld->addRigidBody(rb);
 	 return rb;
 }
