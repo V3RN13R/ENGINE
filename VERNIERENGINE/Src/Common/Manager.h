@@ -2,6 +2,8 @@
 
 #pragma once
 
+enum class MessageType { MOVIMIENTO, MOVERW, MOVERA, MOVERS, MOVERD, W, A, S, D };
+
 #include <initializer_list>
 #include <vector>
 #include <list>
@@ -52,6 +54,7 @@ public:
 	void fixedUpdate();
 	void render();
 	void refresh();
+	bool keyPressed();
 
 private:
 

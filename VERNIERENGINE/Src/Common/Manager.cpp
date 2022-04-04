@@ -3,6 +3,7 @@
 #include "Manager.h"
 
 #include <algorithm>
+#include <SDL.h>
 
 Manager::Manager() {
 }
@@ -45,12 +46,28 @@ void Manager::refresh() {
 	//entities_.erase(toRemove, entities_.end());
 }
 
+
+bool Manager::keyPressed() {
+	SDL_Event event;
+	while (SDL_PollEvent(&event)) {
+		if (event.type == SDL_KEYDOWN) {
+			if (event.key.keysym.sym == SDLK_w)
+				for (Entity* e : Entity::_listeners) {
+					e->receiveEvent(MessageType::W, e);
+				}
+
+			break;
+		}
+	}
+	return true;
+}
+
 void Manager::update() {
+	keyPressed();
 	auto n = entities_.size();
 	for (auto i = 0u; i < n; i++)
 		entities_[i]->update();
 }
-
 void Manager::fixedUpdate()
 {
 	auto n = entities_.size();

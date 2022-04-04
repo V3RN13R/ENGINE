@@ -93,38 +93,12 @@ void WindowRender::closeWindow()
 
 }
 
+// FALTA EL INPUT
 bool WindowRender::ExitWindow() {
 	bool continueRender = true;
 	if (_sDLWindow == nullptr) {
 		return false;  // SDL events not initialized
 
-	}
-	SDL_Event event;
-	while (SDL_PollEvent(&event))
-	{
-		switch (event.type)
-		{
-		case SDL_QUIT:
-			std::cout << "La X del mapa\n";
-			continueRender = false;
-			_root->queueEndRendering();
-			//SDL_DestroyWindow(_sDLWindow);
-			break;
-		case SDL_KEYDOWN:
-			if (event.key.keysym.sym == SDLK_ESCAPE) {
-				continueRender = false;
-				//_root->queueEndRendering();
-				//SDL_DestroyWindow(_sDLWindow);
-			}
-			break;
-		case SDL_WINDOWEVENT:
-			if (event.window.windowID == SDL_GetWindowID(_sDLWindow)) {
-			}
-			break;
-		default:
-			//llamar a InputManager
-			break;
-		}
 	}
 	return continueRender;
 }
