@@ -19,7 +19,7 @@ class Entity {
 public:
 
 	Entity(Manager* mngr, std::string entityName);
-		
+
 
 	virtual ~Entity();
 
@@ -129,7 +129,7 @@ public:
 	Ogre::SceneNode* getNode()
 	{
 		return _oNode;
-	} 
+	}
 
 
 	virtual void receiveEvent(MessageType msg, Entity* e) {};
@@ -138,6 +138,12 @@ public:
 
 	static void addListener(Entity* entity) { _listeners.emplace_back(entity); }
 
+
+
+
+
+protected:
+	Ogre::SceneNode* _oNode;
 private:
 
 	bool _active;
@@ -145,7 +151,6 @@ private:
 	std::vector<Component*> _components;
 	std::array<Component*, ecs::maxComponent> _cmpArray;
 	std::bitset<ecs::maxGroup> _groups;
-	Ogre::SceneNode* _oNode;
 	std::string _entityName;
 };
 

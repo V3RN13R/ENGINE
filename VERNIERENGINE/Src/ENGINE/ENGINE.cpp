@@ -93,18 +93,17 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	tr2->rotate(-90, 0);
 
 	Monkey* mnk = new Monkey(nullptr, "MONKEY");
-	MeshRenderer* mrMnk = mnk->addComponent<MeshRenderer>(mnk);
+	//MeshRenderer* mrMnk = mnk->addComponent<MeshRenderer>(mnk);
 	Rigidbody* rbMnk = mnk->addComponent<Rigidbody>(mnk);
 	Transform* trMnk = mnk->addComponent<Transform>();
 	trMnk->setPosition(Vector3D(0, 300, 10));
+	trMnk->setScale(Vector3D(100, 100, 100));
 	rbMnk->addSphereRigidbody(1, 50, { 0,300,10 });//falta obtener radio mediante la mesh
-	mrMnk->start("Sphere");
-	mrMnk->onEnable();
+	//mrMnk->start("Sphere");
+	//mrMnk->onEnable();
 	_mngr->addEntity(mnk);
 	mnk->addListener(mnk);
-	Transform* tr1 = mnk->addComponent<Transform>();
-	tr1->setPosition(Vector3D(150, 500, 0));
-	tr1->setScale({ 100, 100, 100 });
+	
 	//tr1->setRotation(Vector3D(270, 0, 0));
 
 	MeshRenderer* mr1 = mnk->addComponent<MeshRenderer>();
