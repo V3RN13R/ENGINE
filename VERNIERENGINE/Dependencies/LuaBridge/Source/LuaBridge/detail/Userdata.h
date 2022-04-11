@@ -10,6 +10,8 @@
 
 #include <cassert>
 #include <stdexcept>
+#include <lua.h>
+#include <lauxlib.h>
 
 namespace luabridge {
 

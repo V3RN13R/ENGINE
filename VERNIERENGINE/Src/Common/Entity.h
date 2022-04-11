@@ -138,19 +138,21 @@ public:
 
 	static void addListener(Entity* entity) { _listeners.emplace_back(entity); }
 
+	void destroy() { _destroy = true; }
 
-
-
+	bool fetDestroy() { return _destroy; }
 
 protected:
 	Ogre::SceneNode* _oNode;
+
+
 private:
 
 	bool _active;
+	bool _destroy = false;
 	Manager* _mngr;
 	std::vector<Component*> _components;
 	std::array<Component*, ecs::maxComponent> _cmpArray;
 	std::bitset<ecs::maxGroup> _groups;
 	std::string _entityName;
 };
-

@@ -1,133 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Source Files\Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="..\..\Src\Common\Camera.cpp" />
+    <ClCompile Include="..\..\Src\Common\Component.cpp" />
+    <ClCompile Include="..\..\Src\Common\Entity.cpp" />
+    <ClCompile Include="..\..\Src\Common\Factory.cpp" />
+    <ClCompile Include="..\..\Src\Common\FactoryManager.cpp" />
+    <ClCompile Include="..\..\Src\Common\InputManager.cpp" />
+    <ClCompile Include="..\..\Src\Common\MeshRenderer.cpp" />
+    <ClCompile Include="..\..\Src\Common\Monkey.cpp" />
+    <ClCompile Include="..\..\Src\Common\MovementPlayer.cpp" />
+    <ClCompile Include="..\..\Src\Common\InitFactories.cpp" />
+    <ClCompile Include="..\..\Src\Common\Light.cpp" />
+    <ClCompile Include="..\..\Src\Common\Manager.cpp" />
+    <ClCompile Include="..\..\Src\Common\ResourceManager.cpp" />
+    <ClCompile Include="..\..\Src\Common\RigidBody.cpp" />
+    <ClCompile Include="..\..\Src\Common\Scene.cpp" />
+    <ClCompile Include="..\..\Src\Common\TEST-Componente1.cpp" />
+    <ClCompile Include="..\..\Src\Common\TEST-Componente2.cpp" />
+    <ClCompile Include="..\..\Src\Common\Transform.cpp" />
+    <ClCompile Include="..\..\Src\Common\Vector3D.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Src\Common\Component.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\Entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\FactoryManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\Manager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\TEST-Componente1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\TEST-Componente2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\Transform.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\Vector3D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\MeshRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\RigidBody.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\Camera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\ResourceManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\Light.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\MovementPlayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\InputManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\Monkey.cpp">
-    <ClCompile Include="..\..\Src\Common\Factory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\InitFactories.cpp">
-          <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\Camera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\ResourceManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\Light.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Src\Common\Component.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Common\ecs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Common\ecs_defs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Common\Entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Common\FactoryManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Common\Manager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Common\mpl.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Common\TEST-Componente1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Common\TEST-Componente2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Common\Transform.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Common\Vector3D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Common\MeshRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Common\RigidBody.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Common\Factory.h">
-          <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Common\Camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Common\ResourceManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Common\Light.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\Camera.h" />
+    <ClInclude Include="..\..\Src\Common\Component.h" />
+    <ClInclude Include="..\..\Src\Common\ecs.h" />
+    <ClInclude Include="..\..\Src\Common\ecs_defs.h" />
+    <ClInclude Include="..\..\Src\Common\Entity.h" />
+    <ClInclude Include="..\..\Src\Common\Factory.h" />
+    <ClInclude Include="..\..\Src\Common\FactoryManager.h" />
+    <ClInclude Include="..\..\Src\Common\InputManager.h" />
+    <ClInclude Include="..\..\Src\Common\Light.h" />
+    <ClInclude Include="..\..\Src\Common\Manager.h" />
+    <ClInclude Include="..\..\Src\Common\MeshRenderer.h" />
+    <ClInclude Include="..\..\Src\Common\Monkey.h" />
+    <ClInclude Include="..\..\Src\Common\MovementPlayer.h" />
+    <ClInclude Include="..\..\Src\Common\mpl.h" />
+    <ClInclude Include="..\..\Src\Common\ResourceManager.h" />
+    <ClInclude Include="..\..\Src\Common\RigidBody.h" />
+    <ClInclude Include="..\..\Src\Common\Scene.h" />
+    <ClInclude Include="..\..\Src\Common\TEST-Componente1.h" />
+    <ClInclude Include="..\..\Src\Common\TEST-Componente2.h" />
+    <ClInclude Include="..\..\Src\Common\Transform.h" />
+    <ClInclude Include="..\..\Src\Common\Vector3D.h" />
   </ItemGroup>
 </Project>
