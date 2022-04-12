@@ -121,6 +121,13 @@ public:
 		return *this;
 	}
 
+	inline Vector3D& operator+(const Vector3D& v) {
+		x_ += v.x_;
+		y_ += v.y_;
+		z_ += v.z_;
+		return *this;
+	}
+
 	inline Vector3D& operator+=(const Vector3D& v) {
 		x_ += v.x_;
 		y_ += v.y_;

@@ -71,6 +71,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	c->start();
 	t->setPosition({ 0, 500, 10 });
 	c->setBckgColor({ 1,0,0 });
+	camera->addListener(camera);
 
 
 	//Entity* ent = _mngr->addEntity("Prueba");
@@ -110,6 +111,9 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	mr1->start("piedra.mesh");
 	mr1->setMaterial("Material/piedra");
 	mr1->onEnable();
+
+	//Hay qeu decirle ala cámar la posición de monke para que le siga
+	c->setMonkePos(&trMnk->getPos());
 }
 
 bool VernierEngine::processFrame()

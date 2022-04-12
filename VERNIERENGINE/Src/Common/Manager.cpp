@@ -77,6 +77,12 @@ bool Manager::keyPressed() {
 			else if (event.key.keysym.sym == SDLK_d) {
 				tecla = MessageType::D;
 			}
+			else if (event.key.keysym.sym == SDLK_q) {
+				tecla = MessageType::PULSA_Q;
+			}
+			else if (event.key.keysym.sym == SDLK_e) {
+				tecla = MessageType::PULSA_E;
+			}
 
 
 			//si es una tecla válida se envia el mensaje correspondiente
