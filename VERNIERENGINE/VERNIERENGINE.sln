@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SoundEngine", "Projects\Sou
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaBridge", "Projects\LuaBridge\LuaBridge\LuaBridge.vcxproj", "{81096C5F-2485-4F74-B7A8-4F349C2E4D8A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DllExample", "Projects\DllExample\DllExample.vcxproj", "{F0848000-AFD6-4765-8FEE-E25B427B7061}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -61,6 +63,11 @@ Global
 		{81096C5F-2485-4F74-B7A8-4F349C2E4D8A}.Release|x64.Build.0 = Release|x64
 		{81096C5F-2485-4F74-B7A8-4F349C2E4D8A}.Release|x86.ActiveCfg = Release|Win32
 		{81096C5F-2485-4F74-B7A8-4F349C2E4D8A}.Release|x86.Build.0 = Release|Win32
+		{F0848000-AFD6-4765-8FEE-E25B427B7061}.Debug|x64.ActiveCfg = Debug|x64
+		{F0848000-AFD6-4765-8FEE-E25B427B7061}.Debug|x86.ActiveCfg = Debug|Win32
+		{F0848000-AFD6-4765-8FEE-E25B427B7061}.Release|x64.ActiveCfg = Release|x64
+		{F0848000-AFD6-4765-8FEE-E25B427B7061}.Release|x64.Build.0 = Release|x64
+		{F0848000-AFD6-4765-8FEE-E25B427B7061}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

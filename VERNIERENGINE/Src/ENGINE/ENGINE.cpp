@@ -20,7 +20,7 @@
 #include "ResourceManager.h"
 #include "Entity.h"
 #include "Monkey.h"
-
+#include <Windows.h>
 
 //LUA
 extern "C"
@@ -250,8 +250,42 @@ int main()
 
 	//lua_getglobal(L, "CreatePlane");
 
+	lua_State* L;
+
+	// initialize Lua interpreter
+	L = luaL_newstate();
+
+	// load Lua base libraries (print / math / etc)
+	luaL_openlibs(L);
+	luaL_dofile(L, "Data.lua");
+	lua_getglobal(L, "DLLName");
+	lua_call(L, 0, 1);
+	std::string dllName = lua_tostring(L, -1);
+	dllName += ".dll";
+	std::wstring dllNameW = std::wstring(dllName.begin(), dllName.end());
+	HINSTANCE hDLL = LoadLibrary(dllNameW.c_str());
+	lua_pop(L, 1);
+	if (hDLL == NULL)
+		std::cout << "Failed Load DLL\n";
+	else {
+		std::cout << "LoadDll\n";
+		typedef int (*funcFirstTry) ();
+		lua_getglobal(L, "FunctionName");
+		lua_call(L, 0, 1);
+		funcFirstTry ftry = (funcFirstTry)GetProcAddress(hDLL, lua_tostring(L, -1));
+		lua_pop(L, 1);
+		if (!ftry) {
+			std::cout << "ERROR\n";
+		}
+		else
+			ftry();
+		FreeLibrary(hDLL);
+	}
+	lua_getglobal(L, "WindowName");
+	lua_call(L, 0, 1);
 	bool stay = true;
-	VernierEngine::setupInstance("WildLessss");
+	VernierEngine::setupInstance(lua_tostring(L, -1));
+	lua_close(L);
 	do {
 		stay = VernierEngine::getInstance()->processFrame();
 	} while (stay);
