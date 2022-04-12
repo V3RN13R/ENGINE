@@ -10,8 +10,9 @@ public:
 		entity_(e) {
 	}
 
-	virtual ~Component() {
-	}
+	virtual ~Component() {}
+
+	virtual void start() {}
 
 	inline void setEntity(Entity* e) {
 		entity_ = e;
@@ -25,17 +26,25 @@ public:
 		return false;
 	}
 
-	virtual void preUpdate() {
+	inline bool isEnable() { return _enable; }
+
+	inline void setEnable(bool set) {
+		_enable = set;
+
+		if (set)
+			onEnable();
+		else
+			onDisable();
 	}
-	virtual void update() {
-	}	
-	virtual void lateUpdate() {
-	}
-	virtual void fixedUpdate() {
-	}
-	virtual void render() {
-	}
+
+	virtual void preUpdate() {}
+	virtual void update() {}	
+	virtual void lateUpdate() {}
+	virtual void fixedUpdate() {}
+	virtual void render() {}
+	virtual void onEnable() {}
+	virtual void onDisable() {}
 protected:
 	Entity* entity_;
+	bool _enable = true;
 };
-

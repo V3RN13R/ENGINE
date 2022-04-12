@@ -92,7 +92,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	mr2->onEnable();
 	tr2->rotate(-90, 0);
 
-	Monkey* mnk = new Monkey(nullptr, "MONKEY");
+	Monkey* mnk = new Monkey("MONKEY");
 	//MeshRenderer* mrMnk = mnk->addComponent<MeshRenderer>(mnk);
 	Rigidbody* rbMnk = mnk->addComponent<Rigidbody>(mnk);
 	Transform* trMnk = mnk->addComponent<Transform>();

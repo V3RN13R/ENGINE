@@ -8,20 +8,21 @@
 #include "Component.h"
 #include "ecs.h"
 
-class Manager;
+//class Manager;
 enum class MessageType;
 namespace Ogre {
 	class SceneNode;
 }
 class Entity {
-	friend Manager;
+	//friend Manager;
 
 public:
 
-	Entity(Manager* mngr, std::string entityName);
-
+	Entity(std::string entityName);
 
 	virtual ~Entity();
+
+	void start();
 
 	template<typename T, typename ...Ts>
 	T* addComponent(Ts &&... args) {
@@ -69,13 +70,13 @@ public:
 		return _cmpArray[id] != nullptr;
 	}
 
-	inline void setMngr(Manager* mngr) {
-		_mngr = mngr;
-	}
+	//inline void setMngr(Manager* mngr) {
+	//	_mngr = mngr;
+	//}
 
-	inline Manager* getMngr() {
-		return _mngr;
-	}
+	//inline Manager* getMngr() {
+	//	return _mngr;
+	//}
 
 	inline bool isActive() const {
 		return _active;
@@ -140,7 +141,7 @@ public:
 
 	void destroy() { _destroy = true; }
 
-	bool fetDestroy() { return _destroy; }
+	bool getDestroy() { return _destroy; }
 
 protected:
 	Ogre::SceneNode* _oNode;
@@ -150,7 +151,7 @@ private:
 
 	bool _active;
 	bool _destroy = false;
-	Manager* _mngr;
+	//Manager* _mngr;
 	std::vector<Component*> _components;
 	std::array<Component*, ecs::maxComponent> _cmpArray;
 	std::bitset<ecs::maxGroup> _groups;

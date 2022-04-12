@@ -3,7 +3,7 @@
 
 class Monkey : public Entity {
 public:
-	Monkey(Manager* mngr, std::string entityName) : Entity(mngr, entityName) {}
+	Monkey(std::string entityName) : Entity(entityName) {}
 	~Monkey(){}
 	virtual void receiveEvent(MessageType msg, Entity* e);
 };

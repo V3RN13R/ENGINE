@@ -19,7 +19,7 @@ public:
 
 	// entities
 	Entity* addEntity(std::string name) {
-		Entity* e = new Entity(this,name);
+		Entity* e = new Entity(name);
 		if (e != nullptr) {
 			e->resetGroups();
 			entities_.emplace_back(e);
