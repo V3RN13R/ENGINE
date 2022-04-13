@@ -101,7 +101,7 @@ public:
 	}
 
 
-	void update() {
+	virtual void update() {
 		std::size_t n = _components.size();
 		for (auto i = 0u; i < n; i++) {
 			_components[i]->update();

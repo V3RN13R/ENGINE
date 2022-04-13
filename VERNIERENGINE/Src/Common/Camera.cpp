@@ -5,7 +5,11 @@
 #include "Transform.h"
 #include "OgreMath.h"
 #include <iostream>
+#include <math.h>
 
+
+const float M_PI = 3.1416;
+const float toRadians = M_PI / 180.0;
 Camera::~Camera() {
 	
 	RenderMain::getInstance()->getSceneManager()->destroyCamera(_camera);
@@ -27,11 +31,12 @@ void Camera::setMonkePos(Vector3D* monPos) {
 
 
 void Camera::update() {
-	Transform* camTr = entity_->getComponent<Transform>();
+	Entity::update();
+	Transform* camTr = getComponent<Transform>();
 	if (camTr != nullptr) {
-		Vector3D nuevaPos = Vector3D(_monkePos->getX() + _monkeRadio * std::cos(_monkeAngle), _monkePos->getY() + 10 , _monkePos->getZ() + _monkeRadio * std::sin(_monkeAngle));
+		Vector3D nuevaPos = Vector3D(_monkePos->getX() + _monkeRadio * std::cos( _monkeAngle*toRadians), _monkePos->getY() + 0 , _monkePos->getZ() + _monkeRadio * std::sin(_monkeAngle*toRadians));
 		camTr->setPosition(nuevaPos);
-		setLooking(*_monkePos);
+		mNodeCamera->lookAt(Ogre::Vector3(_monkePos->getX(), _monkePos->getY(), _monkePos->getZ()), Ogre::Node::TS_WORLD, Ogre::Vector3::NEGATIVE_UNIT_Z);
 	}
 };
 
@@ -42,10 +47,11 @@ void Camera::start() {
 	_camera->setNearClipDistance(_nearClipDist);
 	_camera->setFarClipDistance(_farClipDist);
 	_camera->setAutoAspectRatio(true);
-	mNodeCamera = entity_->getNode()->createChildSceneNode();
+	mNodeCamera = _oNode->createChildSceneNode();
 	mNodeCamera->attachObject(_camera);
+	mNodeCamera->yaw(Ogre::Degree(90));
 
-	mNodeCamera->setPosition(0, 500, 1000);
+	//mNodeCamera->setPosition(0, 500, 1000);
 	mNodeCamera->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
 
 	 _vp= RenderMain::getInstance()->getRenderWindow()->addViewport(_camera);
@@ -57,16 +63,17 @@ void Camera::start() {
 
 
 
-void Camera::receiveEvent(MessageType msg) {
+void Camera::receiveEvent(MessageType msg, Entity* e) {
 	std::cout << "Recive msg";
 	switch (msg) {
 	case MessageType::PULSA_Q:
 
-		_monkeAngle = (_monkeAngle + 1) % 360;
+		_monkeAngle = (_monkeAngle - 3) % 360;
 		std::cout << "AnguloCam mono: " << _monkeAngle << "\n";
 		break;
 	case MessageType::PULSA_E:
-		_monkeAngle = (_monkeAngle + 1) % 360;
+		//_oNode->yaw(Ogre::Degree(5));
+		_monkeAngle = (_monkeAngle + 3) % 360;
 		std::cout << "AnguloCam mono: " << _monkeAngle << "\n";
 
 		break;

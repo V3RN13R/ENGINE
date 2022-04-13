@@ -15,7 +15,7 @@ namespace Ogre {
 	class Viewport;
 	
 }
-class Camera : public Component {
+class Camera : public Entity {
 private:
 	Ogre::Camera* _camera=nullptr;
 	Ogre::SceneNode* mNodeCamera;
@@ -27,12 +27,12 @@ private:
 	Ogre::Viewport* _vp;
 
 	int _monkeAngle = 0;
-	float _monkeRadio = 500;
+	float _monkeRadio = 1000;
 	Vector3D* _monkePos = nullptr;
 	
 	
 public:
-	Camera() {};
+	Camera(std::string entityName) : Entity(entityName) {};
 	virtual ~Camera();
 	virtual void update();
 	void setNearClipDist(float n) { _nearClipDist = n; }
@@ -43,5 +43,6 @@ public:
 	void setMonkePos(Vector3D* pos);
 	void start();
 	//virtual void sendEvent(MessageType msg){}
-	virtual void receiveEvent(MessageType msg);
+	virtual void receiveEvent(MessageType msg, Entity* e);
+
 };

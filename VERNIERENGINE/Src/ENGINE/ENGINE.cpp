@@ -66,12 +66,12 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	////l->start();
 	//tLight->setPosition({ 0, 500, 10 });
 
-	Entity* camera = _mngr->addEntity("Camera");
-	Camera* c = camera->addComponent<Camera>();
+	Camera* camera = new Camera("Camera");
 	Transform* t = camera->addComponent<Transform>();
-	c->start();
-	t->setPosition({ 0, 500, 10 });
-	c->setBckgColor({ 1,0,0 });
+	camera->start();
+	//t->setPosition({ 0, 500, 10 });
+	camera->setBckgColor({ 1,0,0 });
+	_mngr->addEntity(camera);
 	camera->addListener(camera);
 
 
@@ -83,16 +83,6 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	//rb->addSphereRigidbody(1, 50, { 0,400,10 });//falta obtener radio mediante la mesh
 	//mr->start("Sphere");
 	//mr->onEnable();
-
-	Entity* ent2 = _mngr->addEntity("Prueba2");
-	MeshRenderer* mr2 = ent2->addComponent<MeshRenderer>(ent2);
-	tr2 = ent2->addComponent<Transform>();
-	Rigidbody* rb2 = ent2->addComponent<Rigidbody>(ent2);
-	tr2->setPosition(Vector3D(0, -2, 0));
-	rb2->addBoxRigidbody(0, { 0,-2,0 }, { 1000,10,1000 });//falta obtener size mediante la mesh
-	mr2->start("Plane");
-	mr2->onEnable();
-	tr2->rotate(-90, 0);
 
 	Monkey* mnk = new Monkey("MONKEY");
 	//MeshRenderer* mrMnk = mnk->addComponent<MeshRenderer>(mnk);
@@ -108,13 +98,26 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	
 	//tr1->setRotation(Vector3D(270, 0, 0));
 
+
+	Entity* ent2 = _mngr->addEntity("Prueba2");
+	MeshRenderer* mr2 = ent2->addComponent<MeshRenderer>(ent2);
+	tr2 = ent2->addComponent<Transform>();
+	Rigidbody* rb2 = ent2->addComponent<Rigidbody>(ent2);
+	tr2->setPosition(Vector3D(0, -2, 0));
+	rb2->addBoxRigidbody(0, { 0,-2,0 }, { 1000,10,1000 });//falta obtener size mediante la mesh
+	mr2->start("Plane");
+	mr2->onEnable();
+	tr2->rotate(-90, 0);
+
+
+
 	MeshRenderer* mr1 = mnk->addComponent<MeshRenderer>();
 	mr1->start("piedra.mesh");
 	mr1->setMaterial("Material/piedra");
 	mr1->onEnable();
 
 	//Hay qeu decirle ala cámar la posición de monke para que le siga
-	c->setMonkePos(&trMnk->getPos());
+	camera->setMonkePos(&trMnk->getPos());
 
 	//UIManager::init();
 	//UIManager::instance()->setup(RenderMain::getInstance()->getRenderWindow());
