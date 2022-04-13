@@ -5600,7 +5600,7 @@ typedef std::string String;
 
 #else // CEGUI_STRING_CLASS_STD_AO
 
-typedef std::basic_string<char, std::char_traits<char>, STLAllocatorWrapper<char, AllocatorConfig<STLAllocator>::Allocator> > String;
+typedef std::basic_string<char, std::char_traits<char>, STLAllocatorWrapper<char, AllocatorConfig<STLAllocator>::Allocator>> String;
 
 #endif
 

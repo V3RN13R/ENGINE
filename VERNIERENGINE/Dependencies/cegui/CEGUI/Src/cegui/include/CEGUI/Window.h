@@ -54,7 +54,11 @@
 #   pragma warning(push)
 #   pragma warning(disable : 4251)
 #endif
-
+#include <OgrePrerequisites.h>
+#include <sstream>
+#include <CEGUI/String.h>
+using namespace Ogre;
+using namespace CEGUI;
 
 namespace CEGUI
 {

@@ -33,7 +33,13 @@
 #include "CEGUI/String.h"
 #include "CEGUI/Event.h"
 #include "CEGUI/IteratorBase.h"
+#include <OgrePrerequisites.h>
+#include <sstream>
+#include <CEGUI/String.h>
 #include <map>
+
+using namespace Ogre;
+using namespace CEGUI;
 
 #if defined (_MSC_VER)
 #   pragma warning(push)
