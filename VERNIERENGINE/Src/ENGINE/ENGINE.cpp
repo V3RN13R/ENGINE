@@ -116,8 +116,8 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	//Hay qeu decirle ala cámar la posición de monke para que le siga
 	c->setMonkePos(&trMnk->getPos());
 
-	UIManager::init();
-	UIManager::instance()->setup(RenderMain::getInstance()->getRenderWindow());
+	//UIManager::init();
+	//UIManager::instance()->setup(RenderMain::getInstance()->getRenderWindow());
 }
 
 bool VernierEngine::processFrame()

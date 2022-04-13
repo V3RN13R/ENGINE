@@ -10,33 +10,33 @@
 
 std::unique_ptr<UIManager>  UIManager::_instance;
 
-bool UIManager::init() {
-	assert(_instance == nullptr);
-	_instance.reset(new UIManager());
-	return _instance.get();
-}
-
-UIManager* UIManager::instance() {
-	assert(_instance != nullptr);
-	return _instance.get();
-}
-
-void UIManager::setup(Ogre::RenderWindow* renderWindow) {
-	_ogreRenderer = &CEGUI::OgreRenderer::bootstrapSystem(*renderWindow);
-	m_renderer = RenderMain::getInstance()->getRenderWindow();
-	//loadScheme()
-	CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
-	CEGUI::SchemeManager::getSingleton().createFromFile("WindowsLook.scheme");
-
-	//CEGUI::System::getSingleton().getDefaultGUIContext().setDefaultFont("DejaVuSans-10");
-	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
-
-	_windowRoot = CEGUI::WindowManager::getSingleton().createWindow("DefaultWindow", "_MasterRoot");
-	_windowRoot->setUsingAutoRenderingSurface(true);
-	CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(_windowRoot);
-
-	setUpResources();
-}
+//bool UIManager::init() {
+//	assert(_instance == nullptr);
+//	_instance.reset(new UIManager());
+//	return _instance.get();
+//}
+//
+//UIManager* UIManager::instance() {
+//	assert(_instance != nullptr);
+//	return _instance.get();
+//}
+//
+//void UIManager::setup(Ogre::RenderWindow* renderWindow) {
+//	_ogreRenderer = &CEGUI::OgreRenderer::bootstrapSystem(*renderWindow);
+//	m_renderer = RenderMain::getInstance()->getRenderWindow();
+//	//loadScheme()
+//	CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
+//	CEGUI::SchemeManager::getSingleton().createFromFile("WindowsLook.scheme");
+//
+//	//CEGUI::System::getSingleton().getDefaultGUIContext().setDefaultFont("DejaVuSans-10");
+//	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
+//
+//	_windowRoot = CEGUI::WindowManager::getSingleton().createWindow("DefaultWindow", "_MasterRoot");
+//	_windowRoot->setUsingAutoRenderingSurface(true);
+//	CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(_windowRoot);
+//
+//	setUpResources();
+//}
 
 void UIManager::destroy()
 {

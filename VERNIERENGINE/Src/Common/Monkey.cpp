@@ -5,6 +5,7 @@
 
 
 void Monkey::receiveEvent(MessageType msg, Entity* e) {
+	
 	if (msg == MessageType::W) {
 		std::cout << "TECLA W\n";
 		Rigidbody* rb = getComponent<Rigidbody>();

@@ -25,13 +25,13 @@ namespace CEGUI
 class UIManager {
 
 public:
-	static UIManager* instance();
-	static bool init();
+	/*static UIManager* instance();
+	static bool init();*/
 
 	UIManager(){}
 	~UIManager(){}
 
-	void setup(Ogre::RenderWindow* renderWindow);
+	//void setup(Ogre::RenderWindow* renderWindow);
 	void destroy();
 
 	bool render(double d);
