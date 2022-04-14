@@ -67,7 +67,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	//tLight->setPosition({ 0, 500, 10 });
 
 	Camera* camera = new Camera("Camera");
-	Transform* t = camera->addComponent<Transform>();
+	Transform* trCam = camera->addComponent<Transform>();
 	camera->start();
 	//t->setPosition({ 0, 500, 10 });
 	camera->setBckgColor({ 1,0,0 });
@@ -95,6 +95,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	//mrMnk->onEnable();
 	_mngr->addEntity(mnk);
 	mnk->addListener(mnk);
+	mnk->setCamTrOnMonkey(trCam);
 	
 	//tr1->setRotation(Vector3D(270, 0, 0));
 
