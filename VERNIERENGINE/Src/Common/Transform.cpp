@@ -17,7 +17,7 @@ void Transform::rotate(Vector3D rotation)
 	entity_->getNode()->pitch(Ogre::Degree(rotation.getX()));
 	entity_->getNode()->yaw(Ogre::Degree(rotation.getY()));
 	entity_->getNode()->roll(Ogre::Degree(rotation.getZ()));
-	_rotation += rotation;
+	_rotation = Vector3D(static_cast<int>((_rotation.getX() + rotation.getX())) % 360, static_cast<int>((_rotation.getY() + rotation.getY())) % 360, static_cast<int>((_rotation.getZ() + rotation.getZ())) % 360);
 }
 
 void Transform::rotate(float degree, uint8_t axis)
