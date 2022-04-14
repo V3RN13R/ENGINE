@@ -33,8 +33,6 @@
 #include "CEGUI/Base.h"
 #include "CEGUI/String.h"
 #include "CEGUI/XMLSerializer.h" 
-using namespace Ogre;
-using namespace CEGUI;
 
 // Start of CEGUI namespace section
 namespace CEGUI

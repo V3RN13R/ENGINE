@@ -38,8 +38,6 @@
 #include "CEGUI/UDim.h"
 #include "CEGUI/Rect.h"
 
-using namespace Ogre;
-using namespace CEGUI;
 
 #include <cstdio>
 
@@ -505,9 +503,9 @@ public:
     }
 
     //! Definitions of the possible values represented as Strings
-    static const String Shrink;
-    static const String Expand;
-    static const String Ignore;
+    static const CEGUI::String Shrink;
+    static const CEGUI::String Expand;
+    static const CEGUI::String Ignore;
 };
 
 template<>

@@ -25,11 +25,13 @@ namespace CEGUI
 class UIManager {
 
 public:
-	/*static UIManager* instance();
-	static bool init();*/
+	static UIManager* instance();
+	static bool init();
 
 	UIManager(){}
 	~UIManager(){}
+
+	void setup(Ogre::RenderWindow* renderWindow);
 
 	//void setup(Ogre::RenderWindow* renderWindow);
 	void destroy();
@@ -58,7 +60,7 @@ private:
 	CEGUI::FontManager* _fontMngr = nullptr;
 	CEGUI::OgreRenderer* _ogreRenderer = nullptr;
 
-    Ogre::RenderWindow* m_renderer;
+    Ogre::RenderWindow* m_renderer=nullptr;
 
 	CEGUI::Window* _windowRoot = nullptr;
 	CEGUI::GUIContext* _context = nullptr;
