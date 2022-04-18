@@ -41,6 +41,10 @@ public:
 		return c;
 	}
 
+	void addComponent(Component* c) {
+		_components.emplace_back(c);
+	}
+
 	template<typename T>
 	void removeComponent() {
 		auto id = ecs::cmpIdx<T>;

@@ -32,6 +32,7 @@
 #include <variant>
 #include <vector>
 
+#include "lua.hpp"
 // Begin File: Source/LuaBridge/detail/Config.h
 
 // https://github.com/kunitoki/LuaBridge3

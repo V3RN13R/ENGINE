@@ -21,6 +21,7 @@
 #include <system_error>
 #include <type_traits>
 #include <tuple>
+#include <lauxlib.h>
 
 namespace luabridge {
 

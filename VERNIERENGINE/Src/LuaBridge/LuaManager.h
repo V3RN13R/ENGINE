@@ -40,7 +40,7 @@ inline bool readVariable(LuaRef& table, const std::string& variableName, T* vari
 	LuaRef r = NULL;
 	try {
 		r = table.rawget(variableName);
-		if (!r.isRefNil()) {
+		if (!r.isNil()) {
 			try {
 				__readVariable_asig__(r, variable);
 				return true;				// lectura correcta

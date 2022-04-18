@@ -1,3 +1,4 @@
+#include "LuaManager.h"
 using namespace luabridge;
 
 const std::string assets_path = "../../../Assets";
