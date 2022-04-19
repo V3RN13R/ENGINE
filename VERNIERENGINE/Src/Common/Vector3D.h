@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <ostream>
+#include <string>
 
 namespace Ogre {
 	template<int dims, typename T>
@@ -43,7 +44,23 @@ public:
 	Vector3D(float x, float y, float z) :
 		x_(x), y_(y), z_(z) {
 	}
-	Vector3D(std::string) {}
+
+	Vector3D(std::string given_str) {
+		//std::string delim = ","; // delimiter  
+		//		
+		//size_t pos = 0;
+		//std::string token1; // define a string variable  
+
+		//given_str.erase(0, pos + delim.length());
+		//token1 = given_str.substr(0, pos); // store the substring   
+		//x_ = std::stof(token1);
+		//given_str.erase(0, pos + delim.length());  /* erase() function store the current positon and move to next token. */
+		//pos = given_str.find(delim);
+		//token1 = given_str.substr(0, pos); // store the substring   
+		//y_ = std::stof(token1);
+		//given_str.erase(0, pos + delim.length());  /* erase() function store the current positon and move to next token. */
+		//z_ = std::stof(given_str); ; // it print last token of the string.  
+	}
 
 	~Vector3D() {
 	}

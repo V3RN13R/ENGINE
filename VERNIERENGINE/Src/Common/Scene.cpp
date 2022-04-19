@@ -3,7 +3,7 @@
 
 
 Scene::Scene(const std::string& file, const std::string& name) {
-	_fmanager->setUpInstance();
+	//_fmanager->setUpInstance(); se puede quitar en el main se debe de instanciar
 	lua_State* _state = nullptr;
 	try {
 		_state = readFileLua(file);

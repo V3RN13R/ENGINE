@@ -1,7 +1,7 @@
 #include "Factory.h"
 #include "FactoryManager.h"
 #include "Transform.h"
-#include "RigidBody.h"
+//#include "RigidBody.h"
 #include <map>
 class TransformFactory : public Factory
 {

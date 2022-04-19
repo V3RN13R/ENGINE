@@ -12,6 +12,9 @@ class Manager;
 class Transform;
 class ResourceManager;
 
+
+class Scene;
+
 class VernierEngine {
 public:
 
@@ -36,4 +39,6 @@ private:
 	Transform* tr2 = nullptr;
 
 	std::string _assetsPath = "";
+
+	Scene* _scene;
 };

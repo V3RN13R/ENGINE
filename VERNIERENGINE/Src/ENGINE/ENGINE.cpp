@@ -23,6 +23,9 @@
 #include <Windows.h>
 #include "UIManager.h"
 
+#include "Scene.h"
+#include "InitFactories.cpp"
+
 //LUA
 extern "C"
 {
@@ -50,6 +53,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	ResourceManager::getInstance()->setUp(); //Carga de recursos
 
 	FactoryManager::setUpInstance();
+	setupFactories();
 	//Physics
 	if (!PhysicsManager::setUpInstance()) {
 		throw std::exception("ERROR: Couldn't load PhysicsManager\n");
@@ -58,6 +62,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 
 	PruebaBullet::mainPhys();
 
+	_scene = new Scene("prueba.lua", "prueba");
 
 	//Entity* light = _mngr->addEntity("Light");
 	//Light* l = light->addComponent<Light>();
