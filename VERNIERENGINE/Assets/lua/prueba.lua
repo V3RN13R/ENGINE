@@ -7,8 +7,8 @@ entidad1={
     Components = {"Transform"},
 
     Transform = {
-        Position = "10,10,10",
-        Scale = "1,1,1",
-        Rotation = "20,20,20"
+        Position = "11.55,22.15,33.25",
+        Scale = "1.1,2.25,3.333",
+        Rotation = "12,22,32"
     }
 }
