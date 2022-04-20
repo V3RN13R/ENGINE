@@ -31,7 +31,9 @@ public:
 
 	Entity* createEntityByPrefab(const std::string& file, const std::string& nameInFile, const std::string& nameInGame);
 
-	void start();	
+	void start();
+
+	void onEnable();	
 
 	void fixedUpdate();
 

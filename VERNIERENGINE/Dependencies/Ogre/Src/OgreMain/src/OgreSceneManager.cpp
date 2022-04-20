@@ -440,9 +440,9 @@ Entity* SceneManager::createEntity(const String& meshName)
     return createEntity(name, meshName, ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME);
 }
 //---------------------------------------------------------------------
-Entity* SceneManager::createEntity(const MeshPtr& pMesh)
+Entity* SceneManager::createEntity(const std::string name, const MeshPtr& pMesh)
 {
-    String name = mMovableNameGenerator.generate();
+    //String name = mMovableNameGenerator.generate();
     return createEntity(name, pMesh);
 }
 //-----------------------------------------------------------------------

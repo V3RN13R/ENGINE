@@ -4,11 +4,16 @@ prueba = {
 
 entidad1={
     Active = true,
-    Components = {"Transform"},
+    Components = {"Transform","MeshRenderer"},
 
     Transform = {
-        Position = "11.55,22.15,33.25",
-        Scale = "1.1,2.25,3.333",
-        Rotation = "12,22,32"
+        Position = "0,100,0",
+        Scale = "1,1,1",
+        Rotation = "0,0,0"
+    },
+	
+	MeshRenderer = {
+        Mesh = "Cube",
+		EntityName = "entidad1"	
     }
 }

@@ -11,6 +11,12 @@ MeshRenderer::MeshRenderer(Entity* e) : Component(e), _ogreEnt(nullptr)
 	_mSceneManager = RenderMain::getInstance()->getSceneManager();
 }
 
+MeshRenderer::MeshRenderer(std::map<std::string, std::string> args) : _ogreEnt(nullptr), _mesh(args["Mesh"]), _entityName(args["EntityName"])
+{
+	_mSceneManager = RenderMain::getInstance()->getSceneManager();
+	start(_entityName, _mesh);
+}
+
 void MeshRenderer::onEnable()
 {
 	if (_firstEnable) {
@@ -30,7 +36,7 @@ void MeshRenderer::onDisable()
 	_ogreEnt->setVisible(false);
 }
 
-bool MeshRenderer::start(std::string mesh)
+bool MeshRenderer::start(std::string name, std::string mesh)
 {
 	if (mesh == "Sphere")
 		_ogreEnt = _mSceneManager->createEntity(Ogre::SceneManager::PrefabType::PT_SPHERE);
@@ -39,7 +45,7 @@ bool MeshRenderer::start(std::string mesh)
 	else if (mesh == "Plane")
 		_ogreEnt = _mSceneManager->createEntity(Ogre::SceneManager::PrefabType::PT_PLANE);
 	else
-		_ogreEnt = _mSceneManager->createEntity(mesh);
+		_ogreEnt = _mSceneManager->createEntity(name, mesh);
 	return true;
 }
 
