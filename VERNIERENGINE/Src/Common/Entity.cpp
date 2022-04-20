@@ -33,3 +33,11 @@ void Entity::start()
 			if (c->isEnable())
 				c->start();
 };
+
+void Entity::onEnable()
+{
+	if (_active && !_destroy)
+		for (Component* c : _components)
+			if (c->isEnable())
+				c->onEnable();
+};

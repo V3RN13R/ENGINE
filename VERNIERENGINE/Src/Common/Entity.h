@@ -23,6 +23,7 @@ public:
 	virtual ~Entity();
 
 	void start();
+	void onEnable();
 
 	template<typename T, typename ...Ts>
 	T* addComponent(Ts &&... args) {

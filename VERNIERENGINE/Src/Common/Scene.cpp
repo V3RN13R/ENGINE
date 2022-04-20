@@ -3,7 +3,7 @@
 
 
 Scene::Scene(const std::string& file, const std::string& name) {
-	_fmanager->setUpInstance();
+	//_fmanager->setUpInstance(); se puede quitar en el main se debe de instanciar
 	lua_State* _state = nullptr;
 	try {
 		_state = readFileLua(file);
@@ -80,16 +80,14 @@ Entity* Scene::createEntity(const std::string& entityName, LuaRef entInfo)
 		_entity->addComponent(_fmanager->getInstance()->findAndCreate(components[i], entInfo.rawget(components[i])));
 	}
 
-	LuaRef children = entInfo.rawget("Children");
-	LuaRef list = children.rawget("entities");
-
-
-	if (!list.isNil()) {
-		for (int i = 1; i <= list.length(); i++) {
-			enableExceptions(list[i]);
-			//createEntity(list[i], children.rawget(list[i]))->transform()->setParent(_entity->transform());
-		}
-	}
+	//LuaRef children = entInfo.rawget("Children");
+	//LuaRef list = children.rawget("entities");
+	//if (!list.isNil()) {
+	//	for (int i = 1; i <= list.length(); i++) {
+	//		enableExceptions(list[i]);
+	//		createEntity(list[i], children.rawget(list[i]))->transform()->setParent(_entity->transform());
+	//	}
+	//}
 
 	std::cout << "\n	Fin de la lectura de componentes\n";
 	bool active = true;
@@ -169,6 +167,14 @@ void Scene::start() {
 	for (int i = 0; i < n; i++) {
 		if (!_entities[i]->getDestroy())
 			_entities[i]->start();
+	}
+}
+
+void Scene::onEnable() {
+	size_t n = _entities.size();
+	for (int i = 0; i < n; i++) {
+		if (!_entities[i]->getDestroy())
+			_entities[i]->onEnable();
 	}
 }
 

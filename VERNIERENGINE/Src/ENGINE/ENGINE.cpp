@@ -23,6 +23,9 @@
 #include <Windows.h>
 #include "UIManager.h"
 
+#include "Scene.h"
+#include "InitFactories.cpp"
+
 //LUA
 extern "C"
 {
@@ -50,6 +53,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	ResourceManager::getInstance()->setUp(); //Carga de recursos
 
 	FactoryManager::setUpInstance();
+	setupFactories();
 	//Physics
 	if (!PhysicsManager::setUpInstance()) {
 		throw std::exception("ERROR: Couldn't load PhysicsManager\n");
@@ -58,6 +62,8 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 
 	PruebaBullet::mainPhys();
 
+	_scene = new Scene("prueba.lua", "prueba");
+	//_scene->onEnable();
 
 	//Entity* light = _mngr->addEntity("Light");
 	//Light* l = light->addComponent<Light>();
@@ -106,14 +112,16 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	Rigidbody* rb2 = ent2->addComponent<Rigidbody>(ent2);
 	tr2->setPosition(Vector3D(0, -2, 0));
 	rb2->addBoxRigidbody(0, { 0,-2,0 }, { 0.0001,1000,1000  });//falta obtener size mediante la mesh
-	mr2->start("Plane");
+	mr2->start("plano","Plane");
 	mr2->onEnable();
 	tr2->rotate(-90, 0);
 
-
+	//Entity* eprueba = _mngr->addEntity("Cubop");
+	//Transform* tprueba = ent2->addComponent<transo>();
+	//MeshRenderer* mprueba = ent2->addComponent<MeshRenderer>();
 
 	//MeshRenderer* mr1 = mnk->addComponent<MeshRenderer>();
-	//mr1->start("piedra.mesh");
+	//mr1->start("mono","piedra.mesh");
 	//mr1->setMaterial("Material/piedra");
 	//mr1->onEnable();
 

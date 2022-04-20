@@ -2,6 +2,7 @@
 
 #include "Component.h"
 #include <string>
+#include <map>
 
 namespace Ogre {
 	class Root;
@@ -23,11 +24,14 @@ private:
 	Ogre::SceneManager* _mSceneManager;
 	Ogre::Entity* _ogreEnt;
 	std::string _materialName;
+	std::string _mesh;
+	std::string _entityName;
 
 	bool _firstEnable = true;
 	bool _visible = true;
 public:
 	MeshRenderer(Entity* e = nullptr);
+	MeshRenderer(std::map<std::string, std::string> args);
 	~MeshRenderer();
 
 	static std::string GetName() { return "MeshRenderer"; }
@@ -45,7 +49,7 @@ public:
 	virtual void onEnable(); //override
 
 	virtual void onDisable(); //override
-	bool start(std::string mesh);
+	bool start(std::string name, std::string mesh);
 	//virtual void sendEvent(MessageType msg) {}
 	//virtual void receiveEvent(MessageType msg) {}
 };

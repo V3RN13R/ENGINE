@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <ostream>
+#include <string>
 
 namespace Ogre {
 	template<int dims, typename T>
@@ -14,8 +15,8 @@ namespace Ogre {
 }
 
 /*
- * A class implementing a 2-dimensional vector and corresponding
- * operations. All operations generate new Vector2D, they do not
+ * A class implementing a 3-dimensional vector and corresponding
+ * operations. All operations generate new Vector3D, they do not
  * modify the vectors on which they operate. The only methods that
  * modify the state are the different setters (and operator=).
  */
@@ -43,10 +44,28 @@ public:
 	Vector3D(float x, float y, float z) :
 		x_(x), y_(y), z_(z) {
 	}
-	Vector3D(std::string) {}
 
-	~Vector3D() {
+	Vector3D(std::string s) {
+		char *ptr, *char_s, *next_token1;
+		std::string str_obj(s);
+		char_s = &str_obj[0];
+
+		ptr = strtok_s(char_s, ",", &next_token1);
+		int i = 0;
+		while (ptr != NULL)
+		{
+			if (i == 0)
+				x_ = std::stof(ptr);
+			else if (i == 1)
+				y_ = std::stof(ptr);
+			else if (i == 2)
+				z_ = std::stof(ptr);
+			ptr = strtok_s(NULL, ",", &next_token1);
+			i++;
+		}	  
 	}
+
+	~Vector3D() {}
 
 	// various getters
 	inline float getX() const {
