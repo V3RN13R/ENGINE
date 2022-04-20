@@ -16,6 +16,7 @@ public:
 	//virtual void sendEvent(MessageType msg) {}
 	//virtual void receiveEvent(MessageType msg) {}
 	//virtual void lateUpdate() override;
+	void recalculateAxis(Vector3D v1, float q1, float q2, float q3, float q4);
 
 	void setVelocity(Vector3D dir);
 private:

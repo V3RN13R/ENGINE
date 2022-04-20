@@ -38,7 +38,7 @@ void Camera::update() {
 		/*Vector3D nuevaPos = Vector3D(_monkePos->getX() + _monkeRadio * std::cos( _monkeAngle*toRadians), _monkePos->getY() + 0 , _monkePos->getZ() + _monkeRadio * std::sin(_monkeAngle*toRadians));
 		camTr->setPosition(nuevaPos)*/;
 		//camtTr para mover al nodo padre y mNodeCamera para mover la posición del nodo hijo que es donde se encuentra la cámara
-		camTr->setPosition(Vector3D(_monkePos->getX(), _monkePos->getY() + 500, _monkePos->getZ()));
+		camTr->setPosition(Vector3D(_monkePos->getX(), _monkePos->getY() + 0/*500*/, _monkePos->getZ()));
 		mNodeCamera->lookAt(Ogre::Vector3(_monkePos->getX(), _monkePos->getY(), _monkePos->getZ()), Ogre::Node::TS_WORLD, Ogre::Vector3::NEGATIVE_UNIT_Z);
 	}
 };
@@ -54,7 +54,7 @@ void Camera::start() {
 	mNodeCamera->attachObject(_camera);
 	//mNodeCamera->yaw(Ogre::Degree(90));
 
-	mNodeCamera->setPosition(0, 500, _monkeRadio);
+	mNodeCamera->setPosition(0, 0/*500*/, _monkeRadio);
 	mNodeCamera->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
 
 	 _vp= RenderMain::getInstance()->getRenderWindow()->addViewport(_camera);

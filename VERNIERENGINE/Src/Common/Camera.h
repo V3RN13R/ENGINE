@@ -27,7 +27,7 @@ private:
 	Ogre::Viewport* _vp;
 
 	int _monkeAngle = 0;
-	float _monkeRadio = 1000;
+	float _monkeRadio = 500;
 	Vector3D* _monkePos = nullptr;
 	
 	

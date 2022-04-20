@@ -85,14 +85,14 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	//mr->onEnable();
 
 	Monkey* mnk = new Monkey("MONKEY");
-	//MeshRenderer* mrMnk = mnk->addComponent<MeshRenderer>(mnk);
+	MeshRenderer* mrMnk = mnk->addComponent<MeshRenderer>(mnk);
 	Rigidbody* rbMnk = mnk->addComponent<Rigidbody>(mnk);
 	Transform* trMnk = mnk->addComponent<Transform>();
 	trMnk->setPosition(Vector3D(0, 300, 10));
-	trMnk->setScale(Vector3D(100, 100, 100));
+	//trMnk->setScale(Vector3D(100, 100, 100));
 	rbMnk->addSphereRigidbody(1, 50, { 0,300,10 });//falta obtener radio mediante la mesh
-	//mrMnk->start("Sphere");
-	//mrMnk->onEnable();
+	mrMnk->start("Sphere");
+	mrMnk->onEnable();
 	_mngr->addEntity(mnk);
 	mnk->addListener(mnk);
 	mnk->setCamTrOnMonkey(trCam);
@@ -105,17 +105,17 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	tr2 = ent2->addComponent<Transform>();
 	Rigidbody* rb2 = ent2->addComponent<Rigidbody>(ent2);
 	tr2->setPosition(Vector3D(0, -2, 0));
-	rb2->addBoxRigidbody(0, { 0,-2,0 }, { 1000,10,1000 });//falta obtener size mediante la mesh
+	rb2->addBoxRigidbody(0, { 0,-2,0 }, { 0.0001,1000,1000  });//falta obtener size mediante la mesh
 	mr2->start("Plane");
 	mr2->onEnable();
 	tr2->rotate(-90, 0);
 
 
 
-	MeshRenderer* mr1 = mnk->addComponent<MeshRenderer>();
-	mr1->start("piedra.mesh");
-	mr1->setMaterial("Material/piedra");
-	mr1->onEnable();
+	//MeshRenderer* mr1 = mnk->addComponent<MeshRenderer>();
+	//mr1->start("piedra.mesh");
+	//mr1->setMaterial("Material/piedra");
+	//mr1->onEnable();
 
 	//Hay qeu decirle ala cámar la posición de monke para que le siga
 	camera->setMonkePos(&trMnk->getPos());

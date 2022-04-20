@@ -60,6 +60,9 @@ public:
 		return _scale;
 	}
 
+	Ogre::Matrix3 fromEulerAngleToRotationMatrix(Vector3D vec);
+
+
 	void update() override;
 	void fixedUpdate() override;
 	//virtual void sendEvent(MessageType msg) {}
