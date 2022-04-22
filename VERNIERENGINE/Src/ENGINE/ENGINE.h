@@ -3,7 +3,7 @@
 #include <string>
 #include <memory>
 
-
+//class SDL_Renderer;
 class RenderMain;
 class PhysicsManager;
 class WindowRender;
@@ -38,6 +38,7 @@ private:
 	Transform* tr = nullptr;
 	Transform* tr2 = nullptr;
 
+	//SDL_Renderer* _renderer = nullptr;
 	std::string _assetsPath = "";
 
 	//Scene* _scene;

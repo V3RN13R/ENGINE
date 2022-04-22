@@ -1,14 +1,17 @@
+#pragma once 
 #include "SDL.h"
+#include "Utils.h"
+//#include "Singleton.h"
 
-class InputManager {
+// SIN IMPLEMENTAR 
+
+class InputManager {/*public Singleton<InputManager> { friend Singleton<InputManager>;*/
 private:
-	SDL_Event _evt;
-
+	//inline InputManager& im() {
+	//	return *InputManager::instance();
+	//}
 public:
-	InputManager(){}
+	InputManager() { }
 	~InputManager(){}
-
-	void leeTecla(SDL_Keycode sdlk);
-	//virtual void sendEvent(MessageType msg) = 0;
-	//virtual void receiveEvent(MessageType msg) = 0;
+   //  bool keyPressed(); 
 };

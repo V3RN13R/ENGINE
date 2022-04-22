@@ -33,6 +33,7 @@ extern "C"
 #include "lua.h"
 #include "lualib.h"
 #include "lauxlib.h"
+#include <SDL_render.h>
 }
 
 VernierEngine* VernierEngine::_instance = nullptr;
@@ -82,7 +83,13 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	camera->setBckgColor({ 1,0,0 });
 	_scene->addEntity(camera);
 	camera->addListener(camera);
+	
+	// Accedemos a la ventana y creamos el renderer.
+	// SDL_Window* _sdlw = WindowRender::getSDLWindow();
+	//_renderer = SDL_CreateRenderer(_sdlw, -1,
+	//	SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
+	//assert(_renderer != nullptr);
 
 	//Entity* ent = _mngr->addEntity("Prueba");
 	//MeshRenderer* mr = ent->addComponent<MeshRenderer>(ent);

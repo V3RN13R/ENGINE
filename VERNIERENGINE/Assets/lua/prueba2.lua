@@ -1,13 +1,13 @@
-prueba = {
+prueba2 = {
     entities = {"entidad1"}
 }
 
 entidad1={
     Active = true,
-    Components = {"Transform","MeshRenderer", "Rigidbody"},
+    Components = {"Transform", "MeshRenderer", "Rigidbody", "Image"},
 
     Transform = {
-        Position = "150,0,0",
+        Position = "-150,0,0",
         Scale = "10,10,10",
         Rotation = "0,0,0"
     },
