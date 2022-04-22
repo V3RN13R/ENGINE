@@ -3,9 +3,9 @@
 #include "Component.h"
 #include <string>
 #include "Vector3D.h"
-#include "Scene.h"
 
-
+#include "Utils.h"
+#include "Entity.h"
 namespace Ogre {
 	class Root;
 	class SceneManager;
@@ -33,7 +33,7 @@ private:
 	
 	
 public:
-	Camera(std::string entityName) : Entity(entityName) {};
+	Camera(std::string entityName);
 	virtual ~Camera();
 	virtual void update();
 	void setNearClipDist(float n) { _nearClipDist = n; }

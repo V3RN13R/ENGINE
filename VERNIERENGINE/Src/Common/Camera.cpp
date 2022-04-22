@@ -8,10 +8,14 @@
 #include <math.h>
 
 
-
 const float M_PI = 3.1416;
 const float toRadians = M_PI / 180.0;
 const float toAngles = 180.0 / M_PI;
+
+Camera::Camera(std::string entityName) : Entity(entityName) {
+
+}
+
 Camera::~Camera() {
 	
 	RenderMain::getInstance()->getSceneManager()->destroyCamera(_camera);

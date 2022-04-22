@@ -4,7 +4,6 @@
 #include <Ogre.h>
 #include "Transform.h"
 #include <math.h>
-#include "Scene.h"
 
 
 const float M_PI = 3.1416;

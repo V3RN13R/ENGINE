@@ -133,6 +133,7 @@
     <ClInclude Include="..\..\Src\Common\TEST-Componente1.h" />
     <ClInclude Include="..\..\Src\Common\TEST-Componente2.h" />
     <ClInclude Include="..\..\Src\Common\Transform.h" />
+    <ClInclude Include="..\..\Src\Common\Utils.h" />
     <ClInclude Include="..\..\Src\Common\Vector3D.h" />
   </ItemGroup>
   <ItemGroup>

@@ -7,7 +7,6 @@
 #include <iostream>
 #include "Component.h"
 #include "ecs.h"
-
 //class Manager;
 enum class MessageType;
 namespace Ogre {

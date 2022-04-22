@@ -43,5 +43,6 @@
     <ClInclude Include="..\..\Src\Common\TEST-Componente2.h" />
     <ClInclude Include="..\..\Src\Common\Transform.h" />
     <ClInclude Include="..\..\Src\Common\Vector3D.h" />
+    <ClInclude Include="..\..\Src\Common\Utils.h" />
   </ItemGroup>
 </Project>
