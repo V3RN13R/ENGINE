@@ -34,11 +34,11 @@ private:
 
 	RenderMain* _ogre = nullptr;
 	PhysicsManager* _physics = nullptr;
-	std::unique_ptr<Manager> _mngr;
+	std::unique_ptr<Scene> _scene;
 	Transform* tr = nullptr;
 	Transform* tr2 = nullptr;
 
 	std::string _assetsPath = "";
 
-	Scene* _scene;
+	//Scene* _scene;
 };

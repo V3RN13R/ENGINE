@@ -8,6 +8,7 @@
 #include <math.h>
 
 
+
 const float M_PI = 3.1416;
 const float toRadians = M_PI / 180.0;
 const float toAngles = 180.0 / M_PI;
@@ -38,8 +39,8 @@ void Camera::update() {
 		/*Vector3D nuevaPos = Vector3D(_monkePos->getX() + _monkeRadio * std::cos( _monkeAngle*toRadians), _monkePos->getY() + 0 , _monkePos->getZ() + _monkeRadio * std::sin(_monkeAngle*toRadians));
 		camTr->setPosition(nuevaPos)*/;
 		//camtTr para mover al nodo padre y mNodeCamera para mover la posición del nodo hijo que es donde se encuentra la cámara
-		camTr->setPosition(Vector3D(_monkePos->getX(), _monkePos->getY() + 0/*500*/, _monkePos->getZ()));
-		mNodeCamera->lookAt(Ogre::Vector3(_monkePos->getX(), _monkePos->getY(), _monkePos->getZ()), Ogre::Node::TS_WORLD, Ogre::Vector3::NEGATIVE_UNIT_Z);
+		/*camTr->setPosition(Vector3D(_monkePos->getX(), _monkePos->getY() + 500, _monkePos->getZ()));
+		mNodeCamera->lookAt(Ogre::Vector3(_monkePos->getX(), _monkePos->getY(), _monkePos->getZ()), Ogre::Node::TS_WORLD, Ogre::Vector3::NEGATIVE_UNIT_Z);*/
 	}
 };
 

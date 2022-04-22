@@ -1,5 +1,4 @@
 #include "Entity.h"
-#include "Manager.h"
 
 class Monkey : public Entity {
 private:

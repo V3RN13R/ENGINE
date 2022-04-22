@@ -45,15 +45,17 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	_ogre = RenderMain::getInstance();
 	_ogre->init();
 
-	_mngr.reset(new Manager());
+	FactoryManager::setUpInstance();
+	setupFactories();
 
+	_scene.reset(new Scene("prueba.lua", "prueba"));
+	_scene->start();
 	////Resources
 	readAssetsPath();
 	ResourceManager::init(_assetsPath);
 	ResourceManager::getInstance()->setUp(); //Carga de recursos
 
-	FactoryManager::setUpInstance();
-	setupFactories();
+	
 	//Physics
 	if (!PhysicsManager::setUpInstance()) {
 		throw std::exception("ERROR: Couldn't load PhysicsManager\n");
@@ -62,8 +64,8 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 
 	PruebaBullet::mainPhys();
 
-	_scene = new Scene("prueba.lua", "prueba");
-	//_scene->onEnable();
+	
+	_scene->onEnable();
 
 	//Entity* light = _mngr->addEntity("Light");
 	//Light* l = light->addComponent<Light>();
@@ -77,7 +79,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	camera->start();
 	//t->setPosition({ 0, 500, 10 });
 	camera->setBckgColor({ 1,0,0 });
-	_mngr->addEntity(camera);
+	_scene->addEntity(camera);
 	camera->addListener(camera);
 
 
@@ -90,43 +92,43 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	//mr->start("Sphere");
 	//mr->onEnable();
 
-	Monkey* mnk = new Monkey("MONKEY");
-	MeshRenderer* mrMnk = mnk->addComponent<MeshRenderer>(mnk);
-	Rigidbody* rbMnk = mnk->addComponent<Rigidbody>(mnk);
-	Transform* trMnk = mnk->addComponent<Transform>();
-	trMnk->setPosition(Vector3D(0, 200, 10));
+	//Monkey* mnk = new Monkey("MONKEY");
+	////MeshRenderer* mrMnk = mnk->addComponent<MeshRenderer>(mnk);
+	//Rigidbody* rbMnk = mnk->addComponent<Rigidbody>(mnk);
+	//Transform* trMnk = mnk->addComponent<Transform>();
+	//trMnk->setPosition(Vector3D(0, 300, 10));
 	//trMnk->setScale(Vector3D(100, 100, 100));
-	rbMnk->addSphereRigidbody(1, 50, { 0,200,10 });//falta obtener radio mediante la mesh
-	mrMnk->start("Esfera", "Sphere");
-	mrMnk->onEnable();
-	_mngr->addEntity(mnk);
-	mnk->addListener(mnk);
-	mnk->setCamTrOnMonkey(trCam);
+	//rbMnk->addSphereRigidbody(1, 50, { 0,300,10 });//falta obtener radio mediante la mesh
+	////mrMnk->start("Sphere");
+	////mrMnk->onEnable();
+	//_mngr->addEntity(mnk);
+	//mnk->addListener(mnk);
+	//mnk->setCamTrOnMonkey(trCam);
 	
 	//tr1->setRotation(Vector3D(270, 0, 0));
 
 
-	Entity* ent2 = _mngr->addEntity("Prueba2");
-	MeshRenderer* mr2 = ent2->addComponent<MeshRenderer>(ent2);
-	tr2 = ent2->addComponent<Transform>();
-	Rigidbody* rb2 = ent2->addComponent<Rigidbody>(ent2);
-	tr2->setPosition(Vector3D(0, -2, 0));
-	rb2->addBoxRigidbody(0, { 0,-2,0 }, { 0.0001,1000,1000  });//falta obtener size mediante la mesh
-	mr2->start("plano","Plane");
-	mr2->onEnable();
-	tr2->rotate(-90, 0);
+	//Entity* ent2 = _mngr->addEntity("Prueba2");
+	//MeshRenderer* mr2 = ent2->addComponent<MeshRenderer>(ent2);
+	//tr2 = ent2->addComponent<Transform>();
+	////Rigidbody* rb2 = ent2->addComponent<Rigidbody>(ent2);
+	//tr2->setPosition(Vector3D(0, -2, 0));
+	//rb2->addBoxRigidbody(0, { 0,-2,0 }, { 1000,10,1000 });//falta obtener size mediante la mesh
+	//mr2->start("plano","Plane");
+	//mr2->onEnable();
+	//tr2->rotate(-90, 0);
 
 	//Entity* eprueba = _mngr->addEntity("Cubop");
 	//Transform* tprueba = ent2->addComponent<transo>();
 	//MeshRenderer* mprueba = ent2->addComponent<MeshRenderer>();
 
 	//MeshRenderer* mr1 = mnk->addComponent<MeshRenderer>();
-	//mr1->start("mono","piedra.mesh");
+	//mr1->start("mono", "piedra.mesh");
 	//mr1->setMaterial("Material/piedra");
 	//mr1->onEnable();
 
-	//Hay qeu decirle ala cámar la posición de monke para que le siga
-	camera->setMonkePos(&trMnk->getPos());
+	////Hay qeu decirle ala cámar la posición de monke para que le siga
+	//camera->setMonkePos(&trMnk->getPos());
 
 	//UIManager::init();
 	//UIManager::instance()->setup(RenderMain::getInstance()->getRenderWindow());
@@ -135,12 +137,12 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 bool VernierEngine::processFrame()
 {
 	//std::cout << "updating...\n";
-	if (/*_ogre->pollEvents()*/  _mngr->keyPressed()) {
+	if (/*_ogre->pollEvents()*/  _scene->keyPressed()) {
 		//InputManager::getInstance()->Update();
 		//PhysicsManager::getInstance()->Update();
 		_physics->stepPhysics();
-		_mngr->fixedUpdate();
-		_mngr->update();
+		_scene->fixedUpdate();
+		_scene->update();
 		//tr->setPosition(Vector3D(tr->getPos().getX(), tr->getPos().getY() - 0.0001, tr->getPos().getZ()));
 		//tr2->rotate(0.01, 2);
 		_ogre->updateWindow();
@@ -154,8 +156,8 @@ VernierEngine::~VernierEngine()
 {
 
 
-	delete _mngr.get();
-	_mngr.release();
+	delete _scene.get();
+	_scene.release();
 
 	PhysicsManager::deleteInstance();
 	_physics = nullptr;

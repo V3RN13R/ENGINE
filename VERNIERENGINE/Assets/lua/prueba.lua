@@ -7,8 +7,8 @@ entidad1={
     Components = {"Transform","MeshRenderer"},
 
     Transform = {
-        Position = "0,100,0",
-        Scale = "1,1,1",
+        Position = "-300,0,0",
+        Scale = "10,10,10",
         Rotation = "0,0,0"
     },
 	

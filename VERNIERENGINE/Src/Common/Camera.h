@@ -3,7 +3,8 @@
 #include "Component.h"
 #include <string>
 #include "Vector3D.h"
-#include "Manager.h"
+#include "Scene.h"
+
 
 namespace Ogre {
 	class Root;

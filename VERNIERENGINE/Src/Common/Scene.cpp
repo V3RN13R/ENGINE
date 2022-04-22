@@ -1,5 +1,7 @@
 #include "Scene.h"
 #include "LuaManager.h"
+#include <algorithm>
+#include <SDL.h>
 
 
 Scene::Scene(const std::string& file, const std::string& name) {
@@ -62,7 +64,7 @@ Entity* Scene::createEntity(const std::string& entityName, LuaRef entInfo)
 
 	std::cout << "-------------------------------- Creando entidad " << entityName << " --------------------------------\n";
 
-	if (entInfo == NULL || entInfo.isNil() ) { //|| entInfo.isRefNil()
+	if (entInfo == NULL || entInfo.isNil()) { //|| entInfo.isRefNil()
 		std::cout << "ERROR: No se encontro la informacion de la entidad\n";
 		return nullptr;
 	}
@@ -76,7 +78,7 @@ Entity* Scene::createEntity(const std::string& entityName, LuaRef entInfo)
 	{
 		//carga los componentes
 		enableExceptions(components[i]);
-				
+
 		_entity->addComponent(_fmanager->getInstance()->findAndCreate(components[i], entInfo.rawget(components[i])));
 	}
 
@@ -157,7 +159,7 @@ Scene::~Scene()
 void Scene::addEntity(Entity* e)
 {
 	if (e) {
-		_entities.push_back(e);		
+		_entities.push_back(e);
 	}
 }
 
@@ -179,6 +181,7 @@ void Scene::onEnable() {
 }
 
 //Ver si hace falta el render()
+
 
 void Scene::fixedUpdate()
 {
@@ -238,4 +241,71 @@ void Scene::setSceneActive(bool set)
 {
 	for (Entity* qEnt : _entities)
 		qEnt->setActive(set);
+}
+
+bool Scene::keyPressed() {
+	SDL_Event event;
+	while (SDL_PollEvent(&event)) {
+		if (event.type == SDL_QUIT) {
+			return false;
+		}
+
+
+
+		if (event.type == SDL_KEYDOWN) {
+			//se mira qué tecla se ha preisonado
+			if (event.key.keysym.sym == SDLK_ESCAPE) {
+				return false;
+			}
+
+
+
+			MessageType tecla = MessageType::DEFAULT;
+			if (event.key.keysym.sym == SDLK_w) {
+				tecla = MessageType::W;
+			}
+			else if (event.key.keysym.sym == SDLK_a) {
+				tecla = MessageType::A;
+			}
+			else if (event.key.keysym.sym == SDLK_s) {
+				tecla = MessageType::S;
+			}
+			else if (event.key.keysym.sym == SDLK_d) {
+				tecla = MessageType::D;
+			}
+			else if (event.key.keysym.sym == SDLK_q) {
+				tecla = MessageType::PULSA_Q;
+			}
+			else if (event.key.keysym.sym == SDLK_e) {
+				tecla = MessageType::PULSA_E;
+			}
+
+
+			//si es una tecla válida se envia el mensaje correspondiente
+			if (tecla != MessageType::DEFAULT) {
+				for (Entity* e : Entity::_listeners) {
+					e->receiveEvent(tecla, e);
+				}
+			}
+		}
+	}
+	return true;
+}
+
+void Scene::refresh()
+{	// remove dead entities from the list of entities
+	_entities.erase( //
+	std::remove_if( //
+		_entities.begin(), //
+		_entities.end(), //
+		[](const Entity* e) { //
+			if (e->isActive()) {
+				return false;
+			}
+			else {
+				delete e;
+				return true;
+			}
+		}), //
+	_entities.end());
 }

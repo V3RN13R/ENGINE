@@ -30,8 +30,10 @@ void Entity::start()
 {
 	if (_active && !_destroy)
 		for (Component* c : _components)
-			if (c->isEnable())
+			if (c->isEnable()) {
+				c->setEntity(this);
 				c->start();
+			}
 };
 
 void Entity::onEnable()

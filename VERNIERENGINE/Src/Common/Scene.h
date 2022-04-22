@@ -10,8 +10,10 @@ namespace luabridge {
 	class LuaRef;
 }
 
-class Scene
-{
+enum class MessageType { DEFAULT, MOVIMIENTO, MOVERW, MOVERA, MOVERS, MOVERD, W, A, S, D, PULSA_Q, PULSA_E };
+
+
+class Scene {
 private:
 	std::vector<Entity*> _entities;
 
@@ -38,6 +40,10 @@ public:
 	void fixedUpdate();
 
 	void update();
+
+	bool keyPressed();
+
+	void refresh();
 
 	/// <summary>
 	/// Busca y devuelve el primer objeto en la escena con ese nombre
