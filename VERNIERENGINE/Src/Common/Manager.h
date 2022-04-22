@@ -2,7 +2,7 @@
 
 #pragma once
 
-enum class MessageType { DEFAULT ,MOVIMIENTO, MOVERW, MOVERA, MOVERS, MOVERD, W, A, S, D };
+enum class MessageType { DEFAULT ,MOVIMIENTO, MOVERW, MOVERA, MOVERS, MOVERD, W, A, S, D, PULSA_Q, PULSA_E };
 
 #include <initializer_list>
 #include <vector>
@@ -19,7 +19,7 @@ public:
 
 	// entities
 	Entity* addEntity(std::string name) {
-		Entity* e = new Entity(this,name);
+		Entity* e = new Entity(name);
 		if (e != nullptr) {
 			e->resetGroups();
 			entities_.emplace_back(e);

@@ -211,6 +211,8 @@ int btPersistentManifold::getCacheEntry(const btManifoldPoint& newPoint) const
 
 int btPersistentManifold::addManifoldPoint(const btManifoldPoint& newPoint, bool isPredictive)
 {
+	// manifoldPoint.m_appliedImpulse = 0.f;
+
 	if (!isPredictive)
 	{
 		btAssert(validContactDistance(newPoint));

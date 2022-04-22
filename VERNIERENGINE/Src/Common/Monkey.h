@@ -2,8 +2,12 @@
 #include "Manager.h"
 
 class Monkey : public Entity {
+private:
+	float vel = 10;
+	Transform* transformCamara = nullptr;//Es necesario para saber la orientación de la cámara, para que si se le da a la w avance en esa dirección
 public:
-	Monkey(Manager* mngr, std::string entityName) : Entity(mngr, entityName) {}
+	void setCamTrOnMonkey(Transform* trCam) { transformCamara = trCam; };
+	Monkey(std::string entityName) : Entity(entityName) {}
 	~Monkey(){}
 	virtual void receiveEvent(MessageType msg, Entity* e);
 };

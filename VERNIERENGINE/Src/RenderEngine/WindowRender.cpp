@@ -14,6 +14,8 @@ WindowRender::WindowRender(std::string name) :_wName(name)
 	setUpOgreRoot();
 }
 
+#include "OgreDefaultDebugDrawer.h"
+
 void WindowRender::setUpOgreRoot()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);

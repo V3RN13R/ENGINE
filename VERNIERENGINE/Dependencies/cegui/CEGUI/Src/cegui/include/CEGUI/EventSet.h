@@ -33,6 +33,7 @@
 #include "CEGUI/String.h"
 #include "CEGUI/Event.h"
 #include "CEGUI/IteratorBase.h"
+#include <sstream>
 #include <map>
 
 #if defined (_MSC_VER)

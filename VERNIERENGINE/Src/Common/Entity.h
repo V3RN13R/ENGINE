@@ -8,20 +8,22 @@
 #include "Component.h"
 #include "ecs.h"
 
-class Manager;
+//class Manager;
 enum class MessageType;
 namespace Ogre {
 	class SceneNode;
 }
 class Entity {
-	friend Manager;
+	//friend Manager;
 
 public:
 
-	Entity(Manager* mngr, std::string entityName);
-
+	Entity(std::string entityName);
 
 	virtual ~Entity();
+
+	void start();
+	void onEnable();
 
 	template<typename T, typename ...Ts>
 	T* addComponent(Ts &&... args) {
@@ -38,6 +40,10 @@ public:
 		_components.emplace_back(c);
 
 		return c;
+	}
+
+	void addComponent(Component* c) {
+		_components.emplace_back(c);
 	}
 
 	template<typename T>
@@ -69,13 +75,13 @@ public:
 		return _cmpArray[id] != nullptr;
 	}
 
-	inline void setMngr(Manager* mngr) {
-		_mngr = mngr;
-	}
+	//inline void setMngr(Manager* mngr) {
+	//	_mngr = mngr;
+	//}
 
-	inline Manager* getMngr() {
-		return _mngr;
-	}
+	//inline Manager* getMngr() {
+	//	return _mngr;
+	//}
 
 	inline bool isActive() const {
 		return _active;
@@ -100,7 +106,7 @@ public:
 	}
 
 
-	void update() {
+	virtual void update() {
 		std::size_t n = _components.size();
 		for (auto i = 0u; i < n; i++) {
 			_components[i]->update();
@@ -138,19 +144,21 @@ public:
 
 	static void addListener(Entity* entity) { _listeners.emplace_back(entity); }
 
+	void destroy() { _destroy = true; }
 
-
-
+	bool getDestroy() { return _destroy; }
 
 protected:
 	Ogre::SceneNode* _oNode;
+
+
 private:
 
 	bool _active;
-	Manager* _mngr;
+	bool _destroy = false;
+	//Manager* _mngr;
 	std::vector<Component*> _components;
 	std::array<Component*, ecs::maxComponent> _cmpArray;
 	std::bitset<ecs::maxGroup> _groups;
 	std::string _entityName;
 };
-

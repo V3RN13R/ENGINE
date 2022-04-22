@@ -20,7 +20,11 @@
 #include "ResourceManager.h"
 #include "Entity.h"
 #include "Monkey.h"
+#include <Windows.h>
+#include "UIManager.h"
 
+#include "Scene.h"
+#include "InitFactories.cpp"
 
 //LUA
 extern "C"
@@ -49,6 +53,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	ResourceManager::getInstance()->setUp(); //Carga de recursos
 
 	FactoryManager::setUpInstance();
+	setupFactories();
 	//Physics
 	if (!PhysicsManager::setUpInstance()) {
 		throw std::exception("ERROR: Couldn't load PhysicsManager\n");
@@ -57,6 +62,8 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 
 	PruebaBullet::mainPhys();
 
+	_scene = new Scene("prueba.lua", "prueba");
+	//_scene->onEnable();
 
 	//Entity* light = _mngr->addEntity("Light");
 	//Light* l = light->addComponent<Light>();
@@ -65,12 +72,13 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	////l->start();
 	//tLight->setPosition({ 0, 500, 10 });
 
-	Entity* camera = _mngr->addEntity("Camera");
-	Camera* c = camera->addComponent<Camera>();
-	Transform* t = camera->addComponent<Transform>();
-	c->start();
-	t->setPosition({ 0, 500, 10 });
-	c->setBckgColor({ 0.8,0.1,0.9 });
+	Camera* camera = new Camera("Camera");
+	Transform* trCam = camera->addComponent<Transform>();
+	camera->start();
+	//t->setPosition({ 0, 500, 10 });
+	camera->setBckgColor({ 1,0,0 });
+	_mngr->addEntity(camera);
+	camera->addListener(camera);
 
 
 	//Entity* ent = _mngr->addEntity("Prueba");
@@ -82,13 +90,29 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	//mr->start("Sphere");
 	//mr->onEnable();
 
+	Monkey* mnk = new Monkey("MONKEY");
+	MeshRenderer* mrMnk = mnk->addComponent<MeshRenderer>(mnk);
+	Rigidbody* rbMnk = mnk->addComponent<Rigidbody>(mnk);
+	Transform* trMnk = mnk->addComponent<Transform>();
+	trMnk->setPosition(Vector3D(0, 200, 10));
+	//trMnk->setScale(Vector3D(100, 100, 100));
+	rbMnk->addSphereRigidbody(1, 50, { 0,200,10 });//falta obtener radio mediante la mesh
+	mrMnk->start("Esfera", "Sphere");
+	mrMnk->onEnable();
+	_mngr->addEntity(mnk);
+	mnk->addListener(mnk);
+	mnk->setCamTrOnMonkey(trCam);
+	
+	//tr1->setRotation(Vector3D(270, 0, 0));
+
+
 	Entity* ent2 = _mngr->addEntity("Prueba2");
 	MeshRenderer* mr2 = ent2->addComponent<MeshRenderer>(ent2);
 	tr2 = ent2->addComponent<Transform>();
 	Rigidbody* rb2 = ent2->addComponent<Rigidbody>(ent2);
 	tr2->setPosition(Vector3D(0, -2, 0));
-	rb2->addBoxRigidbody(0, { 0,-2,0 }, { 1000,10,1000 });//falta obtener size mediante la mesh
-	mr2->start("Plane");
+	rb2->addBoxRigidbody(0, { 0,-2,0 }, { 0.0001,1000,1000  });//falta obtener size mediante la mesh
+	mr2->start("plano","Plane");
 	mr2->onEnable();
 	tr2->setScale(Vector3D(25, 25, 25));
 	tr2->rotate(-90, 0);
@@ -122,6 +146,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	mrArb->start("tree2.mesh");
 	mrArb->setMaterial("Practica1/naranja");
 	mrArb->onEnable();
+	camera->setMonkePos(&trMnk->getPos());
 }
 
 bool VernierEngine::processFrame()
@@ -262,8 +287,42 @@ int main()
 
 	//lua_getglobal(L, "CreatePlane");
 
+	lua_State* L;
+
+	// initialize Lua interpreter
+	L = luaL_newstate();
+
+	// load Lua base libraries (print / math / etc)
+	luaL_openlibs(L);
+	luaL_dofile(L, "Data.lua");
+	lua_getglobal(L, "DLLName");
+	lua_call(L, 0, 1);
+	std::string dllName = lua_tostring(L, -1);
+	dllName += ".dll";
+	std::wstring dllNameW = std::wstring(dllName.begin(), dllName.end());
+	HINSTANCE hDLL = LoadLibrary(dllNameW.c_str());
+	lua_pop(L, 1);
+	if (hDLL == NULL)
+		std::cout << "Failed Load DLL\n";
+	else {
+		std::cout << "LoadDll\n";
+		typedef int (*funcFirstTry) ();
+		lua_getglobal(L, "FunctionName");
+		lua_call(L, 0, 1);
+		funcFirstTry ftry = (funcFirstTry)GetProcAddress(hDLL, lua_tostring(L, -1));
+		lua_pop(L, 1);
+		if (!ftry) {
+			std::cout << "ERROR\n";
+		}
+		else
+			ftry();
+		FreeLibrary(hDLL);
+	}
+	lua_getglobal(L, "WindowName");
+	lua_call(L, 0, 1);
 	bool stay = true;
-	VernierEngine::setupInstance("WildLessss");
+	VernierEngine::setupInstance(lua_tostring(L, -1));
+	lua_close(L);
 	do {
 		stay = VernierEngine::getInstance()->processFrame();
 	} while (stay);

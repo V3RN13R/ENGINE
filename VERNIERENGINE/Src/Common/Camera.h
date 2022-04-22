@@ -3,6 +3,8 @@
 #include "Component.h"
 #include <string>
 #include "Vector3D.h"
+#include "Manager.h"
+
 namespace Ogre {
 	class Root;
 	class SceneManager;
@@ -11,8 +13,9 @@ namespace Ogre {
 	class Mesh;
 	class Camera;
 	class Viewport;
+	
 }
-class Camera : public Component {
+class Camera : public Entity {
 private:
 	Ogre::Camera* _camera=nullptr;
 	Ogre::SceneNode* mNodeCamera;
@@ -22,15 +25,24 @@ private:
 	float _aspectRatio=1;
 	Vector3D _bckgColor = new Vector3D(0, 0, 1);
 	Ogre::Viewport* _vp;
+
+	int _monkeAngle = 0;
+	float _monkeRadio = 500;
+	Vector3D* _monkePos = nullptr;
+	
+	
 public:
-	Camera() {};
+	Camera(std::string entityName) : Entity(entityName) {};
 	virtual ~Camera();
+	virtual void update();
 	void setNearClipDist(float n) { _nearClipDist = n; }
 	void setFarClipDist(float n) { _farClipDist = n; }
 	void setAspectRatio(float n) { _aspectRatio = n; }
 	void setLooking(Vector3D look) { _looking = look; }
 	void setBckgColor(Vector3D color);
+	void setMonkePos(Vector3D* pos);
 	void start();
 	//virtual void sendEvent(MessageType msg){}
-	//virtual void receiveEvent(MessageType msg){}
+	virtual void receiveEvent(MessageType msg, Entity* e);
+
 };

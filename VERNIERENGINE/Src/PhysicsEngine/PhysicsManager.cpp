@@ -7,6 +7,8 @@
 #include "Vector3D.h"
 #include <iostream>
 
+
+
 PhysicsManager* PhysicsManager::_instance = nullptr;
 PhysicsManager* PhysicsManager::getInstance()
 {
@@ -123,17 +125,15 @@ void PhysicsManager::init(const Vector3D gravity)
 
 	broadPhaseInterface = new btDbvtBroadphase();
 	constraintSolver = new btSequentialImpulseConstraintSolver();
-
+	
 	dynamicsWorld = new btDiscreteDynamicsWorld(collDispatcher, broadPhaseInterface, constraintSolver, collConfig);
 
 	dynamicsWorld->setGravity(btVector3(gravity.getX(), gravity.getY(), gravity.getZ()));
-	/*
-	#ifdef _DEBUG
-		mDebugDrawer_ = new OgreDebugDrawer(OgreContext::getInstance()->getSceneManager());
-		mDebugDrawer_->setDebugMode(btIDebugDraw::DBG_DrawWireframe);
-		dynamicsWorld->setDebugDrawer(mDebugDrawer_);
-	#endif // DEBUG
-	*/
+
+	/*mDebugDrawer_ = new OgreDebugDrawer(OgreContext::getInstance()->getSceneManager());
+	mDebugDrawer_->setDebugMode(btIDebugDraw::DBG_DrawWireframe);
+	dynamicsWorld->setDebugDrawer(mDebugDrawer_);*/
+
 
 }
 
@@ -155,6 +155,8 @@ btRigidBody* PhysicsManager::addSphereRigidbody(float mass, float radius, btVect
 
 
 	btRigidBody* rb = new btRigidBody(mass, new btDefaultMotionState(startTransform), sphereShape, btVector3(0, 0, 0));
+	rb->setCcdMotionThreshold(1e-7);
+	rb->setCcdSweptSphereRadius(0.50);
 	//rb->setDamping(0, 0);
 	dynamicsWorld->addRigidBody(rb);
 	return rb;
