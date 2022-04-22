@@ -118,24 +118,24 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	tr2->rotate(-90, 0);
 	mr2->setMaterial("Practica1/marron");
 
-	Monkey* mnk = new Monkey(nullptr, "MONKEY");
-	//MeshRenderer* mrMnk = mnk->addComponent<MeshRenderer>(mnk);
-	Rigidbody* rbMnk = mnk->addComponent<Rigidbody>(mnk);
-	Transform* trMnk = mnk->addComponent<Transform>();
-	trMnk->setPosition(Vector3D(0, 300, 10));
-	trMnk->setScale(Vector3D(100, 100, 100));
-	rbMnk->addSphereRigidbody(1, 50, { 0,300,10 });//falta obtener radio mediante la mesh
-	//mrMnk->start("Sphere");
-	//mrMnk->onEnable();
-	_mngr->addEntity(mnk);
-	mnk->addListener(mnk);
+	//Monkey* mnk = new Monkey(nullptr, "MONKEY");
+	////MeshRenderer* mrMnk = mnk->addComponent<MeshRenderer>(mnk);
+	//Rigidbody* rbMnk = mnk->addComponent<Rigidbody>(mnk);
+	//Transform* trMnk = mnk->addComponent<Transform>();
+	//trMnk->setPosition(Vector3D(0, 300, 10));
+	//trMnk->setScale(Vector3D(100, 100, 100));
+	//rbMnk->addSphereRigidbody(1, 50, { 0,300,10 });//falta obtener radio mediante la mesh
+	////mrMnk->start("Sphere");
+	////mrMnk->onEnable();
+	//_mngr->addEntity(mnk);
+	//mnk->addListener(mnk);
 
 	//tr1->setRotation(Vector3D(270, 0, 0));
 
-	MeshRenderer* mr1 = mnk->addComponent<MeshRenderer>();
-	mr1->start("piedra.mesh");
+	/*MeshRenderer* mr1 = mnk->addComponent<MeshRenderer>();
+	mr1->start("piedra", "piedra.mesh");
 	mr1->setMaterial("Material/piedra");
-	mr1->onEnable();
+	mr1->onEnable();*/
 
 	Entity* arbol = _mngr->addEntity("ARBOL");
 	Transform* trArb = arbol->addComponent<Transform>();
@@ -143,7 +143,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	trArb->setScale({ 100, 650, 100 });
 	trArb->setRotation({ 0, 0, 0 });
 	MeshRenderer* mrArb = arbol->addComponent<MeshRenderer>();
-	mrArb->start("tree2.mesh");
+	mrArb->start("arbol2", "tree2.mesh");
 	mrArb->setMaterial("Practica1/naranja");
 	mrArb->onEnable();
 	camera->setMonkePos(&trMnk->getPos());
