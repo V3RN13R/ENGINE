@@ -94,9 +94,9 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	MeshRenderer* mrMnk = mnk->addComponent<MeshRenderer>(mnk);
 	Rigidbody* rbMnk = mnk->addComponent<Rigidbody>(mnk);
 	Transform* trMnk = mnk->addComponent<Transform>();
-	trMnk->setPosition(Vector3D(0, 300, 10));
+	trMnk->setPosition(Vector3D(0, 200, 10));
 	//trMnk->setScale(Vector3D(100, 100, 100));
-	rbMnk->addSphereRigidbody(1, 50, { 0,300,10 });//falta obtener radio mediante la mesh
+	rbMnk->addSphereRigidbody(1, 50, { 0,200,10 });//falta obtener radio mediante la mesh
 	mrMnk->start("Esfera", "Sphere");
 	mrMnk->onEnable();
 	_mngr->addEntity(mnk);

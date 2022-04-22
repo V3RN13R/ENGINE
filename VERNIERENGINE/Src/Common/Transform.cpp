@@ -46,7 +46,7 @@ void Transform::rotate(float degree, uint8_t axis)
 		Ogre::Vector3(_rotation.getX() * toRad, _rotation.getY() * toRad, _rotation.getZ() * toRad);
 		Ogre::Quaternion qa;
 		qa.FromRotationMatrix(fromEulerAngleToRotationMatrix({ _rotation.getX() * toRad, _rotation.getY() * toRad, _rotation.getZ() * toRad }));
-		rb->recalculateAxis(_position, qa.x, qa.y, qa.z, qa.w);
+		rb->resetTransform(_position, qa.x, qa.y, qa.z, qa.w);
 	}
 }
 
@@ -80,6 +80,8 @@ Ogre::Matrix3 Transform::fromEulerAngleToRotationMatrix(Vector3D vec)
 void Transform::update() //Falta bullet
 {
 	entity_->getNode()->setPosition(Ogre::Vector3(_position.getX(), _position.getY() , _position.getZ()));
+	//setRotation(Vector3D(entity_->getNode()->getOrientation().x, entity_->getNode()->getOrientation().y, entity_->getNode()->getOrientation().z));
+
 }
 
 void Transform::setScale(Vector3D vec) {
@@ -92,5 +94,5 @@ void Transform::fixedUpdate()
 
 	if (entity_->hasComponent<Rigidbody>()) {
 		setPosition(entity_->getComponent<Rigidbody>()->getPosition());
-}
+	}
 }
