@@ -4,7 +4,7 @@ prueba = {
 
 entidad1={
     Active = true,
-    Components = {"Transform","MeshRenderer"},
+    Components = {"Transform","MeshRenderer", "Rigidbody"},
 
     Transform = {
         Position = "-300,0,0",
@@ -13,7 +13,12 @@ entidad1={
     },
 	
 	MeshRenderer = {
-        Mesh = "Cube",
-		EntityName = "entidad1"	
+        Mesh = "Cube"
+    },
+    Rigidbody = {
+        Type = "Sphere",
+        Mass = "1",
+        Radius = "10",
+        Position = "0,0,0"
     }
 }

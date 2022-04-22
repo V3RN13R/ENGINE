@@ -49,8 +49,6 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	FactoryManager::setUpInstance();
 	setupFactories();
 
-	_scene.reset(new Scene("prueba.lua", "prueba"));
-	_scene->start();
 	////Resources
 	readAssetsPath();
 	ResourceManager::init(_assetsPath);
@@ -65,6 +63,8 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 
 	PruebaBullet::mainPhys();
 
+	_scene.reset(new Scene("prueba.lua", "prueba"));
+	_scene->start();
 	
 	_scene->onEnable();
 

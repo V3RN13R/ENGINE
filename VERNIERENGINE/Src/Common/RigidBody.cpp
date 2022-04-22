@@ -1,8 +1,26 @@
 #include "RigidBody.h"
 #include "Entity.h"
 #include "Transform.h"
+#include "Component.h"
 #include "PhysicsManager.h"
 #include <btBulletDynamicsCommon.h>
+
+Rigidbody::Rigidbody(std::map<std::string, std::string> args) : _position(args["Position"]) , _type(args["Type"])
+{
+	_mass = std::stof(args["Mass"]);
+	if (_type == "Sphere") {
+		_radius = std::stof(args["Radius"]);
+		addSphereRigidbody(_mass, _radius, _position);
+	}
+	else if (_type == "Box")
+	{
+		_scale = args["Scale"];
+		addBoxRigidbody(_mass, _position, _scale);
+	}
+	else {
+		throw "ERROR: No se reconoce el tipo del rigid body\n";
+	}
+}
 
 Rigidbody::~Rigidbody()
 {

@@ -2,8 +2,7 @@
 #include "FactoryManager.h"
 #include "MeshRenderer.h"
 #include "Transform.h"
-//#include "RigidBody.h"
-#include <map>
+#include "RigidBody.h"
 class TransformFactory : public Factory
 {
 public:
@@ -22,14 +21,14 @@ public:
 	};
 };
 
-//class RigidBodyFactory : public Factory
-//{
-//public:
-//	Component* createComponent(std::map<std::string, std::string> args) override
-//	{
-//		return new Rigidbody(args);
-//	};
-//};
+class RigidBodyFactory : public Factory
+{
+public:
+	Component* createComponent(std::map<std::string, std::string> args) override
+	{
+		return new Rigidbody(args);
+	};
+};
 
 void setupFactories()
 {
@@ -37,5 +36,5 @@ void setupFactories()
 
 	_fM->addFactory("Transform", new TransformFactory());
 	_fM->addFactory("MeshRenderer", new MeshRendererFactory());
-	//_fM->addFactory("Rigidbody", new RigidBodyFactory());
+	_fM->addFactory("Rigidbody", new RigidBodyFactory());
 }
