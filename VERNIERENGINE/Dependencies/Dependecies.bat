@@ -10,5 +10,3 @@ cd ..\Lua\
 call LuaBuild.bat
 cd ..\..\Fmod\
 call build.bat
-cd ..\cegui\
-call CeguiBuild.bat

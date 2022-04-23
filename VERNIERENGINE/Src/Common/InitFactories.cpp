@@ -3,6 +3,8 @@
 #include "MeshRenderer.h"
 #include "Transform.h"
 #include "RigidBody.h"
+#include "Shoot.h"
+
 class TransformFactory : public Factory
 {
 public:
@@ -30,6 +32,15 @@ public:
 	};
 };
 
+class ShootFactory : public Factory
+{
+public:
+	Component* createComponent(std::map<std::string, std::string> args) override
+	{
+		return new Shoot(args);
+	};
+};
+
 void setupFactories()
 {
 	FactoryManager* _fM = FactoryManager::getInstance();
@@ -37,4 +48,5 @@ void setupFactories()
 	_fM->addFactory("Transform", new TransformFactory());
 	_fM->addFactory("MeshRenderer", new MeshRendererFactory());
 	_fM->addFactory("Rigidbody", new RigidBodyFactory());
+	_fM->addFactory("Shoot", new ShootFactory());
 }

@@ -71,6 +71,9 @@
     <ClCompile Include="..\..\Src\Common\Image.cpp">
       <Filter>components</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\Common\Shoot.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Common\Camera.h" />
@@ -153,6 +156,9 @@
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Common\Image.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\Shoot.h">
       <Filter>components</Filter>
     </ClInclude>
   </ItemGroup>
