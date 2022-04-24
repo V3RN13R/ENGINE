@@ -4,7 +4,7 @@
 #include <SDL.h>
 //#include "Manager.h"
 
-std::vector<Entity*> Entity::_listeners = std::vector<Entity*>(0, nullptr);
+//std::vector<Entity*> Entity::_listeners = std::vector<Entity*>(0, nullptr);
 
 
 Entity::Entity(std::string entityName, Scene* scene) : _active(true), //

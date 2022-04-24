@@ -44,6 +44,8 @@ public:
 	void update();
 
 
+	const std::vector<Entity*>* getEntities() { return &_entities; }
+
 	void refresh();
 
 	/// <summary>

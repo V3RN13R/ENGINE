@@ -6,6 +6,8 @@
 #include <iostream>
 
 class Component;
+enum class MessageType;
+
 
 class Transform : public Component {
 	enum Axis :uint8_t { x, y, z };
@@ -71,7 +73,7 @@ public:
 	void update() override;
 	void fixedUpdate() override;
 	//virtual void sendEvent(MessageType msg) {}
-	//virtual void receiveEvent(MessageType msg) {}
+	virtual void receiveEvent(MessageType msg, Entity* e);
 private:
 	Vector3D _position;
 	Vector3D _glbposition;

@@ -73,6 +73,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 
 
 	_IM = new InputManager();
+	_IM->setEntities(_scene->getEntities());
 	//Entity* light = _mngr->addEntity("Light");
 	//Light* l = light->addComponent<Light>();
 	//Transform* tLight = light->addComponent<Transform>();
@@ -86,7 +87,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	//t->setPosition({ 0, 500, 10 });
 	camera->setBckgColor({ 1,0,0 });
 	_scene->addEntity(camera);
-	camera->addListener(camera);
+	//camera->addListener(camera);
 	
 	// Accedemos a la ventana y creamos el renderer.
 	// SDL_Window* _sdlw = WindowRender::getSDLWindow();

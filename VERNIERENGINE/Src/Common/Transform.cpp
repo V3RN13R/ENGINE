@@ -2,6 +2,8 @@
 #include <Ogre.h>
 #include "Entity.h"
 #include "RigidBody.h"
+#include "Utils.h"
+#include <iostream>
 //#include "RenderMain.h"
 const float toRad = 3.1416 / 180;
 
@@ -103,5 +105,27 @@ void Transform::fixedUpdate()
 
 	if (entity_->hasComponent<Rigidbody>()) {
 		setPosition(entity_->getComponent<Rigidbody>()->getPosition());
+	}
+}
+
+void Transform::receiveEvent(MessageType msg, Entity* e)
+{
+	std::cout << "Recive msg";
+	
+	switch (msg) {
+	case MessageType::PULSA_Q:
+		std::cout << "Transform recive evcetno\n";
+
+
+		//rotate(Vector3D(0, 5, 0));
+		////_oNode->yaw(Ogre::Degree(-5));
+		//e->->yaw(Ogre::Degree(-5));
+		//_monkeAngle = (_monkeAngle + 5) % 360;
+		////camTr->setRotation()
+		////_oNode->getOrientation(). * toAngles;
+		////std::cout << "AnguloCam mono: " << //camTr->setRotation()
+		////	_oNode->getOrientation() * toAngles << "\n";
+		break;
+	
 	}
 }

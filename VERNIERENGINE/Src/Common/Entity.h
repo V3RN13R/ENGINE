@@ -141,7 +141,11 @@ public:
 	}
 
 
-	virtual void receiveEvent(MessageType msg, Entity* e) {}
+	void receiveEvent(MessageType msg, Entity* e) {
+		for (Component* c : _components) {
+			c->receiveEvent(msg, e);
+		}
+	};
 
 	static std::vector<Entity*> _listeners;
 

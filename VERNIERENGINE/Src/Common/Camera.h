@@ -44,6 +44,6 @@ public:
 	void setMonkePos(Vector3D* pos);
 	void start();
 	//virtual void sendEvent(MessageType msg){}
-	virtual void receiveEvent(MessageType msg, Entity* e);
+	//virtual void receiveEvent(MessageType msg, Entity* e);
 
 };

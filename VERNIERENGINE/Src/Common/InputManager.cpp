@@ -1,5 +1,6 @@
 #include "InputManager.h"
 #include "Entity.h"
+#include "Scene.h"
 #include <iostream>
 
 
@@ -43,7 +44,7 @@ bool InputManager::keyPressed() {
 
 			//si es una tecla válida se envia el mensaje correspondiente
 			if (tecla != MessageType::DEFAULT) {
-				for (Entity* e : Entity::_listeners) {
+				for (Entity* e : *_entidadesScene) {
 					e->receiveEvent(tecla, e);
 				}
 			}

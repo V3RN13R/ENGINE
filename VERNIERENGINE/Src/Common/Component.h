@@ -3,6 +3,7 @@
 
 
 class Entity;
+enum class MessageType;
 
 class Component {
 public:
@@ -44,6 +45,8 @@ public:
 	virtual void render() {}
 	virtual void onEnable() {}
 	virtual void onDisable() {}
+	virtual void receiveEvent(MessageType msg, Entity* e) {}
+
 protected:
 	Entity* entity_;
 	bool _enable = true;
