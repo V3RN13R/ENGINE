@@ -16,6 +16,7 @@ namespace luabridge {
 class Scene {
 private:
 	std::vector<Entity*> _entities;
+	std::vector<Entity*> _listeners;
 
 	InputManager* IM = nullptr;
 
@@ -32,6 +33,7 @@ public:
 	~Scene();
 
 	void addEntity(Entity* e);
+	void addListener(Entity* e);
 
 	Entity* createEntityByPrefab(const std::string& file, const std::string& nameInFile, const std::string& nameInGame);
 
@@ -44,7 +46,7 @@ public:
 	void update();
 
 
-	const std::vector<Entity*>* getEntities() { return &_entities; }
+	const std::vector<Entity*>* getListeners() { return &_listeners; }
 
 	void refresh();
 

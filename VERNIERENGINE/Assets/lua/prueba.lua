@@ -4,6 +4,7 @@ prueba = {
 
 mono={
     Active = true,
+    Listener = true,
     Components = {"Transform","MeshRenderer", "Rigidbody", "Shoot"},
 
     Transform = {
@@ -32,6 +33,7 @@ mono={
 
 suelo={
     Active = true,
+    Listener = false,
     Components = {"Transform","MeshRenderer", "Rigidbody"},
 
     Transform = {
@@ -54,6 +56,7 @@ suelo={
 
 bala={
     Active = true,
+    Listener = false,
     Components = {"Transform","MeshRenderer", "Rigidbody"},
 
     Transform = {

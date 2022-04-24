@@ -48,7 +48,7 @@ bool InputManager::keyPressed() {
 
 		//si es una tecla válida se envia el mensaje correspondiente
 		if (tecla != MessageType::DEFAULT) {
-			for (Entity* e : *_entidadesScene) {
+			for (Entity* e : *_listenersScene) {
 				e->receiveEvent(tecla, e);
 			}
 		}

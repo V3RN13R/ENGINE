@@ -103,6 +103,12 @@ Entity* Scene::createEntity(const std::string& entityName, LuaRef entInfo)
 
 	addEntity(_entity);
 
+	bool isListener = true;
+	bool correct2 = readVariable<bool>(entInfo, "Listener", &isListener);
+	if (correct2 && isListener) {
+		addListener(_entity);
+	}
+
 	std::cout << "\n-------------------------------- Fin de la lectura de la entidad " << entityName << " --------------------------------\n";
 	return _entity;
 }
@@ -160,6 +166,12 @@ void Scene::addEntity(Entity* e)
 {
 	if (e) {
 		_entities.push_back(e);
+	}
+}
+void Scene::addListener(Entity* e)
+{
+	if (e) {
+		_listeners.push_back(e);
 	}
 }
 

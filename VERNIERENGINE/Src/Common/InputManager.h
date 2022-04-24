@@ -13,7 +13,7 @@ private:
 	InputManager() { }
 	MessageType onMouseButtonChange(const SDL_Event& event, bool isDown);
 
-	const std::vector<Entity*>* _entidadesScene = nullptr;
+	const std::vector<Entity*>* _listenersScene = nullptr;
 	std::pair<Sint32, Sint32> _mousePos;
 
 public:
@@ -22,7 +22,7 @@ public:
 
 	bool keyPressed();
 
-	void setEntities(const std::vector<Entity*>* entidades) { _entidadesScene = entidades; };
+	void setListenersVector(const std::vector<Entity*>* listeners) { _listenersScene = listeners; };
 
 	const std::pair<Sint32, Sint32>& getMousePos() {
 		return _mousePos;

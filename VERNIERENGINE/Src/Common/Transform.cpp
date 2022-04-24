@@ -110,21 +110,10 @@ void Transform::fixedUpdate()
 
 void Transform::receiveEvent(MessageType msg, Entity* e)
 {
-	std::cout << "Recive msg";
-	
+	//PRUEBA
 	switch (msg) {
 	case MessageType::PULSA_Q:
-		std::cout << "Transform recive evcetno\n";
-
-
-		//rotate(Vector3D(0, 5, 0));
-		////_oNode->yaw(Ogre::Degree(-5));
-		//e->->yaw(Ogre::Degree(-5));
-		//_monkeAngle = (_monkeAngle + 5) % 360;
-		////camTr->setRotation()
-		////_oNode->getOrientation(). * toAngles;
-		////std::cout << "AnguloCam mono: " << //camTr->setRotation()
-		////	_oNode->getOrientation() * toAngles << "\n";
+		std::cout << "Transform recibe evcetno\n";
 		break;
 	
 	}

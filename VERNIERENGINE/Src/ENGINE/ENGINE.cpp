@@ -69,7 +69,7 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	_scene->onEnable();
 
 
-	InputManager::instance()->setEntities(_scene->getEntities());
+	InputManager::instance()->setListenersVector(_scene->getListeners());
 	//Entity* light = _mngr->addEntity("Light");
 	//Light* l = light->addComponent<Light>();
 	//Transform* tLight = light->addComponent<Transform>();

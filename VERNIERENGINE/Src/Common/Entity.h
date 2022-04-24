@@ -149,7 +149,7 @@ public:
 
 	static std::vector<Entity*> _listeners;
 
-	static void addListener(Entity* entity) { _listeners.emplace_back(entity); }
+	//static void addListener(Entity* entity) { _listeners.emplace_back(entity); }
 
 	void destroy() { _destroy = true; }
 

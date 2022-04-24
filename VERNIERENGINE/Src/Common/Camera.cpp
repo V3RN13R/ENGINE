@@ -72,7 +72,7 @@ void Camera::start() {
 
 
 //void Camera::receiveEvent(MessageType msg, Entity* e) {
-//	std::cout << "Recive msg";
+//	std::cout << "Recibe msg";
 //	Transform* camTr = getComponent<Transform>();
 //	switch (msg) {
 //		case MessageType::PULSA_Q:
