@@ -23,7 +23,7 @@
 #include "UIManager.h"
 #include "InputManager.h"
 
-#include "Scene.h"
+#include "GameStateMachine.h"
 #include "InitFactories.h"
 
 //LUA
@@ -63,11 +63,8 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 
 	PruebaBullet::mainPhys();
 
-	_scene.reset(new Scene(sceneFile, scene));
-	_scene->start();
+	GameStateMachine::instance()->initScene();
 	
-	_scene->onEnable();
-
 
 	InputManager::instance()->setListenersVector(_scene->getListeners());
 	//Entity* light = _mngr->addEntity("Light");

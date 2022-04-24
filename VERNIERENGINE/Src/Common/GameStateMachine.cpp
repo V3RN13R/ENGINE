@@ -2,11 +2,69 @@
 #include "Scene.h"
 #include "SDL.h"
 
-void GameStateMachine::changeScene(std::unique_ptr<Scene> _scene, std::string file, std::string name) {
-	_scene.reset(new Scene(file, name));
-	_scene->start();
+
+void GameStateMachine::initScene() {
+	_sceneStack.push((new Scene("prueba.lua", "prueba")));
+	_sceneStack.top()->start();
 }
 
+void GameStateMachine::clearScenes() {
+	while (!_sceneStack.empty()) {
+		delete _sceneStack.top();
+		_sceneStack.pop();
+	}
+}
+
+void GameStateMachine::changeScene(std::string file, std::string name) {
+	if (_sceneStack.empty()) {
+		Scene* scene = new Scene(file, name);
+		_sceneStack.push(scene);
+		scene->start();
+	}
+	else {
+		_load = true;
+		_name = name;
+		_file = file;
+	}
+}
+
+void GameStateMachine::fixedUpdate() {
+	if (!_sceneStack.empty())
+		_sceneStack.top()->fixedUpdate();
+}
+
+void GameStateMachine::update() {
+	if (!_sceneStack.empty())
+		_sceneStack.top()->update();
+}
+
+Scene* GameStateMachine::getScene() { return _sceneStack.top(); }
+
+bool GameStateMachine::lastUpdate()
+{
+	if (!_sceneStack.empty()) {
+		//_sceneStack.top()->lastUpdate();
+		if (_pop) {
+			delete _sceneStack.top();
+			_sceneStack.pop();
+			if (_sceneStack.empty())
+				return false;
+			getScene()->setSceneActive(true);
+			_pop = false;
+		}
+		else if (_load) {
+			clearScenes();
+			Scene* scene = new Scene(_file, _name);
+			_sceneStack.push(scene);
+			scene->start();
+			_load = false;
+			_load = false;
+		}
+		return true;
+	}
+	else
+		return false;
+}
 //bool GameStateMachine::keyPressed() {
 	//SDL_Event event;
 	//while (SDL_PollEvent(&event)) {

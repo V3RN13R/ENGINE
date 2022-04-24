@@ -1,18 +1,32 @@
 #pragma once
 #include <string>
 #include <memory>
-
+#include "Singleton.h"
+#include <stack>
 class Scene;
 
-// SIN IMPLEMENTAR
+class GameStateMachine : public Singleton<GameStateMachine> {
 
-class GameStateMachine {
+	friend class Singleton<GameStateMachine>;
+
 private:
-	void changeScene(std::unique_ptr<Scene> _scene, std::string file, std::string name);
+	GameStateMachine() {}
+	std::stack<Scene*> _sceneStack;
+	bool _load, _pop, _push;
+	std::string _file, _name;
 	// bool keyPressed();
 public:
-	GameStateMachine() {}
 	~GameStateMachine() { }
 
+	void clearScenes();
+	void initScene();
+	void changeScene(std::string file, std::string name);
+	void fixedUpdate();
+	void update();
+	bool lastUpdate();
+	Scene* getScene();
+	GameStateMachine& ih() {
+		return *GameStateMachine::instance();
+	}
 };
 

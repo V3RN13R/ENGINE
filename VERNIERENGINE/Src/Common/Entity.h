@@ -7,6 +7,7 @@
 #include <iostream>
 #include "Component.h"
 #include "ecs.h"
+#include <unordered_map>
 
 //class Manager;
 enum class MessageType;
@@ -45,8 +46,16 @@ public:
 		return c;
 	}*/
 
-	void addComponent(Component* c) {
+	void addComponent(std::string s, Component* c){
+		_cmps.insert({ s, c });
 		_components.emplace_back(c);
+	}
+
+	Component* getComponent(std::string s) {
+		auto it = _cmps.find(s);
+		if (it != _cmps.end())
+			return _cmps[s];
+		return nullptr;
 	}
 
 	template<typename T>
@@ -174,6 +183,7 @@ private:
 	bool _active;
 	bool _destroy = false;
 	//Manager* _mngr;
+	std::unordered_map<std::string, Component*> _cmps;
 	std::vector<Component*> _components;
 	std::array<Component*, ecs::maxComponent> _cmpArray;
 	std::bitset<ecs::maxGroup> _groups;

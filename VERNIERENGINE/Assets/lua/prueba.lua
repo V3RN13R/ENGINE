@@ -1,5 +1,5 @@
 prueba = {
-    entities = {"mono", "suelo"}
+    entities = {"mono", "suelo", "boton"}
 }
 
 mono={
@@ -73,5 +73,20 @@ bala={
         Mass = "1",
         Radius = "10",
         Position = "0,0,0"
+    }
+}
+
+boton={
+    Active = true;
+    Components = {"Transform", "Button1"},
+
+    Transform = {
+        Position = "300, 200, 0",
+        Scale = "1,1,1",
+        Rotation = "0,0,0"
+    },
+
+    Button1 = {
+        Callback = "CambioEscena"
     }
 }

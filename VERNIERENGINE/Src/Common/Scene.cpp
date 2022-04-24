@@ -79,7 +79,7 @@ Entity* Scene::createEntity(const std::string& entityName, LuaRef entInfo)
 		//carga los componentes
 		enableExceptions(components[i]);
 
-		_entity->addComponent(_fmanager->getInstance()->findAndCreate(components[i], entInfo.rawget(components[i]),_entity));
+		_entity->addComponent(components[i], _fmanager->getInstance()->findAndCreate(components[i], entInfo.rawget(components[i]),_entity));
 	}
 
 	//LuaRef children = entInfo.rawget("Children");

@@ -16,7 +16,7 @@ class ResourceManager;
 class InputManager;
 
 
-class Scene;
+class GameStateMachine;
 
 class VernierEngine {
 public:
@@ -38,7 +38,7 @@ private:
 
 	RenderMain* _ogre = nullptr;
 	PhysicsManager* _physics = nullptr;
-	std::unique_ptr<Scene> _scene;
+	std::unique_ptr<GameStateMachine*> _gsm;
 	Transform* tr = nullptr;
 	Transform* tr2 = nullptr;
 

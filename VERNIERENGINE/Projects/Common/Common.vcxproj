@@ -93,6 +93,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\Common\Button1.cpp" />
+    <ClCompile Include="..\..\Src\Common\Callbacks.cpp" />
     <ClCompile Include="..\..\Src\Common\Camera.cpp" />
     <ClCompile Include="..\..\Src\Common\Collisions.cpp" />
     <ClCompile Include="..\..\Src\Common\Component.cpp" />
@@ -119,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Common\Button1.h" />
+    <ClInclude Include="..\..\Src\Common\Callbacks.h" />
     <ClInclude Include="..\..\Src\Common\Camera.h" />
     <ClInclude Include="..\..\Src\Common\Collisions.h" />
     <ClInclude Include="..\..\Src\Common\Component.h" />

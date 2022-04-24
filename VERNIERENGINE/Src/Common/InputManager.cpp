@@ -12,6 +12,7 @@ bool InputManager::keyPressed() {
 		}
 		MessageType tecla = MessageType::DEFAULT;
 		if (event.type == SDL_KEYDOWN) {
+			_isKeyDownEvent = true;
 			//se mira qué tecla se ha preisonado
 			if (event.key.keysym.sym == SDLK_ESCAPE) {
 				return false;
@@ -37,13 +38,19 @@ bool InputManager::keyPressed() {
 		}
 		// Clicks del ratón.
 		if (event.type == SDL_MOUSEBUTTONDOWN) {
+			_isMouseButtonEvent = true;
 			tecla = onMouseButtonChange(event, true);
 		}
 		// Movimiento del ratón.
 		if (event.type == SDL_MOUSEMOTION) {
+			_isMouseMotionEvent = true;
 			_mousePos.first = event.motion.x;
 			_mousePos.second = event.motion.y;
-			std::cout << _mousePos.first << " " << _mousePos.second << std::endl;
+			//std::cout << _mousePos.first << " " << _mousePos.second << std::endl;
+		}
+		// Levantar click.
+		if (event.type == SDL_MOUSEBUTTONUP) {
+			_isMouseButtonEvent = false;
 		}
 
 		//si es una tecla válida se envia el mensaje correspondiente
@@ -59,11 +66,11 @@ bool InputManager::keyPressed() {
 MessageType InputManager::onMouseButtonChange(const SDL_Event& event, bool isDown) {
 	switch (event.button.button) {
 	case SDL_BUTTON_LEFT:
-		std::cout << "\nIZQ" << std::endl;
+		//std::cout << "\nIZQ" << std::endl;
 		return MessageType::CLICKIZ;
 		break;
 	case SDL_BUTTON_RIGHT:
-		std::cout << "\nDER" << std::endl;
+		//std::cout << "\nDER" << std::endl;
 		return MessageType::CLICKDE;
 		break;
 	default:
