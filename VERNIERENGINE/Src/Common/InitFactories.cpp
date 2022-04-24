@@ -1,7 +1,9 @@
+#pragma once
 #include "Factory.h"
 #include "FactoryManager.h"
 #include "MeshRenderer.h"
 #include "Transform.h"
+#include <map>
 #include "RigidBody.h"
 #include "Shoot.h"
 

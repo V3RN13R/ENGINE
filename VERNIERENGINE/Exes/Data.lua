@@ -26,5 +26,3 @@ end
 function SceneName()
     return "prueba"
 end
-
-print("AAAAAAAAA");

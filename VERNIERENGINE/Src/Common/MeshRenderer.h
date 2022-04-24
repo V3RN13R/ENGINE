@@ -49,7 +49,7 @@ public:
 	virtual void onEnable(); //override
 
 	virtual void onDisable(); //override
-	bool start(std::string mesh);
+	bool start( std::string mesh);
 	//virtual void sendEvent(MessageType msg) {}
 	//virtual void receiveEvent(MessageType msg) {}
 };

@@ -9,7 +9,7 @@ Scene::Scene(const std::string& file, const std::string& name) {
 	lua_State* _state = nullptr;
 	try {
 		_state = readFileLua(file);
-		std::cout << "Archivo " << file << " abierto con éxito\n";
+		std::cout << "Archivo " << file << " abierto con ï¿½xito\n";
 	}
 	catch (std::string& error) {
 		std::cout << "ERROR al leer el archivo " << file << "\n";
@@ -115,7 +115,7 @@ Entity* Scene::createEntityByPrefab(const std::string& file, const std::string& 
 	lua_State* state = nullptr;
 	try {
 		state = readFileLua(file);
-		std::cout << "Archivo " << file << " abierto con éxito\n";
+		std::cout << "Archivo " << file << " abierto con ï¿½xito\n";
 	}
 	catch (std::string& error) {
 		std::cout << "ERROR al leer el archivo " << file << "\n";
@@ -181,7 +181,6 @@ void Scene::onEnable() {
 }
 
 //Ver si hace falta el render()
-
 
 void Scene::fixedUpdate()
 {

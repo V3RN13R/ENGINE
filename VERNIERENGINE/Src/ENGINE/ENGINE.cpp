@@ -28,6 +28,8 @@
 #include "InitFactories.cpp"
 
 
+#include "Scene.h"
+#include "InitFactories.cpp"
 
 //LUA
 extern "C"
@@ -182,7 +184,7 @@ VernierEngine::~VernierEngine()
 }
 
 void VernierEngine::readAssetsPath()
-{	
+{
 	std::ifstream file;
 	try
 	{

@@ -57,7 +57,7 @@
 ////
 ////
 ////		if (event.type == SDL_KEYDOWN) {
-////			//se mira qué tecla se ha preisonado
+////			//se mira quï¿½ tecla se ha preisonado
 ////			if (event.key.keysym.sym == SDLK_ESCAPE) {
 ////				return false;
 ////			}
@@ -85,7 +85,7 @@
 ////			}
 ////
 ////
-////			//si es una tecla válida se envia el mensaje correspondiente
+////			//si es una tecla vï¿½lida se envia el mensaje correspondiente
 ////			if (tecla != MessageType::DEFAULT) {
 ////				for (Entity* e : Entity::_listeners) {
 ////					e->receiveEvent(tecla, e);
