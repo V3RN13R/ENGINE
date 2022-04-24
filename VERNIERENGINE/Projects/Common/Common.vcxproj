@@ -59,7 +59,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src\PhysicsEngine;$(SolutionDir)Src\RenderEngine;$(SolutionDir)Dependencies\Ogre\Build\x64\include;$(SolutionDir)Dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Src\Components\RTShaderSystem\include;$(SolutionDir)Dependencies\Ogre\Build\x64\Dependencies\include\SDL2;$(SolutionDir)Src\LuaBridge;$(SolutionDir)Dependencies\LuaBridge\Distribution;$(SolutionDir)Dependencies\Lua\Src;$(SolutionDir)Dependencies\Bullet\Src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\SDL\SDL2_image-2.0.5\include;$(SolutionDir)Src\PhysicsEngine;$(SolutionDir)Src\RenderEngine;$(SolutionDir)Dependencies\Ogre\Build\x64\include;$(SolutionDir)Dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Src\Components\RTShaderSystem\include;$(SolutionDir)Dependencies\Ogre\Build\x64\Dependencies\include\SDL2;$(SolutionDir)Src\LuaBridge;$(SolutionDir)Dependencies\LuaBridge\Distribution;$(SolutionDir)Dependencies\Lua\Src;$(SolutionDir)Dependencies\Bullet\Src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -67,7 +67,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\Bullet\Build\$(Platform)\lib\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\SDL\SDL2_image-2.0.5\lib\$(Configuration);$(SolutionDir)Dependencies\Bullet\Build\$(Platform)\lib\$(Configuration)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -78,7 +78,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src\PhysicsEngine;$(SolutionDir)Src\RenderEngine;$(SolutionDir)Dependencies\Ogre\Build\x64\include;$(SolutionDir)Dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Src\Components\RTShaderSystem\include;$(SolutionDir)Dependencies\Ogre\Build\x64\Dependencies\include\SDL2;$(SolutionDir)Src\LuaBridge;$(SolutionDir)Dependencies\LuaBridge\Distribution;$(SolutionDir)Dependencies\Lua\Src;$(SolutionDir)Dependencies\Bullet\Src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\SDL\SDL2_image-2.0.5\include;$(SolutionDir)Src\PhysicsEngine;$(SolutionDir)Src\RenderEngine;$(SolutionDir)Dependencies\Ogre\Build\x64\include;$(SolutionDir)Dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Src\Components\RTShaderSystem\include;$(SolutionDir)Dependencies\Ogre\Build\x64\Dependencies\include\SDL2;$(SolutionDir)Src\LuaBridge;$(SolutionDir)Dependencies\LuaBridge\Distribution;$(SolutionDir)Dependencies\Lua\Src;$(SolutionDir)Dependencies\Bullet\Src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -88,7 +88,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\Bullet\Build\$(Platform)\lib\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\SDL\SDL2_image-2.0.5\lib\$(Configuration);$(SolutionDir)Dependencies\Bullet\Build\$(Platform)\lib\$(Configuration)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
