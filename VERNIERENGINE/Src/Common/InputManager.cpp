@@ -10,18 +10,12 @@ bool InputManager::keyPressed() {
 		if (event.type == SDL_QUIT) {
 			return false;
 		}
-
-
-
+		MessageType tecla = MessageType::DEFAULT;
 		if (event.type == SDL_KEYDOWN) {
 			//se mira qué tecla se ha preisonado
 			if (event.key.keysym.sym == SDLK_ESCAPE) {
 				return false;
 			}
-
-
-
-			MessageType tecla = MessageType::DEFAULT;
 			if (event.key.keysym.sym == SDLK_w) {
 				tecla = MessageType::W;
 			}
@@ -40,21 +34,39 @@ bool InputManager::keyPressed() {
 			else if (event.key.keysym.sym == SDLK_e) {
 				tecla = MessageType::PULSA_E;
 			}
-
-
-			//si es una tecla válida se envia el mensaje correspondiente
-			if (tecla != MessageType::DEFAULT) {
-				for (Entity* e : *_entidadesScene) {
-					e->receiveEvent(tecla, e);
-				}
-			}
 		}
-		std::pair<Sint32, Sint32> mousePos_;
+		// Clicks del ratón.
+		if (event.type == SDL_MOUSEBUTTONDOWN) {
+			tecla = onMouseButtonChange(event, true);
+		}
+		// Movimiento del ratón.
 		if (event.type == SDL_MOUSEMOTION) {
-			mousePos_.first = event.motion.x;
-			mousePos_.second = event.motion.y;
-			std::cout << mousePos_.first << " " << mousePos_.second << std::endl;
+			_mousePos.first = event.motion.x;
+			_mousePos.second = event.motion.y;
+			std::cout << _mousePos.first << " " << _mousePos.second << std::endl;
+		}
+
+		//si es una tecla válida se envia el mensaje correspondiente
+		if (tecla != MessageType::DEFAULT) {
+			for (Entity* e : *_entidadesScene) {
+				e->receiveEvent(tecla, e);
+			}
 		}
 	}
 	return true;
+}
+
+MessageType InputManager::onMouseButtonChange(const SDL_Event& event, bool isDown) {
+	switch (event.button.button) {
+	case SDL_BUTTON_LEFT:
+		std::cout << "\nIZQ" << std::endl;
+		return MessageType::CLICKIZ;
+		break;
+	case SDL_BUTTON_RIGHT:
+		std::cout << "\nDER" << std::endl;
+		return MessageType::CLICKDE;
+		break;
+	default:
+		break;
+	}
 }

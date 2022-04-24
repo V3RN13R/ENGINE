@@ -9,4 +9,5 @@ private:
 public:
 	Button1(Texture* tx){}
 	~Button1(){}
+	void update() override;
 };
