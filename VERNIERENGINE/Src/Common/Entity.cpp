@@ -7,12 +7,14 @@
 std::vector<Entity*> Entity::_listeners = std::vector<Entity*>(0, nullptr);
 
 
-Entity::Entity(std::string entityName) : _active(true), //
+Entity::Entity(std::string entityName, Scene* scene) : _active(true), //
 	//_mngr(mngr), //
 	_cmpArray(), //
 	_groups(), //
-_entityName(entityName)
+_entityName(entityName), //
+_scene(scene)
 {
+	//_entities.emplace_back(this);
 	_oNode = RenderMain::getInstance()->addSceneNode(entityName);
 }
 

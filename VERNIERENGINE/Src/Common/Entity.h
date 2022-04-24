@@ -7,17 +7,21 @@
 #include <iostream>
 #include "Component.h"
 #include "ecs.h"
+
 //class Manager;
 enum class MessageType;
 namespace Ogre {
 	class SceneNode;
 }
+
+class Scene;
+
 class Entity {
 	//friend Manager;
 
 public:
 
-	Entity(std::string entityName);
+	Entity(std::string entityName, Scene* scene = nullptr);
 
 	virtual ~Entity();
 
@@ -147,12 +151,22 @@ public:
 
 	bool getDestroy() { return _destroy; }
 
+	Scene* getScene() { return _scene; }
+
+
+	/*static Entity* getEntity(std::string name) {
+		for (int i = 0; i < _entities.size(); i++) {
+			if (_entities[i]->getName() == name) return _entities[i];
+		}
+	}*/
+
 protected:
 	Ogre::SceneNode* _oNode;
-
+	//static std::vector<Entity*> _entities; //(Entity.h)
 
 private:
 
+	Scene* _scene;
 	bool _active;
 	bool _destroy = false;
 	//Manager* _mngr;

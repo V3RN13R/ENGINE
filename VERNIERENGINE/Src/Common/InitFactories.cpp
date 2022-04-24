@@ -8,7 +8,7 @@
 class TransformFactory : public Factory
 {
 public:
-	Component* createComponent(std::map<std::string, std::string> args) override
+	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override
 	{		
 		return new Transform(args);
 	};
@@ -17,7 +17,7 @@ public:
 class MeshRendererFactory : public Factory
 {
 public:
-	Component* createComponent(std::map<std::string, std::string> args) override
+	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override
 	{
 		return new MeshRenderer(args);
 	};
@@ -26,7 +26,7 @@ public:
 class RigidBodyFactory : public Factory
 {
 public:
-	Component* createComponent(std::map<std::string, std::string> args) override
+	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override
 	{
 		return new Rigidbody(args);
 	};
@@ -35,9 +35,9 @@ public:
 class ShootFactory : public Factory
 {
 public:
-	Component* createComponent(std::map<std::string, std::string> args) override
+	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override
 	{
-		return new Shoot(args);
+		return new Shoot(args,ent);
 	};
 };
 

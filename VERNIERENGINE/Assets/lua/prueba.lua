@@ -2,10 +2,6 @@ prueba = {
     entities = {"mono", "suelo"}
 }
 
-pruebaBala = {
-    entities = {"bala"}
-}
-
 mono={
     Active = true,
     Components = {"Transform","MeshRenderer", "Rigidbody", "Shoot"},
@@ -26,8 +22,9 @@ mono={
         Position = "0,0,0"
     },
     Shoot = {
+        entity = "mono",
         file = "prueba.lua",
-        name = "pruebaBala",
+        name = "bala",
         prefabName = "bala"
     }
 }
@@ -60,8 +57,8 @@ bala={
     Components = {"Transform","MeshRenderer", "Rigidbody"},
 
     Transform = {
-        Position = "0,0,0",
-        Scale = "10,10,10",
+        Position = "-150,-50,0",
+        Scale = "5,5,5",
         Rotation = "0,0,0"
     },
     
