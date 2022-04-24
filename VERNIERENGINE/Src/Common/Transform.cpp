@@ -13,6 +13,14 @@ Transform::Transform(std::map<std::string, std::string> args) : _position(args["
 {
 }
 
+bool Transform::init()
+{
+	std::cout << "Rotacion inicial: " << _rotation.getX() << " " << _rotation.getY() << " " << _rotation.getZ() << "\n";
+
+	setRotation(_rotation);
+	return true;
+}
+
 void Transform::rotate(Vector3D rotation)
 {
 	entity_->getNode()->pitch(Ogre::Degree(rotation.getX()));

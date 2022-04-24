@@ -9,12 +9,14 @@ class Transform : public Component {
 	enum Axis :uint8_t { x, y, z };
 public:
 	Transform() :
-		_position(), _scale(), _rotation(0,90,0) {
+		_position(), _scale(), _rotation(0,0,0) {
 	}
 
 	Transform(Vector3D position, Vector3D scale, Vector3D rotation);
 	
 	Transform(std::map<std::string, std::string> args);
+
+	virtual bool init();
 
 	virtual ~Transform() {
 	}
