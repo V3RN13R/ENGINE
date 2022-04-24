@@ -19,4 +19,10 @@ function WindowName()
     return "WindowName"
 end
 
-print("AAAAAAAAA");
+function SceneFile()
+    return "prueba.lua"
+end
+
+function SceneName()
+    return "prueba"
+end

@@ -13,19 +13,22 @@ enum class MessageType;
 namespace Ogre {
 	class SceneNode;
 }
+
+class Scene;
+
 class Entity {
 	//friend Manager;
 
 public:
 
-	Entity(std::string entityName);
+	Entity(std::string entityName, Scene* scene = nullptr);
 
 	virtual ~Entity();
 
 	void start();
 	void onEnable();
 
-	template<typename T, typename ...Ts>
+	/*template<typename T, typename ...Ts>
 	T* addComponent(Ts &&... args) {
 		T* c = new T(std::forward<Ts>(args)...);
 		c->setEntity(this);
@@ -40,6 +43,10 @@ public:
 		_components.emplace_back(c);
 
 		return c;
+	}*/
+
+	void addComponent(Component* c) {
+		_components.emplace_back(c);
 	}
 
 	void addComponent(Component* c) {
@@ -138,7 +145,11 @@ public:
 	}
 
 
-	virtual void receiveEvent(MessageType msg, Entity* e) {};
+	void receiveEvent(MessageType msg, Entity* e) {
+		for (Component* c : _components) {
+			c->receiveEvent(msg, e);
+		}
+	};
 
 	static std::vector<Entity*> _listeners;
 
@@ -148,12 +159,22 @@ public:
 
 	bool getDestroy() { return _destroy; }
 
+	Scene* getScene() { return _scene; }
+
+
+	/*static Entity* getEntity(std::string name) {
+		for (int i = 0; i < _entities.size(); i++) {
+			if (_entities[i]->getName() == name) return _entities[i];
+		}
+	}*/
+
 protected:
 	Ogre::SceneNode* _oNode;
-
+	//static std::vector<Entity*> _entities; //(Entity.h)
 
 private:
 
+	Scene* _scene;
 	bool _active;
 	bool _destroy = false;
 	//Manager* _mngr;

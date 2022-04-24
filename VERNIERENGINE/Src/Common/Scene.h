@@ -4,16 +4,20 @@
 #include <vector>
 #include "Entity.h"
 #include "FactoryManager.h"
-
+#include "InputManager.h"
+#include "Utils.h"
 
 namespace luabridge {
 	class LuaRef;
 }
 
-class Scene
-{
+
+
+class Scene {
 private:
 	std::vector<Entity*> _entities;
+
+	InputManager* IM = nullptr;
 
 	FactoryManager* _fmanager;
 
@@ -38,6 +42,11 @@ public:
 	void fixedUpdate();
 
 	void update();
+
+
+	const std::vector<Entity*>* getEntities() { return &_entities; }
+
+	void refresh();
 
 	/// <summary>
 	/// Busca y devuelve el primer objeto en la escena con ese nombre

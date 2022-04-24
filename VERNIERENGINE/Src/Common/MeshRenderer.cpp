@@ -11,10 +11,10 @@ MeshRenderer::MeshRenderer(Entity* e) : Component(e), _ogreEnt(nullptr)
 	_mSceneManager = RenderMain::getInstance()->getSceneManager();
 }
 
-MeshRenderer::MeshRenderer(std::map<std::string, std::string> args) : _ogreEnt(nullptr), _mesh(args["Mesh"]), _entityName(args["EntityName"])
+MeshRenderer::MeshRenderer(std::map<std::string, std::string> args) : _ogreEnt(nullptr), _mesh(args["Mesh"])
 {
 	_mSceneManager = RenderMain::getInstance()->getSceneManager();
-	start(_entityName, _mesh);
+	start(_mesh);
 }
 
 void MeshRenderer::onEnable()

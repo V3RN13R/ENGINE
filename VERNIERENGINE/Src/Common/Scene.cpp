@@ -1,5 +1,7 @@
 #include "Scene.h"
 #include "LuaManager.h"
+#include <algorithm>
+#include <SDL.h>
 
 
 Scene::Scene(const std::string& file, const std::string& name) {
@@ -7,7 +9,7 @@ Scene::Scene(const std::string& file, const std::string& name) {
 	lua_State* _state = nullptr;
 	try {
 		_state = readFileLua(file);
-		std::cout << "Archivo " << file << " abierto con éxito\n";
+		std::cout << "Archivo " << file << " abierto con ï¿½xito\n";
 	}
 	catch (std::string& error) {
 		std::cout << "ERROR al leer el archivo " << file << "\n";
@@ -58,11 +60,11 @@ Scene::Scene(const std::string& file, const std::string& name) {
 
 Entity* Scene::createEntity(const std::string& entityName, LuaRef entInfo)
 {
-	Entity* _entity = new Entity(entityName);
+	Entity* _entity = new Entity(entityName, this);
 
 	std::cout << "-------------------------------- Creando entidad " << entityName << " --------------------------------\n";
 
-	if (entInfo == NULL || entInfo.isNil() ) { //|| entInfo.isRefNil()
+	if (entInfo == NULL || entInfo.isNil()) { //|| entInfo.isRefNil()
 		std::cout << "ERROR: No se encontro la informacion de la entidad\n";
 		return nullptr;
 	}
@@ -76,8 +78,8 @@ Entity* Scene::createEntity(const std::string& entityName, LuaRef entInfo)
 	{
 		//carga los componentes
 		enableExceptions(components[i]);
-				
-		_entity->addComponent(_fmanager->getInstance()->findAndCreate(components[i], entInfo.rawget(components[i])));
+
+		_entity->addComponent(_fmanager->getInstance()->findAndCreate(components[i], entInfo.rawget(components[i]),_entity));
 	}
 
 	//LuaRef children = entInfo.rawget("Children");
@@ -113,7 +115,7 @@ Entity* Scene::createEntityByPrefab(const std::string& file, const std::string& 
 	lua_State* state = nullptr;
 	try {
 		state = readFileLua(file);
-		std::cout << "Archivo " << file << " abierto con éxito\n";
+		std::cout << "Archivo " << file << " abierto con ï¿½xito\n";
 	}
 	catch (std::string& error) {
 		std::cout << "ERROR al leer el archivo " << file << "\n";
@@ -157,7 +159,7 @@ Scene::~Scene()
 void Scene::addEntity(Entity* e)
 {
 	if (e) {
-		_entities.push_back(e);		
+		_entities.push_back(e);
 	}
 }
 
@@ -238,4 +240,23 @@ void Scene::setSceneActive(bool set)
 {
 	for (Entity* qEnt : _entities)
 		qEnt->setActive(set);
+}
+
+
+void Scene::refresh()
+{	// remove dead entities from the list of entities
+	_entities.erase( //
+	std::remove_if( //
+		_entities.begin(), //
+		_entities.end(), //
+		[](const Entity* e) { //
+			if (e->isActive()) {
+				return false;
+			}
+			else {
+				delete e;
+				return true;
+			}
+		}), //
+	_entities.end());
 }

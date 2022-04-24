@@ -3,18 +3,25 @@
 #include "Component.h"
 #include "Vector3D.h"
 #include <map>
+#include <iostream>
+
 class Component;
+enum class MessageType;
+
 
 class Transform : public Component {
 	enum Axis :uint8_t { x, y, z };
 public:
-	Transform() :
-		_position(), _scale(), _rotation(0,90,0) {
-	}
+	/*Transform() :
+		_position(), _scale(), _rotation(0,0,0) {
+		std::cout << "Constructora default transform\n";
+	}*/
 
 	Transform(Vector3D position, Vector3D scale, Vector3D rotation);
 	
 	Transform(std::map<std::string, std::string> args);
+
+	virtual bool init();
 
 	virtual ~Transform() {
 	}
@@ -66,7 +73,7 @@ public:
 	void update() override;
 	void fixedUpdate() override;
 	//virtual void sendEvent(MessageType msg) {}
-	//virtual void receiveEvent(MessageType msg) {}
+	virtual void receiveEvent(MessageType msg, Entity* e);
 private:
 	Vector3D _position;
 	Vector3D _glbposition;

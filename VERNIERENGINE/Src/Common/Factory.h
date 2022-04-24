@@ -11,6 +11,6 @@ class Factory
 public:
 	Factory() {};
 	
-	virtual Component* createComponent(std::map<std::string, std::string> args) = 0;
+	virtual Component* createComponent(std::map<std::string, std::string> args, Entity* ent = nullptr) = 0;
 	//virtual Component* createComponent(json& args) = 0;
 };

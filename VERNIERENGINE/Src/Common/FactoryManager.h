@@ -13,7 +13,7 @@ public:
 	static bool setUpInstance();
 	static void deleteInstance(); 
 
-	Component* findAndCreate(const std::string& name, std::map<std::string, std::string> args);  //pasarle argumentos
+	Component* findAndCreate(const std::string& name, std::map<std::string, std::string> args, Entity* ent = nullptr);  //pasarle argumentos
 
 	void addFactory(const std::string& name, Factory* fact);
 

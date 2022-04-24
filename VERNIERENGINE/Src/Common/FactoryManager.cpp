@@ -33,11 +33,12 @@ void FactoryManager::deleteInstance()
 	delete _instance;
 }
 
-Component* FactoryManager::findAndCreate(const std::string& name, std::map<std::string, std::string> args)
+
+Component* FactoryManager::findAndCreate(const std::string& name, std::map<std::string, std::string> args, Entity* ent)
 {
 	std::map<std::string, Factory*>::iterator it = _map.find(name);
 	if (it != _map.end())
-		return (*it).second->createComponent(args);
+		return (*it).second->createComponent(args, ent);
 
 	throw "ERROR: NO SE HA PODIDO LEER EL COMPONENTE: " + name + "\n";
 

@@ -15,8 +15,8 @@ void Monkey::receiveEvent(MessageType msg, Entity* e) {
 		Rigidbody* rb = getComponent<Rigidbody>();
 		Vector3D dirNueva = Vector3D(std::cos(transformCamara->getRot().getY()*toRadians), 0, -std::sin(transformCamara->getRot().getY()*toRadians))*vel;
 		rb->setVelocity(dirNueva);
-		//std::cout << "Posición mono: " << rb->getPosition().getZ() << "\n";
-		std::cout << "Ratación Camara: " << transformCamara->getRot().getY() << "\n";
+		//std::cout << "Posiciï¿½n mono: " << rb->getPosition().getZ() << "\n";
+		std::cout << "Rataciï¿½n Camara: " << transformCamara->getRot().getY() << "\n";
 		
 	}
 	if (msg == MessageType::A) {
@@ -24,8 +24,8 @@ void Monkey::receiveEvent(MessageType msg, Entity* e) {
 		Rigidbody* rb = getComponent<Rigidbody>();
 		Vector3D dirNueva = Vector3D(std::cos((transformCamara->getRot().getY()+90) * toRadians), 0, -std::sin((transformCamara->getRot().getY() + 90) * toRadians))*vel;
 		rb->setVelocity(dirNueva);
-		//std::cout << "Posición mono: " << rb->getPosition().getX() << " ," << rb->getPosition().getY() << "\n";
-		std::cout << "Ratación Camara: " << transformCamara->getRot().getY() << "\n";
+		//std::cout << "Posiciï¿½n mono: " << rb->getPosition().getX() << " ," << rb->getPosition().getY() << "\n";
+		std::cout << "Rataciï¿½n Camara: " << transformCamara->getRot().getY() << "\n";
 
 	}
 	if (msg == MessageType::S) {
@@ -33,7 +33,7 @@ void Monkey::receiveEvent(MessageType msg, Entity* e) {
 		Rigidbody* rb = getComponent<Rigidbody>();
 		Vector3D dirNueva = Vector3D(-std::cos(transformCamara->getRot().getY() * toRadians), 0, std::sin(transformCamara->getRot().getY() * toRadians))*vel;
 		rb->setVelocity(dirNueva);
-		std::cout << "Ratación Camara: " << transformCamara->getRot().getY() << "\n";
+		std::cout << "Rataciï¿½n Camara: " << transformCamara->getRot().getY() << "\n";
 
 	}
 	if (msg == MessageType::D) {
@@ -42,8 +42,8 @@ void Monkey::receiveEvent(MessageType msg, Entity* e) {
 		Vector3D dirNueva = Vector3D(std::cos((transformCamara->getRot().getY() - 90) * toRadians), 0, -std::sin((transformCamara->getRot().getY() - 90) * toRadians))*vel;
 		rb->setVelocity(dirNueva);
 		//_oNode->setPosition(Ogre::Vector3(_oNode->getPosition().x + 1000, _oNode->getPosition().y, _oNode->getPosition().z));
-		//std::cout << "Posición mono: " << rb->getPosition().getX() <<" ,"  << _oNode->getPosition().x << "\n";
-		std::cout << "Ratación Camara: " << transformCamara->getRot().getY() << "\n";
+		//std::cout << "Posiciï¿½n mono: " << rb->getPosition().getX() <<" ,"  << _oNode->getPosition().x << "\n";
+		std::cout << "Rataciï¿½n Camara: " << transformCamara->getRot().getY() << "\n";
 
 		
 
