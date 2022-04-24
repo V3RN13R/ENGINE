@@ -37,9 +37,6 @@
     <ClCompile Include="..\..\Src\Common\FactoryManager.cpp">
       <Filter>ecs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Common\Manager.cpp">
-      <Filter>ecs</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Src\Common\InputManager.cpp">
       <Filter>utils</Filter>
     </ClCompile>
@@ -75,6 +72,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Src\Common\Camera.cpp">
       <Filter>components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Common\InitFactories.cpp">
+      <Filter>ecs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -120,9 +120,6 @@
     <ClInclude Include="..\..\Src\Common\FactoryManager.h">
       <Filter>ecs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Common\Manager.h">
-      <Filter>ecs</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Src\Common\mpl.h">
       <Filter>ecs</Filter>
     </ClInclude>
@@ -164,6 +161,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Src\Common\Camera.h">
       <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\InitFactories.h">
+      <Filter>ecs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

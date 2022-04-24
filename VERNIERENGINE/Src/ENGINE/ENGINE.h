@@ -18,9 +18,6 @@ class InputManager;
 
 class Scene;
 
-
-class Scene;
-
 class VernierEngine {
 public:
 

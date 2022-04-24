@@ -1,46 +1,32 @@
 #pragma once
-#include "Factory.h"
+#include "InitFactories.h"
 #include "FactoryManager.h"
 #include "MeshRenderer.h"
 #include "Transform.h"
-#include <map>
 #include "RigidBody.h"
 #include "Shoot.h"
 
-class TransformFactory : public Factory
+Component* TransformFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
-public:
-	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override
-	{		
-		return new Transform(args);
-	};
+	return new Transform(args);
 };
 
-class MeshRendererFactory : public Factory
+
+Component* MeshRendererFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
-public:
-	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override
-	{
-		return new MeshRenderer(args);
-	};
+	return new MeshRenderer(args);
 };
 
-class RigidBodyFactory : public Factory
+
+Component* RigidBodyFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
-public:
-	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override
-	{
-		return new Rigidbody(args);
-	};
+	return new Rigidbody(args);
 };
 
-class ShootFactory : public Factory
+
+Component* ShootFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
-public:
-	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override
-	{
-		return new Shoot(args,ent);
-	};
+	return new Shoot(args,ent);
 };
 
 void setupFactories()

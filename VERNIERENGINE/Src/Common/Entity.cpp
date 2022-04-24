@@ -2,13 +2,11 @@
 #include "RenderMain.h"
 #include <Ogre.h>
 #include <SDL.h>
-//#include "Manager.h"
 
 //std::vector<Entity*> Entity::_listeners = std::vector<Entity*>(0, nullptr);
 
 
 Entity::Entity(std::string entityName, Scene* scene) : _active(true), //
-	//_mngr(mngr), //
 	_cmpArray(), //
 	_groups(), //
 _entityName(entityName), //
