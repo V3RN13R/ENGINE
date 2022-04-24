@@ -36,7 +36,7 @@ void MeshRenderer::onDisable()
 	_ogreEnt->setVisible(false);
 }
 
-bool MeshRenderer::start(std::string name, std::string mesh)
+bool MeshRenderer::start(std::string mesh)
 {
 	if (mesh == "Sphere")
 		_ogreEnt = _mSceneManager->createEntity(Ogre::SceneManager::PrefabType::PT_SPHERE);
@@ -45,7 +45,7 @@ bool MeshRenderer::start(std::string name, std::string mesh)
 	else if (mesh == "Plane")
 		_ogreEnt = _mSceneManager->createEntity(Ogre::SceneManager::PrefabType::PT_PLANE);
 	else
-		_ogreEnt = _mSceneManager->createEntity(name, mesh);
+		_ogreEnt = _mSceneManager->createEntity( mesh);
 	return true;
 }
 
