@@ -22,9 +22,9 @@ class VernierEngine {
 public:
 
 	static VernierEngine* getInstance() { return _instance; }
-	static bool setupInstance(const std::string& appName);
+	static bool setupInstance(const std::string& appName, const std::string& sceneFile, const std::string& scene);
 
-	VernierEngine(const std::string& appName);
+	VernierEngine(const std::string& appName, const std::string& sceneFile, const std::string& value);
 
 	bool processFrame();
 	//bool CheckLua(lua_State* L, int r);

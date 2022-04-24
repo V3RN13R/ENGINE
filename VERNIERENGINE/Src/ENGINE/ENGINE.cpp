@@ -40,7 +40,7 @@ extern "C"
 
 VernierEngine* VernierEngine::_instance = nullptr;
 
-VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
+VernierEngine::VernierEngine(const std::string& appName, const std::string& sceneFile, const std::string& scene) : _appName(appName) {
 
 	// Render Manager
 	if (!RenderMain::setUpInstance(_appName)) {
@@ -66,7 +66,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 
 	PruebaBullet::mainPhys();
 
-	_scene.reset(new Scene("prueba.lua", "prueba"));
+	_scene.reset(new Scene(sceneFile, scene));
 	_scene->start();
 	
 	_scene->onEnable();
@@ -320,7 +320,17 @@ int main()
 	lua_getglobal(L, "WindowName");
 	lua_call(L, 0, 1);
 	bool stay = true;
-	VernierEngine::setupInstance(lua_tostring(L, -1));
+	const std::string appName = lua_tostring(L, -1);
+	lua_pop(L, 1);
+	lua_getglobal(L, "SceneFile");
+	lua_call(L, 0, 1);
+	const std::string sceneFile = lua_tostring(L, -1);
+	lua_pop(L, 1);
+	lua_getglobal(L, "SceneName");
+	lua_call(L, 0, 1);
+	const std::string scene = lua_tostring(L, -1);
+	lua_pop(L, 1);
+	VernierEngine::setupInstance(appName,sceneFile,scene);
 	lua_close(L);
 	do {
 		stay = VernierEngine::getInstance()->processFrame();
@@ -332,11 +342,11 @@ int main()
 	return 0;
 }
 
-bool VernierEngine::setupInstance(const std::string& appName)
+bool VernierEngine::setupInstance(const std::string& appName, const std::string& sceneFile, const std::string& scene)
 {
 	if (_instance == nullptr)
 	{
-		_instance = new VernierEngine(appName);
+		_instance = new VernierEngine(appName,sceneFile,scene);
 		return true;
 	}
 	return false;
