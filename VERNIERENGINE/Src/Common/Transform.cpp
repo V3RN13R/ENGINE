@@ -11,6 +11,7 @@ Transform::Transform(Vector3D position, Vector3D scale, Vector3D rotation) : _po
 
 Transform::Transform(std::map<std::string, std::string> args) : _position(args["Position"]), _scale(args["Scale"]), _rotation(args["Rotation"])
 {
+	std::cout << "Contructora lua transform\n";
 }
 
 bool Transform::init()

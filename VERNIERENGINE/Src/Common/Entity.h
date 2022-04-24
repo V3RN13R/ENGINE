@@ -24,7 +24,7 @@ public:
 	void start();
 	void onEnable();
 
-	template<typename T, typename ...Ts>
+	/*template<typename T, typename ...Ts>
 	T* addComponent(Ts &&... args) {
 		T* c = new T(std::forward<Ts>(args)...);
 		c->setEntity(this);
@@ -39,7 +39,7 @@ public:
 		_components.emplace_back(c);
 
 		return c;
-	}
+	}*/
 
 	void addComponent(Component* c) {
 		_components.emplace_back(c);
@@ -137,7 +137,7 @@ public:
 	}
 
 
-	virtual void receiveEvent(MessageType msg, Entity* e) {};
+	virtual void receiveEvent(MessageType msg, Entity* e) {}
 
 	static std::vector<Entity*> _listeners;
 

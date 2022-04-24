@@ -4,7 +4,7 @@
 #include <vector>
 #include "Entity.h"
 #include "FactoryManager.h"
-
+#include "InputManager.h"
 #include "Utils.h"
 
 namespace luabridge {
@@ -16,6 +16,8 @@ namespace luabridge {
 class Scene {
 private:
 	std::vector<Entity*> _entities;
+
+	InputManager* IM = nullptr;
 
 	FactoryManager* _fmanager;
 
@@ -41,7 +43,6 @@ public:
 
 	void update();
 
-	bool keyPressed();
 
 	void refresh();
 

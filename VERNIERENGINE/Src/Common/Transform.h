@@ -3,14 +3,17 @@
 #include "Component.h"
 #include "Vector3D.h"
 #include <map>
+#include <iostream>
+
 class Component;
 
 class Transform : public Component {
 	enum Axis :uint8_t { x, y, z };
 public:
-	Transform() :
+	/*Transform() :
 		_position(), _scale(), _rotation(0,0,0) {
-	}
+		std::cout << "Constructora default transform\n";
+	}*/
 
 	Transform(Vector3D position, Vector3D scale, Vector3D rotation);
 	

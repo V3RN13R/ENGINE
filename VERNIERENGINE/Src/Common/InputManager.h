@@ -13,5 +13,5 @@ private:
 public:
 	InputManager() { }
 	~InputManager(){}
-   //  bool keyPressed(); 
+   bool keyPressed(); 
 };

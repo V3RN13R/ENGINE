@@ -22,9 +22,11 @@
 #include "Monkey.h"
 #include <Windows.h>
 #include "UIManager.h"
+#include "InputManager.h"
 
 #include "Scene.h"
 #include "InitFactories.cpp"
+
 
 
 //LUA
@@ -69,6 +71,8 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	
 	_scene->onEnable();
 
+
+	_IM = new InputManager();
 	//Entity* light = _mngr->addEntity("Light");
 	//Light* l = light->addComponent<Light>();
 	//Transform* tLight = light->addComponent<Transform>();
@@ -77,7 +81,7 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 	//tLight->setPosition({ 0, 500, 10 });
 
 	Camera* camera = new Camera("Camera");
-	Transform* trCam = camera->addComponent<Transform>();
+	//Transform* trCam = camera->addComponent<Transform>();
 	camera->start();
 	//t->setPosition({ 0, 500, 10 });
 	camera->setBckgColor({ 1,0,0 });
@@ -145,9 +149,10 @@ VernierEngine::VernierEngine(const std::string& appName) : _appName(appName) {
 bool VernierEngine::processFrame()
 {
 	//std::cout << "updating...\n";
-	if (/*_ogre->pollEvents()*/  _scene->keyPressed()) {
+	if (/*_ogre->pollEvents()*/  _IM->keyPressed()) {
 		//InputManager::getInstance()->Update();
 		//PhysicsManager::getInstance()->Update();
+
 		_physics->stepPhysics();
 		_scene->fixedUpdate();
 		_scene->update();
