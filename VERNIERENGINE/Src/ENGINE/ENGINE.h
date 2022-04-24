@@ -35,7 +35,6 @@ private:
 	static VernierEngine* _instance;
 	std::string _appName;
 
-	InputManager* _IM = nullptr;
 
 	RenderMain* _ogre = nullptr;
 	PhysicsManager* _physics = nullptr;

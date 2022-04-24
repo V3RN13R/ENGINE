@@ -69,8 +69,7 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	_scene->onEnable();
 
 
-	_IM = new InputManager();
-	_IM->setEntities(_scene->getEntities());
+	InputManager::instance()->setEntities(_scene->getEntities());
 	//Entity* light = _mngr->addEntity("Light");
 	//Light* l = light->addComponent<Light>();
 	//Transform* tLight = light->addComponent<Transform>();
@@ -147,7 +146,7 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 bool VernierEngine::processFrame()
 {
 	//std::cout << "updating...\n";
-	if (/*_ogre->pollEvents()*/  _IM->keyPressed()) {
+	if (/*_ogre->pollEvents()*/  InputManager::instance()->keyPressed()) {
 		//InputManager::getInstance()->Update();
 		//PhysicsManager::getInstance()->Update();
 
