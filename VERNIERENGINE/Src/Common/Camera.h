@@ -28,6 +28,7 @@ private:
 	float _aspectRatio = 1;
 	Vector3D _bckgColor = { 0, 0, 0 }; //color por defecto
 	Ogre::Viewport* _vp;
+	Entity* mono;
 
 	int _monkeAngle = 0;
 	float _monkeRadio = 500;

@@ -1,24 +1,25 @@
 ﻿#include "Camera.h"
 #include "Entity.h"
 #include "RenderMain.h"
+#include "Scene.h"
 #include <Ogre.h>
 #include "Transform.h"
 #include "Component.h"
 #include "OgreMath.h"
+#include "Transform.h"
 #include <iostream>
 #include <math.h>
 
 
-const float M_PI = 3.1416;
 const float toRadians = M_PI / 180.0;
 const float toAngles = 180.0 / M_PI;
 
-Camera::Camera(std::map<std::string, std::string> args, Entity* ent) :
+Camera::Camera(std::map<std::string, std::string> args, Entity* ent) : Component(ent),
 	_bckgColor(args["BackgroundColor"]), _camName(args["CameraName"]), _looking(args["Looking"]) {
 	_nearClipDist = std::stof(args["NearClipDistance"]);
 	_farClipDist = std::stof(args["FarClipDistance"]);
 	_aspectRatio = std::stof(args["AspectRatio"]);
-
+	mono = entity_->getScene()->getObjectWithName(args["Entity"]);
 }
 
 Camera::~Camera() {
@@ -42,13 +43,14 @@ void Camera::setMonkePos(Vector3D* monPos) {
 
 
 void Camera::update() {
-	
+	_monkePos = &(static_cast<Transform*>(mono->getComponent("Transform")))->getPos();
+	std::cout << "Pos camera: " << _monkePos->getY() << "\n";
 	if (_camTr != nullptr) {
 		/*Vector3D nuevaPos = Vector3D(_monkePos->getX() + _monkeRadio * std::cos( _monkeAngle*toRadians), _monkePos->getY() + 0 , _monkePos->getZ() + _monkeRadio * std::sin(_monkeAngle*toRadians));
 		camTr->setPosition(nuevaPos)*/;
 		//camtTr para mover al nodo padre y mNodeCamera para mover la posición del nodo hijo que es donde se encuentra la cámara
-		/*camTr->setPosition(Vector3D(_monkePos->getX(), _monkePos->getY() + 500, _monkePos->getZ()));
-		mNodeCamera->lookAt(Ogre::Vector3(_monkePos->getX(), _monkePos->getY(), _monkePos->getZ()), Ogre::Node::TS_WORLD, Ogre::Vector3::NEGATIVE_UNIT_Z);*/
+		_camTr->setPosition(Vector3D(_monkePos->getX(), _monkePos->getY(), _monkePos->getZ()));
+		/*mNodeCamera->lookAt(Ogre::Vector3(_monkePos->getX(), _monkePos->getY(), _monkePos->getZ()), Ogre::Node::TS_WORLD, Ogre::Vector3::NEGATIVE_UNIT_Z);*/
 	}
 };
 
