@@ -4,8 +4,10 @@
 #include <SDL.h>
 
 
-Scene::Scene(const std::string& file, const std::string& name) {
+Scene::Scene(const std::string& file, const std::string& name, GameStateMachine* gsm) {
 	//_fmanager->setUpInstance(); se puede quitar en el main se debe de instanciar
+
+	_GSM = gsm;
 	lua_State* _state = nullptr;
 	try {
 		_state = readFileLua(file);
@@ -174,6 +176,11 @@ void Scene::addListener(Entity* e)
 	if (e) {
 		_listeners.push_back(e);
 	}
+}
+
+GameStateMachine* Scene::getGSM()
+{
+	return _GSM;;
 }
 
 void Scene::start() {

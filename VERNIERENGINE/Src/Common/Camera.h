@@ -39,6 +39,8 @@ public:
 	Camera(std::map<std::string, std::string> args, Entity* ent);
 	virtual ~Camera();
 	virtual void update();
+	virtual void receiveEvent(MessageType msg, Entity* e);
+
 	void setNearClipDist(float n) { _nearClipDist = n; }
 	void setFarClipDist(float n) { _farClipDist = n; }
 	void setAspectRatio(float n) { _aspectRatio = n; }

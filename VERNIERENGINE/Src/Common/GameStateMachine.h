@@ -20,7 +20,8 @@ public:
 
 	void clearScenes();
 	void initScene(const std::string& sceneFile, const std::string& scene);
-	void changeScene(std::string file, std::string name);
+	void changeScene(std::string file, std::string name, bool push = true); //false para borrar todas las escenas existentes en la pila
+	void popScene();
 	void fixedUpdate();
 	void update();
 	bool lastUpdate();
