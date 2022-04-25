@@ -3,9 +3,10 @@
 #include "SDL.h"
 
 
-void GameStateMachine::initScene() {
-	_sceneStack.push((new Scene("prueba.lua", "prueba")));
+void GameStateMachine::initScene(const std::string& sceneFile, const std::string& scene) {
+	_sceneStack.push((new Scene(sceneFile, scene)));
 	_sceneStack.top()->start();
+	_sceneStack.top()->onEnable();
 }
 
 void GameStateMachine::clearScenes() {

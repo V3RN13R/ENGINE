@@ -6,6 +6,7 @@
 #include "RigidBody.h"
 #include "Shoot.h"
 #include "Button1.h"
+#include "Camera.h"
 
 Component* TransformFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
@@ -30,6 +31,11 @@ Component* ShootFactory::createComponent(std::map<std::string, std::string> args
 	return new Shoot(args,ent);
 };
 
+Component* CameraFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
+{
+	return new Camera(args, ent);
+};
+
 
 //Component* Button1Factory::createComponent(std::map<std::string, std::string> args, Entity* ent) {
 //	return new Button1(args, ent);
@@ -44,5 +50,7 @@ void setupFactories()
 	_fM->addFactory("MeshRenderer", new MeshRendererFactory());
 	_fM->addFactory("Rigidbody", new RigidBodyFactory());
 	_fM->addFactory("Shoot", new ShootFactory());
+	_fM->addFactory("Camera", new CameraFactory());
+
 	//_fM->addFactory("Button1", new Button1Factory());
 }

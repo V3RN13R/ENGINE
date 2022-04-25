@@ -3,6 +3,7 @@
 #include "RenderMain.h"
 #include <Ogre.h>
 #include "Transform.h"
+#include "Component.h"
 #include "OgreMath.h"
 #include <iostream>
 #include <math.h>
@@ -12,7 +13,11 @@ const float M_PI = 3.1416;
 const float toRadians = M_PI / 180.0;
 const float toAngles = 180.0 / M_PI;
 
-Camera::Camera(std::string entityName) : Entity(entityName) {
+Camera::Camera(std::map<std::string, std::string> args, Entity* ent) :
+	_bckgColor(args["BackgroundColor"]), _camName(args["CameraName"]), _looking(args["Looking"]) {
+	_nearClipDist = std::stof(args["NearClipDistance"]);
+	_farClipDist = std::stof(args["FarClipDistance"]);
+	_aspectRatio = std::stof(args["AspectRatio"]);
 
 }
 
@@ -37,9 +42,8 @@ void Camera::setMonkePos(Vector3D* monPos) {
 
 
 void Camera::update() {
-	Entity::update();
-	Transform* camTr = getComponent<Transform>();
-	if (camTr != nullptr) {
+	
+	if (_camTr != nullptr) {
 		/*Vector3D nuevaPos = Vector3D(_monkePos->getX() + _monkeRadio * std::cos( _monkeAngle*toRadians), _monkePos->getY() + 0 , _monkePos->getZ() + _monkeRadio * std::sin(_monkeAngle*toRadians));
 		camTr->setPosition(nuevaPos)*/;
 		//camtTr para mover al nodo padre y mNodeCamera para mover la posición del nodo hijo que es donde se encuentra la cámara
@@ -50,12 +54,12 @@ void Camera::update() {
 
 
 void Camera::start() {
-	_camera = RenderMain::getInstance()->getSceneManager()->createCamera("MainCam");
+	_camera = RenderMain::getInstance()->getSceneManager()->createCamera(_camName);
 
 	_camera->setNearClipDistance(_nearClipDist);
 	_camera->setFarClipDistance(_farClipDist);
 	_camera->setAutoAspectRatio(true);
-	mNodeCamera = _oNode->createChildSceneNode();
+	mNodeCamera = entity_->getNode()->createChildSceneNode();
 	mNodeCamera->attachObject(_camera);
 	//mNodeCamera->yaw(Ogre::Degree(90));
 
@@ -67,6 +71,8 @@ void Camera::start() {
 	_vp->setBackgroundColour(Ogre::ColourValue(_bckgColor.getX(), _bckgColor.getY(), _bckgColor.getZ()));
 	_aspectRatio = Ogre::Real(_vp->getActualWidth()) / Ogre::Real(_vp->getActualHeight());
 	_camera->setAspectRatio(_aspectRatio);
+
+	_camTr = (Transform*)entity_->getComponent("Transform");
 }
 
 

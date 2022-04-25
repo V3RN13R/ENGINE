@@ -19,7 +19,7 @@ public:
 	~GameStateMachine() { }
 
 	void clearScenes();
-	void initScene();
+	void initScene(const std::string& sceneFile, const std::string& scene);
 	void changeScene(std::string file, std::string name);
 	void fixedUpdate();
 	void update();

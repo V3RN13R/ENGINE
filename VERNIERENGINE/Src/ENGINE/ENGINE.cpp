@@ -64,7 +64,7 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 
 	PruebaBullet::mainPhys();
 
-	GameStateMachine::instance()->initScene();
+	GameStateMachine::instance()->initScene(sceneFile, scene);
 	
 
 	InputManager::instance()->setListenersVector(GameStateMachine::instance()->getScene()->getListeners());
@@ -75,12 +75,12 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	////l->start();
 	//tLight->setPosition({ 0, 500, 10 });
 
-	Camera* camera = new Camera("Camera");
+	//Camera* camera = new Camera("Camera");
 	//Transform* trCam = camera->addComponent<Transform>();
-	camera->start();
+	//camera->start();
 	//t->setPosition({ 0, 500, 10 });
-	camera->setBckgColor({ 1,0,0 });
-	GameStateMachine::instance()->getScene()->addEntity(camera);
+	//camera->setBckgColor({ 0,0.5f,0.5f });
+	//GameStateMachine::instance()->getScene()->addEntity(camera);
 	//camera->addListener(camera);
 	
 	// Accedemos a la ventana y creamos el renderer.
