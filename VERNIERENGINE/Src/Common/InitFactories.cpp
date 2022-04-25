@@ -31,9 +31,9 @@ Component* ShootFactory::createComponent(std::map<std::string, std::string> args
 };
 
 
-Component* Button1Factory::createComponent(std::map<std::string, std::string> args, Entity* ent) {
-	return new Button1(args, ent);
-}
+//Component* Button1Factory::createComponent(std::map<std::string, std::string> args, Entity* ent) {
+//	return new Button1(args, ent);
+//}
 
 
 void setupFactories()
@@ -44,5 +44,5 @@ void setupFactories()
 	_fM->addFactory("MeshRenderer", new MeshRendererFactory());
 	_fM->addFactory("Rigidbody", new RigidBodyFactory());
 	_fM->addFactory("Shoot", new ShootFactory());
-	_fM->addFactory("Button1", new Button1Factory());
+	//_fM->addFactory("Button1", new Button1Factory());
 }

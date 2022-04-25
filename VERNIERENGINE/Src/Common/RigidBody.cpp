@@ -77,17 +77,19 @@ void Rigidbody::clearForce()
 }
 
 void Rigidbody::setVelocity(Vector3D dir) {
-	_brb->activate();
-	_brb->setLinearVelocity(btVector3(dir.getX(), dir.getY(), dir.getZ()));
+	/*_brb->activate();
+	_brb->setLinearVelocity(btVector3(dir.getX(), dir.getY(), dir.getZ()));*/
+
+
 	//_brb->applyCentralForce(btVector3(dir.getX(), dir.getY(), dir.getZ()));
 	//_brb->applyCentralImpulse(btVector3(dir.getX(), dir.getY(), dir.getZ()));
 	//_brb->setLinearVelocity(btVector3(dir.getX(), dir.getY(), dir.getZ()));
 
 
 
-	/*btTransform transform = _brb->getCenterOfMassTransform();
+	btTransform transform = _brb->getCenterOfMassTransform();
 	transform.setOrigin(btVector3(transform.getOrigin().getX() + dir.getX(), transform.getOrigin().getY() + dir.getY(), transform.getOrigin().getZ() + dir.getZ()));
-	_brb->setCenterOfMassTransform(transform);*/
+	_brb->setCenterOfMassTransform(transform);
 
 
 	std::cout << "Vel X bullet: " << _brb->getLinearVelocity().getX() << "\n";

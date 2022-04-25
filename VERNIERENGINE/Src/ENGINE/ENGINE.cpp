@@ -22,6 +22,7 @@
 #include <Windows.h>
 #include "UIManager.h"
 #include "InputManager.h"
+#include "Scene.h"
 
 #include "GameStateMachine.h"
 #include "InitFactories.h"
@@ -66,7 +67,7 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	GameStateMachine::instance()->initScene();
 	
 
-	InputManager::instance()->setListenersVector(_scene->getListeners());
+	InputManager::instance()->setListenersVector(GameStateMachine::instance()->getScene()->getListeners());
 	//Entity* light = _mngr->addEntity("Light");
 	//Light* l = light->addComponent<Light>();
 	//Transform* tLight = light->addComponent<Transform>();
@@ -79,7 +80,7 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	camera->start();
 	//t->setPosition({ 0, 500, 10 });
 	camera->setBckgColor({ 1,0,0 });
-	_scene->addEntity(camera);
+	GameStateMachine::instance()->getScene()->addEntity(camera);
 	//camera->addListener(camera);
 	
 	// Accedemos a la ventana y creamos el renderer.
@@ -148,8 +149,8 @@ bool VernierEngine::processFrame()
 		//PhysicsManager::getInstance()->Update();
 
 		_physics->stepPhysics();
-		_scene->fixedUpdate();
-		_scene->update();
+		GameStateMachine::instance()->getScene()->fixedUpdate();
+		GameStateMachine::instance()->getScene()->update();
 		//tr->setPosition(Vector3D(tr->getPos().getX(), tr->getPos().getY() - 0.0001, tr->getPos().getZ()));
 		//tr2->rotate(0.01, 2);
 		_ogre->updateWindow();
@@ -163,8 +164,8 @@ VernierEngine::~VernierEngine()
 {
 
 
-	delete _scene.get();
-	_scene.release();
+	/*delete (*_gsm)->getScene();
+	_gsm.release();*/
 
 	PhysicsManager::deleteInstance();
 	_physics = nullptr;

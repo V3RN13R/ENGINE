@@ -1,5 +1,5 @@
 prueba = {
-    entities = {"mono", "suelo", "boton"}
+    entities = {"mono", "suelo"}
 }
 
 mono={
@@ -8,7 +8,7 @@ mono={
     Components = {"Transform","MeshRenderer", "Rigidbody", "Shoot"},
 
     Transform = {
-        Position = "0,100,0",
+        Position = "0,0,0",
         Scale = "10,10,10",
         Rotation = "0,0,0"
     },
@@ -73,20 +73,5 @@ bala={
         Mass = "1",
         Radius = "10",
         Position = "0,0,0"
-    }
-}
-
-boton={
-    Active = true;
-    Components = {"Transform", "Button1"},
-
-    Transform = {
-        Position = "300, 200, 0",
-        Scale = "1,1,1",
-        Rotation = "0,0,0"
-    },
-
-    Button1 = {
-        Callback = "CambioEscena"
     }
 }

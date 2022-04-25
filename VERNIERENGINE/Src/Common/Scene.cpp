@@ -51,7 +51,8 @@ Scene::Scene(const std::string& file, const std::string& name) {
 		//con el nombre ent, se busca el .lua y se cree lo que pone alli
 		LuaRef _entInfo = readElementFromFile(_state, _ent);
 
-		if (!createEntity(_ent, _entInfo)) std::cout << "ERROR: no se ha podido cargar la entidad: " << _ent;
+		if (!createEntity(_ent, _entInfo)) 
+			std::cout << "ERROR: no se ha podido cargar la entidad: " << _ent;
 		std::cout << "\n";
 	}
 	std::cout << "Listo.\n\n-------------------------\n\n";

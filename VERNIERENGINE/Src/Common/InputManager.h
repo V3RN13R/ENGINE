@@ -49,7 +49,6 @@ public:
 	//	return _mbState[b];
 	//}
 
-	void setEntities(const std::vector<Entity*>* entidades) { _entidadesScene = entidades; };
 
 	const std::pair<Sint32, Sint32>& getMousePos() {
 		return _mousePos;
