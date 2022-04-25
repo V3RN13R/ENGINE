@@ -12,7 +12,9 @@ class MovementPlayer : public Component {
 private:
 	Rigidbody* _rbToMove = nullptr;
 	float  _vel;
+	void update();
 public:
+
 	MovementPlayer() {}
 	MovementPlayer(std::map<std::string, std::string> args);
 	~MovementPlayer() {}

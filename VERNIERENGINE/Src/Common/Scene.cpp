@@ -58,7 +58,7 @@ Scene::Scene(const std::string& file, const std::string& name) {
 	}
 	std::cout << "Listo.\n\n-------------------------\n\n";
 
-	LoadImage::instance()->cargaImagen("prueba2.lua", "prueba2");
+	//LoadImage::instance()->cargaImagen("prueba2.lua", "prueba2");
 }
 
 Entity* Scene::createEntity(const std::string& entityName, LuaRef entInfo)

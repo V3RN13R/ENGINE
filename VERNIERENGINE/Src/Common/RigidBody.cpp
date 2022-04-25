@@ -7,6 +7,7 @@
 
 Rigidbody::Rigidbody(std::map<std::string, std::string> args) : _position(args["Position"]) , _type(args["Type"])
 {
+	std::cout << "Masa en cosntructora lua: " << args["Mass"] << "\n";
 	_mass = std::stof(args["Mass"]);
 	if (_type == "Sphere") {
 		_radius = std::stof(args["Radius"]);
@@ -42,6 +43,7 @@ void Rigidbody::addBoxRigidbody(float mass, Vector3D pos, Vector3D size, bool st
 void Rigidbody::fixedUpdate()
 {
 	//clearForce();
+
 }
 
 Vector3D Rigidbody::getPosition()
@@ -92,5 +94,5 @@ void Rigidbody::setVelocity(Vector3D dir) {
 	_brb->setCenterOfMassTransform(transform);
 
 
-	std::cout << "Vel X bullet: " << _brb->getLinearVelocity().getX() << "\n";
+	//std::cout << "Vel X bullet: " << _brb->getLinearVelocity().getX() << "\n";
 };

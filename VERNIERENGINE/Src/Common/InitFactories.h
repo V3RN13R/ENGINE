@@ -27,6 +27,18 @@ public:
 };
 
 class CameraFactory : public Factory
+{
+public:
+	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
+};
+
+class MovementPlayerFactory : public Factory
+{
+public:
+	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
+};
+
+
 class ImageFactory : public Factory
 {
 public:

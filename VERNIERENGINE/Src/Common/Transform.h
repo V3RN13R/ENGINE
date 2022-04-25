@@ -21,7 +21,7 @@ public:
 	
 	Transform(std::map<std::string, std::string> args);
 
-	virtual bool init();
+	void start();
 
 	virtual ~Transform() {
 	}

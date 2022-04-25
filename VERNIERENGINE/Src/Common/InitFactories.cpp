@@ -8,6 +8,7 @@
 #include "Button1.h"
 #include "Camera.h"
 #include "Image.h"
+#include "MovementPlayer.h"
 
 Component* TransformFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
@@ -35,11 +36,16 @@ Component* ShootFactory::createComponent(std::map<std::string, std::string> args
 Component* CameraFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
 	return new Camera(args, ent);
+}
+
 Component* ImageFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
 	return new Image(args);
 };
-
+Component* MovementPlayerFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
+{
+	return new MovementPlayer(args);
+};
 
 //Component* Button1Factory::createComponent(std::map<std::string, std::string> args, Entity* ent) {
 //	return new Button1(args, ent);
@@ -55,6 +61,7 @@ void setupFactories()
 	_fM->addFactory("Rigidbody", new RigidBodyFactory());
 	_fM->addFactory("Shoot", new ShootFactory());
 	_fM->addFactory("Camera", new CameraFactory());
+	_fM->addFactory("MovementPlayer", new MovementPlayerFactory());
 
 	_fM->addFactory("Image", new ImageFactory());
 	//_fM->addFactory("Button1", new Button1Factory());

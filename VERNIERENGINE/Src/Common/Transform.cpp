@@ -13,15 +13,16 @@ Transform::Transform(Vector3D position, Vector3D scale, Vector3D rotation) : _po
 
 Transform::Transform(std::map<std::string, std::string> args) : _position(args["Position"]), _scale(args["Scale"]), _rotation(args["Rotation"])
 {
+	
 	std::cout << "Contructora lua transform\n";
+	std::cout << "Rotación en x" << _scale.getX() << "\n";
 }
 
-bool Transform::init()
+void Transform::start()
 {
 	std::cout << "Rotacion inicial: " << _rotation.getX() << " " << _rotation.getY() << " " << _rotation.getZ() << "\n";
 
-	setRotation(_rotation);
-	return true;
+	rotate(_rotation);
 }
 
 void Transform::rotate(Vector3D rotation)
@@ -63,9 +64,6 @@ void Transform::rotate(float degree, uint8_t axis)
 
 void Transform::setRotation(Vector3D rotation)
 {
-	entity_->getNode()->pitch(Ogre::Degree(-_rotation.getX()));
-	entity_->getNode()->yaw(Ogre::Degree(-_rotation.getY()));
-	entity_->getNode()->roll(Ogre::Degree(-_rotation.getZ()));
 
 	entity_->getNode()->pitch(Ogre::Degree(rotation.getX()));
 	entity_->getNode()->yaw(Ogre::Degree(rotation.getY()));
@@ -102,9 +100,9 @@ void Transform::setScale(Vector3D vec) {
 
 void Transform::fixedUpdate()
 {
-
-	if (entity_->hasComponent<Rigidbody>()) {
-		setPosition(entity_->getComponent<Rigidbody>()->getPosition());
+	Rigidbody* rb1 = static_cast<Rigidbody*>(entity_->getComponent("Rigidbody"));
+	if (rb1) {
+		setPosition(rb1->getPosition());
 	}
 }
 
