@@ -2,6 +2,8 @@
 #include <memory>
 #include <string>
 
+class SDL_Renderer;
+
 namespace Ogre {
 	class Root;
 	class SceneManager;
@@ -23,6 +25,7 @@ private:
 	Ogre::SceneManager* _mSceneManager = nullptr;
 	Ogre::RenderWindow* _rWindow = nullptr;
 	SDL_Window* _sDLWindow = nullptr;
+	SDL_Renderer* _renderer = nullptr;
 	InputManager* _iM = nullptr;
 	std::string _wName = "motorcito";
 	int screen_width_ = 840;
@@ -45,6 +48,7 @@ public:
 	Ogre::SceneManager* getSceneManager() { return _mSceneManager; }
 	Ogre::RenderWindow* getRenderWindow() { return _rWindow; }
 	SDL_Window* getSDLWindow() { return _sDLWindow; }
+	SDL_Renderer* getRenderer() { return _renderer; }
 	int getScreenWidth() { return screen_width_; };
 	int getScreenHeight() { return screen_height_; };
 	static WindowRender* getInstance();

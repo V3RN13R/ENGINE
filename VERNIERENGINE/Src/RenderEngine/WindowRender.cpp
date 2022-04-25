@@ -6,6 +6,7 @@
 #include <assert.h>
 #include <iostream>
 #include "RenderMain.h"
+#include <SDL_render.h>
 
 std::unique_ptr<WindowRender>  WindowRender::_instance;
 
@@ -49,6 +50,9 @@ void WindowRender::setUpWindow()
 	Uint32 flags = SDL_WINDOW_ALLOW_HIGHDPI;
 
 	_sDLWindow = SDL_CreateWindow(_wName.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen_width_, screen_height_, flags);
+	
+	//Create the renderer
+	_renderer = SDL_CreateRenderer(_sDLWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
 	SDL_SysWMinfo wmInfo;
 	SDL_VERSION(&wmInfo.version);

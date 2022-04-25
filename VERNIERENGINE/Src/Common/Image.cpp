@@ -2,6 +2,11 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
+Image::Image(std::map<std::string, std::string> args) : _texture(args["texture"])
+{
+	//_tx = getImage(_texture);
+}
+
 void Image::render() {
 	if (_tr != nullptr) {
 		_dest = build_sdlrect(_tr->getPos(), _tr->getW(), _tr->getH());

@@ -67,7 +67,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\SDL\SDL2_image-2.0.5\lib\$(Configuration);$(SolutionDir)Dependencies\Bullet\Build\$(Platform)\lib\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\SDL\SDL2_image-2.0.5\lib\x64;$(SolutionDir)Dependencies\Bullet\Build\$(Platform)\lib\$(Configuration)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -88,7 +88,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\SDL\SDL2_image-2.0.5\lib\$(Configuration);$(SolutionDir)Dependencies\Bullet\Build\$(Platform)\lib\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\SDL\SDL2_image-2.0.5\lib\x64;$(SolutionDir)Dependencies\Bullet\Build\$(Platform)\lib\$(Configuration)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -104,6 +104,7 @@
     <ClCompile Include="..\..\Src\Common\Image.cpp" />
     <ClCompile Include="..\..\Src\Common\InitFactories.cpp" />
     <ClCompile Include="..\..\Src\Common\InputManager.cpp" />
+    <ClCompile Include="..\..\Src\Common\LoadImage.cpp" />
     <ClCompile Include="..\..\Src\Common\MeshRenderer.cpp" />
     <ClCompile Include="..\..\Src\Common\Monkey.cpp" />
     <ClCompile Include="..\..\Src\Common\MovementPlayer.cpp" />
@@ -134,6 +135,7 @@
     <ClInclude Include="..\..\Src\Common\InitFactories.h" />
     <ClInclude Include="..\..\Src\Common\InputManager.h" />
     <ClInclude Include="..\..\Src\Common\Light.h" />
+    <ClInclude Include="..\..\Src\Common\LoadImage.h" />
     <ClInclude Include="..\..\Src\Common\MeshRenderer.h" />
     <ClInclude Include="..\..\Src\Common\Monkey.h" />
     <ClInclude Include="..\..\Src\Common\MovementPlayer.h" />

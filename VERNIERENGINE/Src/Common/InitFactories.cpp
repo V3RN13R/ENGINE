@@ -7,6 +7,7 @@
 #include "Shoot.h"
 #include "Button1.h"
 #include "Camera.h"
+#include "Image.h"
 
 Component* TransformFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
@@ -34,6 +35,9 @@ Component* ShootFactory::createComponent(std::map<std::string, std::string> args
 Component* CameraFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
 	return new Camera(args, ent);
+Component* ImageFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
+{
+	return new Image(args);
 };
 
 
@@ -52,5 +56,6 @@ void setupFactories()
 	_fM->addFactory("Shoot", new ShootFactory());
 	_fM->addFactory("Camera", new CameraFactory());
 
+	_fM->addFactory("Image", new ImageFactory());
 	//_fM->addFactory("Button1", new Button1Factory());
 }

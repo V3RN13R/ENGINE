@@ -6,9 +6,12 @@
 #include "Texture.h"
 #include "Entity.h"
 #include "Transform.h"
+#include <map>
 
 class Image : public Component {
 public:
+	Image(std::map<std::string, std::string> args);
+
 	Image(Texture* tex) : _tr(nullptr), _tx(tex), currFrame(0) {
 		_src = { 0, 0, tex->width(), tex->height() };
 	}
@@ -30,6 +33,7 @@ public:
 
 	bool init() override {
 		_tr = entity_->getComponent<Transform>();
+		return true;
 	}
 
 	void render() override;
@@ -49,10 +53,13 @@ public:
 			static_cast<int>(h)
 		};
 	}
+
 private:
 	Transform* _tr;
 	Texture* _tx;
 	SDL_Rect _src;
 	SDL_Rect _dest;
 	int currFrame;
+
+	std::string _texture;
 };
