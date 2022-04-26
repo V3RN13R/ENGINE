@@ -5,8 +5,15 @@
 #include "Vector3D.h"
 #include <map>
 #include "Utils.h"
+#include <string>
 class Component;
 class Transform;
+
+
+
+const float _PI = 3.1416;
+const float toRadians = _PI / 180.0;
+const float toAngles = 180.0 / _PI;
 
 namespace Ogre {
 	class Root;
@@ -29,10 +36,12 @@ private:
 	Vector3D _bckgColor = { 0, 0, 0 }; //color por defecto
 	Ogre::Viewport* _vp;
 	Entity* mono;
+	std::string entidadBuscar;
 
 	int _monkeAngle = 0;
 	float _monkeRadio = 500;
 	Vector3D* _monkePos = nullptr;
+	Vector3D _posRel;;
 
 	Transform* _camTr;
 	std::string _camName;
@@ -48,6 +57,6 @@ public:
 	void setMonkePos(Vector3D* pos);
 	void start();
 	//virtual void sendEvent(MessageType msg){}
-	//virtual void receiveEvent(MessageType msg, Entity* e);
+	void receiveEvent(MessageType msg, Entity* e);
 
 };

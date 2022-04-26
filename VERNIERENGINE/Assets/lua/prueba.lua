@@ -16,7 +16,8 @@ mono={
         Rotation = "0,0,0"
     },
 	MovementPlayer = {
-        Vel = "10"
+        Vel = "10",
+        Entity = "camaraPrincipal"
     },
 	MeshRenderer = {
         Mesh = "Sphere"
@@ -28,7 +29,7 @@ mono={
         Position = "0,300,0"
     },
     Shoot = {
-        entity = "mono",
+        Entity = "mono",
         file = "prueba.lua",
         name = "bala",
         prefabName = "bala"
@@ -37,16 +38,17 @@ mono={
 
 camaraPrincipal={
     Active = true,
-    Listener = false,
+    Listener = true,
     Components = {"Transform","Camera"},
 
     Transform = {
-        Position = "0,0,500",
+        Position = "0,0,0",
         Scale = "5,5,5",
-        Rotation = "0,0,0"
+        Rotation = "0,90,0"
     },
     
     Camera = {
+        PosRel = "0,500,1000",
         Entity = "mono",
         BackgroundColor = "0.2,0.5,0.1",
         CameraName = "MainCamera",

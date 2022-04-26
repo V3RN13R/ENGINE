@@ -13,7 +13,8 @@
 // for an example
 //
 // the following includes your ../game/ecs_defs.h, it is valid
-// from c++17, it won't compile with older versions. If you are
+// from c++17, it won't com
+// le with older versions. If you are
 // using an older version replace the #if #else and #endif
 //
 #include "ecs_defs.h"

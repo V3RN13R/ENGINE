@@ -11,15 +11,13 @@
 #include <math.h>
 
 
-const float toRadians = M_PI / 180.0;
-const float toAngles = 180.0 / M_PI;
-
 Camera::Camera(std::map<std::string, std::string> args, Entity* ent) : Component(ent),
-	_bckgColor(args["BackgroundColor"]), _camName(args["CameraName"]), _looking(args["Looking"]) {
+	_bckgColor(args["BackgroundColor"]), _camName(args["CameraName"]), _looking(args["Looking"]), _posRel(args["PosRel"]) {
 	_nearClipDist = std::stof(args["NearClipDistance"]);
 	_farClipDist = std::stof(args["FarClipDistance"]);
 	_aspectRatio = std::stof(args["AspectRatio"]);
-	mono = entity_->getScene()->getObjectWithName(args["Entity"]);
+	entidadBuscar = args["Entity"];
+	
 }
 
 Camera::~Camera() {
@@ -50,12 +48,14 @@ void Camera::update() {
 		camTr->setPosition(nuevaPos)*/;
 		//camtTr para mover al nodo padre y mNodeCamera para mover la posición del nodo hijo que es donde se encuentra la cámara
 		_camTr->setPosition(Vector3D(_monkePos->getX(), _monkePos->getY(), _monkePos->getZ()));
-		/*mNodeCamera->lookAt(Ogre::Vector3(_monkePos->getX(), _monkePos->getY(), _monkePos->getZ()), Ogre::Node::TS_WORLD, Ogre::Vector3::NEGATIVE_UNIT_Z);*/
+		mNodeCamera->lookAt(Ogre::Vector3(_monkePos->getX(), _monkePos->getY(), _monkePos->getZ()), Ogre::Node::TS_WORLD, Ogre::Vector3::NEGATIVE_UNIT_Z);
 	}
 };
 
 
 void Camera::start() {
+	mono = entity_->getScene()->getObjectWithName(entidadBuscar);
+
 	_camera = RenderMain::getInstance()->getSceneManager()->createCamera(_camName);
 
 	_camera->setNearClipDistance(_nearClipDist);
@@ -65,7 +65,7 @@ void Camera::start() {
 	mNodeCamera->attachObject(_camera);
 	//mNodeCamera->yaw(Ogre::Degree(90));
 
-	mNodeCamera->setPosition(0, 0/*500*/, _monkeRadio);
+	mNodeCamera->setPosition(_posRel.getX(), _posRel.getY(), _posRel.getZ());
 	mNodeCamera->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
 
 	 _vp= RenderMain::getInstance()->getRenderWindow()->addViewport(_camera);
@@ -79,26 +79,29 @@ void Camera::start() {
 
 
 
-//void Camera::receiveEvent(MessageType msg, Entity* e) {
-//	std::cout << "Recibe msg";
-//	Transform* camTr = getComponent<Transform>();
-//	switch (msg) {
-//		case MessageType::PULSA_Q:
-//			camTr->rotate(Vector3D(0, 5, 0));
-//			//_oNode->yaw(Ogre::Degree(-5));
-//			mNodeCamera->yaw(Ogre::Degree(-5));
-//			_monkeAngle = (_monkeAngle + 5) % 360;
-//			//camTr->setRotation()
-//			//_oNode->getOrientation(). * toAngles;
-//			//std::cout << "AnguloCam mono: " << //camTr->setRotation()
-//			//	_oNode->getOrientation() * toAngles << "\n";
-//			break;
-//		case MessageType::PULSA_E:
-//			camTr->rotate(Vector3D(0, -5, 0));
-//			//_oNode->yaw(Ogre::Degree(5));
-//			mNodeCamera->yaw(Ogre::Degree(5));
-//			_monkeAngle = (_monkeAngle - 5) % 360;
-//			//std::cout << "AnguloCam mono: " << _monkeAngle << "\n";
-//			break;
-//	}
-//}
+void Camera::receiveEvent(MessageType msg, Entity* e) {
+	std::cout << "Recibe msg";
+	Transform* camTr = static_cast<Transform*>(entity_->getComponent("Transform"));
+	if (camTr) {
+
+		switch (msg) {
+		case MessageType::PULSA_Q:
+			camTr->rotate(Vector3D(0, 5, 0));
+			//_oNode->yaw(Ogre::Degree(-5));
+			mNodeCamera->yaw(Ogre::Degree(-5));
+			_monkeAngle = (_monkeAngle + 5) % 360;
+			//camTr->setRotation()
+			//_oNode->getOrientation(). * toAngles;
+			//std::cout << "AnguloCam mono: " << //camTr->setRotation()
+			//	_oNode->getOrientation() * toAngles << "\n";
+			break;
+		case MessageType::PULSA_E:
+			camTr->rotate(Vector3D(0, -5, 0));
+			//_oNode->yaw(Ogre::Degree(5));
+			mNodeCamera->yaw(Ogre::Degree(5));
+			_monkeAngle = (_monkeAngle - 5) % 360;
+			//std::cout << "AnguloCam mono: " << _monkeAngle << "\n";
+			break;
+		}
+	}
+}
