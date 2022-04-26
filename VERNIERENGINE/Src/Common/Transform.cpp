@@ -106,6 +106,11 @@ void Transform::fixedUpdate()
 	}
 }
 
+void Transform::onDisable()
+{
+	_enable = false;
+}
+
 void Transform::receiveEvent(MessageType msg, Entity* e)
 {
 	//PRUEBA

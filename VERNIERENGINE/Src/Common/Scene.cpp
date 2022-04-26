@@ -5,8 +5,10 @@
 #include <SDL.h>
 
 
-Scene::Scene(const std::string& file, const std::string& name) {
+Scene::Scene(const std::string& file, const std::string& name, GameStateMachine* gsm) {
 	//_fmanager->setUpInstance(); se puede quitar en el main se debe de instanciar
+
+	_GSM = gsm;
 	lua_State* _state = nullptr;
 	try {
 		_state = readFileLua(file);
@@ -178,11 +180,16 @@ void Scene::addListener(Entity* e)
 	}
 }
 
+GameStateMachine* Scene::getGSM()
+{
+	return _GSM;;
+}
+
 void Scene::start() {
 	sceneStarted = true;
 	size_t n = _entities.size();
 	for (int i = 0; i < n; i++) {
-		if (!_entities[i]->getDestroy())
+		if (!_entities[i]->getDestroy() && _entities[i]->isActive())
 			_entities[i]->start();
 	}
 }
@@ -195,13 +202,21 @@ void Scene::onEnable() {
 	}
 }
 
+void Scene::onDisable() {
+	size_t n = _entities.size();
+	for (int i = 0; i < n; i++) {
+		if (!_entities[i]->getDestroy())
+			_entities[i]->onDisable();
+	}
+}
+
 //Ver si hace falta el render()
 
 void Scene::fixedUpdate()
 {
 	size_t n = _entities.size();
 	for (int i = 0; i < n; i++) {
-		if (!_entities[i]->getDestroy())
+		if (!_entities[i]->getDestroy() && _entities[i]->isActive())
 			_entities[i]->fixedUpdate();
 	}
 }
@@ -210,7 +225,7 @@ void Scene::update()
 {
 	size_t n = _entities.size();
 	for (int i = 0; i < n; i++) {
-		if (!_entities[i]->getDestroy())
+		if (!_entities[i]->getDestroy() && _entities[i]->isActive())
 			_entities[i]->update();
 	}
 }

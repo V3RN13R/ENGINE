@@ -4,7 +4,7 @@
 
 
 void GameStateMachine::initScene(const std::string& sceneFile, const std::string& scene) {
-	_sceneStack.push((new Scene(sceneFile, scene)));
+	_sceneStack.push((new Scene(sceneFile, scene, instance())));
 	_sceneStack.top()->start();
 	_sceneStack.top()->onEnable();
 }
@@ -16,14 +16,23 @@ void GameStateMachine::clearScenes() {
 	}
 }
 
-void GameStateMachine::changeScene(std::string file, std::string name) {
+void GameStateMachine::popScene() {
+	_pop = true;
+}
+
+void GameStateMachine::changeScene(std::string file, std::string name, bool push) {
 	if (_sceneStack.empty()) {
-		Scene* scene = new Scene(file, name);
+		Scene* scene = new Scene(file, name, instance());
 		_sceneStack.push(scene);
 		scene->start();
 	}
 	else {
-		_load = true;
+		if (!push) {
+			_load = true;
+		}
+		else {
+			_push = true;
+		}
 		_name = name;
 		_file = file;
 	}
@@ -51,20 +60,23 @@ bool GameStateMachine::lastUpdate()
 			if (_sceneStack.empty())
 				return false;
 			getScene()->setSceneActive(true);
+			_sceneStack.top()->onEnable();
 			_pop = false;
 		}
-		else if (_load) {
-			clearScenes();
-			Scene* scene = new Scene(_file, _name);
+		else if(_load || _push) {
+			if (_load)
+				clearScenes();
+			_sceneStack.top()->onDisable();
+			Scene* scene = new Scene(_file, _name, instance());
 			_sceneStack.push(scene);
 			scene->start();
+			scene->onEnable();
 			_load = false;
-			_load = false;
+			_push = false;
 		}
 		return true;
 	}
-	else
-		return false;
+	return false;
 }
 //bool GameStateMachine::keyPressed() {
 	//SDL_Event event;

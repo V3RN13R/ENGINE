@@ -11,12 +11,14 @@ namespace luabridge {
 	class LuaRef;
 }
 
-
+class GameStateMachine;
 
 class Scene {
 private:
 	std::vector<Entity*> _entities;
 	std::vector<Entity*> _listeners;
+
+	GameStateMachine* _GSM;
 
 	InputManager* IM = nullptr;
 
@@ -27,24 +29,29 @@ private:
 	void clearEntities();
 
 	bool sceneStarted = false;
+	std::string _name;
 
 public:
-	Scene(const std::string& file, const std::string& name);
+	Scene(const std::string& file, const std::string& name, GameStateMachine* gsm);
 	~Scene();
 
 	void addEntity(Entity* e);
 	void addListener(Entity* e);
+	GameStateMachine* getGSM();
 
 	Entity* createEntityByPrefab(const std::string& file, const std::string& nameInFile, const std::string& nameInGame);
 
 	void start();
 
-	void onEnable();	
+	void onEnable();
+
+	void onDisable();	
 
 	void fixedUpdate();
 
 	void update();
 
+	std::string getName() { return _name; }
 
 	const std::vector<Entity*>* getListeners() { return &_listeners; }
 

@@ -1,5 +1,5 @@
 prueba = {
-    entities = {"mono", "suelo", "camaraPrincipal"}
+    entities = { "suelo", "camaraPrincipal"}
 }
 
 
@@ -8,7 +8,7 @@ prueba = {
 mono={
     Active = true,
     Listener = true,
-    Components = {"Transform","MovementPlayer", "MeshRenderer", "Rigidbody", "Shoot"},
+    Components = {"Transform","MeshRenderer", "Rigidbody"},
 
     Transform = {
         Position = "0,300,0",
@@ -25,14 +25,8 @@ mono={
     Rigidbody = {
         Type = "Sphere",
         Mass = "1",
-        Radius = "50",
-        Position = "0,300,0"
-    },
-    Shoot = {
-        Entity = "mono",
-        file = "prueba.lua",
-        name = "bala",
-        prefabName = "bala"
+        Radius = "10",
+        Position = "0,0,0"
     }
 }
 
@@ -103,4 +97,3 @@ bala={
         Position = "0,0,0"
     }
 }
-

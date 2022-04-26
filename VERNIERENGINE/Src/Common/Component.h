@@ -23,6 +23,10 @@ public:
 		return entity_;
 	}
 
+	inline bool getEnable() {
+		return _enable;
+	}
+
 	virtual bool init() {
 		return false;
 	}
@@ -43,8 +47,8 @@ public:
 	virtual void lateUpdate() {}
 	virtual void fixedUpdate() {}
 	virtual void render() {}
-	virtual void onEnable() {}
-	virtual void onDisable() {}
+	virtual void onEnable() { _enable = true; }
+	virtual void onDisable() { _enable = false; }
 	virtual void receiveEvent(MessageType msg, Entity* e) {}
 
 protected:

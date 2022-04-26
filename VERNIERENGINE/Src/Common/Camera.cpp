@@ -1,5 +1,7 @@
 ﻿#include "Camera.h"
 #include "Entity.h"
+#include "Scene.h"
+#include "GameStateMachine.h"
 #include "RenderMain.h"
 #include "Scene.h"
 #include <Ogre.h>
@@ -49,7 +51,17 @@ void Camera::update() {
 		_camTr->setPosition(Vector3D(_monkePos->getX(), _monkePos->getY(), _monkePos->getZ()));
 		mNodeCamera->lookAt(Ogre::Vector3(_monkePos->getX(), _monkePos->getY(), _monkePos->getZ()), Ogre::Node::TS_WORLD, Ogre::Vector3::NEGATIVE_UNIT_Z);
 	}
-};
+}
+void Camera::receiveEvent(MessageType msg, Entity* e)
+{
+	if (msg == MessageType::PULSA_E) {
+		
+		entity_->getScene()->getGSM()->changeScene("prueba.lua", "prueba", true);
+	}
+
+	if (msg == MessageType::PULSA_Q)
+		entity_->getScene()->getGSM()->popScene();
+}
 
 
 void Camera::start() {
@@ -67,13 +79,20 @@ void Camera::start() {
 	mNodeCamera->setPosition(_posRel.getX(), _posRel.getY(), _posRel.getZ());
 	mNodeCamera->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
 
-	 _vp= RenderMain::getInstance()->getRenderWindow()->addViewport(_camera);
+	if (_vp && RenderMain::getInstance()->getRenderWindow()->hasViewportWithZOrder(0))
+		RenderMain::getInstance()->getRenderWindow()->removeViewport(0);
+	_vp= RenderMain::getInstance()->getRenderWindow()->addViewport(_camera, RenderMain::getInstance()->getRenderWindow()->getNumViewports());
 
 	_vp->setBackgroundColour(Ogre::ColourValue(_bckgColor.getX(), _bckgColor.getY(), _bckgColor.getZ()));
 	_aspectRatio = Ogre::Real(_vp->getActualWidth()) / Ogre::Real(_vp->getActualHeight());
 	_camera->setAspectRatio(_aspectRatio);
 
 	_camTr = (Transform*)entity_->getComponent("Transform");
+}
+
+void Camera::onDisable()
+{
+
 }
 
 

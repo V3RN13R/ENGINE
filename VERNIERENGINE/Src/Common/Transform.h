@@ -72,6 +72,7 @@ public:
 
 	void update() override;
 	void fixedUpdate() override;
+	void onDisable() override;
 	//virtual void sendEvent(MessageType msg) {}
 	virtual void receiveEvent(MessageType msg, Entity* e);
 private:

@@ -19,6 +19,9 @@ MeshRenderer::MeshRenderer(std::map<std::string, std::string> args) : _ogreEnt(n
 
 void MeshRenderer::onEnable()
 {
+	Component::onEnable();
+	_visible = true;
+
 	if (_firstEnable) {
 		//node_ = transform->getNode();
 		_node = _mSceneManager->getSceneNode(entity_->getName());
@@ -32,6 +35,7 @@ void MeshRenderer::onEnable()
 
 void MeshRenderer::onDisable()
 {
+	Component::onDisable();
 	_visible = false;
 	_ogreEnt->setVisible(false);
 }
