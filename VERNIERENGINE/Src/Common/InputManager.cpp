@@ -59,6 +59,20 @@ bool InputManager::keyPressed() {
 			}
 		}
 
+		if (keyboard_state_array[SDL_SCANCODE_R])
+		{
+			for (Entity* e : *_listenersScene) {
+				e->receiveEvent(MessageType::R, e);
+			}
+		}
+
+		if (keyboard_state_array[SDL_SCANCODE_T])
+		{
+			for (Entity* e : *_listenersScene) {
+				e->receiveEvent(MessageType::T, e);
+			}
+		}
+
 
 	}
 

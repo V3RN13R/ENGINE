@@ -88,13 +88,13 @@ void Camera::onDisable()
 
 void Camera::receiveEvent(MessageType msg, Entity* e) {
 	//Para probar el cambio de escena
-	/*if (msg == MessageType::PULSA_E) {
+	if (msg == MessageType::T) {
 
 		entity_->getScene()->getGSM()->changeScene("prueba.lua", "prueba", true);
 	}
 
-	if (msg == MessageType::PULSA_Q)
-		entity_->getScene()->getGSM()->popScene();*/
+	if (msg == MessageType::R)
+		entity_->getScene()->getGSM()->popScene();
 
 	Transform* camTr = static_cast<Transform*>(entity_->getComponent("Transform"));
 	if (camTr) {

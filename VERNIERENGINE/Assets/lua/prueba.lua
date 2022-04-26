@@ -1,9 +1,6 @@
 prueba = {
-    entities = { "suelo", "camaraPrincipal"}
+    entities = { "mono","suelo", "camaraPrincipal"}
 }
-
-
-
 
 mono={
     Active = true,
@@ -11,13 +8,9 @@ mono={
     Components = {"Transform","MeshRenderer", "Rigidbody"},
 
     Transform = {
-        Position = "0,300,0",
+        Position = "0,100,0",
         Scale = "100,100,100",
         Rotation = "0,0,0"
-    },
-	MovementPlayer = {
-        Vel = "10",
-        Entity = "camaraPrincipal"
     },
 	MeshRenderer = {
         Mesh = "Sphere"

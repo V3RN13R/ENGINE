@@ -1,5 +1,5 @@
 prueba2 = {
-    entities = {"mono2", "camaraPrincipal2"}
+    entities = {"mono2", "suelo2","camaraPrincipal2"}
 }
 
 mono2={
@@ -22,6 +22,30 @@ mono2={
         Radius = "10",
         Position = "0,0,0"
     }
+}
+
+
+suelo2={
+    Active = true,
+    Listener = false,
+    Components = {"Transform","MeshRenderer", "Rigidbody"},
+
+    Transform = {
+        Position = "0,-200,0",
+        Scale = "1,1,1",
+        Rotation = "-90,0,0"
+    },
+	
+	MeshRenderer = {
+        Mesh = "Plane"
+    },
+    Rigidbody = {
+        Type = "Box",
+        Mass = "0",
+        Scale = "1000,1,1000",
+        Position = "0,-200,0"
+    }
+    
 }
 
 bala={
@@ -59,6 +83,7 @@ camaraPrincipal2={
     
     Camera = {
         PosRel = "0,500,1000",
+        Entity = "mono2",
         BackgroundColor = "0.8,0.1,0.3",
         CameraName = "MainCamera2",
         Looking = "0,0,0",

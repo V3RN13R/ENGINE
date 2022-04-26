@@ -67,7 +67,7 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	GameStateMachine::instance()->initScene(sceneFile, scene);
 	
 
-	InputManager::instance()->setListenersVector(GameStateMachine::instance()->getScene()->getListeners());
+	
 	//Entity* light = _mngr->addEntity("Light");
 	//Light* l = light->addComponent<Light>();
 	//Transform* tLight = light->addComponent<Transform>();
