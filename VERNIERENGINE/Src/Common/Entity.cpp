@@ -7,8 +7,8 @@
 
 
 Entity::Entity(std::string entityName, Scene* scene) : _active(true), //
-	_cmpArray(), //
-	_groups(), //
+_cmpArray(), //
+_groups(), //
 _entityName(entityName), //
 _scene(scene)
 {
@@ -40,6 +40,12 @@ void Entity::onEnable()
 {
 	if (_active && !_destroy)
 		for (Component* c : _components)
-			if (c->isEnable())
-				c->onEnable();
+			c->onEnable();
+};
+
+void Entity::onDisable()
+{
+	if (_active && !_destroy)
+		for (Component* c : _components)
+			c->onDisable();
 };

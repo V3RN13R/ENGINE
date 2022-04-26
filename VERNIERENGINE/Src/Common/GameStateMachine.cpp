@@ -60,15 +60,19 @@ bool GameStateMachine::lastUpdate()
 			if (_sceneStack.empty())
 				return false;
 			getScene()->setSceneActive(true);
+			_sceneStack.top()->onEnable();
 			_pop = false;
 		}
 		else if(_load || _push) {
 			if (_load)
 				clearScenes();
+			_sceneStack.top()->onDisable();
 			Scene* scene = new Scene(_file, _name, instance());
 			_sceneStack.push(scene);
 			scene->start();
+			scene->onEnable();
 			_load = false;
+			_push = false;
 		}
 		return true;
 	}

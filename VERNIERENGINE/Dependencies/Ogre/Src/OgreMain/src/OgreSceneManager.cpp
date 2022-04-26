@@ -442,7 +442,7 @@ Entity* SceneManager::createEntity(const String& meshName)
 //---------------------------------------------------------------------
 Entity* SceneManager::createEntity(const std::string name, const MeshPtr& pMesh)
 {
-    //String name = mMovableNameGenerator.generate();
+    String name = mMovableNameGenerator.generate();
     return createEntity(name, pMesh);
 }
 //-----------------------------------------------------------------------

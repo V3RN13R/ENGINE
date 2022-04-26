@@ -44,6 +44,18 @@ void Rigidbody::fixedUpdate()
 	//clearForce();
 }
 
+void Rigidbody::onEnable()
+{
+	Component::onEnable();
+
+}
+
+void Rigidbody::onDisable()
+{
+	Component::onDisable();
+
+}
+
 Vector3D Rigidbody::getPosition()
 {
 	return Vector3D(_brb->getCenterOfMassTransform().getOrigin().getX(), _brb->getCenterOfMassTransform().getOrigin().getY(), _brb->getCenterOfMassTransform().getOrigin().getZ());

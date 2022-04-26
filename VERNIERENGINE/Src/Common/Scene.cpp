@@ -187,7 +187,7 @@ void Scene::start() {
 	sceneStarted = true;
 	size_t n = _entities.size();
 	for (int i = 0; i < n; i++) {
-		if (!_entities[i]->getDestroy())
+		if (!_entities[i]->getDestroy() && _entities[i]->isActive())
 			_entities[i]->start();
 	}
 }
@@ -200,13 +200,21 @@ void Scene::onEnable() {
 	}
 }
 
+void Scene::onDisable() {
+	size_t n = _entities.size();
+	for (int i = 0; i < n; i++) {
+		if (!_entities[i]->getDestroy())
+			_entities[i]->onDisable();
+	}
+}
+
 //Ver si hace falta el render()
 
 void Scene::fixedUpdate()
 {
 	size_t n = _entities.size();
 	for (int i = 0; i < n; i++) {
-		if (!_entities[i]->getDestroy())
+		if (!_entities[i]->getDestroy() && _entities[i]->isActive())
 			_entities[i]->fixedUpdate();
 	}
 }
@@ -215,7 +223,7 @@ void Scene::update()
 {
 	size_t n = _entities.size();
 	for (int i = 0; i < n; i++) {
-		if (!_entities[i]->getDestroy())
+		if (!_entities[i]->getDestroy() && _entities[i]->isActive())
 			_entities[i]->update();
 	}
 }

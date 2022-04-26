@@ -28,6 +28,7 @@ public:
 
 	void start();
 	void onEnable();
+	void onDisable();
 
 	/*template<typename T, typename ...Ts>
 	T* addComponent(Ts &&... args) {
@@ -121,14 +122,16 @@ public:
 	virtual void update() {
 		std::size_t n = _components.size();
 		for (auto i = 0u; i < n; i++) {
-			_components[i]->update();
+			if(_components[i]->getEnable())
+				_components[i]->update();
 		}
 	}
 
 	void fixedUpdate() {
 		std::size_t n = _components.size();
 		for (auto i = 0u; i < n; i++) {
-			_components[i]->fixedUpdate();
+			if (_components[i]->getEnable())
+				_components[i]->fixedUpdate();
 		}
 	}
 

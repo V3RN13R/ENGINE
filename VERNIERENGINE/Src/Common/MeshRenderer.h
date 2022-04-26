@@ -47,7 +47,6 @@ public:
 	void setMaterial(std::string materialName);
 
 	virtual void onEnable(); //override
-
 	virtual void onDisable(); //override
 	bool start( std::string mesh);
 	//virtual void sendEvent(MessageType msg) {}

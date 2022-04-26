@@ -16,6 +16,8 @@ public:
 	//virtual void preUpdate() override;
 
 	virtual void fixedUpdate() override;
+	virtual void onEnable() override;
+	virtual void onDisable() override;
 	Vector3D getPosition();
 	//virtual void sendEvent(MessageType msg) {}
 	//virtual void receiveEvent(MessageType msg) {}

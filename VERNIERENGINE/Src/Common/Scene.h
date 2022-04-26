@@ -43,7 +43,9 @@ public:
 
 	void start();
 
-	void onEnable();	
+	void onEnable();
+
+	void onDisable();	
 
 	void fixedUpdate();
 

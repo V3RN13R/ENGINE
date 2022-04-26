@@ -48,6 +48,7 @@ public:
 	void setBckgColor(Vector3D color);
 	void setMonkePos(Vector3D* pos);
 	void start();
+	void onDisable() override;
 	//virtual void sendEvent(MessageType msg){}
 	//virtual void receiveEvent(MessageType msg, Entity* e);
 

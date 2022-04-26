@@ -56,10 +56,12 @@ void Camera::update() {
 void Camera::receiveEvent(MessageType msg, Entity* e)
 {
 	if (msg == MessageType::PULSA_E) {
-		if (entity_->getScene()->getName() == "prueba")
-			entity_->getScene()->getGSM()->popScene();
-		else entity_->getScene()->getGSM()->changeScene("prueba.lua", "prueba", true);
+		
+		entity_->getScene()->getGSM()->changeScene("prueba.lua", "prueba", true);
 	}
+
+	if (msg == MessageType::PULSA_Q)
+		entity_->getScene()->getGSM()->popScene();
 }
 
 
@@ -85,6 +87,11 @@ void Camera::start() {
 	_camera->setAspectRatio(_aspectRatio);
 
 	_camTr = (Transform*)entity_->getComponent("Transform");
+}
+
+void Camera::onDisable()
+{
+
 }
 
 
