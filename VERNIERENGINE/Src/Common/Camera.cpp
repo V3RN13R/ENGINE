@@ -52,17 +52,6 @@ void Camera::update() {
 		mNodeCamera->lookAt(Ogre::Vector3(_monkePos->getX(), _monkePos->getY(), _monkePos->getZ()), Ogre::Node::TS_WORLD, Ogre::Vector3::NEGATIVE_UNIT_Z);
 	}
 }
-void Camera::receiveEvent(MessageType msg, Entity* e)
-{
-	if (msg == MessageType::PULSA_E) {
-		
-		entity_->getScene()->getGSM()->changeScene("prueba.lua", "prueba", true);
-	}
-
-	if (msg == MessageType::PULSA_Q)
-		entity_->getScene()->getGSM()->popScene();
-}
-
 
 void Camera::start() {
 	mono = entity_->getScene()->getObjectWithName(entidadBuscar);
@@ -98,6 +87,15 @@ void Camera::onDisable()
 
 
 void Camera::receiveEvent(MessageType msg, Entity* e) {
+	//Para probar el cambio de escena
+	/*if (msg == MessageType::PULSA_E) {
+
+		entity_->getScene()->getGSM()->changeScene("prueba.lua", "prueba", true);
+	}
+
+	if (msg == MessageType::PULSA_Q)
+		entity_->getScene()->getGSM()->popScene();*/
+
 	Transform* camTr = static_cast<Transform*>(entity_->getComponent("Transform"));
 	if (camTr) {
 
