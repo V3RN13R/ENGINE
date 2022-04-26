@@ -83,7 +83,7 @@ void Rigidbody::setVelocity(Vector3D dir) {
 	_brb->setLinearVelocity(btVector3(dir.getX(), dir.getY(), dir.getZ()));
 
 
-	//_brb->applyCentralForce(btVector3(dir.getX(), dir.getY(), dir.getZ()));
+	//_brb->applyCentralForce(btVector3(dir.getX(), dir.getY(), dir.getZ())*50);
 	//_brb->applyCentralImpulse(btVector3(dir.getX(), dir.getY(), dir.getZ()));
 	//_brb->setLinearVelocity(btVector3(dir.getX(), dir.getY(), dir.getZ()));
 

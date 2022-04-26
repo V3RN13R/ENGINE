@@ -10,9 +10,7 @@ class InputManager : public Singleton<InputManager> {
 	friend Singleton<InputManager>;
 
 private:
-	InputManager() {
-		clearState();
-	}
+	InputManager();
 
 	MessageType onMouseButtonChange(const SDL_Event& event, bool isDown);
 

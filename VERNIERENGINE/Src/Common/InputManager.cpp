@@ -5,37 +5,71 @@
 
 
 bool InputManager::keyPressed() {
+	
+	
+	const Uint8* keyboard_state_array = SDL_GetKeyboardState(NULL);
 	SDL_Event event;
+	SDL_PollEvent(&event);
+
+	if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
+	{
+
+		if (keyboard_state_array[SDL_SCANCODE_ESCAPE]) {
+			return false;
+		}
+
+
+		if (keyboard_state_array[SDL_SCANCODE_W] && !(keyboard_state_array[SDL_SCANCODE_S]))
+		{
+			for (Entity* e : *_listenersScene) {
+				e->receiveEvent(MessageType::W, e);
+			}
+		}
+		else if (!keyboard_state_array[SDL_SCANCODE_W] && keyboard_state_array[SDL_SCANCODE_S])
+		{
+			for (Entity* e : *_listenersScene) {
+				e->receiveEvent(MessageType::S, e);
+			}
+		}
+
+		if (keyboard_state_array[SDL_SCANCODE_D] && !keyboard_state_array[SDL_SCANCODE_A])
+		{
+			for (Entity* e : *_listenersScene) {
+				e->receiveEvent(MessageType::D, e);
+			}
+		}
+		else if (!keyboard_state_array[SDL_SCANCODE_D] && keyboard_state_array[SDL_SCANCODE_A])
+		{
+			for (Entity* e : *_listenersScene) {
+				e->receiveEvent(MessageType::A, e);
+			}
+		}
+
+
+		if (keyboard_state_array[SDL_SCANCODE_Q] && !keyboard_state_array[SDL_SCANCODE_E])
+		{
+			for (Entity* e : *_listenersScene) {
+				e->receiveEvent(MessageType::PULSA_Q, e);
+			}
+		}
+		else if (!keyboard_state_array[SDL_SCANCODE_Q] && keyboard_state_array[SDL_SCANCODE_E])
+		{
+			for (Entity* e : *_listenersScene) {
+				e->receiveEvent(MessageType::PULSA_E, e);
+			}
+		}
+
+
+	}
+
+
 	while (SDL_PollEvent(&event)) {
 		if (event.type == SDL_QUIT) {
 			return false;
 		}
 		MessageType tecla = MessageType::DEFAULT;
-		if (event.type == SDL_KEYDOWN) {
-			_isKeyDownEvent = true;
-			//se mira qué tecla se ha preisonado
-			if (event.key.keysym.sym == SDLK_ESCAPE) {
-				return false;
-			}
-			if (event.key.keysym.sym == SDLK_w) {
-				tecla = MessageType::W;
-			}
-			else if (event.key.keysym.sym == SDLK_a) {
-				tecla = MessageType::A;
-			}
-			else if (event.key.keysym.sym == SDLK_s) {
-				tecla = MessageType::S;
-			}
-			else if (event.key.keysym.sym == SDLK_d) {
-				tecla = MessageType::D;
-			}
-			else if (event.key.keysym.sym == SDLK_q) {
-				tecla = MessageType::PULSA_Q;
-			}
-			else if (event.key.keysym.sym == SDLK_e) {
-				tecla = MessageType::PULSA_E;
-			}
-		}
+		
+
 		// Clicks del ratón.
 		if (event.type == SDL_MOUSEBUTTONDOWN) {
 			_isMouseButtonEvent = true;
@@ -61,6 +95,11 @@ bool InputManager::keyPressed() {
 		}
 	}
 	return true;
+}
+
+InputManager::InputManager()
+{
+	clearState();
 }
 
 MessageType InputManager::onMouseButtonChange(const SDL_Event& event, bool isDown) {

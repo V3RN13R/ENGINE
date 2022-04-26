@@ -111,7 +111,6 @@ void Transform::receiveEvent(MessageType msg, Entity* e)
 	//PRUEBA
 	switch (msg) {
 	case MessageType::PULSA_Q:
-		std::cout << "Transform recibe evcetno\n";
 		break;
 	
 	}

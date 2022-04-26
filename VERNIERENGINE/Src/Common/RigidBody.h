@@ -25,7 +25,7 @@ public:
 
 	void setVelocity(Vector3D dir);
 private:
-	btRigidBody* _brb=nullptr;
+	btRigidBody* _brb =nullptr;
 	std::string _type;
 	float _mass = 1;
 	float _radius;

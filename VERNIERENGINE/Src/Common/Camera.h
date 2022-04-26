@@ -9,11 +9,11 @@
 class Component;
 class Transform;
 
-
-
-const float _PI = 3.1416;
-const float toRadians = _PI / 180.0;
-const float toAngles = 180.0 / _PI;
+//
+//
+//const float _PI = 3.1416;
+//const float toRadians = _PI / 180.0;
+//const float toAngles = 180.0 / _PI;
 
 namespace Ogre {
 	class Root;

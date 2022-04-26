@@ -42,7 +42,6 @@ void Camera::setMonkePos(Vector3D* monPos) {
 
 void Camera::update() {
 	_monkePos = &(static_cast<Transform*>(mono->getComponent("Transform")))->getPos();
-	std::cout << "Pos camera: " << _monkePos->getY() << "\n";
 	if (_camTr != nullptr) {
 		/*Vector3D nuevaPos = Vector3D(_monkePos->getX() + _monkeRadio * std::cos( _monkeAngle*toRadians), _monkePos->getY() + 0 , _monkePos->getZ() + _monkeRadio * std::sin(_monkeAngle*toRadians));
 		camTr->setPosition(nuevaPos)*/;
@@ -80,7 +79,6 @@ void Camera::start() {
 
 
 void Camera::receiveEvent(MessageType msg, Entity* e) {
-	std::cout << "Recibe msg";
 	Transform* camTr = static_cast<Transform*>(entity_->getComponent("Transform"));
 	if (camTr) {
 
