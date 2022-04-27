@@ -30,11 +30,12 @@ public:
 	Ogre::SceneManager* getSceneManager();
 	Ogre::RenderWindow* getRenderWindow();
 	void updateWindow();
-	Ogre::SceneNode* addSceneNode(std::string name, Ogre::SceneNode* parent=nullptr);
+	Ogre::SceneNode* addSceneNode(std::string name, Ogre::SceneNode* parent = nullptr);
 	Ogre::SceneNode* getSceneNodeByName(std::string name);
 	bool pollEvents();
 	static Ogre::Vector3 toOgre(Vector3D v) {
-		return Ogre::Vector3(v.getX(), v.getY(), v.getZ()); }
+		return Ogre::Vector3(v.getX(), v.getY(), v.getZ());
+	}
 private:
 	std::string _appName;
 	Ogre::Root* _root = nullptr;

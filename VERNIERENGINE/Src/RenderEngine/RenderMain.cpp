@@ -22,14 +22,15 @@ RenderMain* RenderMain::getInstance()
 
 bool RenderMain::init()
 {
-	_windowRender = new WindowRender(_appName);
-	Ogre::Entity* ogreEnt_ = _windowRender->getSceneManager()->createEntity(Ogre::SceneManager::PrefabType::PT_SPHERE);
+	//_windowRender = new WindowRender(_appName);
+	WindowRender::instance()->setUpOgreRoot();
+	Ogre::Entity* ogreEnt_ = WindowRender::instance()->getSceneManager()->createEntity(Ogre::SceneManager::PrefabType::PT_SPHERE);
 	return true;
 }
 
 WindowRender* RenderMain::GetWindowRender()
 {
-	return _windowRender;
+	return WindowRender::instance();
 }
 
 Ogre::Root* RenderMain::getRoot()
@@ -49,26 +50,26 @@ Ogre::Root* RenderMain::getRoot()
 Ogre::SceneManager* RenderMain::getSceneManager()
 {
 	if (_mSceneManager == nullptr) {
-		_mSceneManager=_root->createSceneManager();
+		_mSceneManager = _root->createSceneManager();
 	}
 	return _mSceneManager;
 }
 
 Ogre::RenderWindow* RenderMain::getRenderWindow()
 {
-	return _windowRender->getRenderWindow();
+	return WindowRender::instance()->getRenderWindow();
 }
 
 void RenderMain::updateWindow()
 {
-	_windowRender->updateWindow();
+	WindowRender::instance()->updateWindow();
 }
 
 
 Ogre::SceneNode* RenderMain::addSceneNode(std::string name, Ogre::SceneNode* parent)
 {
-	if(!parent)
-	return _mSceneManager->getRootSceneNode()->createChildSceneNode(name);
+	if (!parent)
+		return _mSceneManager->getRootSceneNode()->createChildSceneNode(name);
 	else
 		return parent->createChildSceneNode(name);
 }
@@ -79,7 +80,7 @@ Ogre::SceneNode* RenderMain::getSceneNodeByName(std::string name)
 }
 //--------------------------------PROVISIONAL-------------------------------
 bool RenderMain::pollEvents() {
-	return _windowRender->ExitWindow();
+	return WindowRender::instance()->ExitWindow();
 }
 
 
@@ -100,5 +101,3 @@ RenderMain::~RenderMain()
 	_mSceneManager->destroyAllMovableObjects();
 	delete _windowRender;
 }
-
-

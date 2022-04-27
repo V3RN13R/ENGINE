@@ -77,6 +77,9 @@
     <ClCompile Include="..\..\Src\Common\LoadImage.cpp">
       <Filter>utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\Common\LoadImages.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Common\Light.h">
@@ -168,6 +171,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Src\Common\Callbacks.h" />
     <ClInclude Include="..\..\Src\Common\LoadImage.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\LoadImages.h">
       <Filter>utils</Filter>
     </ClInclude>
   </ItemGroup>

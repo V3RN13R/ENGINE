@@ -83,7 +83,6 @@ bala={
     MeshRenderer = {
         Mesh = "Sphere"
     },
-	
     Rigidbody = {
         Type = "Sphere",
         Mass = "1",

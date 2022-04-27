@@ -26,6 +26,7 @@
 
 #include "GameStateMachine.h"
 #include "InitFactories.h"
+#include "LoadImages.h"
 
 //LUA
 extern "C"
@@ -55,7 +56,7 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	ResourceManager::init(_assetsPath);
 	ResourceManager::getInstance()->setUp(); //Carga de recursos
 
-	
+
 	//Physics
 	if (!PhysicsManager::setUpInstance()) {
 		throw std::exception("ERROR: Couldn't load PhysicsManager\n");
@@ -66,7 +67,7 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 
 	GameStateMachine::instance()->initScene(sceneFile, scene);
 	
-
+	LoadImages::instance()->init();
 	
 	//Entity* light = _mngr->addEntity("Light");
 	//Light* l = light->addComponent<Light>();
@@ -153,6 +154,7 @@ bool VernierEngine::processFrame()
 		GameStateMachine::instance()->update();
 		GameStateMachine::instance()->lastUpdate();
 
+		LoadImages::instance()->renderTexturas();
 		//tr->setPosition(Vector3D(tr->getPos().getX(), tr->getPos().getY() - 0.0001, tr->getPos().getZ()));
 		//tr2->rotate(0.01, 2);
 		_ogre->updateWindow();

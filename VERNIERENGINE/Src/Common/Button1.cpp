@@ -33,7 +33,7 @@ void Button1::update() {
 
 void Button1::setCallBackFunction(std::string callBackName)
 {
-	//setCallBackFunction(CallBacks::instance()->getMethod(callBackName));
+	setCallBackFunction(Callbacks::instance()->getMethod(callBackName));
 }
 
 void Button1::setCallBackFunction(std::function<void()> callBack)

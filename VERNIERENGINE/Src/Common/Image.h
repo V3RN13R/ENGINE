@@ -10,7 +10,7 @@
 
 class Image : public Component {
 public:
-	Image(std::map<std::string, std::string> args);
+	Image(std::map<std::string, std::string> args, Entity* ent);
 
 	Image(Texture* tex) : _tr(nullptr), _tx(tex), currFrame(0) {
 		_src = { 0, 0, tex->width(), tex->height() };
@@ -31,14 +31,11 @@ public:
 	virtual ~Image() {
 	}
 
-	bool init() override {
-		_tr = entity_->getComponent<Transform>();
-		return true;
-	}
+	virtual void start();
 
 	void render() override;
 
-	void update() override;
+	virtual void update();
 
 	void setTexture(Texture* tex) { _tx = tex; }
 
@@ -60,6 +57,8 @@ private:
 	SDL_Rect _src;
 	SDL_Rect _dest;
 	int currFrame;
+	Entity* _ent;
 
 	std::string _texture;
+	std::string _ruta;
 };

@@ -8,12 +8,8 @@
 #include "RenderMain.h"
 #include <SDL_render.h>
 
-std::unique_ptr<WindowRender>  WindowRender::_instance;
+//std::unique_ptr<WindowRender>  WindowRender::_instance;
 
-WindowRender::WindowRender(std::string name) :_wName(name)
-{
-	setUpOgreRoot();
-}
 
 #include "OgreDefaultDebugDrawer.h"
 
@@ -29,7 +25,7 @@ void WindowRender::setUpOgreRoot()
 	_root->initialise(false);
 	setUpWindow();
 	_mSceneManager = RenderMain::getInstance()->getSceneManager();
-		
+
 	//_mSceneManager->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
 
 	/*if (Ogre::RTShader::ShaderGenerator::initialize())
@@ -49,10 +45,9 @@ void WindowRender::setUpWindow()
 
 	Uint32 flags = SDL_WINDOW_ALLOW_HIGHDPI;
 
-	_sDLWindow = SDL_CreateWindow(_wName.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen_width_, screen_height_, flags);
-	
+	_sDLWindow = SDL_CreateWindow("Motor", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen_width_, screen_height_, flags);
+
 	//Create the renderer
-	_renderer = SDL_CreateRenderer(_sDLWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
 	SDL_SysWMinfo wmInfo;
 	SDL_VERSION(&wmInfo.version);
@@ -68,7 +63,7 @@ void WindowRender::setUpWindow()
 	//params["gamma"] = true;
 	params["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));
 
-	_rWindow = _root->createRenderWindow(_wName.c_str(), screen_width_, screen_height_, false, &params);
+	_rWindow = _root->createRenderWindow("Motor", screen_width_, screen_height_, false, &params);
 	//_rWindow->setActive(true);
 	//_rWindow->setVisible(true);
 	SDL_SetWindowGrab(_sDLWindow, SDL_bool(false));
@@ -78,15 +73,16 @@ void WindowRender::setUpWindow()
 
 bool WindowRender::setUpInstance(std::string name)
 {
-	assert(_instance.get() == nullptr);
-	_instance.reset(new WindowRender(name));
-	return _instance.get();
+	//assert(_instance.get() == nullptr);
+	//_instance.reset(new WindowRender(name));
+	//return _instance.get();
+	return false;
 }
 
 WindowRender* WindowRender::getInstance()
 {
-	assert(_instance.get() != nullptr);
-		return _instance.get();
+	assert(instance() != nullptr);
+	return instance();
 }
 
 void WindowRender::updateWindow()
@@ -124,7 +120,7 @@ void WindowRender::setAmbientLight(float x, float y, float z)
 
 WindowRender::~WindowRender()
 {
-	_root->getRenderSystem()->destroyRenderWindow(_wName.c_str());//esto borra la _rWindow
+	_root->getRenderSystem()->destroyRenderWindow("Motor");//esto borra la _rWindow
 	_root->destroySceneManager(_mSceneManager);
 	SDL_DestroyWindow(_sDLWindow);
 	SDL_Quit();
@@ -172,11 +168,8 @@ void WindowRender::BORRAR() {
 	//node->setPosition(0, 100, 0);
 
 	/*Ogre::Entity* e2 = _mSceneManager->createEntity(Ogre::SceneManager::PrefabType::PT_PLANE);
-
 	Ogre::SceneNode* node2 = _mSceneManager->getRootSceneNode()->createChildSceneNode();
-
 	node2->attachObject(e2);
-
 	node2->setPosition(0, -100, 0);*/
 
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include <string>
+#include "../Common/Singleton.h"
 
 class SDL_Renderer;
 
@@ -15,27 +16,26 @@ namespace Ogre {
 }
 class InputManager;
 class SDL_Window;
-class WindowRender
+class WindowRender : public Singleton<WindowRender>
 {
-
+	friend Singleton<WindowRender>;
 private:
-	static std::unique_ptr<WindowRender> _instance;
+	//static std::unique_ptr<WindowRender> _instance;
 
 	Ogre::Root* _root = nullptr;
 	Ogre::SceneManager* _mSceneManager = nullptr;
 	Ogre::RenderWindow* _rWindow = nullptr;
 	SDL_Window* _sDLWindow = nullptr;
-	SDL_Renderer* _renderer = nullptr;
 	InputManager* _iM = nullptr;
-	std::string _wName = "motorcito";
+	//std::string _wName = "motorcito";
 	int screen_width_ = 840;
 	int screen_height_ = 600;
-	void setUpOgreRoot();
 	void setUpWindow();
+	SDL_Renderer* _renderer;
 
 protected:
 public:
-	WindowRender(std::string name);
+	WindowRender() {}
 	~WindowRender();
 	void BORRAR();
 	void closeWindow();
@@ -48,11 +48,12 @@ public:
 	Ogre::SceneManager* getSceneManager() { return _mSceneManager; }
 	Ogre::RenderWindow* getRenderWindow() { return _rWindow; }
 	SDL_Window* getSDLWindow() { return _sDLWindow; }
-	SDL_Renderer* getRenderer() { return _renderer; }
+	//SDL_Renderer* getRenderer() { return _renderer; }
 	int getScreenWidth() { return screen_width_; };
 	int getScreenHeight() { return screen_height_; };
 	static WindowRender* getInstance();
 	void updateWindow();
+	void setUpOgreRoot();
 #pragma endregion
 
 };

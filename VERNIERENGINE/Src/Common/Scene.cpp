@@ -1,6 +1,6 @@
 #include "Scene.h"
 #include "LuaManager.h"
-#include "LoadImage.h"
+#include "LoadImages.h"
 #include <algorithm>
 #include <SDL.h>
 
@@ -10,6 +10,10 @@ Scene::Scene(const std::string& file, const std::string& name, GameStateMachine*
 
 	_GSM = gsm;
 	lua_State* _state = nullptr;
+
+	// Cargamos todas las imagenes desde un archivo .lua
+	LoadImages::instance()->cargaImagen("imagenes.lua", "imagenes");
+
 	try {
 		_state = readFileLua(file);
 		std::cout << "Archivo " << file << " abierto con �xito\n";

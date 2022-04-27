@@ -40,7 +40,7 @@ Component* CameraFactory::createComponent(std::map<std::string, std::string> arg
 
 Component* ImageFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
-	return new Image(args);
+	return new Image(args, ent);
 };
 Component* MovementPlayerFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
@@ -62,7 +62,7 @@ void setupFactories()
 	_fM->addFactory("Shoot", new ShootFactory());
 	_fM->addFactory("Camera", new CameraFactory());
 	_fM->addFactory("MovementPlayer", new MovementPlayerFactory());
-
 	_fM->addFactory("Image", new ImageFactory());
+
 	//_fM->addFactory("Button1", new Button1Factory());
 }
