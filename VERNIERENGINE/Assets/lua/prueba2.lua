@@ -5,10 +5,10 @@ prueba2 = {
 mono2={
     Active = true,
     Listener = true,
-    Components = {"Transform","MeshRenderer", "Rigidbody"},
+    Components = {"Transform","MeshRenderer", "Rigidbody","MovementPlayer"},
 
     Transform = {
-        Position = "0,0,0",
+        Position = "0,300,0",
         Scale = "10,10,10",
         Rotation = "0,0,0"
     },
@@ -20,8 +20,12 @@ mono2={
         Type = "Sphere",
         Mass = "1",
         Radius = "10",
-        Position = "0,0,0"
-    }
+        Position = "0,300,0"
+    },
+    MovementPlayer = {
+        Vel = "10",
+        Entity = "camaraPrincipal2"
+    },
 }
 
 
@@ -32,7 +36,7 @@ suelo2={
 
     Transform = {
         Position = "0,-200,0",
-        Scale = "1,1,1",
+        Scale = "10,10,10",
         Rotation = "-90,0,0"
     },
 	
@@ -78,7 +82,7 @@ camaraPrincipal2={
     Transform = {
         Position = "0,0,500",
         Scale = "5,5,5",
-        Rotation = "0,0,0"
+        Rotation = "0,90,0"
     },
     
     Camera = {

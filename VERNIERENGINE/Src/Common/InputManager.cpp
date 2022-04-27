@@ -21,6 +21,7 @@ bool InputManager::keyPressed() {
 
 		if (keyboard_state_array[SDL_SCANCODE_W] && !(keyboard_state_array[SDL_SCANCODE_S]))
 		{
+
 			for (Entity* e : *_listenersScene) {
 				e->receiveEvent(MessageType::W, e);
 			}

@@ -32,7 +32,7 @@ bool PhysicsManager::setUpInstance() {
 void PhysicsManager::stepPhysics()
 {
 	dynamicsWorld->stepSimulation(1.f / 60.f, 10);
-	for (int j = dynamicsWorld->getNumCollisionObjects() - 1; j >= 0; j--) {
+	/*for (int j = dynamicsWorld->getNumCollisionObjects() - 1; j >= 0; j--) {
 		btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[j];
 		btRigidBody* body = btRigidBody::upcast(obj);
 		btTransform trans;
@@ -43,6 +43,18 @@ void PhysicsManager::stepPhysics()
 		else {
 			trans = obj->getWorldTransform();
 		}
+	}*/
+
+
+	int numManifolds = dynamicsWorld->getDispatcher()->getNumManifolds();
+	for (int i = 0; i < numManifolds; i++)
+	{
+		btPersistentManifold* contactManifold = dynamicsWorld->getDispatcher()->getManifoldByIndexInternal(i);
+		std::cout << "Colision\n";
+		/*btCollisionObject* obA = contactManifold->getBody0();
+		btCollisionObject* obB = static_cast<btCollisionObject*>(contactManifold->getBody1());*/
+
+		//... here you can check for obA´s and obB´s user pointer again to see if the collision is alien and bullet and in that case initiate deletion.
 	}
 }
 

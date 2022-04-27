@@ -21,7 +21,7 @@ Transform::Transform(std::map<std::string, std::string> args) : _position(args["
 void Transform::start()
 {
 	std::cout << "Rotacion inicial: " << _rotation.getX() << " " << _rotation.getY() << " " << _rotation.getZ() << "\n";
-
+	setScale(_scale);
 	rotate(_rotation);
 }
 
