@@ -1,4 +1,5 @@
 #include "Light.h"
+#include "Entity.h"
 #include "WindowRender.h"
 #include "RenderMain.h"
 #include "Transform.h"
@@ -7,10 +8,18 @@
 #include <OgreSceneManager.h>
 
 
-Light::Light() :
-	_light(nullptr),
-	_node(nullptr)
-{}
+Light::Light(std::map<std::string, std::string> args, Entity* ent) : Component(ent), _node(nullptr), _light(nullptr), _firstEnable(true),
+_diffuseColor(args["Diffuse"]), _specularColor(args["Specular"]), _direction(args["Direction"])
+{
+	if ((args["LighType"]) == "POINTLIGHT") _lightType = 0;
+	else if ((args["LighType"]) == "DIRECTIONAL_LIGHT") _lightType = 1;
+	else if ((args["LighType"]) == "SPOTLIGHT") _lightType = 2; ;
+
+	_distance = stof(args["Distance"]);
+	_innerAngle = stof(args["InnerAngle"]);
+	_outerAngle = stof(args["OuterAngle"]);
+	_isOn = stoi(args["On"]);
+}
 
 Light::~Light()
 {
@@ -23,54 +32,32 @@ void Light::setAmbientLight(Vector3D light)
 	WindowRender::getInstance()->setAmbientLight(light.getX(), light.getY(), light.getZ());
 }
 
-bool Light::init()
+void Light::onEnable()
 {
-	//LuaRef dColor = NULL, sColor = NULL, dir = NULL;
-	//bool correct = true;
+	if (_firstEnable) {
+		_light = WindowRender::getInstance()->createLight((Ogre::LightTypes)_lightType);
+		
+		_node = entity_->getNode()->createChildSceneNode(); //entity_->getName()
+		_node->attachObject(_light);
+		_node->lookAt(RenderMain::toOgre(_direction), Ogre::Node::TransformSpace::TS_WORLD); // toOgrePosition
 
-	//correct &= readVariable<int>(parameterTable, "LightType", (int*)(&_lightType));
-	//correct &= readVariable<LuaRef>(parameterTable, "DiffuseColor", &dColor);
-	//correct &= readVariable<LuaRef>(parameterTable, "SpecularColor", &sColor);
-	//correct &= readVariable<LuaRef>(parameterTable, "Direction", &dir);
-	//correct &= readVariable<float>(parameterTable, "Distance", &_distance);
-	//correct &= readVariable<float>(parameterTable, "InnerAngle", &_innerAngle);
-	//correct &= readVariable<float>(parameterTable, "OuterAngle", &_outerAngle);
-	//correct &= readVariable<bool>(parameterTable, "isOn", &_isOn);
-
-	//if (!correct) return false;
-
-	//_diffuseColor = Vector3D(dColor[1], dColor[2], dColor[3]);
-	//_specularColor = Vector3D(sColor[1], sColor[2], sColor[3]);
-	//_direction = Vector3D(dir[1], dir[2], dir[3]);
-
-	return true;
+		_light->setDiffuseColour(_diffuseColor.getX(), _diffuseColor.getY(), _diffuseColor.getZ());
+		_light->setSpecularColour(_specularColor.getX(), _specularColor.getY(), _specularColor.getZ());
+		_light->setCastShadows(true);
+		setDistance(_distance);
+		if (_lightType == (int)LightMode::SPOTLIGHT) {
+			_light->setSpotlightInnerAngle(Ogre::Radian(Ogre::Degree(_innerAngle)));
+			_light->setSpotlightOuterAngle(Ogre::Radian(Ogre::Degree(_innerAngle)));
+		}
+		_firstEnable = false;
+	}
+	_light->setVisible(_isOn);
 }
 
-//void Light::onEnable()
-//{
-//	if (_firstEnable) {
-//		_light = WindowRender::getInstance()->createLigth((Ogre::LightTypes)_lightType);
-//		_node = transform->getNode()->createChildSceneNode();
-//		_node->attachObject(_light);
-//		_node->lookAt(_direction.toOgrePosition(), Ogre::Node::TransformSpace::TS_WORLD);
-//
-//		_light->setDiffuseColour(_diffuseColor.x, _diffuseColor.y, _diffuseColor.z);
-//		_light->setSpecularColour(_specularColor.x, _specularColor.y, _specularColor.z);
-//		_light->setCastShadows(true);
-//		setDistance(_distance);
-//		if (_lightType = SPOTLIGHT) {
-//			_light->setSpotlightInnerAngle(Ogre::Radian(Ogre::Degree(_innerAngle)));
-//			_light->setSpotlightOuterAngle(Ogre::Radian(Ogre::Degree(_innerAngle)));
-//		}
-//		_firstEnable = false;
-//	}
-//	_light->setVisible(_isOn);
-//}
-//
-//void Light::onDisable()
-//{
-//	_light->setVisible(false);
-//}
+void Light::onDisable()
+{
+	_light->setVisible(false);
+}
 
 
 void Light::setDiffuseColor(Vector3D color)
@@ -94,10 +81,10 @@ void Light::setDirection(Vector3D orientation, bool global)
 		Ogre::Node::TransformSpace::TS_LOCAL);
 }
 
-void Light::setType(LightType type)
+void Light::setType(LightMode type)
 {
 	_light->setType((Ogre::Light::LightTypes)type);
-	if (_lightType == SPOTLIGHT) {
+	if (_lightType == (int)LightMode::SPOTLIGHT) {
 		_light->setSpotlightInnerAngle(Ogre::Radian(Ogre::Degree(_innerAngle)));
 		_light->setSpotlightOuterAngle(Ogre::Radian(Ogre::Degree(_innerAngle)));
 	}
@@ -115,13 +102,13 @@ void Light::setDistance(float distance)
 void Light::setInnerAngle(float angle)
 {
 	_innerAngle = angle;
-	if (_lightType == SPOTLIGHT)
+	if (_lightType == (int)LightMode::SPOTLIGHT)
 		_light->setSpotlightInnerAngle(Ogre::Radian(Ogre::Degree(_innerAngle)));
 }
 
 void Light::setOuterAngle(float angle)
 {
 	_outerAngle = angle;
-	if (_lightType == SPOTLIGHT)
+	if (_lightType == (int)LightMode::SPOTLIGHT)
 		_light->setSpotlightOuterAngle(Ogre::Radian(Ogre::Degree(_innerAngle)));
 }

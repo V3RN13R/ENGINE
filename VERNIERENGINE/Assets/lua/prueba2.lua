@@ -1,5 +1,29 @@
 prueba2 = {
-    entities = {"mono2", "suelo2","camaraPrincipal2"}
+    entities = {"mono2", "suelo2","camaraPrincipal2", "luz"}
+}
+
+luz = {
+    Active = true,
+    Listener = true,
+    Components = {"Transform","Light"},
+
+    Transform = {
+        Position = "0,0,0",
+        Scale = "1,1,1",
+        Rotation = "0,0,0"
+    },
+	
+    Light = {
+        LightType = "DIRECTIONAL_LIGHT",
+        Distance = 10000,
+        Diffuse = "1,0,0",
+        Specular = "1,0,0",
+        Direction = "0,0,-1",
+        InnerAngle = 35,
+        OuterAngle = 60,
+        On = 1
+    }
+	
 }
 
 mono2={

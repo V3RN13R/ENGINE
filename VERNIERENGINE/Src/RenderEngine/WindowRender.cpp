@@ -12,6 +12,7 @@
 
 
 #include "OgreDefaultDebugDrawer.h"
+#include "../Common/Light.h"
 
 void WindowRender::setUpOgreRoot()
 {
@@ -106,18 +107,20 @@ bool WindowRender::ExitWindow() {
 	return continueRender;
 }
 
-//Ogre::Light* WindowRender::createLigth(Ogre::LightTypes type)
-//{
-//	Light* light = _mSceneManager->createLight();
-//	light.setType((Light::LightTyes)type);
-//
-//	return light;
-//}
+Ogre::Light* WindowRender::createLight(Ogre::LightTypes type)
+{
+	Ogre::Light* light = _mSceneManager->createLight();
+	light->setType((Ogre::Light::LightTypes)type);
+
+	return light;
+}
 
 void WindowRender::setAmbientLight(float x, float y, float z)
 {
 	_mSceneManager->setAmbientLight(Ogre::ColourValue(x, y, z));
 }
+
+
 
 WindowRender::~WindowRender()
 {
@@ -151,7 +154,7 @@ void WindowRender::BORRAR() {
 	//	Ogre::Real(vp->getActualWidth()) /
 	//	Ogre::Real(vp->getActualHeight()));
 	_mSceneManager->setAmbientLight(Ogre::ColourValue(.5, .5, .5));
-	Ogre::Light* luz = _mSceneManager->createLight("Luz");
+	Ogre::Light* luz = _mSceneManager->createLight("LuzAmbiente");
 	luz->setType(Ogre::Light::LT_DIRECTIONAL);
 	luz->setDiffuseColour(1, 1, 1);
 

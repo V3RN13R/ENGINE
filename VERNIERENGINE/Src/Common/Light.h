@@ -1,20 +1,28 @@
 #pragma once
+
 #include "Component.h"
-//#include "LuaBridge.h"
 #include "Vector3D.h"
+#include "Utils.h"
+#include <map>
 
 namespace Ogre {
 	class Light;
 	class SceneNode;
 }
 
-enum LightType
+enum class LightMode
 {
 	POINTLIGHT = 0,
 	DIRECTIONAL_LIGHT = 1,
 	SPOTLIGHT = 2
 };
 
+//int SconvertToInt(const std::string& str)
+//{
+//	if (str == "POINTLIGHT") return 0;
+//	else if (str == "DIRECTIONAL_LIGHT") return 1;
+//	else if (str == "SPOTLIGHT") return 2;
+//};
 
 class Light: public Component {
 private:
@@ -23,7 +31,7 @@ private:
 
 	Ogre::Light* _light;
 
-	LightType _lightType;
+	int _lightType;
 
 	Vector3D _diffuseColor;
 	Vector3D _specularColor;
@@ -36,25 +44,23 @@ private:
 
 	float _outerAngle;
 
-	bool _isOn = true;
+	int _isOn = 1; //Funciona como booleano 1 encendido 0 apagado
 
 	bool _firstEnable = true;
 
 public:
 
-	Light();
+	Light(std::map<std::string, std::string> args, Entity* ent);
 	~Light();
 
 	static std::string GetName() { return "Light"; }
-
-	
-	virtual bool init() override;
+		
 
 	//virtual bool init(LuaBridge::LuaRef parameterTable = { nullptr }) override;
 
-	//virtual void onEnable() override;
+	virtual void onEnable() override;
 
-	//virtual void onDisable() override;
+	virtual void onDisable() override;
 
 	static void setAmbientLight(Vector3D light);
 
@@ -65,7 +71,7 @@ public:
 	// FUNCIONA COMO UN LOOK AT
 	void setDirection(Vector3D direction, bool global = true);
 
-	void setType(LightType type);
+	void setType(LightMode type);
 
 	void setDistance(float power);
 
