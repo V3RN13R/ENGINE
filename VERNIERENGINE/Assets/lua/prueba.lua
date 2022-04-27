@@ -99,7 +99,7 @@ fotoprueba = {
 
 	Transform = { 
 		Position = "-100, 100, 0",
-		Scale = "1,1,1",
+		Scale = "5,5,5",
 		Rotation = "0,0,0"
 	},
 

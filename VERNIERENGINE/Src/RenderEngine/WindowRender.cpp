@@ -47,6 +47,7 @@ void WindowRender::setUpWindow()
 
 	_sDLWindow = SDL_CreateWindow("Motor", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen_width_, screen_height_, flags);
 
+	//S_sdlwindow2 = SDL_CreateWindow("Interfaz", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 600, 600, flags);
 	//Create the renderer
 
 	SDL_SysWMinfo wmInfo;

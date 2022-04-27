@@ -104,7 +104,6 @@
     <ClCompile Include="..\..\Src\Common\Image.cpp" />
     <ClCompile Include="..\..\Src\Common\InitFactories.cpp" />
     <ClCompile Include="..\..\Src\Common\InputManager.cpp" />
-    <ClCompile Include="..\..\Src\Common\LoadImage.cpp" />
     <ClCompile Include="..\..\Src\Common\LoadImages.cpp" />
     <ClCompile Include="..\..\Src\Common\MeshRenderer.cpp" />
     <ClCompile Include="..\..\Src\Common\Monkey.cpp" />
@@ -136,7 +135,6 @@
     <ClInclude Include="..\..\Src\Common\InitFactories.h" />
     <ClInclude Include="..\..\Src\Common\InputManager.h" />
     <ClInclude Include="..\..\Src\Common\Light.h" />
-    <ClInclude Include="..\..\Src\Common\LoadImage.h" />
     <ClInclude Include="..\..\Src\Common\LoadImages.h" />
     <ClInclude Include="..\..\Src\Common\MeshRenderer.h" />
     <ClInclude Include="..\..\Src\Common\Monkey.h" />

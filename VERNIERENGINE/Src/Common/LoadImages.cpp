@@ -69,10 +69,14 @@ std::string LoadImages::getRutas(std::string ruta) {
 }
 
 void LoadImages::init() {
-    _renderer = SDL_CreateRenderer(WindowRender::getInstance()->getSDLWindow(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    // SDL_RENDERER_SOFTWARE
+    _renderer = SDL_CreateRenderer(WindowRender::getInstance()->getSDLWindow(), -1,  SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 }
 
 void LoadImages::renderTexturas() {
-    for (int i = 0; i < _texturas.size(); i++) _texturas[i]->render(-100, 100);
-    SDL_RenderPresent(_renderer);
+    if (!_texturas.empty()) {
+        SDL_RenderClear(_renderer);
+        for (int i = 0; i < _texturas.size(); i++) _texturas[i]->render(5, 5);
+        SDL_RenderPresent(_renderer);
+    }
 }

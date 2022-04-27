@@ -21,7 +21,8 @@ void Image::start() {
 	_tr = static_cast<Transform*>(_ent->getComponent("Transform"));
 
 	_tx = new Texture(LoadImages::instance()->getRenderer(), _ruta);
-	if (_tx == nullptr) std::cout << "hola";
+	assert(_tx != nullptr);
+	LoadImages::instance()->addTexture(_tx);
 }
 
 void Image::update() {

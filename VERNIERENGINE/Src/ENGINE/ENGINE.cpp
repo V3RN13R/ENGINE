@@ -154,10 +154,10 @@ bool VernierEngine::processFrame()
 		GameStateMachine::instance()->update();
 		GameStateMachine::instance()->lastUpdate();
 
-		LoadImages::instance()->renderTexturas();
 		//tr->setPosition(Vector3D(tr->getPos().getX(), tr->getPos().getY() - 0.0001, tr->getPos().getZ()));
 		//tr2->rotate(0.01, 2);
-		_ogre->updateWindow();
+		_ogre->updateWindow(); 
+		// LoadImages::instance()->renderTexturas();
 	}
 	else return false;
 
