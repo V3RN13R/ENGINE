@@ -37,7 +37,7 @@ void Light::onEnable()
 	if (_firstEnable) {
 		_light = WindowRender::getInstance()->createLight((Ogre::LightTypes)_lightType);
 		
-		_node = entity_->getNode()->createChildSceneNode(); //entity_->getName()
+		_node = entity_->getNode()->createChildSceneNode("_" + entity_->getName()); //entity_->getName()
 		_node->attachObject(_light);
 		_node->lookAt(RenderMain::toOgre(_direction), Ogre::Node::TransformSpace::TS_WORLD); // toOgrePosition
 
