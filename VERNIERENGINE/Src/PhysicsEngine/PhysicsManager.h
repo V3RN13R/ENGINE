@@ -14,6 +14,7 @@ class btCollisionObject;
 class btCollisionShape;
 class Vector3D;
 class btVector3;
+class btManifoldPoint;
 enum ColliderType
 {
 	CT_BOX,
@@ -21,6 +22,16 @@ enum ColliderType
 	CT_TRIMESH,
 	CT_HULL
 };
+
+class CollisionListener
+{
+public:
+	CollisionListener(void(*d)(void*, void* other, const btManifoldPoint& mnf), void* o) : p(d), obj(o) {};
+	~CollisionListener() {};
+	void(*p)(void*, void* other, const btManifoldPoint& mnf);
+	void* obj;
+};
+
 
 class PhysicsManager {
 public:
@@ -37,8 +48,8 @@ public:
 	// 
 	//inicializa todas las variables fisicas asi como el "mundo" a partir de dichas variables
 	void init(const Vector3D gravity);
-	btRigidBody* addSphereRigidbody(float mass, float radius, btVector3 pos, void(*d)(void*, void* other, const btManifoldPoint& mnf));
-	btRigidBody* addBoxRigidbody(float mass, btVector3 pos, btVector3 size );
+	btRigidBody* addSphereRigidbody(float mass, float radius, btVector3 pos, void(*d)(void*, void* other, const btManifoldPoint& mnf),void* listener);
+	btRigidBody* addBoxRigidbody(float mass, btVector3 pos, btVector3 size, void(*d)(void*, void* other, const btManifoldPoint& mnf), void* listener);
 private:
 	PhysicsManager();
 	virtual ~PhysicsManager();

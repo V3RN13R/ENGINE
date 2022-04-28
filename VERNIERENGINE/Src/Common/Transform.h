@@ -75,6 +75,8 @@ public:
 	void onDisable() override;
 	//virtual void sendEvent(MessageType msg) {}
 	virtual void receiveEvent(MessageType msg, Entity* e);
+	virtual void onCollisionEnter(Entity* other, Vector3D point, Vector3D normal) { std::cout<<"choca\n"; };
+	virtual void onCollisionStay(Entity* ohter, Vector3D point) { /*std::cout << "chocaStay\n"; */};
 private:
 	Vector3D _position;
 	Vector3D _glbposition;
