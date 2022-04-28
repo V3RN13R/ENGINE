@@ -17,6 +17,7 @@ private:
 	Rigidbody* _rbToMove = nullptr;
 	Transform* transformCamara = nullptr;
 	std::string _entidadBuscar;
+	int jumps;
 	float  _vel;
 	void update();
 public:
@@ -26,5 +27,7 @@ public:
 	~MovementPlayer() {}
 	void start();
 	void receiveEvent(MessageType msg, Entity* e);
+	virtual void onCollisionEnter(Entity* other, Vector3D point, Vector3D normal);
+	virtual void onCollisionStay(Entity* ohter, Vector3D point) {};
 
 };

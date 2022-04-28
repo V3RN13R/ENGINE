@@ -100,14 +100,24 @@ void Rigidbody::contact(Rigidbody* other, const btManifoldPoint& manifold)
 {
 	btVector3 v = manifold.getPositionWorldOnA();
 
-	for (CollisionInfo& obj : collisions) {
+	for (auto it = collisions.begin(); it != collisions.end(); ++it) {
+		if (it->rb == other) {
+			it->time = 0;
+			it->point = Vector3D((float)v.x(), (float)v.y(), (float)v.z());
+			entity_->onCollisionStay(other->entity_, it->point);
+			return;
+		}
+		
+	}
+
+	/*for (CollisionInfo& obj : collisions) {
 		if (obj.rb == other) {
 			obj.time = 0;
 			obj.point = Vector3D((float)v.x(), (float)v.y(), (float)v.z());
 			entity_->onCollisionStay(other->entity_, obj.point);
 			return;
 		}
-	}
+	}*/
 	
 	Vector3D p = Vector3D((float)v.x(), (float)v.y(), (float)v.z());
 	collisions.push_back({ other,0 , p});
@@ -115,7 +125,7 @@ void Rigidbody::contact(Rigidbody* other, const btManifoldPoint& manifold)
 }
 
 void Rigidbody::setVelocity(Vector3D dir) {
-	_brb->activate();
+	/*_brb->activate();*/
 	_brb->setLinearVelocity(btVector3(dir.getX(), dir.getY(), dir.getZ()));
 
 
@@ -131,4 +141,9 @@ void Rigidbody::setVelocity(Vector3D dir) {
 
 
 	//std::cout << "Vel X bullet: " << _brb->getLinearVelocity().getX() << "\n";
+}
+void Rigidbody::addImpulse(Vector3D dir)
+{
+	_brb->applyCentralImpulse(btVector3(dir.getX(), dir.getY(), dir.getZ()));
+
 };

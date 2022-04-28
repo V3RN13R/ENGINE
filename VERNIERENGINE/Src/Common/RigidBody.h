@@ -36,6 +36,7 @@ public:
 
 
 	void setVelocity(Vector3D dir);
+	void addImpulse(Vector3D dir);
 private:
 
 	struct CollisionInfo {

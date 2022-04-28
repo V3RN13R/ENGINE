@@ -21,6 +21,7 @@ MovementPlayer::MovementPlayer(std::map<std::string, std::string> args) : _vel(s
 void MovementPlayer::start()
 {
 	transformCamara = static_cast<Transform*>(entity_->getScene()->getObjectWithName(_entidadBuscar)->getComponent("Transform"));
+	_rbToMove = static_cast<Rigidbody*>(entity_->getComponent("Rigidbody"));
 
 }
 
@@ -29,7 +30,6 @@ void MovementPlayer::update(){
 }
 void MovementPlayer::receiveEvent(MessageType msg, Entity* e) {
 	
-	_rbToMove = static_cast<Rigidbody*>(entity_->getComponent("Rigidbody"));
 	 
 	if (msg == MessageType::W) {
 		std::cout << "PulsaW\n";
@@ -53,4 +53,23 @@ void MovementPlayer::receiveEvent(MessageType msg, Entity* e) {
 	_rbToMove->setVelocity(dirFinal);
 
 
+	if (msg == MessageType::ESPACIO) {
+		if (jumps > 0) {
+			_rbToMove->addImpulse(Vector3D(0, 200, 0));
+			jumps--;
+		}
+		
+	}
+
+
+
+
+}
+
+void MovementPlayer::onCollisionEnter(Entity* other, Vector3D point, Vector3D normal)
+{
+	std::cout << "chocaSuelo\n";
+	if (other->getName() == "suelo2") {
+		jumps = 2;
+	}
 }
