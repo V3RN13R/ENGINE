@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-
+#include "Vector3D.h"
 
 class Entity;
 enum class MessageType;
@@ -50,6 +50,8 @@ public:
 	virtual void onEnable() { _enable = true; }
 	virtual void onDisable() { _enable = false; }
 	virtual void receiveEvent(MessageType msg, Entity* e) {}
+	virtual void onCollisionEnter(Entity* other, Vector3D point, Vector3D normal) {};
+	virtual void onCollisionStay(Entity* ohter, Vector3D point) {};
 
 protected:
 	Entity* entity_;

@@ -5,6 +5,12 @@
 enum CT_Collider;
 class btRigidBody;
 class Component;
+
+class btManifoldPoint;
+
+
+
+
 class Rigidbody: public Component
 {
 public:
@@ -25,8 +31,21 @@ public:
 	void resetTransform(Vector3D v1, float q1, float q2, float q3, float q4);
 	void clearForce();
 
+	static void sendContacts(void* first, void* other, const btManifoldPoint& manifold);
+	void contact(Rigidbody* other, const btManifoldPoint& manifold);
+
+
 	void setVelocity(Vector3D dir);
 private:
+
+	struct CollisionInfo {
+		Rigidbody* rb = nullptr;
+		float time = 0;
+		Vector3D point;
+	};
+
+
+
 	btRigidBody* _brb =nullptr;
 	std::string _type;
 	float _mass = 1;
@@ -36,5 +55,7 @@ private:
 	bool _static;
 	Vector3D _positionConstrains;
 	Vector3D _rotationConstrains;
+
+	std::vector<CollisionInfo> collisions;
 
 };

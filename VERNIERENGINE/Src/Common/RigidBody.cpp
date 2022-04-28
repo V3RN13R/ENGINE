@@ -31,13 +31,14 @@ Rigidbody::~Rigidbody()
 
 void Rigidbody::addSphereRigidbody(float mass, float radius, Vector3D pos, bool statc)
 {
-	_brb = PhysicsManager::getInstance()->addSphereRigidbody(mass, radius, { pos.getX(),pos.getY(),pos.getZ() });
-
+	_brb = PhysicsManager::getInstance()->addSphereRigidbody(mass, radius, { pos.getX(),pos.getY(),pos.getZ() }, &sendContacts, this);
+	_brb->setActivationState(DISABLE_DEACTIVATION);
 }
 
 void Rigidbody::addBoxRigidbody(float mass, Vector3D pos, Vector3D size, bool statc)
 {
-	_brb = PhysicsManager::getInstance()->addBoxRigidbody(mass, { pos.getX(),pos.getY(),pos.getZ() }, { size.getX(),size.getY(),size.getZ() });
+	_brb = PhysicsManager::getInstance()->addBoxRigidbody(mass, { pos.getX(),pos.getY(),pos.getZ() }, { size.getX(),size.getY(),size.getZ() }, &sendContacts, this);
+	_brb->setActivationState(DISABLE_DEACTIVATION);
 }
 
 void Rigidbody::fixedUpdate()
@@ -88,6 +89,29 @@ void Rigidbody::clearForce()
 	btVector3 v(0, 0, 0);
 	_brb->setLinearVelocity(v);
 	_brb->setAngularVelocity(v);
+}
+
+void Rigidbody::sendContacts(void* first, void* other, const btManifoldPoint& manifold)
+{
+	static_cast<Rigidbody*>(first)->contact(static_cast<Rigidbody*>(other), manifold);
+}
+
+void Rigidbody::contact(Rigidbody* other, const btManifoldPoint& manifold)
+{
+	btVector3 v = manifold.getPositionWorldOnA();
+
+	for (CollisionInfo& obj : collisions) {
+		if (obj.rb == other) {
+			obj.time = 0;
+			obj.point = Vector3D((float)v.x(), (float)v.y(), (float)v.z());
+			entity_->onCollisionStay(other->entity_, obj.point);
+			return;
+		}
+	}
+	
+	Vector3D p = Vector3D((float)v.x(), (float)v.y(), (float)v.z());
+	collisions.push_back({ other,0 , p});
+	entity_->onCollisionEnter(other->entity_, p, Vector3D(manifold.m_normalWorldOnB.getX(), manifold.m_normalWorldOnB.getY(), manifold.m_normalWorldOnB.getZ()));
 }
 
 void Rigidbody::setVelocity(Vector3D dir) {

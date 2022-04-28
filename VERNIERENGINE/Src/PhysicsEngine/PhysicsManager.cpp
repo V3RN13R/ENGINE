@@ -46,15 +46,33 @@ void PhysicsManager::stepPhysics()
 	}*/
 
 
-	int numManifolds = dynamicsWorld->getDispatcher()->getNumManifolds();
-	for (int i = 0; i < numManifolds; i++)
-	{
-		btPersistentManifold* contactManifold = dynamicsWorld->getDispatcher()->getManifoldByIndexInternal(i);
-		std::cout << "Colision\n";
-		/*btCollisionObject* obA = contactManifold->getBody0();
-		btCollisionObject* obB = static_cast<btCollisionObject*>(contactManifold->getBody1());*/
+	//int numManifolds = dynamicsWorld->getDispatcher()->getNumManifolds();
+	//for (int i = 0; i < numManifolds; i++)
+	//{
+	//	btPersistentManifold* contactManifold = dynamicsWorld->getDispatcher()->getManifoldByIndexInternal(i);
+	//	//std::cout << "Colision\n";
+	//	/*btCollisionObject* obA = contactManifold->getBody0();
+	//	btCollisionObject* obB = static_cast<btCollisionObject*>(contactManifold->getBody1());*/
 
-		//... here you can check for obA큦 and obB큦 user pointer again to see if the collision is alien and bullet and in that case initiate deletion.
+	//	//... here you can check for obA큦 and obB큦 user pointer again to see if the collision is alien and bullet and in that case initiate deletion.
+	//}
+
+
+	int numManifolds = dynamicsWorld->getDispatcher()->getNumManifolds();
+	auto manifolds = dynamicsWorld->getDispatcher()->getInternalManifoldPointer();
+	for (int i = 0; i < numManifolds; i++) {
+		btPersistentManifold* manifold = manifolds[i];
+
+		for (int j = 0; j < manifold->getNumContacts(); j++)
+		{
+			const btManifoldPoint& mp = manifold->getContactPoint(j);
+			auto body0 = static_cast<CollisionListener*>(manifold->getBody0()->getUserPointer());
+			auto body1 = static_cast<CollisionListener*>(manifold->getBody1()->getUserPointer());
+			if (body0)
+				body0->p(body0->obj, body1->obj, mp);
+			if (body1)
+				body1->p(body1->obj, body0->obj, mp);
+		}
 	}
 }
 
@@ -149,12 +167,7 @@ void PhysicsManager::init(const Vector3D gravity)
 
 }
 
-void PhysicsManager::deleteInstance()
-{
-	delete _instance;
-}
-
-btRigidBody* PhysicsManager::addSphereRigidbody(float mass, float radius, btVector3 pos)
+btRigidBody* PhysicsManager::addSphereRigidbody(float mass, float radius, btVector3 pos, void(*d)(void*, void* other, const btManifoldPoint& mnf), void* listener)
 {
 	btTransform startTransform;
 	startTransform.setIdentity();
@@ -167,20 +180,29 @@ btRigidBody* PhysicsManager::addSphereRigidbody(float mass, float radius, btVect
 
 
 	btRigidBody* rb = new btRigidBody(mass, new btDefaultMotionState(startTransform), sphereShape, btVector3(0, 0, 0));
+	rb->setUserPointer(new CollisionListener(d,listener));
 	rb->setCcdMotionThreshold(1e-7);
 	rb->setCcdSweptSphereRadius(0.50);
 	//rb->setDamping(0, 0);
 	dynamicsWorld->addRigidBody(rb);
+
 	return rb;
 }
 
-btRigidBody* PhysicsManager::addBoxRigidbody(float mass, btVector3 pos, btVector3 size)
+void PhysicsManager::deleteInstance()
+{
+	delete _instance;
+}
+
+
+btRigidBody* PhysicsManager::addBoxRigidbody(float mass, btVector3 pos, btVector3 size, void(*d)(void*, void* other, const btManifoldPoint& mnf), void* listener)
 {
 
 	btTransform startTransform;
 	startTransform.setIdentity();
 	startTransform.setOrigin(pos);
 	btRigidBody* rb = new btRigidBody(mass, new btDefaultMotionState(startTransform), new btBoxShape(size), btVector3(0, 0, 0));
+	rb->setUserPointer(new CollisionListener(d, listener));
 	dynamicsWorld->addRigidBody(rb);
 	return rb;
 }
