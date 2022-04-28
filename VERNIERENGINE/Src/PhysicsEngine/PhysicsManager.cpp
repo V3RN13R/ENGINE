@@ -154,7 +154,7 @@ void PhysicsManager::deleteInstance()
 	delete _instance;
 }
 
-btRigidBody* PhysicsManager::addSphereRigidbody(float mass, float radius, btVector3 pos)
+btRigidBody* PhysicsManager::addSphereRigidbody(float mass, float radius, btVector3 pos, void(*d)(void*, void* other, const btManifoldPoint& mnf))
 {
 	btTransform startTransform;
 	startTransform.setIdentity();
@@ -167,6 +167,7 @@ btRigidBody* PhysicsManager::addSphereRigidbody(float mass, float radius, btVect
 
 
 	btRigidBody* rb = new btRigidBody(mass, new btDefaultMotionState(startTransform), sphereShape, btVector3(0, 0, 0));
+	rb->setUserPointer(d);
 	rb->setCcdMotionThreshold(1e-7);
 	rb->setCcdSweptSphereRadius(0.50);
 	//rb->setDamping(0, 0);

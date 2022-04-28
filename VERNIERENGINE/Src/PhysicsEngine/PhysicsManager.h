@@ -21,6 +21,7 @@ enum ColliderType
 	CT_TRIMESH,
 	CT_HULL
 };
+
 class PhysicsManager {
 public:
 	static PhysicsManager* getInstance();
@@ -36,7 +37,7 @@ public:
 	// 
 	//inicializa todas las variables fisicas asi como el "mundo" a partir de dichas variables
 	void init(const Vector3D gravity);
-	btRigidBody* addSphereRigidbody(float mass, float radius, btVector3 pos);
+	btRigidBody* addSphereRigidbody(float mass, float radius, btVector3 pos, void(*d)(void*, void* other, const btManifoldPoint& mnf));
 	btRigidBody* addBoxRigidbody(float mass, btVector3 pos, btVector3 size );
 private:
 	PhysicsManager();

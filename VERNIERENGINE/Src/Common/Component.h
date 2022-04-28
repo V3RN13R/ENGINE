@@ -50,6 +50,8 @@ public:
 	virtual void onEnable() { _enable = true; }
 	virtual void onDisable() { _enable = false; }
 	virtual void receiveEvent(MessageType msg, Entity* e) {}
+	virtual void onCollisionEnter(Entity*, Vector3D, Vector3D);
+	virtual void onCollisionStay(Entity*, Vector3D);
 
 protected:
 	Entity* entity_;

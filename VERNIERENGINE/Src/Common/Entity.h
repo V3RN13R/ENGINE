@@ -47,6 +47,23 @@ public:
 		return c;
 	}*/
 
+
+	void onCollisionEnter(Entity* e, Vector3D point, Vector3D normal) {
+		for (Component* c : _components) {
+			if (c->isEnable()) {
+				c->onCollisionEnter(e, point, normal);
+			}
+		}
+	};
+	virtual void onCollisionStay(Entity* e, Vector3D point) {
+		for (Component* c : _components) {
+			if (c->isEnable()) {
+				c->onCollisionStay(e, point);
+			}
+		}
+	};
+
+
 	void addComponent(std::string s, Component* c){
 		_cmps.insert({ s, c });
 		_components.emplace_back(c);
