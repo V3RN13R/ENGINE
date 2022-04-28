@@ -38,7 +38,6 @@ protected:
 public:
 	WindowRender() {}
 	~WindowRender();
-	void BORRAR();
 	void closeWindow();
 	bool setUpInstance(std::string name);
 	bool ExitWindow();

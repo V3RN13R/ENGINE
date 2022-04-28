@@ -47,6 +47,8 @@ private:
 	int _isOn = 1; //Funciona como booleano 1 encendido 0 apagado
 
 	bool _firstEnable = true;
+	bool _ambientBool = true;
+	Vector3D _ambientColor;
 
 public:
 

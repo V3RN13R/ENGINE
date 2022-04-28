@@ -34,8 +34,8 @@ void WindowRender::setUpOgreRoot()
 		Ogre::RTShader::ShaderGenerator* shadergen = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
 		shadergen->addSceneManager(_mSceneManager);
 	}*/
-	BORRAR();
-	//_mSceneManager->setAmbientLight(Ogre::ColourValue(.3, .3, .3));
+
+	//_mSceneManager->setAmbientLight(Ogre::ColourValue(.5, .5, .5)); //Color base (gris)
 }
 
 void WindowRender::setUpWindow()
@@ -129,51 +129,4 @@ WindowRender::~WindowRender()
 	SDL_DestroyWindow(_sDLWindow);
 	SDL_Quit();
 	delete _root;
-}
-
-
-void WindowRender::BORRAR() {
-	//Ogre::Camera* mCamera;
-
-	//mCamera = _mSceneManager->createCamera("MainCam");
-
-	//mCamera->setNearClipDistance(1);
-	//mCamera->setFarClipDistance(100000);
-	//mCamera->setAutoAspectRatio(true);
-	//Ogre::SceneNode* mNodeCamera = _mSceneManager->getRootSceneNode()->createChildSceneNode();
-	//mNodeCamera->attachObject(mCamera);
-
-	//mNodeCamera->setPosition(0, 500, 1000);
-	//mNodeCamera->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
-
-	//Ogre::Viewport* vp = _rWindow->addViewport(mCamera);
-
-	//vp->setBackgroundColour(Ogre::ColourValue(0, 0, 1));
-
-	//mCamera->setAspectRatio(
-	//	Ogre::Real(vp->getActualWidth()) /
-	//	Ogre::Real(vp->getActualHeight()));
-	_mSceneManager->setAmbientLight(Ogre::ColourValue(.5, .5, .5));
-	Ogre::Light* luz = _mSceneManager->createLight("LuzAmbiente");
-	luz->setType(Ogre::Light::LT_DIRECTIONAL);
-	luz->setDiffuseColour(1, 1, 1);
-
-	Ogre::SceneNode* mLightNode = _mSceneManager->getRootSceneNode()->createChildSceneNode("nLuz");
-
-	mLightNode->attachObject(luz);
-
-	mLightNode->setDirection(Ogre::Vector3(1, -1, -1));  //vec3.normalise();
-	//Ogre::Entity* e = _mSceneManager->createEntity(Ogre::SceneManager::PrefabType::PT_SPHERE);
-
-	//Ogre::SceneNode* node = _mSceneManager->getRootSceneNode()->createChildSceneNode();
-
-	//node->attachObject(e);
-
-	//node->setPosition(0, 100, 0);
-
-	/*Ogre::Entity* e2 = _mSceneManager->createEntity(Ogre::SceneManager::PrefabType::PT_PLANE);
-	Ogre::SceneNode* node2 = _mSceneManager->getRootSceneNode()->createChildSceneNode();
-	node2->attachObject(e2);
-	node2->setPosition(0, -100, 0);*/
-
 }

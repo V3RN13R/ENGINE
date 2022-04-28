@@ -8,17 +8,19 @@ luz = {
     Components = {"Transform","Light"},
 
     Transform = {
-        Position = "0,0,0",
+        Position = "0,500,0",
         Scale = "1,1,1",
         Rotation = "0,0,0"
     },
 	
     Light = {
         LightType = "DIRECTIONAL_LIGHT",
-        Distance = 10000,
-        Diffuse = "1,0,0",
-        Specular = "1,0,0",
-        Direction = "0,0,-1",
+        Distance = 100000,
+        Diffuse = "1,1,1",
+        Specular = "1,1,1",
+        Direction = "1,-1,-1",
+        AmbientBool = 1,
+        AmbientColor = "0.5,0.5,0.5",
         InnerAngle = 35,
         OuterAngle = 60,
         On = 1

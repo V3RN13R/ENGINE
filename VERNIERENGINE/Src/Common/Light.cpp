@@ -9,16 +9,17 @@
 
 
 Light::Light(std::map<std::string, std::string> args, Entity* ent) : Component(ent), _node(nullptr), _light(nullptr), _firstEnable(true),
-_diffuseColor(args["Diffuse"]), _specularColor(args["Specular"]), _direction(args["Direction"])
+_diffuseColor(args["Diffuse"]), _specularColor(args["Specular"]), _direction(args["Direction"]), _ambientColor(args["AmbientColor"])
 {
-	if ((args["LighType"]) == "POINTLIGHT") _lightType = 0;
-	else if ((args["LighType"]) == "DIRECTIONAL_LIGHT") _lightType = 1;
-	else if ((args["LighType"]) == "SPOTLIGHT") _lightType = 2; ;
+	if ((args["LightType"]) == "POINTLIGHT") _lightType = 0;
+	else if ((args["LightType"]) == "DIRECTIONAL_LIGHT") _lightType = 1;
+	else if ((args["LightType"]) == "SPOTLIGHT") _lightType = 2; ;
 
 	_distance = stof(args["Distance"]);
 	_innerAngle = stof(args["InnerAngle"]);
 	_outerAngle = stof(args["OuterAngle"]);
 	_isOn = stoi(args["On"]);
+	_ambientBool = stoi(args["AmbientBool"]);
 }
 
 Light::~Light()
@@ -48,6 +49,10 @@ void Light::onEnable()
 		if (_lightType == (int)LightMode::SPOTLIGHT) {
 			_light->setSpotlightInnerAngle(Ogre::Radian(Ogre::Degree(_innerAngle)));
 			_light->setSpotlightOuterAngle(Ogre::Radian(Ogre::Degree(_innerAngle)));
+		}
+		if(_ambientBool && _isOn)
+		{
+			setAmbientLight(_ambientColor);
 		}
 		_firstEnable = false;
 	}
@@ -92,6 +97,7 @@ void Light::setType(LightMode type)
 
 void Light::setDistance(float distance)
 {
+	//Atten = 1/( att0i + att1i * d + att2i * d²) formula calcula atenuacion
 	_distance = distance;
 	float linear = 4.5 / distance;
 	float quadratic = 75.0 / pow(pow(_distance, 3), 2);
