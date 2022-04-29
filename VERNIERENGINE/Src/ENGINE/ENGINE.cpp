@@ -68,6 +68,7 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	//inicializa la intancia y llama al init() de Soundmanager
 	SoundManager::setUpInstance();
 	_soundManager = SoundManager::getInstance();
+	_soundManager->playSound("main theme.mp3", 1.0f);
 
 	GameStateMachine::instance()->initScene(sceneFile, scene);
 	
@@ -154,6 +155,7 @@ bool VernierEngine::processFrame()
 		//PhysicsManager::getInstance()->Update();
 
 		_physics->stepPhysics();
+		_soundManager->update();
 		GameStateMachine::instance()->fixedUpdate();
 		GameStateMachine::instance()->update();
 		GameStateMachine::instance()->lateUpdate();

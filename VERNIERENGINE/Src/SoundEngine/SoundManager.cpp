@@ -76,7 +76,7 @@ void SoundManager::createSound(const std::string sound, bool b3d, bool bLooping,
 	}
 }
 
-int SoundManager::playSound(const std::string& strSoundName, Vector3D& vPos, float volumedB)
+int SoundManager::playSound(const std::string& strSoundName, float volumedB)
 {
 	int nChannelId = _instance->getNextChannelId()++;
 	auto found = _instance->getSoundMap().find(strSoundName);
@@ -95,10 +95,7 @@ int SoundManager::playSound(const std::string& strSoundName, Vector3D& vPos, flo
 	{
 		FMOD_MODE currMode;
 		found->second->getMode(&currMode);
-		if (currMode & FMOD_3D) {
-			FMOD_VECTOR position = { vPos.getX(), vPos.getX(), vPos.getX() };
-			errorCheck(pChannel->set3DAttributes(&position, nullptr));
-		}
+
 		errorCheck(pChannel->setVolume(dbToVolume(volumedB)));
 		_instance->getSoundChannels()[nChannelId] = pChannel;
 	}

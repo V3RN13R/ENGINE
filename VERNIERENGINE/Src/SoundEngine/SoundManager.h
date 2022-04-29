@@ -17,7 +17,7 @@ public:
 	*	Si el sonido está en el map, no hace nada, si no, lo crea
 	**/ 
 	void createSound(const std::string sound, bool b3d = true, bool bLooping = false, bool bStream = false);
-	int  playSound(const std::string& strSoundName, Vector3D& vPos, float fVolumedB = 0.0f);
+	int  playSound(const std::string& strSoundName, float fVolumedB = 0.0f);
 	void update();
 
 	void stopChannel(int id);
