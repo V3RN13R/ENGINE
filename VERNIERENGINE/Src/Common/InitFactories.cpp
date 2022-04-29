@@ -11,6 +11,7 @@
 #include "Light.h"
 #include "MovementPlayer.h"
 #include "MonkeyStats.h"
+#include "Health.h"
 
 Component* TransformFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
@@ -55,12 +56,19 @@ Component* Light_Factory::createComponent(std::map<std::string, std::string> arg
 	return new Light(args, ent);
 };
 
-Component* MonkeyStatsFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
-{
-	return new MonkeyStats(args);
-};//Component* Button1Factory::createComponent(std::map<std::string, std::string> args, Entity* ent) {
+//Component* MonkeyStatsFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
+//{
+//	return new MonkeyStats(args);
+//};
+
+//Component* Button1Factory::createComponent(std::map<std::string, std::string> args, Entity* ent) {
 //	return new Button1(args, ent);
 //}
+
+Component* HealthFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
+{
+	return new Health(args);
+};
 
 
 void setupFactories()
@@ -75,7 +83,8 @@ void setupFactories()
 	_fM->addFactory("MovementPlayer", new MovementPlayerFactory());
 	_fM->addFactory("Image", new ImageFactory());
 	_fM->addFactory("Light", new Light_Factory());
-	_fM->addFactory("MonkeyStats", new MonkeyStatsFactory());
+	_fM->addFactory("Health", new HealthFactory());
 
+	//_fM->addFactory("MonkeyStats", new MonkeyStatsFactory());
 	//_fM->addFactory("Button1", new Button1Factory());
 }

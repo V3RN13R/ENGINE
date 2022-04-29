@@ -19,6 +19,11 @@ private:
 	std::string _entidadBuscar;
 	int jumps;
 	float  _vel;
+
+	//Stats
+	float _speed;
+	float _jump;
+
 	void update();
 public:
 

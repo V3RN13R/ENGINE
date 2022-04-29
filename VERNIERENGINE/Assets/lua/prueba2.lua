@@ -31,7 +31,7 @@ luz = {
 mono2={
     Active = true,
     Listener = true,
-    Components = {"Transform","MeshRenderer", "Rigidbody","MovementPlayer"},
+    Components = {"Transform","MeshRenderer", "Rigidbody","MovementPlayer", "Health"},
 
     Transform = {
         Position = "0,300,0",
@@ -50,8 +50,13 @@ mono2={
     },
     MovementPlayer = {
         Vel = "10",
-        Entity = "camaraPrincipal2"
+        Entity = "camaraPrincipal2",
+        Speed = 1,
+        Jump = 1
     },
+    Health = {
+        Lives = 4
+    }
 }
 
 

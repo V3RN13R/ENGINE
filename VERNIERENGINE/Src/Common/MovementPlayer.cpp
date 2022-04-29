@@ -13,7 +13,8 @@
 //const float toRadians = _PI / 180.0;
 //const float toAngles = 180.0 / _PI;
 
-MovementPlayer::MovementPlayer(std::map<std::string, std::string> args) : _vel(std::stof(args["Vel"])), _entidadBuscar(args["Entity"])
+MovementPlayer::MovementPlayer(std::map<std::string, std::string> args) : _vel(std::stof(args["Vel"])), _entidadBuscar(args["Entity"]), 
+	_speed(std::stof(args["Speed"])), _jump(std::stof(args["Jump"]))
 {
 	std::cout << "Contructora lua MovementPlayer\n";
 }
@@ -34,16 +35,16 @@ void MovementPlayer::receiveEvent(MessageType msg, Entity* e) {
 	
 	 
 	if (msg == MessageType::W) {
-		dirFinal += Vector3D(std::cos(transformCamara->getRot().getY() * toRadians), 0, -std::sin(transformCamara->getRot().getY() * toRadians)) * _vel;
+		dirFinal += Vector3D(std::cos(transformCamara->getRot().getY() * toRadians), 0, -std::sin(transformCamara->getRot().getY() * toRadians)) * _vel * _speed;
 	}
 	if (msg == MessageType::A) {
-		dirFinal += Vector3D(std::cos((transformCamara->getRot().getY() + 90) * toRadians), 0, -std::sin((transformCamara->getRot().getY() + 90) * toRadians)) * _vel;
+		dirFinal += Vector3D(std::cos((transformCamara->getRot().getY() + 90) * toRadians), 0, -std::sin((transformCamara->getRot().getY() + 90) * toRadians)) * _vel * _speed;
 	}
 	if (msg == MessageType::S) {
-		dirFinal += Vector3D(-std::cos(transformCamara->getRot().getY() * toRadians), 0, std::sin(transformCamara->getRot().getY() * toRadians)) * _vel;
+		dirFinal += Vector3D(-std::cos(transformCamara->getRot().getY() * toRadians), 0, std::sin(transformCamara->getRot().getY() * toRadians)) * _vel * _speed;
 	}
 	if (msg == MessageType::D) {
-		dirFinal += Vector3D(std::cos((transformCamara->getRot().getY() - 90) * toRadians), 0, -std::sin((transformCamara->getRot().getY() - 90) * toRadians)) * _vel;
+		dirFinal += Vector3D(std::cos((transformCamara->getRot().getY() - 90) * toRadians), 0, -std::sin((transformCamara->getRot().getY() - 90) * toRadians)) * _vel * _speed;
 	}
 	dirFinal = Vector3D(dirFinal.getX(), _rbToMove->getVel().getY(), dirFinal.getZ());
 	_rbToMove->setVelocity(dirFinal);
@@ -51,7 +52,7 @@ void MovementPlayer::receiveEvent(MessageType msg, Entity* e) {
 
 	if (msg == MessageType::ESPACIO) {
 		if (jumps > 0) {
-			_rbToMove->addImpulse(Vector3D(0, 50, 0));
+			_rbToMove->addImpulse(Vector3D(0, 50, 0) * _jump);
 
 			jumps--;
 		}

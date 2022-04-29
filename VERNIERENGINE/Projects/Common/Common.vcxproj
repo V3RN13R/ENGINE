@@ -101,6 +101,7 @@
     <ClCompile Include="..\..\Src\Common\Factory.cpp" />
     <ClCompile Include="..\..\Src\Common\FactoryManager.cpp" />
     <ClCompile Include="..\..\Src\Common\GameStateMachine.cpp" />
+    <ClCompile Include="..\..\Src\Common\Health.cpp" />
     <ClCompile Include="..\..\Src\Common\Image.cpp" />
     <ClCompile Include="..\..\Src\Common\InitFactories.cpp" />
     <ClCompile Include="..\..\Src\Common\InputManager.cpp" />
@@ -132,6 +133,7 @@
     <ClInclude Include="..\..\Src\Common\Factory.h" />
     <ClInclude Include="..\..\Src\Common\FactoryManager.h" />
     <ClInclude Include="..\..\Src\Common\GameStateMachine.h" />
+    <ClInclude Include="..\..\Src\Common\Health.h" />
     <ClInclude Include="..\..\Src\Common\Image.h" />
     <ClInclude Include="..\..\Src\Common\InitFactories.h" />
     <ClInclude Include="..\..\Src\Common\InputManager.h" />
