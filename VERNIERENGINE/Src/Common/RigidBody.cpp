@@ -41,10 +41,30 @@ void Rigidbody::addBoxRigidbody(float mass, Vector3D pos, Vector3D size, bool st
 	_brb->setActivationState(DISABLE_DEACTIVATION);
 }
 
+void Rigidbody::update()
+{
+	for (CollisionInfo& cI : collisions) {
+		cI.time++;
+	}
+}
+
 void Rigidbody::fixedUpdate()
 {
 	//clearForce();
 
+}
+
+void Rigidbody::lateUpdate()
+{
+	for (auto it = collisions.begin(); it != collisions.end();) {
+		if ((it)->time > TIME_TO_EXIT) {
+			if ((it)->rb)
+				entity_->onCollisionExit((it)->rb->entity_, (it)->point);
+			it = collisions.erase(it);
+		}
+		else
+			it++;
+	}
 }
 
 void Rigidbody::onEnable()

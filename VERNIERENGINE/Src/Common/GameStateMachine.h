@@ -24,6 +24,7 @@ public:
 	void popScene();
 	void fixedUpdate();
 	void update();
+	void lateUpdate();
 	bool lastUpdate();
 	Scene* getScene();
 	GameStateMachine& ih() {

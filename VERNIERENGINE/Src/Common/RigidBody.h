@@ -8,6 +8,7 @@ class Component;
 
 class btManifoldPoint;
 
+const float TIME_TO_EXIT = 0.1f;
 
 
 
@@ -21,7 +22,9 @@ public:
 	void addBoxRigidbody(float mass, Vector3D pos, Vector3D size, bool statc=false);
 	//virtual void preUpdate() override;
 
+	virtual void update() override;
 	virtual void fixedUpdate() override;
+	virtual void lateUpdate() override;
 	virtual void onEnable() override;
 	virtual void onDisable() override;
 	Vector3D getPosition();

@@ -225,6 +225,7 @@ void Scene::fixedUpdate()
 	}
 }
 
+
 void Scene::update()
 {
 	size_t n = _entities.size();
@@ -234,6 +235,15 @@ void Scene::update()
 	}
 }
 
+
+void Scene::lateUpdate()
+{
+	size_t n = _entities.size();
+	for (int i = 0; i < n; i++) {
+		if (!_entities[i]->getDestroy() && _entities[i]->isActive())
+			_entities[i]->lateUpdate();
+	}
+}
 
 void Scene::clearEntities()
 {

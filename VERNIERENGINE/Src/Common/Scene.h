@@ -49,6 +49,8 @@ public:
 
 	void fixedUpdate();
 
+	void lateUpdate();
+
 	void update();
 
 	std::string getName() { return _name; }

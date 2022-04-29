@@ -51,6 +51,12 @@ void GameStateMachine::update() {
 		_sceneStack.top()->update();
 }
 
+void GameStateMachine::lateUpdate()
+{
+	if (!_sceneStack.empty())
+		_sceneStack.top()->lateUpdate();
+}
+
 Scene* GameStateMachine::getScene() { return _sceneStack.top(); }
 
 bool GameStateMachine::lastUpdate()

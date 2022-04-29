@@ -62,6 +62,14 @@ public:
 			}
 		}
 	};
+	void onCollisionExit(Entity* e, Vector3D point) {
+		for (Component* c : _components) {
+			if (c->isEnable()) {
+				c->onCollisionExit(e, point);
+			}
+		}
+	};
+
 
 
 	void addComponent(std::string s, Component* c){
@@ -141,6 +149,15 @@ public:
 		for (auto i = 0u; i < n; i++) {
 			if(_components[i]->getEnable())
 				_components[i]->update();
+		}
+	}
+
+
+	virtual void lateUpdate() {
+		std::size_t n = _components.size();
+		for (auto i = 0u; i < n; i++) {
+			if (_components[i]->getEnable())
+				_components[i]->lateUpdate();
 		}
 	}
 

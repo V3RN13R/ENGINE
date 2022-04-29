@@ -152,6 +152,7 @@ bool VernierEngine::processFrame()
 		_physics->stepPhysics();
 		GameStateMachine::instance()->fixedUpdate();
 		GameStateMachine::instance()->update();
+		GameStateMachine::instance()->lateUpdate();
 		GameStateMachine::instance()->lastUpdate();
 
 		//tr->setPosition(Vector3D(tr->getPos().getX(), tr->getPos().getY() - 0.0001, tr->getPos().getZ()));
