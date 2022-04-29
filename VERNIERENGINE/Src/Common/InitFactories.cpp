@@ -10,6 +10,7 @@
 #include "Image.h"
 #include "Light.h"
 #include "MovementPlayer.h"
+#include "MonkeyStats.h"
 
 Component* TransformFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
@@ -53,7 +54,11 @@ Component* Light_Factory::createComponent(std::map<std::string, std::string> arg
 {
 	return new Light(args, ent);
 };
-//Component* Button1Factory::createComponent(std::map<std::string, std::string> args, Entity* ent) {
+
+Component* MonkeyStatsFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
+{
+	return new MonkeyStats(args);
+};//Component* Button1Factory::createComponent(std::map<std::string, std::string> args, Entity* ent) {
 //	return new Button1(args, ent);
 //}
 
@@ -70,6 +75,7 @@ void setupFactories()
 	_fM->addFactory("MovementPlayer", new MovementPlayerFactory());
 	_fM->addFactory("Image", new ImageFactory());
 	_fM->addFactory("Light", new Light_Factory());
+	_fM->addFactory("MonkeyStats", new MonkeyStatsFactory());
 
 	//_fM->addFactory("Button1", new Button1Factory());
 }
