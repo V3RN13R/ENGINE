@@ -23,11 +23,10 @@
 #include "UIManager.h"
 #include "InputManager.h"
 #include "Scene.h"
-
 #include "GameStateMachine.h"
 #include "InitFactories.h"
 #include "LoadImages.h"
-
+#include "SoundManager.h"
 //LUA
 extern "C"
 {
@@ -64,6 +63,11 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	_physics = PhysicsManager::getInstance();
 
 	PruebaBullet::mainPhys();
+
+	//SoundManager
+	//inicializa la intancia y llama al init() de Soundmanager
+	SoundManager::setUpInstance();
+	_soundManager = SoundManager::getInstance();
 
 	GameStateMachine::instance()->initScene(sceneFile, scene);
 	

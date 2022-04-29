@@ -14,6 +14,7 @@ class Manager;
 class Transform;
 class ResourceManager;
 class InputManager;
+class SoundManager;
 
 
 class GameStateMachine;
@@ -38,6 +39,7 @@ private:
 
 	RenderMain* _ogre = nullptr;
 	PhysicsManager* _physics = nullptr;
+	SoundManager* _soundManager = nullptr;
 	std::unique_ptr<GameStateMachine*> _gsm;
 	Transform* tr = nullptr;
 	Transform* tr2 = nullptr;

@@ -90,12 +90,11 @@
     </Link>
     <Lib>
       <AdditionalDependencies>fmod_vc.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:\Escritorio\5DV\P3\ENGINE\VERNIERENGINE\Dependencies\Fmod\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\Fmod\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Src\SoundEngine\SoundManager.cpp" />
-    <ClCompile Include="..\..\..\Src\SoundEngine\Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\SoundEngine\Music.h" />
