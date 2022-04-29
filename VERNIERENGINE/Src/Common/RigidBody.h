@@ -40,6 +40,11 @@ public:
 
 	void setVelocity(Vector3D dir);
 	void addImpulse(Vector3D dir);
+	void addForce(Vector3D dir);
+	Vector3D getGravity();
+	Vector3D getVel();
+
+
 private:
 
 	struct CollisionInfo {

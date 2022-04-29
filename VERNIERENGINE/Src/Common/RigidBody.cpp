@@ -167,3 +167,15 @@ void Rigidbody::addImpulse(Vector3D dir)
 	_brb->applyCentralImpulse(btVector3(dir.getX(), dir.getY(), dir.getZ()));
 
 };
+void Rigidbody::addForce(Vector3D dir)
+{
+	_brb->applyCentralForce(btVector3(dir.getX(), dir.getY(), dir.getZ()));
+
+};
+Vector3D Rigidbody::getGravity() {
+	return Vector3D(_brb->getGravity().getX(), _brb->getGravity().getY(), _brb->getGravity().getZ());
+
+}
+Vector3D Rigidbody::getVel() {
+	return Vector3D(_brb->getLinearVelocity().getX(), _brb->getLinearVelocity().getY(), _brb->getLinearVelocity().getZ());
+}

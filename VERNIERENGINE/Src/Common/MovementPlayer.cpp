@@ -27,49 +27,46 @@ void MovementPlayer::start()
 
 void MovementPlayer::update(){
 	dirFinal = Vector3D(0, 0, 0);
+	std::cout << _rbToMove->getVel().getX() << " " << _rbToMove->getVel().getY() << " " << _rbToMove->getVel().getZ() << "\n";
+
 }
 void MovementPlayer::receiveEvent(MessageType msg, Entity* e) {
 	
 	 
 	if (msg == MessageType::W) {
-		std::cout << "PulsaW\n";
 		dirFinal += Vector3D(std::cos(transformCamara->getRot().getY() * toRadians), 0, -std::sin(transformCamara->getRot().getY() * toRadians)) * _vel;
-
 	}
 	if (msg == MessageType::A) {
-		std::cout << "PulsaA\n";
-
 		dirFinal += Vector3D(std::cos((transformCamara->getRot().getY() + 90) * toRadians), 0, -std::sin((transformCamara->getRot().getY() + 90) * toRadians)) * _vel;
-
 	}
 	if (msg == MessageType::S) {
 		dirFinal += Vector3D(-std::cos(transformCamara->getRot().getY() * toRadians), 0, std::sin(transformCamara->getRot().getY() * toRadians)) * _vel;
-
 	}
 	if (msg == MessageType::D) {
 		dirFinal += Vector3D(std::cos((transformCamara->getRot().getY() - 90) * toRadians), 0, -std::sin((transformCamara->getRot().getY() - 90) * toRadians)) * _vel;
 	}
-
+	dirFinal = Vector3D(dirFinal.getX(), _rbToMove->getVel().getY(), dirFinal.getZ());
 	_rbToMove->setVelocity(dirFinal);
 
 
 	if (msg == MessageType::ESPACIO) {
-		if (jumps > 0) {
-			_rbToMove->addImpulse(Vector3D(0, 200, 0));
+		if (jumps > -1) {
+			_rbToMove->addImpulse(Vector3D(0, 50, 0));
+
 			jumps--;
+		}
+		else {
+			std::cout << "No salto";
 		}
 		
 	}
-
-
 
 
 }
 
 void MovementPlayer::onCollisionEnter(Entity* other, Vector3D point, Vector3D normal)
 {
-	std::cout << "chocaSuelo\n";
 	if (other->getName() == "suelo2") {
-		jumps = 2;
+		jumps = 1;
 	}
 }

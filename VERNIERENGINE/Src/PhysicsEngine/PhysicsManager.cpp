@@ -62,7 +62,6 @@ void PhysicsManager::stepPhysics()
 	auto manifolds = dynamicsWorld->getDispatcher()->getInternalManifoldPointer();
 	for (int i = 0; i < numManifolds; i++) {
 		btPersistentManifold* manifold = manifolds[i];
-		std::cout << manifold->getNumContacts() << "\n";
 		for (int j = 0; j < manifold->getNumContacts(); j++)
 		{
 			const btManifoldPoint& mp = manifold->getContactPoint(j);

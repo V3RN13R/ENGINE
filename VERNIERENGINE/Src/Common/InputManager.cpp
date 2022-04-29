@@ -19,34 +19,34 @@ bool InputManager::keyPressed() {
 		}
 
 
-		if (keyboard_state_array[SDL_SCANCODE_W] && !(keyboard_state_array[SDL_SCANCODE_S]))
+		if (keyboard_state_array[SDL_SCANCODE_W] && !(keyboard_state_array[SDL_SCANCODE_S]) && !keyboard_state_array[SDL_SCANCODE_SPACE])
 		{
 
 			for (Entity* e : *_listenersScene) {
 				e->receiveEvent(MessageType::W, e);
 			}
 		}
-		else if (!keyboard_state_array[SDL_SCANCODE_W] && keyboard_state_array[SDL_SCANCODE_S])
+		else if (!keyboard_state_array[SDL_SCANCODE_W] && keyboard_state_array[SDL_SCANCODE_S] && !keyboard_state_array[SDL_SCANCODE_SPACE])
 		{
 			for (Entity* e : *_listenersScene) {
 				e->receiveEvent(MessageType::S, e);
 			}
 		}
 
-		if (keyboard_state_array[SDL_SCANCODE_D] && !keyboard_state_array[SDL_SCANCODE_A])
+		if (keyboard_state_array[SDL_SCANCODE_D] && !keyboard_state_array[SDL_SCANCODE_A] && !keyboard_state_array[SDL_SCANCODE_SPACE])
 		{
 			for (Entity* e : *_listenersScene) {
 				e->receiveEvent(MessageType::D, e);
 			}
 		}
-		else if (!keyboard_state_array[SDL_SCANCODE_D] && keyboard_state_array[SDL_SCANCODE_A])
+		else if (!keyboard_state_array[SDL_SCANCODE_D] && keyboard_state_array[SDL_SCANCODE_A] && !keyboard_state_array[SDL_SCANCODE_SPACE])
 		{
 			for (Entity* e : *_listenersScene) {
 				e->receiveEvent(MessageType::A, e);
 			}
 		}
 
-		if (keyboard_state_array[SDL_SCANCODE_SPACE])
+		if (keyboard_state_array[SDL_SCANCODE_SPACE] && !keyboard_state_array[SDL_SCANCODE_D] && !keyboard_state_array[SDL_SCANCODE_A] && !keyboard_state_array[SDL_SCANCODE_S] && !keyboard_state_array[SDL_SCANCODE_W])
 		{
 			for (Entity* e : *_listenersScene) {
 				e->receiveEvent(MessageType::ESPACIO, e);
@@ -66,14 +66,14 @@ bool InputManager::keyPressed() {
 			}
 		}
 
-		if (keyboard_state_array[SDL_SCANCODE_R])
+		if (keyboard_state_array[SDL_SCANCODE_R] && !keyboard_state_array[SDL_SCANCODE_T])
 		{
 			for (Entity* e : *_listenersScene) {
 				e->receiveEvent(MessageType::R, e);
 			}
 		}
 
-		if (keyboard_state_array[SDL_SCANCODE_T])
+		if (keyboard_state_array[SDL_SCANCODE_T]&&!keyboard_state_array[SDL_SCANCODE_R])
 		{
 			for (Entity* e : *_listenersScene) {
 				e->receiveEvent(MessageType::T, e);
