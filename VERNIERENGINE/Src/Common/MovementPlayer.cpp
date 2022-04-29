@@ -50,7 +50,7 @@ void MovementPlayer::receiveEvent(MessageType msg, Entity* e) {
 
 
 	if (msg == MessageType::ESPACIO) {
-		if (jumps > -1) {
+		if (jumps > 0) {
 			_rbToMove->addImpulse(Vector3D(0, 50, 0));
 
 			jumps--;

@@ -35,7 +35,7 @@ mono2={
 
     Transform = {
         Position = "0,300,0",
-        Scale = "10,10,10",
+        Scale = "1,1,1",
         Rotation = "0,0,0"
     },
 	
@@ -61,7 +61,7 @@ suelo2={
     Components = {"Transform","MeshRenderer", "Rigidbody"},
 
     Transform = {
-        Position = "0,-200,0",
+        Position = "0,0,0",
         Scale = "10,10,10",
         Rotation = "-90,0,0"
     },
@@ -73,7 +73,7 @@ suelo2={
         Type = "Box",
         Mass = "0",
         Scale = "1000,1,1000",
-        Position = "0,-200,0"
+        Position = "0, 0,0"
     }
     
 }

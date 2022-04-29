@@ -19,34 +19,34 @@ bool InputManager::keyPressed() {
 		}
 
 
-		if (keyboard_state_array[SDL_SCANCODE_W] && !(keyboard_state_array[SDL_SCANCODE_S]) && !keyboard_state_array[SDL_SCANCODE_SPACE])
+		if (keyboard_state_array[SDL_SCANCODE_W] && !(keyboard_state_array[SDL_SCANCODE_S]))
 		{
 
 			for (Entity* e : *_listenersScene) {
 				e->receiveEvent(MessageType::W, e);
 			}
 		}
-		else if (!keyboard_state_array[SDL_SCANCODE_W] && keyboard_state_array[SDL_SCANCODE_S] && !keyboard_state_array[SDL_SCANCODE_SPACE])
+		else if (!keyboard_state_array[SDL_SCANCODE_W] && keyboard_state_array[SDL_SCANCODE_S])
 		{
 			for (Entity* e : *_listenersScene) {
 				e->receiveEvent(MessageType::S, e);
 			}
 		}
 
-		if (keyboard_state_array[SDL_SCANCODE_D] && !keyboard_state_array[SDL_SCANCODE_A] && !keyboard_state_array[SDL_SCANCODE_SPACE])
+		if (keyboard_state_array[SDL_SCANCODE_D] && !keyboard_state_array[SDL_SCANCODE_A])
 		{
 			for (Entity* e : *_listenersScene) {
 				e->receiveEvent(MessageType::D, e);
 			}
 		}
-		else if (!keyboard_state_array[SDL_SCANCODE_D] && keyboard_state_array[SDL_SCANCODE_A] && !keyboard_state_array[SDL_SCANCODE_SPACE])
+		else if (!keyboard_state_array[SDL_SCANCODE_D] && keyboard_state_array[SDL_SCANCODE_A])
 		{
 			for (Entity* e : *_listenersScene) {
 				e->receiveEvent(MessageType::A, e);
 			}
 		}
 
-		if (keyboard_state_array[SDL_SCANCODE_SPACE] && !keyboard_state_array[SDL_SCANCODE_D] && !keyboard_state_array[SDL_SCANCODE_A] && !keyboard_state_array[SDL_SCANCODE_S] && !keyboard_state_array[SDL_SCANCODE_W])
+		if (keyboard_state_array[SDL_SCANCODE_SPACE])
 		{
 			for (Entity* e : *_listenersScene) {
 				e->receiveEvent(MessageType::ESPACIO, e);
