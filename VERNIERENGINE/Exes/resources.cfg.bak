@@ -13,6 +13,6 @@ Zip=../Dependencies/Ogre/Src/Media/O/packs/profiler.zip
 
 #Nuestros recursos de Ogre
 [General]
-FileSystem= ./Assets/Ogre/Mesh
-FileSystem= ./Assets/Ogre/Material
+FileSystem= /Assets/Ogre/Mesh
+FileSystem= /Assets/Ogre/Material
 FileSystem= /Assets/Interfaz

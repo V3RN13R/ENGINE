@@ -1,1 +1,2 @@
-../Assets/Ogre/Mesh
+./Assets/Ogre/Mesh
+

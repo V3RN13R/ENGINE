@@ -1,7 +1,7 @@
 #include "LuaManager.h"
 using namespace luabridge;
 
-const std::string assets_path = "../Assets";
+const std::string assets_path = "./Assets";
 
 LuaRef readElementFromFile(lua_State* state, std::string tableName)
 {

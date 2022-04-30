@@ -62,7 +62,7 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	UIManager::setUpInstance();
 	UIManager::getInstance()->initOverlaySystem();
 
-	//UIImage* image = new UIImage("imagen", "imagenp", "altavoz1.png");
+	UIImage* image = new UIImage("imagen", "imagenp", "altavoz");
 
 	//Physics
 	if (!PhysicsManager::setUpInstance()) {
