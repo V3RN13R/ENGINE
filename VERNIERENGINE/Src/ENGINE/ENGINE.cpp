@@ -28,6 +28,7 @@
 #include "LoadImages.h"
 #include "SoundManager.h"
 #include "UIManager.h"
+#include "UIImage.h"
 
 //LUA
 extern "C"
@@ -60,7 +61,8 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 
 	UIManager::setUpInstance();
 	UIManager::getInstance()->initOverlaySystem();
-	UIManager::getInstance()->createPanel();
+
+	//UIImage* image = new UIImage("imagen", "imagenp", "altavoz1.png");
 
 	//Physics
 	if (!PhysicsManager::setUpInstance()) {

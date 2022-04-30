@@ -15,9 +15,7 @@ private:
 public:
 	UIManager();
 	~UIManager() {}
+	void initOverlaySystem();
 	static UIManager* setUpInstance();
 	static UIManager* getInstance();
-	bool init();
-	void createPanel();
-	void initOverlaySystem();
 };
