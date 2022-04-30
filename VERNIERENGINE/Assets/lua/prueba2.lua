@@ -1,5 +1,28 @@
 prueba2 = {
-    entities = {"mono2", "suelo2","camaraPrincipal2", "luz"}
+    entities = {"cubo1","mono2", "suelo2","camaraPrincipal2", "luz"}
+}
+
+
+cubo1={
+    Active = true,
+    Listener = false,
+    Components = {"Transform","MeshRenderer", "Rigidbody"},
+
+    Transform = {
+        Position = "200,100,0",
+        Scale = "2,2,2",
+        Rotation = "0,0,0"
+    },
+    
+    MeshRenderer = {
+        Mesh = "Cube"
+    },
+    Rigidbody = {
+        Type = "Box",
+        Mass = "1",
+        Scale = "100,100,100",
+        Position = "200,100,0"
+    }    
 }
 
 luz = {
@@ -45,11 +68,11 @@ mono2={
     Rigidbody = {
         Type = "Sphere",
         Mass = "1",
-        Radius = "10",
+        Radius = "40",
         Position = "0,300,0"
     },
     MovementPlayer = {
-        Vel = "10",
+        Vel = "30",
         Entity = "camaraPrincipal2",
         Speed = 1,
         Jump = 1
@@ -111,13 +134,13 @@ camaraPrincipal2={
     Components = {"Transform","Camera"},
 
     Transform = {
-        Position = "0,0,500",
+        Position = "0,0,0",
         Scale = "5,5,5",
         Rotation = "0,90,0"
     },
     
     Camera = {
-        PosRel = "0,500,1000",
+        PosRel = "0,100,500",
         Entity = "mono2",
         BackgroundColor = "0.8,0.1,0.3",
         CameraName = "MainCamera2",
