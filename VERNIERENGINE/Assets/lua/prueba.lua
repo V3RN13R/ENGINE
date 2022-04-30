@@ -78,7 +78,7 @@ suelo={
 bala={
     Active = true,
     Listener = false,
-    Components = {"Transform","MeshRenderer", "Rigidbody"},
+    Components = {"Transform","MeshRenderer"},
 
     Transform = {
         Position = "-150,-50,0",
@@ -88,13 +88,6 @@ bala={
     
     MeshRenderer = {
         Mesh = "Sphere"
-    },
-	
-    Rigidbody = {
-        Type = "Sphere",
-        Mass = "1",
-        Radius = "10",
-        Position = "0,0,0"
     }
 }
 

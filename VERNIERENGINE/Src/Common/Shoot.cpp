@@ -3,19 +3,20 @@
 #include "InputManager.h"
 #include "Utils.h"
 
-Shoot::Shoot(std::map<std::string, std::string> args, Entity* ent) : _file(args["file"]), _name(args["name"]), _prefabName(args["prefabName"])
+Shoot::Shoot(std::map<std::string, std::string> args, Entity* ent) : Component(ent),  _file(args["File"]), _name(args["Name"]), _prefabName(args["PrefabName"])
 {
-	_ent = ent;
-	if (_ent != nullptr) std::cout << "HOLA";
 
 }
 
 void Shoot::Dispara() {
-	_ent->getScene()->createEntityByPrefab(_file, _name, _prefabName);
 }
 
 void Shoot::receiveEvent(MessageType msg, Entity* e) {
 	if (msg == MessageType::DISPARO){
+		
+		Entity* en= entity_->getScene()->createEntityByPrefab(_file, _name, _prefabName + std::to_string(cont));
+
+		cont++;
 		//_ent->getScene()->createEntityByPrefab(_file, _name, _prefabName);
 		//Entity::getEntity(_entityName)->getScene()->createEntityByPrefab(_file, _name, _prefabName);
 		//entity_->getScene()->createEntityByPrefab(_file, _name, _prefabName);
