@@ -1,6 +1,7 @@
 #include "GameStateMachine.h"
 #include "Scene.h"
 #include "SDL.h"
+#include "PhysicsManager.h"
 
 
 void GameStateMachine::initScene(const std::string& sceneFile, const std::string& scene) {
@@ -85,6 +86,7 @@ bool GameStateMachine::lastUpdate()
 			_load = false;
 			_push = false;
 		}
+		PhysicsManager::getInstance()->clearManifolds();
 		return true;
 	}
 	return false;

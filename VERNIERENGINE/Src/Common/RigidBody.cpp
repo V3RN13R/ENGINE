@@ -21,6 +21,8 @@ Rigidbody::Rigidbody(std::map<std::string, std::string> args) : _position(args["
 	else {
 		throw "ERROR: No se reconoce el tipo del rigid body\n";
 	}
+
+	isNew = true;
 }
 
 Rigidbody::~Rigidbody()
@@ -70,12 +72,15 @@ void Rigidbody::lateUpdate()
 void Rigidbody::onEnable()
 {
 	Component::onEnable();
-
+	if(!isNew)
+		PhysicsManager::getInstance()->resumeObjectSimulation(_brb);
+	isNew = false;
 }
 
 void Rigidbody::onDisable()
 {
 	Component::onDisable();
+	PhysicsManager::getInstance()->stopObjectSimulation(_brb);
 
 }
 
@@ -113,13 +118,18 @@ void Rigidbody::clearForce()
 
 void Rigidbody::sendContacts(void* first, void* other, const btManifoldPoint& manifold)
 {
-	static_cast<Rigidbody*>(first)->contact(static_cast<Rigidbody*>(other), manifold);
+	Rigidbody* rbPrueba = static_cast<Rigidbody*>(first);
+	rbPrueba->contact(static_cast<Rigidbody*>(other), manifold);
 }
 
 void Rigidbody::contact(Rigidbody* other, const btManifoldPoint& manifold)
 {
+	if (!_enable)
+		return;
+
 	btVector3 v = manifold.getPositionWorldOnA();
 
+	std::cout << "n colisiones: " << collisions.size() << "\n";
 	for (auto it = collisions.begin(); it != collisions.end(); ++it) {
 		if (it->rb == other) {
 			it->time = 0;
@@ -130,18 +140,13 @@ void Rigidbody::contact(Rigidbody* other, const btManifoldPoint& manifold)
 		
 	}
 
-	/*for (CollisionInfo& obj : collisions) {
-		if (obj.rb == other) {
-			obj.time = 0;
-			obj.point = Vector3D((float)v.x(), (float)v.y(), (float)v.z());
-			entity_->onCollisionStay(other->entity_, obj.point);
-			return;
-		}
-	}*/
+	
 	
 	Vector3D p = Vector3D((float)v.x(), (float)v.y(), (float)v.z());
 	collisions.push_back({ other,0 , p});
 	entity_->onCollisionEnter(other->entity_, p, Vector3D(manifold.m_normalWorldOnB.getX(), manifold.m_normalWorldOnB.getY(), manifold.m_normalWorldOnB.getZ()));
+	std::cout << "n colisiones: " << collisions.size() << "\n";
+
 }
 
 void Rigidbody::setVelocity(Vector3D dir) {

@@ -68,7 +68,10 @@ void MovementPlayer::receiveEvent(MessageType msg, Entity* e) {
 
 void MovementPlayer::onCollisionEnter(Entity* other, Vector3D point, Vector3D normal)
 {
-	std::cout << "chocaSuelo\n";
+	if (!_enable)
+		return;
+	//std::cout << _enable << "\n";
+
 	if (other->getName() == "suelo2") {
 		jumps = 2;
 	}

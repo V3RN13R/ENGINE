@@ -8,7 +8,7 @@ class Component;
 
 class btManifoldPoint;
 
-const float TIME_TO_EXIT = 0.1f;
+const float TIME_TO_EXIT = 500.0f;
 
 
 
@@ -48,7 +48,7 @@ private:
 		Vector3D point;
 	};
 
-
+	bool isNew;
 
 	btRigidBody* _brb =nullptr;
 	std::string _type;

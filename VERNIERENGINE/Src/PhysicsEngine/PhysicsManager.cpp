@@ -29,6 +29,13 @@ bool PhysicsManager::setUpInstance() {
 	return true;
 }
 
+void PhysicsManager::stopObjectSimulation(btRigidBody* brb) {
+	dynamicsWorld->removeRigidBody(brb);
+}
+
+void PhysicsManager::resumeObjectSimulation(btRigidBody* brb) {
+	dynamicsWorld->addRigidBody(brb);
+}
 void PhysicsManager::stepPhysics()
 {
 	dynamicsWorld->stepSimulation(1.f / 60.f, 10);
@@ -62,20 +69,26 @@ void PhysicsManager::stepPhysics()
 	auto manifolds = dynamicsWorld->getDispatcher()->getInternalManifoldPointer();
 	for (int i = 0; i < numManifolds; i++) {
 		btPersistentManifold* manifold = manifolds[i];
-		std::cout << manifold->getNumContacts() << "\n";
 		for (int j = 0; j < manifold->getNumContacts(); j++)
 		{
 			const btManifoldPoint& mp = manifold->getContactPoint(j);
 			auto body0 = static_cast<CollisionListener*>(manifold->getBody0()->getUserPointer());
 			auto body1 = static_cast<CollisionListener*>(manifold->getBody1()->getUserPointer());
-			if (body0)
+			if (body0 && body1) {
 				body0->p(body0->obj, body1->obj, mp);
-			if (body1)
 				body1->p(body1->obj, body0->obj, mp);
+			}
+			
 		}
 	}
 }
-
+void PhysicsManager::clearManifolds() {
+	int numManifolds = dynamicsWorld->getDispatcher()->getNumManifolds();
+	auto manifolds = dynamicsWorld->getDispatcher()->getInternalManifoldPointer();
+	for (int i = 0; i < numManifolds; i++) {
+		dynamicsWorld->getDispatcher()->clearManifold(manifolds[i]);
+	}
+}
 PhysicsManager::PhysicsManager() {
 	//registerComponent("RigidBody", 0, []() -> RigidBody * { return new RigidBody(); });
 

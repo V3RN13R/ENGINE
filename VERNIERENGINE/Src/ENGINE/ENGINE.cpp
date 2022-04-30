@@ -149,11 +149,11 @@ bool VernierEngine::processFrame()
 		//InputManager::getInstance()->Update();
 		//PhysicsManager::getInstance()->Update();
 
-		_physics->stepPhysics();
-		GameStateMachine::instance()->fixedUpdate();
 		GameStateMachine::instance()->update();
+		GameStateMachine::instance()->fixedUpdate();
 		GameStateMachine::instance()->lateUpdate();
 		GameStateMachine::instance()->lastUpdate();
+		_physics->stepPhysics();
 
 		//tr->setPosition(Vector3D(tr->getPos().getX(), tr->getPos().getY() - 0.0001, tr->getPos().getZ()));
 		//tr2->rotate(0.01, 2);
