@@ -84,6 +84,10 @@ public:
 		return nullptr;
 	}
 
+	std::vector<Component*> getComponents() {		
+		return _components;
+	}
+
 	template<typename T>
 	void removeComponent() {
 		auto id = ecs::cmpIdx<T>;
