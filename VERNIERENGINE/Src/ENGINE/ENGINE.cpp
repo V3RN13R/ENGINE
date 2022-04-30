@@ -27,6 +27,8 @@
 #include "InitFactories.h"
 #include "LoadImages.h"
 #include "SoundManager.h"
+#include "UIManager.h"
+
 //LUA
 extern "C"
 {
@@ -55,6 +57,10 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	ResourceManager::init(_assetsPath);
 	ResourceManager::getInstance()->setUp(); //Carga de recursos
 
+
+	UIManager::setUpInstance();
+	UIManager::getInstance()->initOverlaySystem();
+	UIManager::getInstance()->createPanel();
 
 	//Physics
 	if (!PhysicsManager::setUpInstance()) {
