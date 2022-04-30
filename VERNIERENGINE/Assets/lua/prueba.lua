@@ -1,5 +1,5 @@
 prueba = {
-    entities = { "mono","suelo", "camaraPrincipal", "fotoprueba"}
+    entities = { "suelo", "camaraPrincipal", "fotoprueba"}
 }
 
 mono={
@@ -23,7 +23,9 @@ mono={
     },
     MovementPlayer = {
         Vel = "10",
-        Entity = "camaraPrincipal"
+        Entity = "camaraPrincipal",
+        Speed = 1,
+        Jump = 1
     },
 }
 
@@ -40,7 +42,7 @@ camaraPrincipal={
     
     Camera = {
         PosRel = "0,500,1000",
-        Entity = "mono",
+        
         BackgroundColor = "0.2,0.5,0.1",
         CameraName = "MainCamera",
         Looking = "0,0,0",

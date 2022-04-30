@@ -67,10 +67,10 @@ void PhysicsManager::stepPhysics()
 			const btManifoldPoint& mp = manifold->getContactPoint(j);
 			auto body0 = static_cast<CollisionListener*>(manifold->getBody0()->getUserPointer());
 			auto body1 = static_cast<CollisionListener*>(manifold->getBody1()->getUserPointer());
-			if (body0)
+			if (body0 && body1) {
 				body0->p(body0->obj, body1->obj, mp);
-			if (body1)
 				body1->p(body1->obj, body0->obj, mp);
+			}				
 		}
 	}
 }
