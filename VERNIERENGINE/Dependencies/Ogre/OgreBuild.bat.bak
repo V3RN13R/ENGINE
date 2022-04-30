@@ -9,7 +9,7 @@ mkdir %BuildPlace%
 ::Nos movemos aquí para que genere todo dentro de la carpeta build y no dentro de la carpeta ogre
 cd %BuildPlace%
 :: Creamos el proyecto y lo compilamos en debug y release
-cmake -DOGRE_BUILD_RTSHADERSYSTEM_SHADERS:BOOL="1" -DOGRE_INSTALL_SAMPLES:BOOL="0" -DOGRE_BUILD_SAMPLES:BOOL="0" -DOGRE_BUILD_COMPONENT_BITES:BOOL="0" -DOGRE_BUILD_COMPONENT_RTSHADERSYSTEM:BOOL="1" -DOGRE_BUILD_PLUGIN_STBI="1" -DOGRE_BUILD_RENDERSYSTEM_GL="1"  -DOGRE_BUILD_COMPONENT_OVERLAY="1" -DOGRE_BUILD_COMPONENT_OVERLAY_IMGUI="1" %CompilePlace%
+cmake -DOGRE_BUILD_RTSHADERSYSTEM_SHADERS:BOOL="1" -DOGRE_INSTALL_SAMPLES:BOOL="0" -DOGRE_BUILD_SAMPLES:BOOL="0" -DOGRE_BUILD_COMPONENT_BITES:BOOL="0" -DOGRE_BUILD_COMPONENT_RTSHADERSYSTEM:BOOL="1" -DOGRE_BUILD_PLUGIN_STBI="1" -DOGRE_BUILD_RENDERSYSTEM_GL="1" %CompilePlace%
 msbuild "OGRE.sln" /p:configuration=Debug
 msbuild "OGRE.sln" /p:configuration=Release
 
@@ -27,12 +27,8 @@ XCOPY /y /s .\bin\release\Codec_STBI.dll %DllsPlace%
 XCOPY /y /s .\bin\debug\RenderSystem_GL_d.dll %DllsPlace%
 XCOPY /y /s .\bin\release\RenderSystem_GL.dll %DllsPlace%
 
-XCOPY /y /s .\bin\debug\OgreOverlay_d.dll %DllsPlace%
-XCOPY /y /s .\bin\release\OgreOverlay.dll %DllsPlace%
-
 XCOPY /y /s .\bin\debug\SDL2.dll %DllsPlace%
 XCOPY /y /s .\bin\release\zlib.dll %DllsPlace%
-
 
 cd ..\..
 echo Dlls movidas
