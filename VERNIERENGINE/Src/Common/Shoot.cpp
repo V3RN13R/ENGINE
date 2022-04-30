@@ -7,9 +7,7 @@ Shoot::Shoot(std::map<std::string, std::string> args, Entity* ent) : _file(args[
 {
 	_ent = ent;
 	if (_ent != nullptr) std::cout << "HOLA";
-	//_ent->getScene()->createEntityByPrefab(_file, _name, _prefabName);
-	//Entity::getEntity(_entityName)->getScene()->createEntityByPrefab(_file, _name, _prefabName);
-	//entity_->getScene()->createEntityByPrefab(_file, _name, _prefabName);
+
 }
 
 void Shoot::Dispara() {
@@ -17,7 +15,9 @@ void Shoot::Dispara() {
 }
 
 void Shoot::receiveEvent(MessageType msg, Entity* e) {
-	if (msg == MessageType::PULSA_Q){
-		//Dispara();
+	if (msg == MessageType::DISPARO){
+		//_ent->getScene()->createEntityByPrefab(_file, _name, _prefabName);
+		//Entity::getEntity(_entityName)->getScene()->createEntityByPrefab(_file, _name, _prefabName);
+		//entity_->getScene()->createEntityByPrefab(_file, _name, _prefabName);
 	}
 }

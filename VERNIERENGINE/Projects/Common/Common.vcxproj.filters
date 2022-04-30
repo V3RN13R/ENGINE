@@ -83,6 +83,9 @@
     <ClCompile Include="..\..\Src\Common\Health.cpp">
       <Filter>components</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\Common\BananaMovement.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Common\Light.h">
@@ -92,9 +95,6 @@
       <Filter>components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Common\Monkey.h">
-      <Filter>components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Common\MovementPlayer.h">
       <Filter>components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Common\RigidBody.h">
@@ -180,6 +180,12 @@
       <Filter>components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Common\Health.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\MovementPlayer.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\BananaMovement.h">
       <Filter>components</Filter>
     </ClInclude>
   </ItemGroup>

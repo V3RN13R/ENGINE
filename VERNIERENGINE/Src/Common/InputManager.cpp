@@ -79,6 +79,11 @@ bool InputManager::keyPressed() {
 				e->receiveEvent(MessageType::T, e);
 			}
 		}
+		if (keyboard_state_array[SDL_SCANCODE_F]) {
+			for (Entity* e : *_listenersScene) {
+				e->receiveEvent(MessageType::DISPARO, e);
+			}
+		}
 
 
 	}
