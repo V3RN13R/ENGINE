@@ -5,9 +5,7 @@
 #include "Transform.h"
 #include "RigidBody.h"
 #include "Shoot.h"
-#include "Button1.h"
 #include "Camera.h"
-#include "Image.h"
 #include "Light.h"
 #include "MovementPlayer.h"
 #include "MonkeyStats.h"
@@ -41,10 +39,10 @@ Component* CameraFactory::createComponent(std::map<std::string, std::string> arg
 	return new Camera(args, ent);
 }
 
-Component* ImageFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
-{
-	return new Image(args, ent);
-};
+//Component* ImageFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
+//{
+//	return new Image(args, ent);
+//};
 
 Component* MovementPlayerFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
@@ -81,7 +79,7 @@ void setupFactories()
 	_fM->addFactory("Shoot", new ShootFactory());
 	_fM->addFactory("Camera", new CameraFactory());
 	_fM->addFactory("MovementPlayer", new MovementPlayerFactory());
-	_fM->addFactory("Image", new ImageFactory());
+	//_fM->addFactory("Image", new ImageFactory());
 	_fM->addFactory("Light", new Light_Factory());
 	_fM->addFactory("Health", new HealthFactory());
 

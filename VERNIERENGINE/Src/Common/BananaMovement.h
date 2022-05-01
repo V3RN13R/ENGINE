@@ -31,7 +31,7 @@ public:
 	BananaMovement(std::map<std::string, std::string> args);
 	~BananaMovement() {}
 	void start();
-	void receiveEvent(MessageType msg, Entity* e);
+	void receiveEvent(int msg, Entity* e)override;
 	virtual void onCollisionEnter(Entity* other, Vector3D point, Vector3D normal);
 	virtual void onCollisionStay(Entity* ohter, Vector3D point) {};
 

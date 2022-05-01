@@ -3,7 +3,6 @@
 #include "Vector3D.h"
 
 class Entity;
-enum class MessageType;
 
 class Component {
 public:
@@ -49,7 +48,7 @@ public:
 	virtual void render() {}
 	virtual void onEnable() { _enable = true; }
 	virtual void onDisable() { _enable = false; }
-	virtual void receiveEvent(MessageType msg, Entity* e) {}
+	virtual void receiveEvent(int msg, Entity* e) {}
 	virtual void onCollisionEnter(Entity* other, Vector3D point, Vector3D normal) {};
 	virtual void onCollisionStay(Entity* ohter, Vector3D point) {};
 	virtual void onCollisionExit(Entity* ohter, Vector3D point) {};

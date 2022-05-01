@@ -10,7 +10,6 @@
 #include <unordered_map>
 class Vector3D;
 //class Manager;
-enum class MessageType;
 namespace Ogre {
 	class SceneNode;
 }
@@ -191,7 +190,7 @@ public:
 	}
 
 
-	void receiveEvent(MessageType msg, Entity* e) {
+	void receiveEvent(int msg, Entity* e) {
 		for (Component* c : _components) {
 			c->receiveEvent(msg, e);
 		}

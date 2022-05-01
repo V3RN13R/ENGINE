@@ -11,7 +11,7 @@ Shoot::Shoot(std::map<std::string, std::string> args, Entity* ent) : Component(e
 void Shoot::Dispara() {
 }
 
-void Shoot::receiveEvent(MessageType msg, Entity* e) {
+void Shoot::receiveEvent(int msg, Entity* e) {
 	if (msg == MessageType::DISPARO){
 		
 		Entity* en= entity_->getScene()->createEntityByPrefab(_file, _name, _prefabName + std::to_string(cont));

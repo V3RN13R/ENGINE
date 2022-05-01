@@ -12,7 +12,7 @@ class InputManager : public Singleton<InputManager> {
 private:
 	InputManager();
 
-	MessageType onMouseButtonChange(const SDL_Event& event, bool isDown);
+	int onMouseButtonChange(const SDL_Event& event, bool isDown);
 
 	const std::vector<Entity*>* _listenersScene = nullptr;
 	std::pair<Sint32, Sint32> _mousePos;

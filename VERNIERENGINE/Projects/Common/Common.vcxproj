@@ -93,7 +93,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\Common\BananaMovement.cpp" />
-    <ClCompile Include="..\..\Src\Common\Button1.cpp" />
     <ClCompile Include="..\..\Src\Common\Callbacks.cpp" />
     <ClCompile Include="..\..\Src\Common\Camera.cpp" />
     <ClCompile Include="..\..\Src\Common\Collisions.cpp" />
@@ -103,10 +102,8 @@
     <ClCompile Include="..\..\Src\Common\FactoryManager.cpp" />
     <ClCompile Include="..\..\Src\Common\GameStateMachine.cpp" />
     <ClCompile Include="..\..\Src\Common\Health.cpp" />
-    <ClCompile Include="..\..\Src\Common\Image.cpp" />
     <ClCompile Include="..\..\Src\Common\InitFactories.cpp" />
     <ClCompile Include="..\..\Src\Common\InputManager.cpp" />
-    <ClCompile Include="..\..\Src\Common\LoadImages.cpp" />
     <ClCompile Include="..\..\Src\Common\MeshRenderer.cpp" />
     <ClCompile Include="..\..\Src\Common\Monkey.cpp" />
     <ClCompile Include="..\..\Src\Common\MonkeyStats.cpp" />
@@ -118,13 +115,11 @@
     <ClCompile Include="..\..\Src\Common\Shoot.cpp" />
     <ClCompile Include="..\..\Src\Common\TEST-Componente1.cpp" />
     <ClCompile Include="..\..\Src\Common\TEST-Componente2.cpp" />
-    <ClCompile Include="..\..\Src\Common\Texture.cpp" />
     <ClCompile Include="..\..\Src\Common\Transform.cpp" />
     <ClCompile Include="..\..\Src\Common\Vector3D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Common\BananaMovement.h" />
-    <ClInclude Include="..\..\Src\Common\Button1.h" />
     <ClInclude Include="..\..\Src\Common\Callbacks.h" />
     <ClInclude Include="..\..\Src\Common\Camera.h" />
     <ClInclude Include="..\..\Src\Common\Collisions.h" />
@@ -136,11 +131,9 @@
     <ClInclude Include="..\..\Src\Common\FactoryManager.h" />
     <ClInclude Include="..\..\Src\Common\GameStateMachine.h" />
     <ClInclude Include="..\..\Src\Common\Health.h" />
-    <ClInclude Include="..\..\Src\Common\Image.h" />
     <ClInclude Include="..\..\Src\Common\InitFactories.h" />
     <ClInclude Include="..\..\Src\Common\InputManager.h" />
     <ClInclude Include="..\..\Src\Common\Light.h" />
-    <ClInclude Include="..\..\Src\Common\LoadImages.h" />
     <ClInclude Include="..\..\Src\Common\MeshRenderer.h" />
     <ClInclude Include="..\..\Src\Common\Monkey.h" />
     <ClInclude Include="..\..\Src\Common\MonkeyStats.h" />
@@ -153,7 +146,6 @@
     <ClInclude Include="..\..\Src\Common\Singleton.h" />
     <ClInclude Include="..\..\Src\Common\TEST-Componente1.h" />
     <ClInclude Include="..\..\Src\Common\TEST-Componente2.h" />
-    <ClInclude Include="..\..\Src\Common\Texture.h" />
     <ClInclude Include="..\..\Src\Common\Transform.h" />
     <ClInclude Include="..\..\Src\Common\Utils.h" />
     <ClInclude Include="..\..\Src\Common\Vector3D.h" />

@@ -16,6 +16,6 @@ public:
 	//Shoot(std::string file, std::string name, std::string prefabName, Scene* scene);
 
 	void Dispara();
-	virtual void receiveEvent(MessageType msg, Entity* e) override;
+	virtual void receiveEvent(int msg, Entity* e) override;
 };
 

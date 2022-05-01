@@ -18,14 +18,13 @@
 #include "Light.h"
 #include "ResourceManager.h"
 #include "Entity.h"
-#include "Monkey.h"
 #include <Windows.h>
 #include "UIManager.h"
 #include "InputManager.h"
 #include "Scene.h"
 #include "GameStateMachine.h"
 #include "InitFactories.h"
-#include "LoadImages.h"
+
 #include "SoundManager.h"
 #include "UIManager.h"
 #include "UIImage.h"
@@ -80,7 +79,7 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 
 	GameStateMachine::instance()->initScene(sceneFile, scene);
 	
-	LoadImages::instance()->init();
+	//LoadImages::instance()->init();
 	
 	//Entity* light = _mngr->addEntity("Light");
 	//Light* l = light->addComponent<Light>();

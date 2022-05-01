@@ -1,9 +1,4 @@
-#include "Monkey.h"
-#include "RigidBody.h"
-#include <iostream>
-#include <Ogre.h>
-#include "Transform.h"
-#include <math.h>
+
 //
 //
 //

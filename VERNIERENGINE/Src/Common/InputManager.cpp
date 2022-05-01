@@ -93,7 +93,7 @@ bool InputManager::keyPressed() {
 		if (event.type == SDL_QUIT) {
 			return false;
 		}
-		MessageType tecla = MessageType::DEFAULT;
+		int tecla = MessageType::DEFAULT;
 		
 
 		// Clicks del ratón.
@@ -128,7 +128,7 @@ InputManager::InputManager()
 	clearState();
 }
 
-MessageType InputManager::onMouseButtonChange(const SDL_Event& event, bool isDown) {
+int InputManager::onMouseButtonChange(const SDL_Event& event, bool isDown) {
 	switch (event.button.button) {
 	case SDL_BUTTON_LEFT:
 		//std::cout << "\nIZQ" << std::endl;

@@ -111,7 +111,7 @@ void Transform::onDisable()
 	_enable = false;
 }
 
-void Transform::receiveEvent(MessageType msg, Entity* e)
+void Transform::receiveEvent(int msg, Entity* e)
 {
 	//PRUEBA
 	switch (msg) {

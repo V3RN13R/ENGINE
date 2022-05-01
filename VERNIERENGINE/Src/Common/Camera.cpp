@@ -88,7 +88,7 @@ void Camera::onDisable()
 
 
 
-void Camera::receiveEvent(MessageType msg, Entity* e) {
+void Camera::receiveEvent(int msg, Entity* e) {
 	//Para probar el cambio de escena
 	if (msg == MessageType::T) {
 

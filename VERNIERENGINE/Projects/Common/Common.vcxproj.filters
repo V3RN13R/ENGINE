@@ -55,15 +55,6 @@
     <ClCompile Include="..\..\Src\Common\Collisions.cpp">
       <Filter>utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Common\Button1.cpp">
-      <Filter>components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\Texture.cpp">
-      <Filter>utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\Common\Image.cpp">
-      <Filter>components</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Src\Common\Shoot.cpp">
       <Filter>components</Filter>
     </ClCompile>
@@ -74,9 +65,6 @@
       <Filter>ecs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Common\Callbacks.cpp" />
-    <ClCompile Include="..\..\Src\Common\LoadImages.cpp">
-      <Filter>utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Src\Common\MonkeyStats.cpp">
       <Filter>components</Filter>
     </ClCompile>
@@ -154,15 +142,6 @@
     <ClInclude Include="..\..\Src\Common\Collisions.h">
       <Filter>utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Common\Button1.h">
-      <Filter>components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Common\Texture.h">
-      <Filter>utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\Common\Image.h">
-      <Filter>components</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Src\Common\Shoot.h">
       <Filter>components</Filter>
     </ClInclude>
@@ -173,9 +152,6 @@
       <Filter>ecs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Common\Callbacks.h" />
-    <ClInclude Include="..\..\Src\Common\LoadImages.h">
-      <Filter>utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Src\Common\MonkeyStats.h">
       <Filter>components</Filter>
     </ClInclude>

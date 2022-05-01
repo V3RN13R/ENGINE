@@ -59,6 +59,6 @@ public:
 	void start();
 	void onDisable() override;
 	//virtual void sendEvent(MessageType msg){}
-	void receiveEvent(MessageType msg, Entity* e);
+	void receiveEvent(int msg, Entity* e) override;
 
 };

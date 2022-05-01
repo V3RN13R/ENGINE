@@ -39,11 +39,11 @@ public:
 };
 
 
-class ImageFactory : public Factory
-{
-public:
-	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
-};
+//class ImageFactory : public Factory
+//{
+//public:
+//	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
+//};
 
 class Light_Factory : public Factory
 {
