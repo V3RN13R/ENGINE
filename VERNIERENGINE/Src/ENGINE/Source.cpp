@@ -77,13 +77,20 @@ int main()
 		lua_getglobal(L, "FunctionName");
 		lua_call(L, 0, 1);
 		funcFirstTry ftry = (funcFirstTry)GetProcAddress(hDLL, lua_tostring(L, -1));
+		if (ftry == nullptr)
+		{
+			std::cout << "No se ha abierto la DLL correctamente\n";
+			return 0;
+		}
+		std::cout << "Se ha leido la DLL\n";
 		lua_pop(L, 1);
 		lua_close(L);
-		if (!ftry) {
+		VernierEngine::setupInstance("WILDLESS", "prueba2.lua", "prueba2");
+	/*	if (!ftry) {
 			std::cout << "ERROR\n";
 		}
 		else
-			ftry();
+			ftry();*/
 		VernierEngine::getInstance()->startScene(sceneFile, scene);
 		FreeLibrary(hDLL);
 	}

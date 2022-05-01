@@ -121,7 +121,6 @@ bool VernierEngine::processFrame()
 	if (/*_ogre->pollEvents()*/  getInputMng()->pollEvents()) {
 		//InputManager::getInstance()->Update();
 		//PhysicsManager::getInstance()->Update();
-
 		_physics->stepPhysics();
 		_soundManager->update();
 		GameStateMachine::instance()->fixedUpdate();
@@ -247,3 +246,30 @@ void VernierEngine::startScene(const std::string& sceneFile, const std::string& 
 {
 	GameStateMachine::instance()->initScene(sceneFile, scene);
 }
+
+//int VernierEngine::initialiseDLLs()
+//{
+//	// game .dll loading
+//#ifndef _DEBUG
+//	game = LoadLibrary(TEXT("./game.dll"));
+//#endif 
+//#ifdef _DEBUG
+//	game = LoadLibrary(TEXT("./game_d.dll"));
+//#endif 
+//
+//	if (game == nullptr)
+//	{
+//		std::cout << "Game .dll unable to load";
+//		return 0;
+//	}
+//	std::cout << "Game load success";
+//
+//	// game functions load
+//	typedef int (*funcFirstTry) ();
+//	funcFirstTry ftry = (funcFirstTry)GetProcAddress(game, "prueba2.lua");
+//	if (!ftry) {
+//		std::cout << "ERROR\n";
+//	}
+//	else
+//		ftry();
+//}

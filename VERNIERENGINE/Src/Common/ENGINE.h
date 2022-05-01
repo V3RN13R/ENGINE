@@ -37,6 +37,7 @@ public:
 	UIManager* getUIMng();
 	bool processFrame();
 	//bool CheckLua(lua_State* L, int r);
+	//int initialiseDLLs();
 
 	~VernierEngine();
 private:
@@ -55,5 +56,6 @@ private:
 	//SDL_Renderer* _renderer = nullptr;
 	std::string _assetsPath = "";
 
+	//HMODULE game;
 	//Scene* _scene;
 };
