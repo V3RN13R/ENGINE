@@ -1,7 +1,18 @@
 prueba2 = {
-    entities = {"cubo1","mono2", "suelo2","camaraPrincipal2", "luz"}
+    entities = {"cubo1","mono2", "suelo2","camaraPrincipal2", "luz","dll"}
 }
 
+dll={
+    Active = true,
+    Listener = false,
+    Components={"Example"},
+    Transform = {
+        Position = "200,100,0",
+        Scale = "2,2,2",
+        Rotation = "0,0,0"
+    },
+    Example={}
+}
 
 cubo1={
     Active = true,

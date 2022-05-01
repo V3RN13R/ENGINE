@@ -24,7 +24,7 @@ public:
 
 	static VernierEngine* getInstance() { return _instance; }
 	static bool setupInstance(const std::string& appName, const std::string& sceneFile, const std::string& scene);
-
+	void startScene(const std::string& sceneFile, const std::string& scene);
 	VernierEngine(const std::string& appName, const std::string& sceneFile, const std::string& value);
 
 	bool processFrame();

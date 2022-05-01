@@ -77,10 +77,9 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	_soundManager = SoundManager::getInstance();
 	_soundManager->playSound("main theme.mp3", 1.0f);
 
-	GameStateMachine::instance()->initScene(sceneFile, scene);
-	
+
 	//LoadImages::instance()->init();
-	
+
 	//Entity* light = _mngr->addEntity("Light");
 	//Light* l = light->addComponent<Light>();
 	//Transform* tLight = light->addComponent<Transform>();
@@ -95,7 +94,7 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	//camera->setBckgColor({ 0,0.5f,0.5f });
 	//GameStateMachine::instance()->getScene()->addEntity(camera);
 	//camera->addListener(camera);
-	
+
 	// Accedemos a la ventana y creamos el renderer.
 	// SDL_Window* _sdlw = WindowRender::getSDLWindow();
 	//_renderer = SDL_CreateRenderer(_sdlw, -1,
@@ -124,7 +123,7 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	//_mngr->addEntity(mnk);
 	//mnk->addListener(mnk);
 	//mnk->setCamTrOnMonkey(trCam);
-	
+
 	//tr1->setRotation(Vector3D(270, 0, 0));
 
 
@@ -170,7 +169,7 @@ bool VernierEngine::processFrame()
 
 		//tr->setPosition(Vector3D(tr->getPos().getX(), tr->getPos().getY() - 0.0001, tr->getPos().getZ()));
 		//tr2->rotate(0.01, 2);
-		_ogre->updateWindow(); 
+		_ogre->updateWindow();
 		// LoadImages::instance()->renderTexturas();
 	}
 	else return false;
@@ -232,33 +231,34 @@ int main()
 		std::cout << "Failed Load DLL\n";
 	else {
 		std::cout << "LoadDll\n";
+		lua_getglobal(L, "WindowName");
+		lua_call(L, 0, 1);
+		const std::string appName = lua_tostring(L, -1);
+		lua_pop(L, 1);
+		lua_getglobal(L, "SceneFile");
+		lua_call(L, 0, 1);
+		const std::string sceneFile = lua_tostring(L, -1);
+		lua_pop(L, 1);
+		lua_getglobal(L, "SceneName");
+		lua_call(L, 0, 1);
+		const std::string scene = lua_tostring(L, -1);
+		lua_pop(L, 1);
+		VernierEngine::setupInstance(appName, sceneFile, scene);
 		typedef int (*funcFirstTry) ();
 		lua_getglobal(L, "FunctionName");
 		lua_call(L, 0, 1);
 		funcFirstTry ftry = (funcFirstTry)GetProcAddress(hDLL, lua_tostring(L, -1));
 		lua_pop(L, 1);
+		lua_close(L);
 		if (!ftry) {
 			std::cout << "ERROR\n";
 		}
 		else
 			ftry();
+	VernierEngine::getInstance()->startScene(sceneFile,scene);
 		FreeLibrary(hDLL);
 	}
-	lua_getglobal(L, "WindowName");
-	lua_call(L, 0, 1);
 	bool stay = true;
-	const std::string appName = lua_tostring(L, -1);
-	lua_pop(L, 1);
-	lua_getglobal(L, "SceneFile");
-	lua_call(L, 0, 1);
-	const std::string sceneFile = lua_tostring(L, -1);
-	lua_pop(L, 1);
-	lua_getglobal(L, "SceneName");
-	lua_call(L, 0, 1);
-	const std::string scene = lua_tostring(L, -1);
-	lua_pop(L, 1);
-	VernierEngine::setupInstance(appName,sceneFile,scene);
-	lua_close(L);
 	do {
 		stay = VernierEngine::getInstance()->processFrame();
 	} while (stay);
@@ -273,8 +273,13 @@ bool VernierEngine::setupInstance(const std::string& appName, const std::string&
 {
 	if (_instance == nullptr)
 	{
-		_instance = new VernierEngine(appName,sceneFile,scene);
+		_instance = new VernierEngine(appName, sceneFile, scene);
 		return true;
 	}
 	return false;
+}
+
+void VernierEngine::startScene(const std::string& sceneFile, const std::string& scene)
+{
+	GameStateMachine::instance()->initScene(sceneFile, scene);
 }

@@ -67,6 +67,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>V3RN13R_GAME;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Ogre\Build\x64\SDL-main\include;$(SolutionDir)Src\Common</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -81,6 +82,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>V3RN13R_GAME;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Ogre\Build\x64\SDL-main\include;$(SolutionDir)Src\Common</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

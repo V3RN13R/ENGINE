@@ -28,7 +28,7 @@ void MovementPlayer::start()
 
 void MovementPlayer::update(){
 	dirFinal = Vector3D(0, 0, 0);
-	std::cout << _rbToMove->getVel().getX() << " " << _rbToMove->getVel().getY() << " " << _rbToMove->getVel().getZ() << "\n";
+	//std::cout << _rbToMove->getVel().getX() << " " << _rbToMove->getVel().getY() << " " << _rbToMove->getVel().getZ() << "\n";
 
 }
 void MovementPlayer::receiveEvent(int msg, Entity* e) {
