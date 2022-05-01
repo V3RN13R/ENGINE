@@ -3,7 +3,7 @@
 #include "Utils.h"
 #include <vector>
 #include "Singleton.h"
-
+#include <SDL_scancode.h>
 class Entity;
 
 class InputManager : public Singleton<InputManager> {
@@ -12,15 +12,19 @@ class InputManager : public Singleton<InputManager> {
 private:
 	InputManager();
 
-	int onMouseButtonChange(const SDL_Event& event, bool isDown);
+	int onMouseButtonChange(const SDL_Event& event);
 
 	const std::vector<Entity*>* _listenersScene = nullptr;
 	std::pair<Sint32, Sint32> _mousePos;
 
 	bool _isKeyDownEvent, _isKeyUpEvent, _isMouseButtonEvent, _isMouseMotionEvent;
 
-	//std::array<bool, 3> _mbState;
-
+	struct KeyState {
+		bool _down=false;
+		bool _up=false;
+		bool _pressed=false;
+	};
+	KeyState _keys[SDL_NUM_SCANCODES];
 public:
 	enum MOUSEBUTTON : uint8_t {
 		LEFT = 0, MIDDLE = 1, RIGHT = 2
@@ -38,8 +42,13 @@ public:
 
 	virtual ~InputManager() {}
 
-	bool keyPressed();
+	void manageInput(SDL_Event evt);
+	bool pollEvents();
+	bool getKey(SDL_Scancode code);
 
+	bool getKeyDown(SDL_Scancode code);
+
+	bool getKeyUp(SDL_Scancode code);
 	void setListenersVector(const std::vector<Entity*>* listeners) { _listenersScene = listeners; };
 	bool getMouseDown() { return _isMouseButtonEvent; }
 

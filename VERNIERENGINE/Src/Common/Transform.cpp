@@ -90,7 +90,6 @@ void Transform::update() //Falta bullet
 {
 	entity_->getNode()->setPosition(Ogre::Vector3(_position.getX(), _position.getY() , _position.getZ()));
 	//setRotation(Vector3D(entity_->getNode()->getOrientation().x, entity_->getNode()->getOrientation().y, entity_->getNode()->getOrientation().z));
-
 }
 
 void Transform::setScale(Vector3D vec) {
