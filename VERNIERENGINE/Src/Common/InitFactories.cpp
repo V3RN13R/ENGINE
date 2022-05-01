@@ -13,6 +13,7 @@
 #include "Ground.h"
 #include "Pickable.h"
 #include "Player.h"
+#include "Image.h"
 
 Component* TransformFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
@@ -67,6 +68,11 @@ Component* Light_Factory::createComponent(std::map<std::string, std::string> arg
 	return new Light(args, ent);
 };
 
+Component* ImageFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
+{
+	return new Image(args);
+};
+
 //Component* MonkeyStatsFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 //{
 //	return new MonkeyStats(args);
@@ -97,7 +103,7 @@ void setupFactories()
 	_fM->addFactory("Shoot", new ShootFactory());
 	_fM->addFactory("Camera", new CameraFactory());
 	_fM->addFactory("MovementPlayer", new MovementPlayerFactory());
-	//_fM->addFactory("Image", new ImageFactory());
+	_fM->addFactory("Image", new ImageFactory());
 	_fM->addFactory("Light", new Light_Factory());
 	_fM->addFactory("Health", new HealthFactory());
 	_fM->addFactory("Ground", new GroundFactory());

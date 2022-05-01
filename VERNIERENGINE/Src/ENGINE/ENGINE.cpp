@@ -61,7 +61,7 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	UIManager::setUpInstance();
 	UIManager::getInstance()->initOverlaySystem();
 
-	UIImage* image = new UIImage("imagen", "imagenp", "altavoz");
+	//UIImage* image = new UIImage("imagen", "imagenp", "altavoz");
 
 	//Physics
 	if (!PhysicsManager::setUpInstance()) {
@@ -77,80 +77,6 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	_soundManager = SoundManager::getInstance();
 	_soundManager->playSound("main theme.mp3", 1.0f);
 
-
-	//LoadImages::instance()->init();
-
-	//Entity* light = _mngr->addEntity("Light");
-	//Light* l = light->addComponent<Light>();
-	//Transform* tLight = light->addComponent<Transform>();
-	//l->setDiffuseColor(Vector3D(1, 0, 0));
-	////l->start();
-	//tLight->setPosition({ 0, 500, 10 });
-
-	//Camera* camera = new Camera("Camera");
-	//Transform* trCam = camera->addComponent<Transform>();
-	//camera->start();
-	//t->setPosition({ 0, 500, 10 });
-	//camera->setBckgColor({ 0,0.5f,0.5f });
-	//GameStateMachine::instance()->getScene()->addEntity(camera);
-	//camera->addListener(camera);
-
-	// Accedemos a la ventana y creamos el renderer.
-	// SDL_Window* _sdlw = WindowRender::getSDLWindow();
-	//_renderer = SDL_CreateRenderer(_sdlw, -1,
-	//	SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-
-	//assert(_renderer != nullptr);
-
-	//Entity* ent = _mngr->addEntity("Prueba");
-	//MeshRenderer* mr = ent->addComponent<MeshRenderer>(ent);
-	//Rigidbody* rb = ent->addComponent<Rigidbody>(ent);
-	//tr = ent->addComponent<Transform>();
-	//tr->setPosition(Vector3D(0, 400, 10));
-	//rb->addSphereRigidbody(1, 50, { 0,400,10 });//falta obtener radio mediante la mesh
-	//mr->start("Sphere");
-	//mr->onEnable();
-
-	//Monkey* mnk = new Monkey("MONKEY");
-	////MeshRenderer* mrMnk = mnk->addComponent<MeshRenderer>(mnk);
-	//Rigidbody* rbMnk = mnk->addComponent<Rigidbody>(mnk);
-	//Transform* trMnk = mnk->addComponent<Transform>();
-	//trMnk->setPosition(Vector3D(0, 300, 10));
-	//trMnk->setScale(Vector3D(100, 100, 100));
-	//rbMnk->addSphereRigidbody(1, 50, { 0,300,10 });//falta obtener radio mediante la mesh
-	////mrMnk->start("Sphere");
-	////mrMnk->onEnable();
-	//_mngr->addEntity(mnk);
-	//mnk->addListener(mnk);
-	//mnk->setCamTrOnMonkey(trCam);
-
-	//tr1->setRotation(Vector3D(270, 0, 0));
-
-
-	//Entity* ent2 = _mngr->addEntity("Prueba2");
-	//MeshRenderer* mr2 = ent2->addComponent<MeshRenderer>(ent2);
-	//tr2 = ent2->addComponent<Transform>();
-	////Rigidbody* rb2 = ent2->addComponent<Rigidbody>(ent2);
-	//tr2->setPosition(Vector3D(0, -2, 0));
-	//rb2->addBoxRigidbody(0, { 0,-2,0 }, { 1000,10,1000 });//falta obtener size mediante la mesh
-	//mr2->start("plano","Plane");
-	//mr2->onEnable();
-	//tr2->rotate(-90, 0);
-
-	//Entity* eprueba = _mngr->addEntity("Cubop");
-	//Transform* tprueba = ent2->addComponent<transo>();
-	//MeshRenderer* mprueba = ent2->addComponent<MeshRenderer>();
-
-	//MeshRenderer* mr1 = mnk->addComponent<MeshRenderer>();
-	//mr1->start("mono", "piedra.mesh");
-	//mr1->setMaterial("Material/piedra");
-	//mr1->onEnable();
-
-	////Hay qeu decirle ala cámar la posición de monke para que le siga
-	//camera->setMonkePos(&trMnk->getPos());
-
-	//UIManager::init();
-	//UIManager::instance()->setup(RenderMain::getInstance()->getRenderWindow());
 }
 
 bool VernierEngine::processFrame()
@@ -166,6 +92,7 @@ bool VernierEngine::processFrame()
 		GameStateMachine::instance()->update();
 		GameStateMachine::instance()->lateUpdate();
 		GameStateMachine::instance()->lastUpdate();
+		//UIManager::getInstance()->start();
 
 		//tr->setPosition(Vector3D(tr->getPos().getX(), tr->getPos().getY() - 0.0001, tr->getPos().getZ()));
 		//tr2->rotate(0.01, 2);

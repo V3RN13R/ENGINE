@@ -1,4 +1,5 @@
 #include "UIManager.h"
+#include "UIImage.h"
 #include "OgreOverlay.h"
 #include "OgreOverlayPrerequisites.h"
 #include "OgreTextAreaOverlayElement.h"
@@ -9,6 +10,7 @@
 #include "OgreSceneManager.h"
 #include "OgreOverlaySystem.h"
 #include "../RenderEngine/WindowRender.h"
+
 
 UIManager* UIManager::_instance = nullptr;
 
@@ -33,9 +35,29 @@ void UIManager::initOverlaySystem() {
     _instance->_overlaySys = new Ogre::OverlaySystem();
     _instance->_overlayMng = Ogre::OverlayManager::getSingletonPtr();
     _instance->_overlay = _overlayMng->create("OverlayName");
-
     WindowRender::getInstance()->getSceneManager()->addRenderQueueListener(_instance->_overlaySys);
 }
+
+void UIManager::start() {
+    for (int i = 0; i < _overlayElements.size(); i++) {
+        _instance->_overlayElements[i]->show();
+    }
+}
+UIImage* UIManager::addImage(std::string overlayname, std::string image){
+    auto imagen = new UIImage(overlayname, _overlayElements.size(), image);
+    _instance->_overlayElements.push_back(imagen);
+    return imagen;
+}
+
+//UIImage* UIManager::getImage(std::string image) {
+//    auto it = _overlayElements.begin();
+//    for (it; it != _overlayElements.end(); it++) {
+//        if (static_cast<UIImage*>(*it)->getName() == image) 
+//            return static_cast<UIImage*>(*it);
+//    }
+//    if (it == _overlayElements.end() || _overlayElements.size() == 0) 
+//        return nullptr;
+//}
 
 //void UIManager::createPanel() {
 //    // Create a panel

@@ -1,12 +1,13 @@
 #include "GameStateMachine.h"
 #include "Scene.h"
 #include "SDL.h"
-
+#include "../UIManager/UIManager.h"
 
 void GameStateMachine::initScene(const std::string& sceneFile, const std::string& scene) {
 	_sceneStack.push((new Scene(sceneFile, scene, instance())));
 	InputManager::instance()->setListenersVector(_sceneStack.top()->getListeners());
 	_sceneStack.top()->start();
+	UIManager::getInstance()->start();
 	_sceneStack.top()->onEnable();
 }
 
