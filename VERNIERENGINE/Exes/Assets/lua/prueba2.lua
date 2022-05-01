@@ -139,17 +139,25 @@ suelo2={
 bala={
     Active = true,
     Listener = false,
-    Components = {"Transform","MeshRenderer"},
+    Components = {"Transform","MeshRenderer","RigidBody"},
 
     Transform = {
-        Position = "-150, 400,0",
-        Scale = "5,5,5",
+        Position = "150, 400,0",
+        Scale = "3,3,3",
         Rotation = "0,0,0"
     },
     
     MeshRenderer = {
         Mesh = "Sphere"
-    }
+    },
+
+    Rigidbody = {
+        isTrigger = "false",
+        Type = "Sphere",
+        Mass = "1",
+        Radius = "20",
+        Position = "150,400,0"
+    },
 }
 
 camaraPrincipal2={

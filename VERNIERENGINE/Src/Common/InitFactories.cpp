@@ -14,6 +14,7 @@
 #include "Pickable.h"
 #include "Player.h"
 #include "Image.h"
+#include "BananaMovement.h"
 
 Component* TransformFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
@@ -35,7 +36,7 @@ Component* RigidBodyFactory::createComponent(std::map<std::string, std::string> 
 
 Component* ShootFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
-	return new Shoot(args,ent);
+	return new Shoot(args, ent);
 };
 
 Component* CameraFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
@@ -92,6 +93,11 @@ Component* PlayerFactory::createComponent(std::map<std::string, std::string> arg
 	return new Player(args);
 };
 
+Component* BananaMovementFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
+{
+	return new BananaMovement(args, ent);
+}
+
 
 void setupFactories()
 {
@@ -109,7 +115,10 @@ void setupFactories()
 	_fM->addFactory("Ground", new GroundFactory());
 	_fM->addFactory("Pickable", new PickableFactory());
 	_fM->addFactory("Player", new PlayerFactory());
+	_fM->addFactory("BananaMovement", new BananaMovementFactory());
 
 	//_fM->addFactory("MonkeyStats", new MonkeyStatsFactory());
 	//_fM->addFactory("Button1", new Button1Factory());
 }
+
+

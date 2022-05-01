@@ -5,7 +5,7 @@
 #include <map>
 #include <string>
 
-
+class Entity;
 class btRigidBody;
 class btVector3;
 class Rigidbody;
@@ -13,27 +13,25 @@ class Transform;
 
 class BananaMovement : public Component {
 private:
-	Vector3D dirFinal = Vector3D(0, 0, 0);
-	Rigidbody* _rbToMove = nullptr;
-	Transform* transformCamara = nullptr;
-	std::string _entidadBuscar;
-	int jumps;
-	float  _vel;
-
-	//Stats
-	float _speed;
-	float _jump;
-
-	void update();
+	float _speed = 3.0;
+	Vector3D _dir;
+	std::string _disparador;
+	Entity* _disparadorEnt;
+	Transform* _transformDisp = nullptr;
+	Transform* _tr = nullptr;
+	Transform* _trMono = nullptr;
+	Rigidbody* _rb = nullptr;
+	float lastTime_ = .0;
 public:
 
-	BananaMovement() {}
-	BananaMovement(std::map<std::string, std::string> args);
-	~BananaMovement() {}
-	void start();
-	void receiveEvent(int msg, Entity* e)override;
-	virtual void onCollisionEnter(Entity* other, Vector3D point, Vector3D normal);
-	virtual void onCollisionStay(Entity* ohter, Vector3D point) {};
+	BananaMovement(std::map<std::string, std::string> args, Entity* ent);
+	~BananaMovement();
+	void update() override;
+	//virtual void onCollisionEnter(Entity* other, Vector3D point, Vector3D normal);
+	//virtual void onCollisionStay(Entity* ohter, Vector3D point) {};
 
+	Vector3D getDir() { return _dir; }
+	void setDir(Vector3D d) { _dir = d; }
+	float getSpeed() { return _speed; }
+	void setSpeed(float s) { _speed = s; }	
 };
-

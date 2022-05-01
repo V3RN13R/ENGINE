@@ -33,6 +33,7 @@ public:
 	//virtual void lateUpdate() override;
 	void resetTransform(Vector3D v1, float q1, float q2, float q3, float q4);
 	void clearForce();
+	void setCenterRb(Vector3D dir);
 
 	static void sendContacts(void* first, void* other, const btManifoldPoint& manifold);
 	void contact(Rigidbody* other, const btManifoldPoint& manifold);
