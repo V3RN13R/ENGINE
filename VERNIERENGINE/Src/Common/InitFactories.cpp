@@ -10,6 +10,7 @@
 #include "MovementPlayer.h"
 #include "MonkeyStats.h"
 #include "Health.h"
+#include <ENGINE.h>
 
 Component* TransformFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
@@ -71,7 +72,7 @@ Component* HealthFactory::createComponent(std::map<std::string, std::string> arg
 
 void setupFactories()
 {
-	FactoryManager* _fM = FactoryManager::getInstance();
+	FactoryManager* _fM = VernierEngine::getInstance()->getFactoryMng();
 
 	_fM->addFactory("Transform", new TransformFactory());
 	_fM->addFactory("MeshRenderer", new MeshRendererFactory());

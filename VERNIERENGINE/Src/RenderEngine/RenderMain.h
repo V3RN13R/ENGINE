@@ -5,7 +5,7 @@
 #include <memory>
 #include <string>
 #include "Ogre.h"
-#include "../Common/Vector3D.h"
+#include "Vector3D.h"
 
 namespace Ogre {
 	class Root;

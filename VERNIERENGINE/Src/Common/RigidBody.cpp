@@ -2,6 +2,7 @@
 #include "Entity.h"
 #include "Transform.h"
 #include "Component.h"
+#include "ENGINE.h"
 #include "PhysicsManager.h"
 #include <btBulletDynamicsCommon.h>
 
@@ -31,13 +32,13 @@ Rigidbody::~Rigidbody()
 
 void Rigidbody::addSphereRigidbody(float mass, float radius, Vector3D pos, bool statc)
 {
-	_brb = PhysicsManager::getInstance()->addSphereRigidbody(mass, radius, { pos.getX(),pos.getY(),pos.getZ() }, &sendContacts, this);
+	_brb = VernierEngine::getInstance()->getPhysicsMng()->addSphereRigidbody(mass, radius, { pos.getX(),pos.getY(),pos.getZ() }, &sendContacts, this);
 	_brb->setActivationState(DISABLE_DEACTIVATION);
 }
 
 void Rigidbody::addBoxRigidbody(float mass, Vector3D pos, Vector3D size, bool statc)
 {
-	_brb = PhysicsManager::getInstance()->addBoxRigidbody(mass, { pos.getX(),pos.getY(),pos.getZ() }, { size.getX(),size.getY(),size.getZ() }, &sendContacts, this);
+	_brb = VernierEngine::getInstance()->getPhysicsMng()->addBoxRigidbody(mass, { pos.getX(),pos.getY(),pos.getZ() }, { size.getX(),size.getY(),size.getZ() }, &sendContacts, this);
 	_brb->setActivationState(DISABLE_DEACTIVATION);
 }
 

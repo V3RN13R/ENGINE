@@ -9,7 +9,7 @@
 #include "ENGINE.h"
 #include "RenderMain.h"
 #include "PhysicsManager.h"
-#include "PruebaBullet.h"
+//#include "PruebaBullet.h"
 #include "FactoryManager.h"
 #include "Transform.h"
 #include "Rigidbody.h"
@@ -46,7 +46,7 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	if (!RenderMain::setUpInstance(_appName)) {
 		throw std::exception("ERROR: Couldn't load RenderMain\n");
 	}
-	_ogre = RenderMain::getInstance();
+	_ogre = getRenderMain();
 	_ogre->init();
 
 	FactoryManager::setUpInstance();
@@ -55,11 +55,11 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	////Resources
 	readAssetsPath();
 	ResourceManager::init(_assetsPath);
-	ResourceManager::getInstance()->setUp(); //Carga de recursos
+	getResourceMng()->setUp(); //Carga de recursos
 
 
 	UIManager::setUpInstance();
-	UIManager::getInstance()->initOverlaySystem();
+	getUIMng()->initOverlaySystem();
 
 	UIImage* image = new UIImage("imagen", "imagenp", "altavoz");
 
@@ -67,18 +67,21 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	if (!PhysicsManager::setUpInstance()) {
 		throw std::exception("ERROR: Couldn't load PhysicsManager\n");
 	}
-	_physics = PhysicsManager::getInstance();
+	_physics = getPhysicsMng();
 
-	PruebaBullet::mainPhys();
+	//PruebaBullet::mainPhys();
 
 	//SoundManager
 	//inicializa la intancia y llama al init() de Soundmanager
 	SoundManager::setUpInstance();
-	_soundManager = SoundManager::getInstance();
-	_soundManager->playSound("main theme.mp3", 1.0f);
+	_soundManager = getSoundMng();
+	//_soundManager->playSound("main theme.mp3", 1.0f);
 
+}
 
-	
+RenderMain* VernierEngine::getRenderMain()
+{
+	return RenderMain::getInstance();
 }
 
 FactoryManager* VernierEngine::getFactoryMng()
@@ -86,10 +89,36 @@ FactoryManager* VernierEngine::getFactoryMng()
 	return FactoryManager::getInstance();
 }
 
+SoundManager* VernierEngine::getSoundMng()
+{
+	return SoundManager::getInstance();
+}
+
+ResourceManager* VernierEngine::getResourceMng()
+{
+	return ResourceManager::getInstance();
+}
+
+InputManager* VernierEngine::getInputMng()
+{
+	return InputManager::instance();
+}
+
+PhysicsManager* VernierEngine::getPhysicsMng()
+{
+	return PhysicsManager::getInstance();
+}
+
+UIManager* VernierEngine::getUIMng()
+{
+	return UIManager::getInstance();
+}
+
+
 bool VernierEngine::processFrame()
 {
 	//std::cout << "updating...\n";
-	if (/*_ogre->pollEvents()*/  InputManager::instance()->pollEvents()) {
+	if (/*_ogre->pollEvents()*/  getInputMng()->pollEvents()) {
 		//InputManager::getInstance()->Update();
 		//PhysicsManager::getInstance()->Update();
 
@@ -111,7 +140,7 @@ bool VernierEngine::processFrame()
 
 void VernierEngine::startGame(int (*a)()) {
 	a();
-}	 
+}
 VernierEngine::~VernierEngine()
 {
 
@@ -142,76 +171,76 @@ void VernierEngine::readAssetsPath()
 	}
 }
 
-int main()
-{
+//int main()
+//{
+//
+//	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+//
+//	lua_State* L;
+//
+//	// initialize Lua interpreter
+//	L = luaL_newstate();
+//
+//	// load Lua base libraries (print / math / etc)
+//	luaL_openlibs(L);
+//	luaL_dofile(L, "Data.lua");
+//	lua_getglobal(L, "DLLName");
+//	lua_call(L, 0, 1);
+//	std::string dllName = lua_tostring(L, -1);
+//	dllName += ".dll";
+//	std::wstring dllNameW = std::wstring(dllName.begin(), dllName.end());
+//	HINSTANCE hDLL = LoadLibrary(dllNameW.c_str());
+//	lua_pop(L, 1);
+//	if (hDLL == NULL)
+//		std::cout << "Failed Load DLL\n";
+//	else {
+//		std::cout << "LoadDll\n";
+//		lua_getglobal(L, "WindowName");
+//		lua_call(L, 0, 1);
+//		const std::string appName = lua_tostring(L, -1);
+//		lua_pop(L, 1);
+//		lua_getglobal(L, "SceneFile");
+//		lua_call(L, 0, 1);
+//		const std::string sceneFile = lua_tostring(L, -1);
+//		lua_pop(L, 1);
+//		lua_getglobal(L, "SceneName");
+//		lua_call(L, 0, 1);
+//		const std::string scene = lua_tostring(L, -1);
+//		lua_pop(L, 1);
+//		//VernierEngine::setupInstance(appName, sceneFile, scene);//lamar desde la dll
+//		typedef int (*funcFirstTry) ();
+//		lua_getglobal(L, "FunctionName");
+//		lua_call(L, 0, 1);
+//		funcFirstTry ftry = (funcFirstTry)GetProcAddress(hDLL, lua_tostring(L, -1));
+//		lua_pop(L, 1);
+//		lua_close(L);
+//		if (!ftry) {
+//			std::cout << "ERROR\n";
+//		}
+//		else
+//			ftry();
+//		VernierEngine::getInstance()->startScene(sceneFile,scene);
+//		FreeLibrary(hDLL);
+//	}
+//	bool stay = true;
+//	do {
+//		stay = VernierEngine::getInstance()->processFrame();
+//	} while (stay);
+//
+//	delete VernierEngine::getInstance();
+//	//se acaba el programa
+//	std::cout << "Hola\n";
+//	return 0;
+//}
 
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-
-	lua_State* L;
-
-	// initialize Lua interpreter
-	L = luaL_newstate();
-
-	// load Lua base libraries (print / math / etc)
-	luaL_openlibs(L);
-	luaL_dofile(L, "Data.lua");
-	lua_getglobal(L, "DLLName");
-	lua_call(L, 0, 1);
-	std::string dllName = lua_tostring(L, -1);
-	dllName += ".dll";
-	std::wstring dllNameW = std::wstring(dllName.begin(), dllName.end());
-	HINSTANCE hDLL = LoadLibrary(dllNameW.c_str());
-	lua_pop(L, 1);
-	if (hDLL == NULL)
-		std::cout << "Failed Load DLL\n";
-	else {
-		std::cout << "LoadDll\n";
-		lua_getglobal(L, "WindowName");
-		lua_call(L, 0, 1);
-		const std::string appName = lua_tostring(L, -1);
-		lua_pop(L, 1);
-		lua_getglobal(L, "SceneFile");
-		lua_call(L, 0, 1);
-		const std::string sceneFile = lua_tostring(L, -1);
-		lua_pop(L, 1);
-		lua_getglobal(L, "SceneName");
-		lua_call(L, 0, 1);
-		const std::string scene = lua_tostring(L, -1);
-		lua_pop(L, 1);
-		//VernierEngine::setupInstance(appName, sceneFile, scene);//lamar desde la dll
-		typedef int (*funcFirstTry) ();
-		lua_getglobal(L, "FunctionName");
-		lua_call(L, 0, 1);
-		funcFirstTry ftry = (funcFirstTry)GetProcAddress(hDLL, lua_tostring(L, -1));
-		lua_pop(L, 1);
-		lua_close(L);
-		if (!ftry) {
-			std::cout << "ERROR\n";
-		}
-		else
-			VernierEngine::getInstance()->startGame(ftry);
-	VernierEngine::getInstance()->startScene(sceneFile,scene);
-		FreeLibrary(hDLL);
-	}
-	bool stay = true;
-	do {
-		stay = VernierEngine::getInstance()->processFrame();
-	} while (stay);
-
-	delete VernierEngine::getInstance();
-	//se acaba el programa
-	std::cout << "Hola\n";
-	return 0;
-}
-
-bool VernierEngine::setupInstance(const std::string& appName, const std::string& sceneFile, const std::string& scene)
+VernierEngine* VernierEngine::setupInstance(const std::string& appName, const std::string& sceneFile, const std::string& scene)
 {
 	if (_instance == nullptr)
 	{
 		_instance = new VernierEngine(appName, sceneFile, scene);
-		return true;
+
 	}
-	return false;
+	return _instance;
 }
 
 void VernierEngine::startScene(const std::string& sceneFile, const std::string& scene)

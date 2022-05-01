@@ -16,6 +16,7 @@ class ResourceManager;
 class InputManager;
 class SoundManager;
 class FactoryManager;
+class UIManager;
 
 class GameStateMachine;
 
@@ -23,13 +24,20 @@ class VernierEngine {
 public:
 	void startGame(int (*a)());
 	static VernierEngine* getInstance() { return _instance; }
-	static bool setupInstance(const std::string& appName, const std::string& sceneFile, const std::string& scene);
+	//static bool setupInstance(const std::string& appName, const std::string& sceneFile, const std::string& scene);
+	static VernierEngine* setupInstance(const std::string& appName, const std::string& sceneFile, const std::string& scene);
 	void startScene(const std::string& sceneFile, const std::string& scene);
 	VernierEngine(const std::string& appName, const std::string& sceneFile, const std::string& value);
-	 FactoryManager* getFactoryMng();
+	RenderMain* getRenderMain();
+	FactoryManager* getFactoryMng();
+	SoundManager* getSoundMng();
+	ResourceManager* getResourceMng();
+	InputManager* getInputMng();
+	PhysicsManager* getPhysicsMng();
+	UIManager* getUIMng();
 	bool processFrame();
 	//bool CheckLua(lua_State* L, int r);
-	
+
 	~VernierEngine();
 private:
 	void readAssetsPath();
