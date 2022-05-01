@@ -6,19 +6,39 @@
 
 void InputManager::manageInput(SDL_Event evt)
 {
-	switch (evt.type) {
-	case SDL_MOUSEBUTTONDOWN:
-	case SDL_MOUSEBUTTONUP:
-		onMouseButtonChange(evt);
-		break;
-	default:
-		if (evt.type == SDL_KEYDOWN) {
-			SDL_Scancode code = evt.key.keysym.scancode;
-			if (!_keys[code]._pressed) {
-				_keys[code]._down = true;
-				_keys[code]._pressed = true;
-				_keys[code]._up = false;
+
+	//pequeña prueba rotar al pulsar botón
+	if (evt.motion.state) {
+		if (SDL_BUTTON_LEFT) {
+			if (evt.motion.xrel > 0) {
+				for (Entity* e : *_listenersScene) {
+					e->receiveEvent(MessageType::PULSA_E, e);
+				}
 			}
+			else if (evt.motion.xrel < 0) {
+				for (Entity* e : *_listenersScene) {
+					e->receiveEvent(MessageType::PULSA_Q, e);
+				}
+			}
+
+		}
+	}
+
+
+
+	switch (evt.type) {
+		case SDL_MOUSEBUTTONDOWN:
+		case SDL_MOUSEBUTTONUP:
+			onMouseButtonChange(evt);
+			break;
+		default:
+			if (evt.type == SDL_KEYDOWN) {
+				SDL_Scancode code = evt.key.keysym.scancode;
+				if (!_keys[code]._pressed) {
+					_keys[code]._down = true;
+					_keys[code]._pressed = true;
+					_keys[code]._up = false;
+				}
 #pragma region BORRAR
 			//ESTO EXISTE PARA NO TENER QUE CAMBIAR TODO EL CODIGO DE LAS PRUEBAS PERO HAY QUE BORRARLO
 			if (evt.key.keysym.scancode == SDL_SCANCODE_W)
@@ -252,6 +272,7 @@ void InputManager::manageInput(SDL_Event evt)
 	}
 
 	int InputManager::onMouseButtonChange(const SDL_Event & event) {
+		
 		switch (event.button.button) {
 		case SDL_BUTTON_LEFT:
 			//std::cout << "\nIZQ" << std::endl;
@@ -261,6 +282,8 @@ void InputManager::manageInput(SDL_Event evt)
 			//std::cout << "\nDER" << std::endl;
 			return MessageType::CLICKDE;
 			break;
+			
+
 		default:
 			break;
 		}
