@@ -15,18 +15,18 @@ class Transform;
 class ResourceManager;
 class InputManager;
 class SoundManager;
-
+class FactoryManager;
 
 class GameStateMachine;
 
 class VernierEngine {
 public:
-
+	void startGame(int (*a)());
 	static VernierEngine* getInstance() { return _instance; }
 	static bool setupInstance(const std::string& appName, const std::string& sceneFile, const std::string& scene);
 	void startScene(const std::string& sceneFile, const std::string& scene);
 	VernierEngine(const std::string& appName, const std::string& sceneFile, const std::string& value);
-
+	 FactoryManager* getFactoryMng();
 	bool processFrame();
 	//bool CheckLua(lua_State* L, int r);
 	

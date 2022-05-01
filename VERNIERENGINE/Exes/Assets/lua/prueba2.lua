@@ -1,5 +1,5 @@
 prueba2 = {
-    entities = {"cubo1","mono2", "suelo2","camaraPrincipal2", "luz"}
+    entities = {"cubo1","mono2", "suelo2","camaraPrincipal2", "luz","dll"}
 }
 
 dll={
