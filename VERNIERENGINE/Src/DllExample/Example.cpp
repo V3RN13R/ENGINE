@@ -1,7 +1,7 @@
 #include "Example.h"
 #include <iostream>
-#include "InputManager.h"
-#include "FactoryManager.h"
+/*#include "InputManager.h"
+#include "FactoryManager.h"*/
 Example::Example()
 {
 	std::cout << "Constructor de una clase desde dll\n";
@@ -10,16 +10,16 @@ Example::Example()
 void Example::update()
 {
 	std::cout << "jaja example\n";
-	if (InputManager::instance()->getKeyDown(SDL_SCANCODE_G)) {
+	/*if (InputManager::instance()->getKeyDown(SDL_SCANCODE_G)) {
 
 		std::cout << "G\n\n\n";
-	}
+	}*/
 }
 
 extern "C" {
 	EXAMPLE_API void example() {
 		std::cout << "\n\n\nMetodo desde una dll\n\n\n";
-		FactoryManager::getInstance()->addFactory("Example", new ExportFactories());
+		//FactoryManager::getInstance()->addFactory("Example", new ExportFactories());
 	}
 }
 

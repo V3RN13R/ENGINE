@@ -1,7 +1,6 @@
 #include "FactoryManager.h"
 #include "Transform.h"
 #include "RigidBody.h"
-
 #include "Factory.h"
 
 FactoryManager*  FactoryManager::_instance;
