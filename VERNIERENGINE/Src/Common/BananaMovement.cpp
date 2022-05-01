@@ -29,6 +29,10 @@ BananaMovement::~BananaMovement()
 void BananaMovement::update()
 {
 	/*_trMono = static_cast<Transform*>(entity_->getScene()->getObjectWithName("mono2")->getComponent("Transform"));
-	
+
 	_tr->setPosition(Vector3D(_trMono->getPos()));*/
+
+	//timer
+	//entity_->destroy();
+	
 }

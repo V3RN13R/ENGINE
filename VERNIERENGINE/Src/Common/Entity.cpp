@@ -18,10 +18,19 @@ _scene(scene)
 }
 
 Entity::~Entity() {
-	for (auto c : _components) {
+	/*for (auto c : _components) {
 
 		delete c;
+	}*/
+	for (int i = 1; i < _components.size(); i++) {
+		delete _components[i];
+		_components[i] = nullptr;
 	}
+	delete _components[0];
+	_components.clear();
+	_cmps.clear();
+
+
 	//RenderMain::getInstance()->getSceneManager()->destroyAllMovableObjects(_oNode);
 	_oNode->removeAndDestroyAllChildren();
 	RenderMain::getInstance()->getSceneManager()->destroySceneNode(_oNode);

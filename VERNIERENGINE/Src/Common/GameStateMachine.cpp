@@ -63,7 +63,7 @@ Scene* GameStateMachine::getScene() { return _sceneStack.top(); }
 bool GameStateMachine::lastUpdate()
 {
 	if (!_sceneStack.empty()) {
-		//_sceneStack.top()->lastUpdate();  creo que se puede borrar
+		_sceneStack.top()->clearEntities();
 		if (_pop) {
 			delete _sceneStack.top();
 			_sceneStack.pop();

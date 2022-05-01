@@ -26,7 +26,6 @@ private:
 
 	Entity* createEntity(const std::string& fileName, luabridge::LuaRef entInfo);
 
-	void clearEntities();
 
 	bool sceneStarted = false;
 	std::string _name;
@@ -52,6 +51,8 @@ public:
 	void lateUpdate();
 
 	void update();
+
+	void clearEntities();
 
 	std::string getName() { return _name; }
 
