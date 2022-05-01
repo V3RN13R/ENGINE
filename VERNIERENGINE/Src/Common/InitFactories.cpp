@@ -10,6 +10,9 @@
 #include "MovementPlayer.h"
 #include "MonkeyStats.h"
 #include "Health.h"
+#include "Ground.h"
+#include "Pickable.h"
+#include "Player.h"
 
 Component* TransformFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
@@ -49,6 +52,16 @@ Component* MovementPlayerFactory::createComponent(std::map<std::string, std::str
 	return new MovementPlayer(args);
 };
 
+Component* PickableFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
+{
+	return new Pickable(args);
+};
+
+Component* GroundFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
+{
+	return new Ground(args);
+};
+
 Component* Light_Factory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
 	return new Light(args, ent);
@@ -68,6 +81,11 @@ Component* HealthFactory::createComponent(std::map<std::string, std::string> arg
 	return new Health(args);
 };
 
+Component* PlayerFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
+{
+	return new Player(args);
+};
+
 
 void setupFactories()
 {
@@ -82,6 +100,9 @@ void setupFactories()
 	//_fM->addFactory("Image", new ImageFactory());
 	_fM->addFactory("Light", new Light_Factory());
 	_fM->addFactory("Health", new HealthFactory());
+	_fM->addFactory("Ground", new GroundFactory());
+	_fM->addFactory("Pickable", new PickableFactory());
+	_fM->addFactory("Player", new PlayerFactory());
 
 	//_fM->addFactory("MonkeyStats", new MonkeyStatsFactory());
 	//_fM->addFactory("Button1", new Button1Factory());

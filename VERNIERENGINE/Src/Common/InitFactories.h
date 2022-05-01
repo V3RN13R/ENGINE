@@ -38,6 +38,25 @@ public:
 	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
 };
 
+class GroundFactory : public Factory
+{
+public:
+	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
+};
+
+class PickableFactory : public Factory
+{
+public:
+	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
+};
+
+
+class PlayerFactory : public Factory
+{
+public:
+	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
+};
+
 
 //class ImageFactory : public Factory
 //{

@@ -8,6 +8,15 @@
 Rigidbody::Rigidbody(std::map<std::string, std::string> args) : _position(args["Position"]) , _type(args["Type"])
 {
 	std::cout << "Masa en cosntructora lua: " << args["Mass"] << "\n";
+	_isNew = true;
+	if (args["isTrigger"] == "true") {
+		_isTrigger = true;
+	}
+	else {
+		_isTrigger = false;
+	}
+	
+	
 	_mass = std::stof(args["Mass"]);
 	if (_type == "Sphere") {
 		_radius = std::stof(args["Radius"]);
@@ -21,6 +30,8 @@ Rigidbody::Rigidbody(std::map<std::string, std::string> args) : _position(args["
 	else {
 		throw "ERROR: No se reconoce el tipo del rigid body\n";
 	}
+
+
 }
 
 Rigidbody::~Rigidbody()
@@ -32,12 +43,14 @@ Rigidbody::~Rigidbody()
 void Rigidbody::addSphereRigidbody(float mass, float radius, Vector3D pos, bool statc)
 {
 	_brb = PhysicsManager::getInstance()->addSphereRigidbody(mass, radius, { pos.getX(),pos.getY(),pos.getZ() }, &sendContacts, this);
+	setTrigger(_isTrigger);
 	_brb->setActivationState(DISABLE_DEACTIVATION);
 }
 
 void Rigidbody::addBoxRigidbody(float mass, Vector3D pos, Vector3D size, bool statc)
 {
 	_brb = PhysicsManager::getInstance()->addBoxRigidbody(mass, { pos.getX(),pos.getY(),pos.getZ() }, { size.getX(),size.getY(),size.getZ() }, &sendContacts, this);
+	setTrigger(_isTrigger);
 	_brb->setActivationState(DISABLE_DEACTIVATION);
 }
 
@@ -59,7 +72,7 @@ void Rigidbody::lateUpdate()
 	for (auto it = collisions.begin(); it != collisions.end();) {
 		if ((it)->time > TIME_TO_EXIT) {
 			if ((it)->rb)
-				entity_->onCollisionExit((it)->rb->entity_, (it)->point);
+				((it)->_isTrigger) ? entity_->onTriggerExit((it)->rb->entity_, (*it).point) : entity_->onCollisionExit((it)->rb->entity_, (it)->point);
 			it = collisions.erase(it);
 		}
 		else
@@ -70,12 +83,17 @@ void Rigidbody::lateUpdate()
 void Rigidbody::onEnable()
 {
 	Component::onEnable();
+	if (!_isNew) {
+		PhysicsManager::getInstance()->resumeObjectSimulation(_brb);
+	}
+	_isNew = false;
 
 }
 
 void Rigidbody::onDisable()
 {
 	Component::onDisable();
+	PhysicsManager::getInstance()->stopObjectSimulation(_brb);
 
 }
 
@@ -111,6 +129,18 @@ void Rigidbody::clearForce()
 	_brb->setAngularVelocity(v);
 }
 
+
+void Rigidbody::setTrigger(bool trigger)
+{
+	trigger = trigger;
+
+	if (trigger)
+		_brb->setCollisionFlags(btCollisionObject::CollisionFlags::CF_NO_CONTACT_RESPONSE);
+	else
+		_brb->setCollisionFlags(0);
+}
+
+
 void Rigidbody::sendContacts(void* first, void* other, const btManifoldPoint& manifold)
 {
 	static_cast<Rigidbody*>(first)->contact(static_cast<Rigidbody*>(other), manifold);
@@ -140,8 +170,9 @@ void Rigidbody::contact(Rigidbody* other, const btManifoldPoint& manifold)
 	}*/
 	
 	Vector3D p = Vector3D((float)v.x(), (float)v.y(), (float)v.z());
-	collisions.push_back({ other,0 , p});
-	entity_->onCollisionEnter(other->entity_, p, Vector3D(manifold.m_normalWorldOnB.getX(), manifold.m_normalWorldOnB.getY(), manifold.m_normalWorldOnB.getZ()));
+	collisions.push_back({ other,0 , p , other->_isTrigger || _isTrigger });
+	(other->_isTrigger  || _isTrigger) ? entity_->onTriggerEnter(other->entity_, p) : entity_->onCollisionEnter(other->entity_, p, Vector3D(manifold.m_normalWorldOnB.getX(), manifold.m_normalWorldOnB.getY(), manifold.m_normalWorldOnB.getZ()));
+	
 }
 
 void Rigidbody::setVelocity(Vector3D dir) {

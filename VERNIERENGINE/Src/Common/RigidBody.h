@@ -51,9 +51,12 @@ private:
 		Rigidbody* rb = nullptr;
 		float time = 0;
 		Vector3D point;
+		bool _isTrigger;
+
 	};
 
-
+	bool _isNew;
+	void setTrigger(bool trigger);
 
 	btRigidBody* _brb =nullptr;
 	std::string _type;
@@ -64,6 +67,7 @@ private:
 	bool _static;
 	Vector3D _positionConstrains;
 	Vector3D _rotationConstrains;
+	bool _isTrigger;
 
 	std::vector<CollisionInfo> collisions;
 

@@ -42,6 +42,8 @@ public:
 	btDiscreteDynamicsWorld* getDynamicsWorld() { return dynamicsWorld; }
 	std::vector<btCollisionShape*> getCollisionShapes() { return collisionShapes; }
 	void stepPhysics();
+	void stopObjectSimulation(btRigidBody* brb);
+	void resumeObjectSimulation(btRigidBody* brb);
 	//void trackRigidBodyWithName(btRigidBody* body, std::string physicsCubeName) { physicsAccessors.insert({ std::string("cube"), body }); }
 	// 
 	// 

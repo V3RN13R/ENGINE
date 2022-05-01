@@ -52,7 +52,9 @@ void MovementPlayer::receiveEvent(int msg, Entity* e) {
 
 	if (msg == MessageType::ESPACIO) {
 		if (jumps > 0) {
-			_rbToMove->addImpulse(Vector3D(0, 50, 0) * _jump);
+			float multiplier = 2;/*
+			if (jumps == 1) multiplier = 5;*/
+			_rbToMove->addImpulse(Vector3D(0, 50, 0) * _jump* multiplier);
 
 			jumps--;
 		}
@@ -65,9 +67,10 @@ void MovementPlayer::receiveEvent(int msg, Entity* e) {
 
 }
 
+
 void MovementPlayer::onCollisionEnter(Entity* other, Vector3D point, Vector3D normal)
 {
-	if (other->getName() == "suelo2") {
+	if (other->getComponent("Ground")) {
 		jumps = 1;
 	}
 }

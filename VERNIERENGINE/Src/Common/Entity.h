@@ -69,6 +69,27 @@ public:
 		}
 	};
 
+	void onTriggerEnter(Entity* e, Vector3D point) {
+		for (Component* c : _components) {
+			if (c->isEnable()) {
+				c->onTriggerEnter(e, point);
+			}
+		}
+	};
+	virtual void onTriggerStay(Entity* e, Vector3D point) {
+		for (Component* c : _components) {
+			if (c->isEnable()) {
+				c->onTriggerStay(e, point);
+			}
+		}
+	};
+	void onTriggerExit(Entity* e, Vector3D point) {
+		for (Component* c : _components) {
+			if (c->isEnable()) {
+				c->onTriggerExit(e, point);
+			}
+		}
+	};
 
 
 	void addComponent(std::string s, Component* c){
@@ -129,7 +150,17 @@ public:
 	}
 
 	inline void setActive(bool state) {
+		
+		if (state == _active)
+			return;
+
+
 		_active = state;
+
+		std::size_t n = _components.size();
+		for (auto i = 0u; i < n; i++) {
+			_components[i]->setEnable(state);
+		}
 	}
 
 	template<typename T>

@@ -75,6 +75,19 @@ void PhysicsManager::stepPhysics()
 	}
 }
 
+
+
+
+void PhysicsManager::stopObjectSimulation(btRigidBody* brb) {
+	dynamicsWorld->removeRigidBody(brb);
+}
+
+void PhysicsManager::resumeObjectSimulation(btRigidBody* brb) {
+	dynamicsWorld->addRigidBody(brb);
+}
+
+
+
 PhysicsManager::PhysicsManager() {
 	//registerComponent("RigidBody", 0, []() -> RigidBody * { return new RigidBody(); });
 

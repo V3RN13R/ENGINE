@@ -17,7 +17,7 @@ dll={
 cubo1={
     Active = true,
     Listener = false,
-    Components = {"Transform","MeshRenderer", "Rigidbody"},
+    Components = {"Transform","MeshRenderer", "Rigidbody", "Ground", "Pickable"},
 
     Transform = {
         Position = "200,100,0",
@@ -29,11 +29,18 @@ cubo1={
         Mesh = "Cube"
     },
     Rigidbody = {
+        isTrigger = "true",
         Type = "Box",
-        Mass = "1",
+        Mass = "0",
         Scale = "100,100,100",
         Position = "200,100,0"
-    }    
+    },
+    Ground ={
+
+    },
+    Pickable ={
+        Value = "3"
+    }
 }
 
 luz = {
@@ -65,8 +72,11 @@ luz = {
 mono2={
     Active = true,
     Listener = true,
-    Components = {"Transform","MeshRenderer", "Rigidbody","MovementPlayer", "Health", "Shoot"},
+    Components = {"Player", "Transform","MeshRenderer", "Rigidbody","MovementPlayer", "Health", "Shoot"},
 
+    Player = {
+
+    },
     Transform = {
         Position = "0,300,0",
         Scale = "1,1,1",
@@ -102,7 +112,7 @@ mono2={
 suelo2={
     Active = true,
     Listener = false,
-    Components = {"Transform","MeshRenderer", "Rigidbody"},
+    Components = {"Transform","MeshRenderer", "Rigidbody", "Ground"},
 
     Transform = {
         Position = "0,0,0",
@@ -114,10 +124,14 @@ suelo2={
         Mesh = "Plane"
     },
     Rigidbody = {
+        isTrigger = "false",
         Type = "Box",
         Mass = "0",
         Scale = "1000,1,1000",
         Position = "0, 0,0"
+    },
+    Ground = {
+
     }
     
 }
