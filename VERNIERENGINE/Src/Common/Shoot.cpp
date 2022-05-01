@@ -15,7 +15,8 @@ void Shoot::receiveEvent(int msg, Entity* e) {
 	if (msg == MessageType::DISPARO){
 		
 		Entity* en= entity_->getScene()->createEntityByPrefab(_file, _name, _prefabName + std::to_string(cont));
-
+		en->start();
+		en->onEnable();
 		cont++;
 		//_ent->getScene()->createEntityByPrefab(_file, _name, _prefabName);
 		//Entity::getEntity(_entityName)->getScene()->createEntityByPrefab(_file, _name, _prefabName);
