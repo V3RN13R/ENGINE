@@ -17,7 +17,7 @@ dll={
 cubo1={
     Active = true,
     Listener = false,
-    Components = {"Transform","MeshRenderer", "Rigidbody", "Ground", "Pickable"},
+    Components = {"Transform","MeshRenderer", "Rigidbody", "Ground", "Destroyable"},
 
     Transform = {
         Position = "200,100,0",
@@ -38,9 +38,8 @@ cubo1={
     Ground ={
 
     },
-    Pickable ={
-        Value = "3",
-        GTime = "3"
+    Destroyable ={
+
     }
 }
 

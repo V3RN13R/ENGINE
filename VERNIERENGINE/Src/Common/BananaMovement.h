@@ -32,6 +32,7 @@ public:
 	void update() override;
 	//virtual void onCollisionEnter(Entity* other, Vector3D point, Vector3D normal);
 	//virtual void onCollisionStay(Entity* ohter, Vector3D point) {};
+	void onTriggerExit(Entity* ohter, Vector3D point);
 
 	Vector3D getDir() { return _dir; }
 	void setDir(Vector3D d) { _dir = d; }

@@ -4,7 +4,7 @@ bala={
     Components = {"Transform","MeshRenderer","Rigidbody","BananaMovement"},
 
     Transform = {
-        Position = "0,200,0",
+        Position = "0,100,0",
         Scale = "1,1,1",
         Rotation = "0,0,0"
     },
@@ -14,11 +14,11 @@ bala={
     },
 
     Rigidbody = {
-        isTrigger = "false",
+        isTrigger = "true",
         Type = "Sphere",
         Mass = "1",
         Radius = "10",
-        Position = "0,200,0"
+        Position = "0,100,0"
     },
     BananaMovement = {
         TTL = "2",

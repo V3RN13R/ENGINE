@@ -43,5 +43,16 @@ void BananaMovement::update()
 	float currentTime = VernierEngine::getInstance()->getTime()->Time();
 	if (_lastTime + _ttl < currentTime) {
 		entity_->destroy();
+	}		
+}
+
+void BananaMovement::onTriggerExit(Entity* ohter, Vector3D point)
+{
+	if (ohter->getComponent("Destroyable")) {
+		Rigidbody* _rbOther = static_cast<Rigidbody*>(ohter->getComponent("Rigidbody"));
+		_rbOther->setEnable(false);
+		_rb->setEnable(false);
+		ohter->destroy();
+		entity_->destroy();
 	}	
 }
