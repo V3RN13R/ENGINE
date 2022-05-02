@@ -13,7 +13,9 @@ class Transform;
 
 class BananaMovement : public Component {
 private:
+	float _ttl;
 	float _speed = 3.0;
+	double _lastTime = 0;
 	Vector3D _dir;
 	std::string _disparador;
 	Entity* _disparadorEnt;
@@ -26,6 +28,7 @@ public:
 
 	BananaMovement(std::map<std::string, std::string> args, Entity* ent);
 	~BananaMovement();
+	void start() override;
 	void update() override;
 	//virtual void onCollisionEnter(Entity* other, Vector3D point, Vector3D normal);
 	//virtual void onCollisionStay(Entity* ohter, Vector3D point) {};

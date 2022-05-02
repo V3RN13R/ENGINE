@@ -7,7 +7,6 @@ InputManager* InputManager::_instance = nullptr;
 
 void InputManager::manageInput(SDL_Event evt)
 {
-
 	//pequeña prueba rotar al pulsar botón
 	if (evt.motion.state) {
 		if (SDL_BUTTON_LEFT) {

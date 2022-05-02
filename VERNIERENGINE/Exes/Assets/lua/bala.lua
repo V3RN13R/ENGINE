@@ -21,6 +21,7 @@ bala={
         Position = "0,200,0"
     },
     BananaMovement = {
+        TTL = "2",
         Speed = "500",
         Disparador = "camaraPrincipal2"       
     }

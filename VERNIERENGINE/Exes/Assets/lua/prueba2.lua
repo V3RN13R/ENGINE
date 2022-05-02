@@ -104,7 +104,7 @@ mono2={
     Shoot={
         File = "bala.lua",
         Name = "bala",
-        PrefabName= "bala"
+        NameInGame= "banana"
     }
 }
 

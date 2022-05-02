@@ -7,17 +7,13 @@
 class Shoot : public Component
 {
 private:
-	double lastTime;
 	std::string _file;
 	std::string _name;
-	std::string _prefabName;
+	std::string _nameInGame;
 	int cont = 0;
+
 public:
 	Shoot(std::map<std::string, std::string> args, Entity* ent);
-	//Shoot(std::string file, std::string name, std::string prefabName, Scene* scene);
-	void start();
-	void update();
-	void Dispara();
+	void dispara();
 	virtual void receiveEvent(int msg, Entity* e) override;
 };
-
