@@ -63,14 +63,11 @@ void MovementPlayer::receiveEvent(int msg, Entity* e) {
 		}
 
 	}
-
-
 }
 
 
 void MovementPlayer::onCollisionEnter(Entity* other, Vector3D point, Vector3D normal)
 {
-	std::cout << "Lavidalavidalavidalavida";
 	if (other->getComponent("Ground")) {
 		jumps = 2;
 	}

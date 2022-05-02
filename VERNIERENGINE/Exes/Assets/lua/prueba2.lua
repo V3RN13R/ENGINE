@@ -39,7 +39,8 @@ cubo1={
 
     },
     Pickable ={
-        Value = "3"
+        Value = "3",
+        GTime = "3"
     }
 }
 

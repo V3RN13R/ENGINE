@@ -75,6 +75,11 @@ void MeshRenderer::setVisible(bool visible)
 	_ogreEnt->setVisible(_visible);
 }
 
+bool MeshRenderer::getVisible()
+{
+	return _visible;
+}
+
 void MeshRenderer::setMaterial(std::string materialName)
 {
 	_ogreEnt->setMaterialName(materialName);

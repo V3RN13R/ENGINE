@@ -44,6 +44,7 @@ public:
 	Ogre::Mesh* getMesh() const;
 
 	void setVisible(bool visible);
+	bool getVisible();
 	void setMaterial(std::string materialName);
 
 	virtual void onEnable(); //override
