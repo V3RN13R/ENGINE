@@ -28,6 +28,7 @@
 #include "SoundManager.h"
 #include "UIManager.h"
 #include "UIImage.h"
+#include "VernierTime.h"
 
 //LUA
 extern "C"
@@ -82,6 +83,8 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 
 	GameStateMachine::setUpInstance();
 	_gSM = GameStateMachine::getInstance();
+
+	_vernierTime = new VernierTime();
 }
 
 RenderMain* VernierEngine::getRenderMain()
@@ -124,6 +127,11 @@ GameStateMachine* VernierEngine::getGSM()
 	return GameStateMachine::getInstance();
 }
 
+VernierTime* VernierEngine::getTime()
+{
+	return _vernierTime;
+}
+
 
 bool VernierEngine::processFrame()
 {
@@ -131,6 +139,7 @@ bool VernierEngine::processFrame()
 	if (/*_ogre->pollEvents()*/  getInputMng()->pollEvents()) {
 		//InputManager::getInstance()->Update();
 		//PhysicsManager::getInstance()->Update();
+		_vernierTime->frameStarted();
 		_physics->stepPhysics();
 		_soundManager->update();
 		_gSM->fixedUpdate();

@@ -17,6 +17,7 @@ class InputManager;
 class SoundManager;
 class FactoryManager;
 class UIManager;
+class VernierTime;
 
 class GameStateMachine;
 
@@ -36,6 +37,7 @@ public:
 	PhysicsManager* getPhysicsMng();
 	UIManager* getUIMng();
 	GameStateMachine* getGSM();
+	VernierTime* getTime();
 	bool processFrame();
 
 	//bool CheckLua(lua_State* L, int r);
@@ -47,6 +49,7 @@ private:
 	static VernierEngine* _instance;
 	std::string _appName;
 
+	VernierTime* _vernierTime;
 
 	RenderMain* _ogre = nullptr;
 	PhysicsManager* _physics = nullptr;

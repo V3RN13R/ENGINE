@@ -3,6 +3,7 @@
 #include "Transform.h"
 #include "Component.h"
 #include "ENGINE.h"
+#include "VernierTime.h"
 #include "PhysicsManager.h"
 #include <btBulletDynamicsCommon.h>
 
@@ -45,7 +46,7 @@ void Rigidbody::addBoxRigidbody(float mass, Vector3D pos, Vector3D size, bool st
 void Rigidbody::update()
 {
 	for (CollisionInfo& cI : collisions) {
-		cI.time++;
+		VernierEngine::getInstance()->getTime()->deltaTime();
 	}
 }
 
