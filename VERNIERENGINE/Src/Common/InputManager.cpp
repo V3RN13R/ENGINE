@@ -3,6 +3,7 @@
 #include "Scene.h"
 #include <iostream>
 
+InputManager* InputManager::_instance = nullptr;
 
 void InputManager::manageInput(SDL_Event evt)
 {
@@ -98,6 +99,30 @@ void InputManager::manageInput(SDL_Event evt)
 		}
 
 	}
+
+InputManager* InputManager::getInstance()
+{
+	return _instance;
+}
+
+bool InputManager::setUpInstance()
+{
+	if (_instance == nullptr) {
+		try {
+			_instance = new InputManager();
+		}
+		catch (...) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+void InputManager::deleteInstance()
+{
+	delete _instance;
+}
 
 	bool InputManager::pollEvents() {
 

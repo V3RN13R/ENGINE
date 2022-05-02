@@ -35,7 +35,9 @@ public:
 	InputManager* getInputMng();
 	PhysicsManager* getPhysicsMng();
 	UIManager* getUIMng();
+	GameStateMachine* getGSM();
 	bool processFrame();
+
 	//bool CheckLua(lua_State* L, int r);
 	//int initialiseDLLs();
 
@@ -49,7 +51,8 @@ private:
 	RenderMain* _ogre = nullptr;
 	PhysicsManager* _physics = nullptr;
 	SoundManager* _soundManager = nullptr;
-	std::unique_ptr<GameStateMachine*> _gsm;
+	GameStateMachine* _gSM = nullptr;
+	InputManager* _input = nullptr;
 	Transform* tr = nullptr;
 	Transform* tr2 = nullptr;
 

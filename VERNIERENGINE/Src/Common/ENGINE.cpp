@@ -77,6 +77,11 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	_soundManager = getSoundMng();
 	//_soundManager->playSound("main theme.mp3", 1.0f);
 
+	InputManager::setUpInstance();
+	_input = InputManager::getInstance();
+
+	GameStateMachine::setUpInstance();
+	_gSM = GameStateMachine::getInstance();
 }
 
 RenderMain* VernierEngine::getRenderMain()
@@ -101,7 +106,7 @@ ResourceManager* VernierEngine::getResourceMng()
 
 InputManager* VernierEngine::getInputMng()
 {
-	return InputManager::instance();
+	return InputManager::getInstance();
 }
 
 PhysicsManager* VernierEngine::getPhysicsMng()
@@ -114,6 +119,11 @@ UIManager* VernierEngine::getUIMng()
 	return UIManager::getInstance();
 }
 
+GameStateMachine* VernierEngine::getGSM()
+{
+	return GameStateMachine::getInstance();
+}
+
 
 bool VernierEngine::processFrame()
 {
@@ -123,10 +133,10 @@ bool VernierEngine::processFrame()
 		//PhysicsManager::getInstance()->Update();
 		_physics->stepPhysics();
 		_soundManager->update();
-		GameStateMachine::instance()->fixedUpdate();
-		GameStateMachine::instance()->update();
-		GameStateMachine::instance()->lateUpdate();
-		GameStateMachine::instance()->lastUpdate();
+		_gSM->fixedUpdate();
+		_gSM->update();
+		_gSM->lateUpdate();
+		_gSM->lastUpdate();
 
 		//tr->setPosition(Vector3D(tr->getPos().getX(), tr->getPos().getY() - 0.0001, tr->getPos().getZ()));
 		//tr2->rotate(0.01, 2);
@@ -244,17 +254,17 @@ VernierEngine* VernierEngine::setupInstance(const std::string& appName, const st
 
 void VernierEngine::startScene(const std::string& sceneFile, const std::string& scene)
 {
-	GameStateMachine::instance()->initScene(sceneFile, scene);
+	_gSM->initScene(sceneFile, scene);
 }
 
-//int VernierEngine::initialiseDLLs()
+//bool VernierEngine::loadGame()
 //{
 //	// game .dll loading
 //#ifndef _DEBUG
-//	game = LoadLibrary(TEXT("./game.dll"));
+//	game = LoadLibrary(TEXT("./DllExample_d.dll"));
 //#endif 
 //#ifdef _DEBUG
-//	game = LoadLibrary(TEXT("./game_d.dll"));
+//	game = LoadLibrary(TEXT("./DllExample_d.dll"));
 //#endif 
 //
 //	if (game == nullptr)
@@ -265,11 +275,12 @@ void VernierEngine::startScene(const std::string& sceneFile, const std::string& 
 //	std::cout << "Game load success";
 //
 //	// game functions load
-//	typedef int (*funcFirstTry) ();
-//	funcFirstTry ftry = (funcFirstTry)GetProcAddress(game, "prueba2.lua");
+//	
+//	ftry = (funcFirstTry)GetProcAddress(game, "prueba2.lua");
 //	if (!ftry) {
 //		std::cout << "ERROR\n";
+//		return 0;
 //	}
-//	else
-//		ftry();
+//	
+//	return 1;
 //}

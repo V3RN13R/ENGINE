@@ -24,9 +24,9 @@ extern "C" {
 	EXAMPLE_API void example() {
 		std::cout << "\n\n\nMetodo desde una dll\n\n\n";
 
-		_instanceMotor->setupInstance("WILDLESS", "prueba2.lua", "prueba2");
-
-		_instanceMotor->getFactoryMng()->addFactory("Example", new ExportFactories());
+		//_instanceMotor->setupInstance("WILDLESS", "prueba2.lua", "prueba2");
+		//_instanceMotor = VernierEngine::getInstance();
+		//_instanceMotor->getFactoryMng()->addFactory("Example", new ExportFactories());
 			
 		//delete _instanceMotor;
 	}

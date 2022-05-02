@@ -1,4 +1,3 @@
-#include "OgreRoot.h"
 #include <iostream>
 #include <cstdlib>
 
@@ -86,12 +85,12 @@ int main()
 		lua_pop(L, 1);
 		lua_close(L);
 		VernierEngine::setupInstance("WILDLESS", "prueba2.lua", "prueba2");
-	/*	if (!ftry) {
+		/*if (!ftry) {
 			std::cout << "ERROR\n";
 		}
 		else
 			ftry();*/
-		VernierEngine::getInstance()->startScene(sceneFile, scene);
+		VernierEngine::getInstance()->startScene("prueba2.lua", "prueba2");
 		FreeLibrary(hDLL);
 	}
 	bool stay = true;

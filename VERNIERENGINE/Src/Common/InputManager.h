@@ -2,13 +2,10 @@
 #include "SDL.h"
 #include "Utils.h"
 #include <vector>
-#include "Singleton.h"
 #include <SDL_scancode.h>
 class Entity;
 
-class InputManager : public Singleton<InputManager> {
-	friend Singleton<InputManager>;
-
+class InputManager  {
 private:
 	InputManager();
 
@@ -25,6 +22,8 @@ private:
 		bool _pressed=false;
 	};
 	KeyState _keys[SDL_NUM_SCANCODES];
+
+	static InputManager* _instance;
 public:
 	enum MOUSEBUTTON : uint8_t {
 		LEFT = 0, MIDDLE = 1, RIGHT = 2
@@ -60,7 +59,8 @@ public:
 	const std::pair<Sint32, Sint32>& getMousePos() {
 		return _mousePos;
 	}
-	InputManager& ih() {
-		return *InputManager::instance();
-	}
+
+	static InputManager* getInstance();
+	static bool setUpInstance();
+	static void deleteInstance();
 };

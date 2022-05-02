@@ -26,7 +26,6 @@ private:
 
 	Entity* createEntity(const std::string& fileName, luabridge::LuaRef entInfo);
 
-	void clearEntities();
 
 	bool sceneStarted = false;
 	std::string _name;
@@ -58,6 +57,8 @@ public:
 	const std::vector<Entity*>* getListeners() { return &_listeners; }
 
 	void refresh();
+
+	void clearEntities();
 
 	/// <summary>
 	/// Busca y devuelve el primer objeto en la escena con ese nombre
