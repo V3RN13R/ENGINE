@@ -93,6 +93,9 @@
     <Filter>components</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Common\SoundComponent.cpp">
+     <Filter>components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Common\Destroyable.cpp">
       <Filter>components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -207,6 +210,9 @@
     <Filter>components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Common\SoundComponent.h">
+     <Filter>components</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Src\Common\Destroyable.h">
       <Filter>components</Filter>
     </ClInclude>
   </ItemGroup>

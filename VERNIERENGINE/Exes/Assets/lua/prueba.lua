@@ -48,7 +48,8 @@ camaraPrincipal={
         Looking = "0,0,0",
         NearClipDistance = 1,
         FarClipDistance = 100000,
-        AspectRatio = 1
+        AspectRatio = 1,
+        Sensibilidad = "1"
     }
 }
 

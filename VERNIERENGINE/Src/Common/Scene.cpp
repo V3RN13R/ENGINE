@@ -248,6 +248,7 @@ void Scene::clearEntities()
 {
 	for (auto it = _entities.begin(); it != _entities.end();) {
 		if ((*it)->getDestroy()) {
+			(*it)->onDisable();
 			Entity* e = (*it);
 			it = _entities.erase(it);
 			delete e;

@@ -17,7 +17,7 @@ private:
 	Component* _c;
 public:
 	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
-	virtual ~MeshRendererFactory() { delete _c; };
+	virtual ~MeshRendererFactory() { if(_c == nullptr) delete _c; };
 };
 
 class RigidBodyFactory : public Factory
@@ -93,11 +93,6 @@ public:
 	virtual ~ImageFactory() { delete _c; };
 };
 
-class TextFactory : public Factory
-{
-public:
-	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
-};
 
 
 
@@ -138,9 +133,15 @@ private:
 	Component* _c;
 public:
 	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
-	virtual ~BananaMovementFactory() { delete _c; };
+	virtual ~BananaMovementFactory() { if (_c == nullptr) delete _c; };
 };
 class SoundComponentFactory : public Factory
+{
+public:
+	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
+};
+
+class DestroyableFactory : public Factory
 {
 public:
 	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;

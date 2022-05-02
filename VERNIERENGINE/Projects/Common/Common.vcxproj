@@ -99,6 +99,7 @@
     <ClCompile Include="..\..\Src\Common\Camera.cpp" />
     <ClCompile Include="..\..\Src\Common\Collisions.cpp" />
     <ClCompile Include="..\..\Src\Common\Component.cpp" />
+    <ClCompile Include="..\..\Src\Common\Destroyable.cpp" />
     <ClCompile Include="..\..\Src\Common\ENGINE.cpp" />
     <ClCompile Include="..\..\Src\Common\Entity.cpp" />
     <ClCompile Include="..\..\Src\Common\Factory.cpp" />
@@ -134,6 +135,7 @@
     <ClInclude Include="..\..\Src\Common\checkML.h" />
     <ClInclude Include="..\..\Src\Common\Collisions.h" />
     <ClInclude Include="..\..\Src\Common\Component.h" />
+    <ClInclude Include="..\..\Src\Common\Destroyable.h" />
     <ClInclude Include="..\..\Src\Common\ecs.h" />
     <ClInclude Include="..\..\Src\Common\ecs_defs.h" />
     <ClInclude Include="..\..\Src\Common\ENGINE.h" />
