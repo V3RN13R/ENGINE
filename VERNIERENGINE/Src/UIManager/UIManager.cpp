@@ -1,5 +1,6 @@
 #include "UIManager.h"
 #include "UIImage.h"
+#include "UIText.h"
 #include "OgreOverlay.h"
 #include "OgreOverlayPrerequisites.h"
 #include "OgreTextAreaOverlayElement.h"
@@ -50,6 +51,13 @@ UIImage* UIManager::addImage(std::string overlayname, std::string image){
     _instance->_overlayElements.push_back(imagen);
     _num++;
     return imagen;
+}
+
+UIText* UIManager::addText(std::string overlayName, std::string fontName, int fontSize, int order, std::string text, int r, int g, int b, int x, int y) {
+    auto texto = new UIText(overlayName, fontName, fontSize, order, text, r, g, b, x, y);
+    _instance->_overlayElements.push_back(texto);
+    _num++;
+    return texto;
 }
 
 int UIManager::getNum() {

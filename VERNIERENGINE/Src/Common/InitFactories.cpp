@@ -14,6 +14,7 @@
 #include "Pickable.h"
 #include "Player.h"
 #include "Image.h"
+#include "Text.h"
 #include "BananaMovement.h"
 #include <ENGINE.h>
 
@@ -75,6 +76,11 @@ Component* ImageFactory::createComponent(std::map<std::string, std::string> args
 	return new Image(args);
 };
 
+Component* TextFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
+{
+	return new Text(args);
+};
+
 //Component* MonkeyStatsFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 //{
 //	return new MonkeyStats(args);
@@ -111,6 +117,7 @@ void setupFactories()
 	_fM->addFactory("Camera", new CameraFactory());
 	_fM->addFactory("MovementPlayer", new MovementPlayerFactory());
 	_fM->addFactory("Image", new ImageFactory());
+	_fM->addFactory("Text", new TextFactory());
 	_fM->addFactory("Light", new Light_Factory());
 	_fM->addFactory("Health", new HealthFactory());
 	_fM->addFactory("Ground", new GroundFactory());

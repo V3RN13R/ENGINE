@@ -20,9 +20,9 @@ function WindowName()
 end
 
 function SceneFile()
-    return "menu.lua"
+    return "pruebatexto.lua"
 end
 
 function SceneName()
-    return "menu"
+    return "pruebatexto"
 end

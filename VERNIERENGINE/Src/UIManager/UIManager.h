@@ -4,6 +4,7 @@
 #include <string>
 
 class UIImage;
+class UIText;
 
 namespace Ogre {
 	class OverlayManager;
@@ -29,5 +30,6 @@ public:
 	static UIManager* getInstance();
 	int getNum();
 	UIImage* addImage(std::string overlayName, std::string image);
+	UIText* addText(std::string overlayName, std::string fontName, int fontSize, int order, std::string text, int r, int g, int b, int x, int y);
 	// UIImage* getImage(std::string imageName);
 };
