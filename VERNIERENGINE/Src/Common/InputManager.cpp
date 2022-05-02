@@ -9,22 +9,29 @@ InputManager* InputManager::_instance = nullptr;
 void InputManager::manageInput(SDL_Event evt)
 {
 
-
 	switch (evt.type) {
 		case SDL_MOUSEMOTION:
-			if (evt.motion.xrel > 0) {
-				for (Entity* e : *_listenersScene) {
-					e->receiveEvent(MessageType::PULSA_E, e);
-				}
-			}
-			else if (evt.motion.xrel < 0) {
-				for (Entity* e : *_listenersScene) {
-					e->receiveEvent(MessageType::PULSA_Q, e);
-				}
+			mousePositionAbsolute_ = { evt.motion.x , evt.motion.y };
+			mousePositionRelative_.x = evt.motion.xrel;
+			mousePositionRelative_.y = evt.motion.yrel;
+			std::cout << mousePositionRelative_.x << "\n";
+			break;
+		case SDL_MOUSEBUTTONDOWN: case SDL_MOUSEBUTTONUP:
+			switch (evt.button.button)
+			{
+			case SDL_BUTTON_LEFT:
+				mouseButtons_.leftDown = evt.button.state;
+				break;
+			case SDL_BUTTON_MIDDLE:
+				mouseButtons_.middleDown = evt.button.state;
+				break;
+			case SDL_BUTTON_RIGHT:
+				mouseButtons_.rightDown = evt.button.state;
+				break;
+			default:
+				break;
 			}
 			break;
-		case SDL_MOUSEBUTTONDOWN:
-		case SDL_MOUSEBUTTONUP:
 			onMouseButtonChange(evt);
 			break;
 		default:
@@ -83,6 +90,29 @@ void InputManager::manageInput(SDL_Event evt)
 		}
 
 	}
+
+
+
+void InputManager::resetMousePosRel()
+{
+	mousePositionRelative_.x = 0;
+	mousePositionRelative_.y = 0;
+}
+
+MousePositionRelative InputManager::getMousePosRel() const
+{
+	return mousePositionRelative_;
+}
+
+MousePositionAbsolute InputManager::getMousePosAbs() const
+{
+	return mousePositionAbsolute_;
+}
+
+MouseButtons InputManager::getMouseButtons() const
+{
+	return mouseButtons_;
+}
 
 InputManager* InputManager::getInstance()
 {

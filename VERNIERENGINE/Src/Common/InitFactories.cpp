@@ -82,10 +82,7 @@ Component* TextFactory::createComponent(std::map<std::string, std::string> args,
 	return new Text(args);
 };
 
-Component* TextFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
-{
-	return new Text(args);
-};
+
 
 //Component* MonkeyStatsFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 //{

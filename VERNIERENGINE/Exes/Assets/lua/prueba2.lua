@@ -176,7 +176,7 @@ camaraPrincipal2={
     },
     
     Camera = {
-        Sensibilidad = "1",
+        Sensibilidad = "-1",
         PosRel = "0,100,500",
         Entity = "mono2",
         BackgroundColor = "0.8,0.1,0.3",

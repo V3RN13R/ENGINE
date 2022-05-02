@@ -150,6 +150,8 @@ bool VernierEngine::processFrame()
 		//tr2->rotate(0.01, 2);
 		_ogre->updateWindow();
 		// LoadImages::instance()->renderTexturas();
+		InputManager::getInstance()->resetMousePosRel();
+
 	}
 	else return false;
 

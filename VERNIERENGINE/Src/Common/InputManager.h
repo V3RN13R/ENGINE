@@ -5,6 +5,22 @@
 #include <SDL_scancode.h>
 class Entity;
 
+struct MousePositionAbsolute
+{
+	int x = 0;
+	int y = 0;
+};
+struct MousePositionRelative
+{
+	float x = 0;
+	float y = 0;
+};
+
+struct MouseButtons {
+	bool leftDown = false;
+	bool middleDown = false;
+	bool rightDown = false;
+};
 class InputManager  {
 private:
 	InputManager();
@@ -24,6 +40,12 @@ private:
 	KeyState _keys[SDL_NUM_SCANCODES];
 
 	static InputManager* _instance;
+
+	MousePositionAbsolute mousePositionAbsolute_;
+	MousePositionRelative mousePositionRelative_;
+	MouseButtons mouseButtons_;
+
+
 public:
 	enum MOUSEBUTTON : uint8_t {
 		LEFT = 0, MIDDLE = 1, RIGHT = 2
@@ -55,6 +77,11 @@ public:
 	//	return _mbState[b];
 	//}
 
+
+	void resetMousePosRel();
+	MousePositionRelative getMousePosRel() const;
+	MousePositionAbsolute getMousePosAbs() const;
+	MouseButtons getMouseButtons() const;
 
 	const std::pair<Sint32, Sint32>& getMousePos() {
 		return _mousePos;

@@ -55,6 +55,19 @@ void Camera::update() {
 			mNodeCamera->lookAt(Ogre::Vector3(_monkePos->getX(), _monkePos->getY(), _monkePos->getZ()), Ogre::Node::TS_WORLD, Ogre::Vector3::NEGATIVE_UNIT_Z);
 		}
 	}	
+
+
+	MousePositionRelative mousePosRel = InputManager::getInstance()->getMousePosRel();
+	if (InputManager::getInstance()->getMouseButtons().leftDown) {
+		float rotar = _sensibilidad * mousePosRel.x;
+		Transform* camTr = static_cast<Transform*>(entity_->getComponent("Transform"));
+		camTr->rotate(Vector3D(0, rotar, 0));
+		//_oNode->yaw(Ogre::Degree(-5));
+		mNodeCamera->yaw(Ogre::Degree(-rotar));
+		_monkeAngle = fmod((_monkeAngle + rotar), 360.f);//modulo entre dos floats
+	}
+	
+	
 }
 
 void Camera::start() {
