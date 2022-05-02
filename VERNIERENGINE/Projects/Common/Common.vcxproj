@@ -119,6 +119,7 @@
     <ClCompile Include="..\..\Src\Common\RigidBody.cpp" />
     <ClCompile Include="..\..\Src\Common\Scene.cpp" />
     <ClCompile Include="..\..\Src\Common\Shoot.cpp" />
+    <ClCompile Include="..\..\Src\Common\SoundComponent.cpp" />
     <ClCompile Include="..\..\Src\Common\TEST-Componente1.cpp" />
     <ClCompile Include="..\..\Src\Common\TEST-Componente2.cpp" />
     <ClCompile Include="..\..\Src\Common\Text.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="..\..\Src\Common\Scene.h" />
     <ClInclude Include="..\..\Src\Common\Shoot.h" />
     <ClInclude Include="..\..\Src\Common\Singleton.h" />
+    <ClInclude Include="..\..\Src\Common\SoundComponent.h" />
     <ClInclude Include="..\..\Src\Common\TEST-Componente1.h" />
     <ClInclude Include="..\..\Src\Common\TEST-Componente2.h" />
     <ClInclude Include="..\..\Src\Common\Text.h" />

@@ -96,9 +96,10 @@ int SoundManager::playSound(const std::string& strSoundName, float volumedB)
 		FMOD_MODE currMode;
 		found->second->getMode(&currMode);
 
-		errorCheck(pChannel->setVolume(dbToVolume(volumedB)));
+		errorCheck(pChannel->setVolume(volumedB));
 		_instance->getSoundChannels()[nChannelId] = pChannel;
 	}
+	else { std::cout << "no suena :(\n"; }
 	return nChannelId;
 }
 

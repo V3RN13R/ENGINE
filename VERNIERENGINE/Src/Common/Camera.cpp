@@ -9,6 +9,7 @@
 #include "Component.h"
 #include "OgreMath.h"
 #include "Transform.h"
+#include "SoundComponent.h"
 #include <iostream>
 #include <math.h>
 
@@ -19,7 +20,6 @@ Camera::Camera(std::map<std::string, std::string> args, Entity* ent) : Component
 	_farClipDist = std::stof(args["FarClipDistance"]);
 	_aspectRatio = std::stof(args["AspectRatio"]);
 	entidadBuscar = args["Entity"];
-	
 }
 
 Camera::~Camera() {
@@ -33,6 +33,7 @@ void Camera::setBckgColor(Vector3D color)
 {
 	_bckgColor = color;
 	_vp->setBackgroundColour(Ogre::ColourValue(_bckgColor.getX(), _bckgColor.getY(), _bckgColor.getZ()));
+	SoundComponent* _sc = (SoundComponent*)entity_->getComponent("SoundComponent");
 }
 
 
@@ -79,6 +80,9 @@ void Camera::start() {
 	_camera->setAspectRatio(_aspectRatio);
 
 	_camTr = (Transform*)entity_->getComponent("Transform");
+	SoundComponent* sc = (SoundComponent*)entity_->getComponent("SoundComponent");
+	if(sc)
+		sc->playMusic("Music", 0.1f);
 }
 
 void Camera::onDisable()

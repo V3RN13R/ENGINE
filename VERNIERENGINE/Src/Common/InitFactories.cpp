@@ -16,6 +16,7 @@
 #include "Image.h"
 #include "Text.h"
 #include "BananaMovement.h"
+#include "SoundComponent.h"
 #include <ENGINE.h>
 
 Component* TransformFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
@@ -104,6 +105,10 @@ Component* BananaMovementFactory::createComponent(std::map<std::string, std::str
 {
 	return new BananaMovement(args, ent);
 }
+Component* SoundComponentFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
+{
+	return new SoundComponent(args, ent);
+}
 
 
 void setupFactories()
@@ -124,6 +129,8 @@ void setupFactories()
 	_fM->addFactory("Pickable", new PickableFactory());
 	_fM->addFactory("Player", new PlayerFactory());
 	_fM->addFactory("BananaMovement", new BananaMovementFactory());
+	_fM->addFactory("SoundComponent", new SoundComponentFactory());
+
 
 	//_fM->addFactory("MonkeyStats", new MonkeyStatsFactory());
 	//_fM->addFactory("Button1", new Button1Factory());
