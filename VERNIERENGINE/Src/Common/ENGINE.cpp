@@ -1,6 +1,5 @@
 // ENGINE.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-
-
+//#include "checkML.h"
 #include "OgreRoot.h"
 #include <iostream>
 #include <cstdlib>
@@ -48,7 +47,7 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 		throw std::exception("ERROR: Couldn't load RenderMain\n");
 	}
 	_ogre = getRenderMain();
-	_ogre->init();
+	_ogre->init(appName);
 
 	FactoryManager::setUpInstance();
 	setupFactories();

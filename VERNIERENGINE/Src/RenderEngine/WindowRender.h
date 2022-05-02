@@ -31,8 +31,9 @@ private:
 	//std::string _wName = "motorcito";
 	int screen_width_ = 840;
 	int screen_height_ = 600;
-	void setUpWindow();
+	void setUpWindow(const std::string& name);
 	SDL_Renderer* _renderer;
+	std::string _name;
 
 protected:
 public:
@@ -54,7 +55,7 @@ public:
 	int getScreenHeight() { return screen_height_; };
 	static WindowRender* getInstance();
 	void updateWindow();
-	void setUpOgreRoot();
+	void setUpOgreRoot(const std::string& name);
 #pragma endregion
 
 };

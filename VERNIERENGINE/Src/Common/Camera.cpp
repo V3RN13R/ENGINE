@@ -11,10 +11,11 @@
 #include "Transform.h"
 #include <iostream>
 #include <math.h>
+//#include "checkML.h"
 
 
 Camera::Camera(std::map<std::string, std::string> args, Entity* ent) : Component(ent),
-	_bckgColor(args["BackgroundColor"]), _camName(args["CameraName"]), _looking(args["Looking"]), _posRel(args["PosRel"]) {
+	_bckgColor(args["BackgroundColor"]), _camName(args["CameraName"]), _looking(args["Looking"]), _posRel(args["PosRel"]), _sensibilidad(std::stof(args["Sensibilidad"])) {
 	_nearClipDist = std::stof(args["NearClipDistance"]);
 	_farClipDist = std::stof(args["FarClipDistance"]);
 	_aspectRatio = std::stof(args["AspectRatio"]);
@@ -103,20 +104,20 @@ void Camera::receiveEvent(int msg, Entity* e) {
 
 		switch (msg) {
 		case MessageType::PULSA_Q:
-			camTr->rotate(Vector3D(0, 5, 0));
+			camTr->rotate(Vector3D(0, _sensibilidad, 0));
 			//_oNode->yaw(Ogre::Degree(-5));
-			mNodeCamera->yaw(Ogre::Degree(-5));
-			_monkeAngle = (_monkeAngle + 5) % 360;
+			mNodeCamera->yaw(Ogre::Degree(-_sensibilidad));
+			_monkeAngle = fmod((_monkeAngle + _sensibilidad), 360.f);//modulo entre dos floats
 			//camTr->setRotation()
 			//_oNode->getOrientation(). * toAngles;
 			//std::cout << "AnguloCam mono: " << //camTr->setRotation()
 			//	_oNode->getOrientation() * toAngles << "\n";
 			break;
 		case MessageType::PULSA_E:
-			camTr->rotate(Vector3D(0, -5, 0));
+			camTr->rotate(Vector3D(0, -_sensibilidad, 0));
 			//_oNode->yaw(Ogre::Degree(5));
-			mNodeCamera->yaw(Ogre::Degree(5));
-			_monkeAngle = (_monkeAngle - 5) % 360;
+			mNodeCamera->yaw(Ogre::Degree(_sensibilidad));
+			_monkeAngle = fmod((_monkeAngle - _sensibilidad), 360.f);
 			//std::cout << "AnguloCam mono: " << _monkeAngle << "\n";
 			break;
 		}

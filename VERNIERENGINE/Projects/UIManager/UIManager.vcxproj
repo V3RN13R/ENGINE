@@ -159,11 +159,13 @@
     <ClCompile Include="..\..\Src\UIManager\UIElement.cpp" />
     <ClCompile Include="..\..\Src\UIManager\UIImage.cpp" />
     <ClCompile Include="..\..\Src\UIManager\UIManager.cpp" />
+    <ClCompile Include="..\..\Src\UIManager\UIText.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\UIManager\UIElement.h" />
     <ClInclude Include="..\..\Src\UIManager\UIImage.h" />
     <ClInclude Include="..\..\Src\UIManager\UIManager.h" />
+    <ClInclude Include="..\..\Src\UIManager\UIText.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

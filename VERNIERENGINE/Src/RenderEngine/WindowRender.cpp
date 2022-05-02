@@ -7,7 +7,6 @@
 #include <iostream>
 #include "RenderMain.h"
 #include <SDL_render.h>
-
 //std::unique_ptr<WindowRender>  WindowRender::_instance;
 
 
@@ -15,7 +14,7 @@
 #include "../Common/Light.h"
 #include "../Common/ENGINE.h"
 
-void WindowRender::setUpOgreRoot()
+void WindowRender::setUpOgreRoot(const std::string& name)
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	_root = VernierEngine::getInstance()->getRenderMain()->getRoot();
@@ -25,7 +24,7 @@ void WindowRender::setUpOgreRoot()
 
 
 	_root->initialise(false);
-	setUpWindow();
+	setUpWindow(name);
 	_mSceneManager = VernierEngine::getInstance()->getRenderMain()->getSceneManager();
 
 	//_mSceneManager->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
@@ -39,15 +38,15 @@ void WindowRender::setUpOgreRoot()
 	//_mSceneManager->setAmbientLight(Ogre::ColourValue(.5, .5, .5)); //Color base (gris)
 }
 
-void WindowRender::setUpWindow()
+void WindowRender::setUpWindow(const std::string& name)
 {
 	//En caso de que no se hubiese iniciado el video nos aseguramos de ello
 	if (!SDL_WasInit(SDL_INIT_VIDEO))
 		SDL_InitSubSystem(SDL_INIT_VIDEO);
 
 	Uint32 flags = SDL_WINDOW_ALLOW_HIGHDPI;
-
-	_sDLWindow = SDL_CreateWindow("Motor", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1900, 1060, flags);
+	_name = name;
+	_sDLWindow = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1900, 1060, flags);
 
 	//S_sdlwindow2 = SDL_CreateWindow("Interfaz", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 600, 600, flags);
 	//Create the renderer
@@ -66,7 +65,7 @@ void WindowRender::setUpWindow()
 	//params["gamma"] = true;
 	params["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));
 
-	_rWindow = _root->createRenderWindow("Motor", screen_width_, screen_height_, false, &params);
+	_rWindow = _root->createRenderWindow(_name, screen_width_, screen_height_, false, &params);
 	//_rWindow->setActive(true);
 	//_rWindow->setVisible(true);
 	SDL_SetWindowGrab(_sDLWindow, SDL_bool(false));
@@ -125,7 +124,8 @@ void WindowRender::setAmbientLight(float x, float y, float z)
 
 WindowRender::~WindowRender()
 {
-	_root->getRenderSystem()->destroyRenderWindow("Motor");//esto borra la _rWindow
+	_root->getRenderSystem()->destroyRenderWindow(_name);//esto borra la _rWindow
+	delete _renderer;
 	_root->destroySceneManager(_mSceneManager);
 	SDL_DestroyWindow(_sDLWindow);
 	SDL_Quit();

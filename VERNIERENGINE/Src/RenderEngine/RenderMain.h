@@ -24,7 +24,7 @@ public:
 	static RenderMain* getInstance();
 	static void deleteInstance();
 
-	bool init();
+	bool init(const std::string& name);
 	WindowRender* GetWindowRender();
 	Ogre::Root* getRoot();
 	Ogre::SceneManager* getSceneManager();

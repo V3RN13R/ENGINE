@@ -8,6 +8,7 @@
 #include "ENGINE.h"
 #include "VernierTime.h"
 
+
 void Pickable::onTriggerEnter(Entity* other, Vector3D point) {
 	if (entity_->isActive() && other->getComponent("MovementPlayer")) {
 		std::cout << "triggerEntra\n";

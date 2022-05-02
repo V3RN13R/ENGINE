@@ -1,0 +1,15 @@
+material Ajustes {
+    receive_shadows on
+    technique {
+        pass {
+            scene_blend alpha_blend
+            diffuse 0.8 0.8 0.8 0.0
+
+            texture_unit {
+                texture Ajustes.png
+                tex_address_mode wrap
+                colour_op modulate
+            }
+        }
+    }
+}

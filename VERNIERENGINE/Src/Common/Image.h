@@ -2,9 +2,6 @@
 #include "Component.h"
 #include <map>
 
-namespace Ogre {
-}
-
 class UIImage;
 
 class Image : public Component {

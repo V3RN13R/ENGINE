@@ -47,7 +47,7 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 		throw std::exception("ERROR: Couldn't load RenderMain\n");
 	}
 	_ogre = RenderMain::getInstance();
-	_ogre->init();
+	_ogre->init(appName);
 
 	FactoryManager::setUpInstance();
 	setupFactories();

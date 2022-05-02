@@ -4,6 +4,7 @@
 #include "RigidBody.h"
 #include "Utils.h"
 #include <iostream>
+
 //#include "RenderMain.h"
 const float toRad = 3.1416 / 180;
 
@@ -116,6 +117,5 @@ void Transform::receiveEvent(int msg, Entity* e)
 	switch (msg) {
 	case MessageType::PULSA_Q:
 		break;
-	
 	}
 }

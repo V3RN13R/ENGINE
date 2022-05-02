@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "Utils.h"
 #include "InputManager.h"
+//#include "checkML.h"
 
 Shoot::Shoot(std::map<std::string, std::string> args, Entity* ent) : Component(ent),  _file(args["File"]), _name(args["Name"]), _nameInGame(args["NameInGame"])
 {

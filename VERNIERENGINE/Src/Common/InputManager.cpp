@@ -2,14 +2,16 @@
 #include "Entity.h"
 #include "Scene.h"
 #include <iostream>
+//#include "checkML.h"
 
 InputManager* InputManager::_instance = nullptr;
 
 void InputManager::manageInput(SDL_Event evt)
 {
-	//pequeña prueba rotar al pulsar botón
-	if (evt.motion.state) {
-		if (SDL_BUTTON_LEFT) {
+
+
+	switch (evt.type) {
+		case SDL_MOUSEMOTION:
 			if (evt.motion.xrel > 0) {
 				for (Entity* e : *_listenersScene) {
 					e->receiveEvent(MessageType::PULSA_E, e);
@@ -20,13 +22,7 @@ void InputManager::manageInput(SDL_Event evt)
 					e->receiveEvent(MessageType::PULSA_Q, e);
 				}
 			}
-
-		}
-	}
-
-
-
-	switch (evt.type) {
+			break;
 		case SDL_MOUSEBUTTONDOWN:
 		case SDL_MOUSEBUTTONUP:
 			onMouseButtonChange(evt);

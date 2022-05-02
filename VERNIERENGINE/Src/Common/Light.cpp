@@ -6,6 +6,7 @@
 #include <OgreLight.h>
 #include <OgreSceneNode.h>
 #include <OgreSceneManager.h>
+//#include "checkML.h"
 
 
 Light::Light(std::map<std::string, std::string> args, Entity* ent) : Component(ent), _node(nullptr), _light(nullptr), _firstEnable(true),

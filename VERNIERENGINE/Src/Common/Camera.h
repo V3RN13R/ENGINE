@@ -37,8 +37,8 @@ private:
 	Ogre::Viewport* _vp;
 	Entity* mono;
 	std::string entidadBuscar;
-
-	int _monkeAngle = 0;
+	float _sensibilidad;
+	float _monkeAngle = 0;
 	float _monkeRadio = 500;
 	Vector3D* _monkePos = nullptr;
 	Vector3D _posRel;;

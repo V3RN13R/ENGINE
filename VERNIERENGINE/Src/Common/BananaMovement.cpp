@@ -5,6 +5,7 @@
 #include "Entity.h"
 #include "VernierTime.h"
 #include "ENGINE.h"
+//#include "checkML.h"
 
 BananaMovement::BananaMovement(std::map<std::string, std::string> args, Entity* ent) : Component(ent), _disparador(args["Disparador"])
 {

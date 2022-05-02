@@ -8,6 +8,7 @@
 #include "Component.h"
 #include "ecs.h"
 #include <unordered_map>
+
 class Vector3D;
 //class Manager;
 namespace Ogre {

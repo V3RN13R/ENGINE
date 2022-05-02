@@ -121,6 +121,7 @@
     <ClCompile Include="..\..\Src\Common\Shoot.cpp" />
     <ClCompile Include="..\..\Src\Common\TEST-Componente1.cpp" />
     <ClCompile Include="..\..\Src\Common\TEST-Componente2.cpp" />
+    <ClCompile Include="..\..\Src\Common\Text.cpp" />
     <ClCompile Include="..\..\Src\Common\Transform.cpp" />
     <ClCompile Include="..\..\Src\Common\Vector3D.cpp" />
     <ClCompile Include="..\..\Src\Common\VernierTime.cpp" />
@@ -129,6 +130,7 @@
     <ClInclude Include="..\..\Src\Common\BananaMovement.h" />
     <ClInclude Include="..\..\Src\Common\Callbacks.h" />
     <ClInclude Include="..\..\Src\Common\Camera.h" />
+    <ClInclude Include="..\..\Src\Common\checkML.h" />
     <ClInclude Include="..\..\Src\Common\Collisions.h" />
     <ClInclude Include="..\..\Src\Common\Component.h" />
     <ClInclude Include="..\..\Src\Common\ecs.h" />
@@ -157,6 +159,7 @@
     <ClInclude Include="..\..\Src\Common\Singleton.h" />
     <ClInclude Include="..\..\Src\Common\TEST-Componente1.h" />
     <ClInclude Include="..\..\Src\Common\TEST-Componente2.h" />
+    <ClInclude Include="..\..\Src\Common\Text.h" />
     <ClInclude Include="..\..\Src\Common\Transform.h" />
     <ClInclude Include="..\..\Src\Common\Utils.h" />
     <ClInclude Include="..\..\Src\Common\Vector3D.h" />

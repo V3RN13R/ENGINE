@@ -2,7 +2,7 @@
 #include <Ogre.h>
 #include <iostream>
 #include "OgreFileSystemLayer.h"
-
+//#include "checkML.h"
 std::unique_ptr<ResourceManager> ResourceManager::_instance;
 
 void ResourceManager::loadResources()

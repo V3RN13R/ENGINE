@@ -14,35 +14,36 @@
 #include "Pickable.h"
 #include "Player.h"
 #include "Image.h"
+#include "Text.h"
 #include "BananaMovement.h"
 #include <ENGINE.h>
 
 Component* TransformFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
-	return new Transform(args);
+	return _c = new Transform(args);
 };
 
 
 Component* MeshRendererFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
-	return new MeshRenderer(args);
+	return _c = new MeshRenderer(args);
 };
 
 
 Component* RigidBodyFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
-	return new Rigidbody(args);
+	return _c = new Rigidbody(args);
 };
 
 
 Component* ShootFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
-	return new Shoot(args, ent);
+	return _c = new Shoot(args, ent);
 };
 
 Component* CameraFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
-	return new Camera(args, ent);
+	return _c = new Camera(args, ent);
 }
 
 //Component* ImageFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
@@ -52,27 +53,32 @@ Component* CameraFactory::createComponent(std::map<std::string, std::string> arg
 
 Component* MovementPlayerFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
-	return new MovementPlayer(args);
+	return _c = new MovementPlayer(args);
 };
 
 Component* PickableFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
-	return new Pickable(args);
+	return _c = new Pickable(args);
 };
 
 Component* GroundFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
-	return new Ground(args);
+	return _c = new Ground(args);
 };
 
 Component* Light_Factory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
-	return new Light(args, ent);
+	return _c = new Light(args, ent);
 };
 
 Component* ImageFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
-	return new Image(args);
+	return _c = new Image(args);
+};
+
+Component* TextFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
+{
+	return new Text(args);
 };
 
 //Component* MonkeyStatsFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
@@ -86,17 +92,18 @@ Component* ImageFactory::createComponent(std::map<std::string, std::string> args
 
 Component* HealthFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
-	return new Health(args);
+	return _c = new Health(args);
 };
 
 Component* PlayerFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
-	return new Player(args);
+	return _c = new Player(args);
 };
 
 Component* BananaMovementFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
-	return new BananaMovement(args, ent);
+	_c = new BananaMovement(args, ent);
+	return (_c);
 }
 
 
@@ -111,6 +118,7 @@ void setupFactories()
 	_fM->addFactory("Camera", new CameraFactory());
 	_fM->addFactory("MovementPlayer", new MovementPlayerFactory());
 	_fM->addFactory("Image", new ImageFactory());
+	_fM->addFactory("Text", new TextFactory());
 	_fM->addFactory("Light", new Light_Factory());
 	_fM->addFactory("Health", new HealthFactory());
 	_fM->addFactory("Ground", new GroundFactory());
