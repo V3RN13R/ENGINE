@@ -7,6 +7,8 @@
 #include "RigidBody.h"
 #include "Transform.h"
 #include "Scene.h"
+#include "ENGINE.h"
+#include "VernierTime.h"
 
 
 //const float _PI = 3.1416;
@@ -28,41 +30,44 @@ void MovementPlayer::start()
 
 void MovementPlayer::update() {
 	dirFinal = Vector3D(0, 0, 0);
-	//std::cout << _rbToMove->getVel().getX() << " " << _rbToMove->getVel().getY() << " " << _rbToMove->getVel().getZ() << "\n";
-
-}
-void MovementPlayer::receiveEvent(int msg, Entity* e) {
-
-
-	if (msg == MessageType::W) {
-		dirFinal += Vector3D(std::cos(transformCamara->getRot().getY() * toRadians), 0, -std::sin(transformCamara->getRot().getY() * toRadians)) * _vel * _speed;
-	}
-	if (msg == MessageType::A) {
-		dirFinal += Vector3D(std::cos((transformCamara->getRot().getY() + 90) * toRadians), 0, -std::sin((transformCamara->getRot().getY() + 90) * toRadians)) * _vel * _speed;
-	}
-	if (msg == MessageType::S) {
-		dirFinal += Vector3D(-std::cos(transformCamara->getRot().getY() * toRadians), 0, std::sin(transformCamara->getRot().getY() * toRadians)) * _vel * _speed;
-	}
-	if (msg == MessageType::D) {
-		dirFinal += Vector3D(std::cos((transformCamara->getRot().getY() - 90) * toRadians), 0, -std::sin((transformCamara->getRot().getY() - 90) * toRadians)) * _vel * _speed;
-	}
-	dirFinal = Vector3D(dirFinal.getX(), _rbToMove->getVel().getY(), dirFinal.getZ());
-	_rbToMove->setVelocity(dirFinal);
-
-
-	if (msg == MessageType::ESPACIO) {
+	if (VernierEngine::getInstance()->getInputMng()->getKeyDown(SDL_SCANCODE_SPACE)) {
 		if (jumps > 0) {
-			float multiplier = 2;/*
-			if (jumps == 1) multiplier = 5;*/
-			_rbToMove->addImpulse(Vector3D(0, 50, 0) * _jump * multiplier);
+			float currentTime = VernierEngine::getInstance()->getTime()->Time();
+			if (_lastTime + 0.5f < currentTime) {
+				float multiplier = 2;
+				_rbToMove->addImpulse(Vector3D(0, 50, 0) * _jump * multiplier);
+				jumps--;
+				_lastTime = currentTime;
+			}
 
-			jumps--;
 		}
 		else {
 			std::cout << "No salto";
 		}
+	}
+	if (VernierEngine::getInstance()->getInputMng()->getKeyDown(SDL_SCANCODE_S)) {
+		dirFinal += Vector3D(-std::cos(transformCamara->getRot().getY() * toRadians), 0, std::sin(transformCamara->getRot().getY() * toRadians)) * _vel * _speed;
 
 	}
+	if (VernierEngine::getInstance()->getInputMng()->getKeyDown(SDL_SCANCODE_W)) {
+		dirFinal += Vector3D(std::cos(transformCamara->getRot().getY() * toRadians), 0, -std::sin(transformCamara->getRot().getY() * toRadians)) * _vel * _speed;
+
+	}
+	if (VernierEngine::getInstance()->getInputMng()->getKeyDown(SDL_SCANCODE_D)) {
+		dirFinal += Vector3D(std::cos((transformCamara->getRot().getY() - 90) * toRadians), 0, -std::sin((transformCamara->getRot().getY() - 90) * toRadians)) * _vel * _speed;
+
+	}
+	if (VernierEngine::getInstance()->getInputMng()->getKeyDown(SDL_SCANCODE_A)) {
+		dirFinal += Vector3D(std::cos((transformCamara->getRot().getY() + 90) * toRadians), 0, -std::sin((transformCamara->getRot().getY() + 90) * toRadians)) * _vel * _speed;
+
+	}
+	//POR SI QUEREMOS NORMALIZAR
+	//dirFinal = Vector3D(dirFinal.getX() != 0 ? dirFinal.getX() / dirFinal.getX() : 0, _rbToMove->getVel().getY(), dirFinal.getZ() != 0 ? dirFinal.getZ() / dirFinal.getZ() : 0);
+
+	dirFinal = Vector3D(dirFinal.getX(), _rbToMove->getVel().getY(), dirFinal.getZ());
+	_rbToMove->setVelocity(dirFinal);
+	//std::cout << _rbToMove->getVel().getX() << " " << _rbToMove->getVel().getY() << " " << _rbToMove->getVel().getZ() << "\n";
+
 }
 
 

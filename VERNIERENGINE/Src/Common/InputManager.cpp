@@ -41,37 +41,6 @@ void InputManager::manageInput(SDL_Event evt)
 				}
 #pragma region BORRAR
 			//ESTO EXISTE PARA NO TENER QUE CAMBIAR TODO EL CODIGO DE LAS PRUEBAS PERO HAY QUE BORRARLO
-			if (evt.key.keysym.scancode == SDL_SCANCODE_W)
-			{
-				for (Entity* e : *_listenersScene) {
-					e->receiveEvent(MessageType::W, e);
-				}
-			}
-			else if (evt.key.keysym.scancode == SDL_SCANCODE_S)
-			{
-				for (Entity* e : *_listenersScene) {
-					e->receiveEvent(MessageType::S, e);
-				}
-			}
-			if (evt.key.keysym.scancode == SDL_SCANCODE_A)
-			{
-				for (Entity* e : *_listenersScene) {
-					e->receiveEvent(MessageType::A, e);
-				}
-			}
-			else if (evt.key.keysym.scancode == SDL_SCANCODE_D)
-			{
-				for (Entity* e : *_listenersScene) {
-					e->receiveEvent(MessageType::D, e);
-				}
-			}
-
-			if (evt.key.keysym.scancode == SDL_SCANCODE_SPACE)
-			{
-				for (Entity* e : *_listenersScene) {
-					e->receiveEvent(MessageType::ESPACIO, e);
-				}
-			}
 
 			if (evt.key.keysym.scancode == SDL_SCANCODE_Q)
 			{
