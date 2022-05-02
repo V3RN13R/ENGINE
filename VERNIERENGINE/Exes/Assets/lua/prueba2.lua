@@ -73,7 +73,7 @@ luz = {
 mono2={
     Active = true,
     Listener = true,
-    Components = {"Player", "Transform","MeshRenderer", "Rigidbody","MovementPlayer", "Health", "Shoot"},
+    Components = {"Player", "Transform","MeshRenderer", "Rigidbody","MovementPlayer", "Health", "Shoot", "SoundComponent"},
 
     Player = {
 
@@ -106,6 +106,9 @@ mono2={
         File = "bala.lua",
         Name = "bala",
         NameInGame= "banana"
+    },
+    SoundComponent={
+        Shoot = "shoot.wav"
     }
 }
 
@@ -164,7 +167,7 @@ bala={
 camaraPrincipal2={
     Active = true,
     Listener = true,
-    Components = {"Transform","Camera"},
+    Components = {"Transform","Camera", "SoundComponent"},
 
     Transform = {
         Position = "0,0,0",
@@ -182,5 +185,8 @@ camaraPrincipal2={
         NearClipDistance = 1,
         FarClipDistance = 100000,
         AspectRatio = 1
+    },
+    SoundComponent={
+        Music="main theme.mp3"
     }
 }
