@@ -5,7 +5,7 @@
 
 
 Scene::Scene(const std::string& file, const std::string& name, GameStateMachine* gsm) {
-	//_fmanager->setUpInstance(); se puede quitar en el main se debe de instanciar
+	//_fmanager->setUpInstance(); //se puede quitar en el main se debe de instanciar
 
 	_GSM = gsm;
 	lua_State* _state = nullptr;

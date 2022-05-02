@@ -3,6 +3,7 @@
 #include <Ogre.h>
 #include <SDL.h>
 #include "Vector3D.h"
+#include <ENGINE.h>
 
 //std::vector<Entity*> Entity::_listeners = std::vector<Entity*>(0, nullptr);
 
@@ -14,7 +15,7 @@ _entityName(entityName), //
 _scene(scene)
 {
 	//_entities.emplace_back(this);
-	_oNode = RenderMain::getInstance()->addSceneNode(entityName);
+	_oNode = VernierEngine::getInstance()->getRenderMain()->addSceneNode(entityName);
 }
 
 Entity::~Entity() {
@@ -33,7 +34,7 @@ Entity::~Entity() {
 
 	//RenderMain::getInstance()->getSceneManager()->destroyAllMovableObjects(_oNode);
 	_oNode->removeAndDestroyAllChildren();
-	RenderMain::getInstance()->getSceneManager()->destroySceneNode(_oNode);
+	VernierEngine::getInstance()->getRenderMain()->getSceneManager()->destroySceneNode(_oNode);
 }
 
 void Entity::start()

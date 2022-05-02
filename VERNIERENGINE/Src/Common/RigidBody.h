@@ -11,7 +11,6 @@ class btManifoldPoint;
 const float TIME_TO_EXIT = 0.1f;
 
 
-
 class Rigidbody: public Component
 {
 public:

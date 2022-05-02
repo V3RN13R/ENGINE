@@ -1,7 +1,11 @@
 #include "Example.h"
 #include <iostream>
-/*#include "InputManager.h"
-#include "FactoryManager.h"*/
+#include "InputManager.h"
+#include "FactoryManager.h"
+#include "Engine.h"
+
+VernierEngine* _instanceMotor = nullptr;
+
 Example::Example()
 {
 	std::cout << "Constructor de una clase desde dll\n";
@@ -10,16 +14,21 @@ Example::Example()
 void Example::update()
 {
 	std::cout << "jaja example\n";
-	/*if (InputManager::instance()->getKeyDown(SDL_SCANCODE_G)) {
+	if (VernierEngine::getInstance()->getInputMng()->getKeyDown(SDL_SCANCODE_G)) {
 
 		std::cout << "G\n\n\n";
-	}*/
+	}
 }
 
 extern "C" {
 	EXAMPLE_API void example() {
 		std::cout << "\n\n\nMetodo desde una dll\n\n\n";
-		//FactoryManager::getInstance()->addFactory("Example", new ExportFactories());
+
+		//_instanceMotor->setupInstance("WILDLESS", "prueba2.lua", "prueba2");
+		//_instanceMotor = VernierEngine::getInstance();
+		//_instanceMotor->getFactoryMng()->addFactory("Example", new ExportFactories());
+			
+		//delete _instanceMotor;
 	}
 }
 

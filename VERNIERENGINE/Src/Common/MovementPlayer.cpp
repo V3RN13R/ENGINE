@@ -13,8 +13,8 @@
 //const float toRadians = _PI / 180.0;
 //const float toAngles = 180.0 / _PI;
 
-MovementPlayer::MovementPlayer(std::map<std::string, std::string> args) : _vel(std::stof(args["Vel"])), _entidadBuscar(args["Entity"]), 
-	_speed(std::stof(args["Speed"])), _jump(std::stof(args["Jump"]))
+MovementPlayer::MovementPlayer(std::map<std::string, std::string> args) : _vel(std::stof(args["Vel"])), _entidadBuscar(args["Entity"]),
+_speed(std::stof(args["Speed"])), _jump(std::stof(args["Jump"]))
 {
 	std::cout << "Contructora lua MovementPlayer\n";
 }
@@ -26,14 +26,14 @@ void MovementPlayer::start()
 
 }
 
-void MovementPlayer::update(){
+void MovementPlayer::update() {
 	dirFinal = Vector3D(0, 0, 0);
 	//std::cout << _rbToMove->getVel().getX() << " " << _rbToMove->getVel().getY() << " " << _rbToMove->getVel().getZ() << "\n";
 
 }
 void MovementPlayer::receiveEvent(int msg, Entity* e) {
-	
-	 
+
+
 	if (msg == MessageType::W) {
 		dirFinal += Vector3D(std::cos(transformCamara->getRot().getY() * toRadians), 0, -std::sin(transformCamara->getRot().getY() * toRadians)) * _vel * _speed;
 	}
@@ -54,14 +54,14 @@ void MovementPlayer::receiveEvent(int msg, Entity* e) {
 		if (jumps > 0) {
 			float multiplier = 2;/*
 			if (jumps == 1) multiplier = 5;*/
-			_rbToMove->addImpulse(Vector3D(0, 50, 0) * _jump* multiplier);
+			_rbToMove->addImpulse(Vector3D(0, 50, 0) * _jump * multiplier);
 
 			jumps--;
 		}
 		else {
 			std::cout << "No salto";
 		}
-		
+
 	}
 
 
@@ -70,7 +70,8 @@ void MovementPlayer::receiveEvent(int msg, Entity* e) {
 
 void MovementPlayer::onCollisionEnter(Entity* other, Vector3D point, Vector3D normal)
 {
+	std::cout << "Lavidalavidalavidalavida";
 	if (other->getComponent("Ground")) {
-		jumps = 1;
+		jumps = 2;
 	}
 }

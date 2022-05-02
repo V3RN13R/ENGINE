@@ -60,6 +60,7 @@ public:
 
 	void refresh();
 
+
 	/// <summary>
 	/// Busca y devuelve el primer objeto en la escena con ese nombre
 	/// </summary>

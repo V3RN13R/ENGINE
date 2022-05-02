@@ -15,6 +15,7 @@
 #include "Player.h"
 #include "Image.h"
 #include "BananaMovement.h"
+#include <ENGINE.h>
 
 Component* TransformFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
@@ -101,7 +102,7 @@ Component* BananaMovementFactory::createComponent(std::map<std::string, std::str
 
 void setupFactories()
 {
-	FactoryManager* _fM = FactoryManager::getInstance();
+	FactoryManager* _fM = VernierEngine::getInstance()->getFactoryMng();
 
 	_fM->addFactory("Transform", new TransformFactory());
 	_fM->addFactory("MeshRenderer", new MeshRendererFactory());

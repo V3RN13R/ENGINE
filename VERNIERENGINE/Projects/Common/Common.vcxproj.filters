@@ -83,6 +83,12 @@
     <ClCompile Include="..\..\Src\Common\Image.cpp">
       <Filter>components</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\Common\ENGINE.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Common\VernierTime.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Common\Light.h">
@@ -164,9 +170,6 @@
     <ClInclude Include="..\..\Src\Common\Health.h">
       <Filter>components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Common\MovementPlayer.h">
-      <Filter>utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Src\Common\BananaMovement.h">
       <Filter>components</Filter>
     </ClInclude>
@@ -180,6 +183,15 @@
       <Filter>components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\Common\Image.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\ENGINE.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\VernierTime.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\MovementPlayer.h">
       <Filter>components</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,6 +2,8 @@
 #include "Entity.h"
 #include "Transform.h"
 #include "Component.h"
+#include "ENGINE.h"
+#include "VernierTime.h"
 #include "PhysicsManager.h"
 #include <btBulletDynamicsCommon.h>
 
@@ -42,14 +44,15 @@ Rigidbody::~Rigidbody()
 
 void Rigidbody::addSphereRigidbody(float mass, float radius, Vector3D pos, bool statc)
 {
-	_brb = PhysicsManager::getInstance()->addSphereRigidbody(mass, radius, { pos.getX(),pos.getY(),pos.getZ() }, &sendContacts, this);
+	_brb = VernierEngine::getInstance()->getPhysicsMng()->addSphereRigidbody(mass, radius, { pos.getX(),pos.getY(),pos.getZ() }, &sendContacts, this);
 	setTrigger(_isTrigger);
+	
 	_brb->setActivationState(DISABLE_DEACTIVATION);
 }
 
 void Rigidbody::addBoxRigidbody(float mass, Vector3D pos, Vector3D size, bool statc)
 {
-	_brb = PhysicsManager::getInstance()->addBoxRigidbody(mass, { pos.getX(),pos.getY(),pos.getZ() }, { size.getX(),size.getY(),size.getZ() }, &sendContacts, this);
+	_brb = VernierEngine::getInstance()->getPhysicsMng()->addBoxRigidbody(mass, { pos.getX(),pos.getY(),pos.getZ() }, { size.getX(),size.getY(),size.getZ() }, &sendContacts, this);
 	setTrigger(_isTrigger);
 	_brb->setActivationState(DISABLE_DEACTIVATION);
 }
@@ -57,7 +60,7 @@ void Rigidbody::addBoxRigidbody(float mass, Vector3D pos, Vector3D size, bool st
 void Rigidbody::update()
 {
 	for (CollisionInfo& cI : collisions) {
-		cI.time++;
+		cI.time += VernierEngine::getInstance()->getTime()->deltaTime();
 	}
 }
 
@@ -70,6 +73,7 @@ void Rigidbody::fixedUpdate()
 void Rigidbody::lateUpdate()
 {
 	for (auto it = collisions.begin(); it != collisions.end();) {
+
 		if ((it)->time > TIME_TO_EXIT) {
 			if ((it)->rb)
 				((it)->_isTrigger) ? entity_->onTriggerExit((it)->rb->entity_, (*it).point) : entity_->onCollisionExit((it)->rb->entity_, (it)->point);

@@ -11,33 +11,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Src\ENGINE\ENGINE.cpp" />
+    <ClCompile Include="..\..\Src\ENGINE\Source.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Src\ENGINE\Prueba.lua" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.vcxproj">
       <Project>{b7c268c4-6df9-4667-849b-9d96e7b8c922}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\LuaBridge\LuaBridge\LuaBridge.vcxproj">
-      <Project>{81096c5f-2485-4f74-b7a8-4f349c2e4d8a}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\PhysicsEngine\PhysicsEngine.vcxproj">
-      <Project>{49f3719d-440e-40ff-96f9-741a1cee3247}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\RenderEngine\RenderEngine.vcxproj">
-      <Project>{9085b30a-8064-4d3a-b239-9201fc788658}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\SoundEngine\SoundEngine\SoundEngine.vcxproj">
-      <Project>{e314f640-1737-4ba9-bb55-f80ab0aae22c}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\UIManager\UIManager.vcxproj">
-      <Project>{cbb35c75-ae0f-499c-bb28-a156a906af84}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Src\ENGINE\ENGINE.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\Src\ENGINE\Prueba.lua" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -109,7 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Lua\Src;$(SolutionDir)Dependencies\LuaBridge\Distribution;$(SolutionDir)Src\UIManager;$(SolutionDir)Exes;$(SolutionDir)Dependencies\Fmod\include;$(SolutionDir)Src\SoundEngine;$(SolutionDir)Src\Common;$(SolutionDir)Dependencies\Ogre\Build\x64\include;$(SolutionDir)Dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Build\x64\Dependencies\include\SDL2</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Lua\Src;$(SolutionDir)Dependencies\LuaBridge\Distribution;$(SolutionDir)Src\UIManager;$(SolutionDir)Dependencies\Ogre\Src\Components\Overlay\include;$(SolutionDir)Exes;$(SolutionDir)Dependencies\Fmod\include;$(SolutionDir)Src\SoundEngine;$(SolutionDir)Src\Common;$(SolutionDir)Dependencies\Ogre\Build\x64\include;$(SolutionDir)Dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Build\x64\Dependencies\include\SDL2</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>

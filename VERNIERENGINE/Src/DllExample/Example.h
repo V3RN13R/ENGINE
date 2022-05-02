@@ -2,11 +2,16 @@
 #include "ExampleDll.h"
 #include "Component.h"
 #include "Factory.h"
+
+class Engine;
+class VernierEngine;
+
 class EXAMPLE_API Example:public Component
 {
 public:
 	Example();
 	void update() override;
+	static VernierEngine* _instanceMotor;
 };
 
 class EXAMPLE_API ExportFactories:public Factory{

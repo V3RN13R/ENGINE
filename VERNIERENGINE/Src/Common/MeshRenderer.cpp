@@ -3,17 +3,18 @@
 #include "RenderMain.h"
 
 #include <Ogre.h>
+#include <ENGINE.h>
 
 using OgrePrefab = Ogre::SceneManager::PrefabType;
 
 MeshRenderer::MeshRenderer(Entity* e) : Component(e), _ogreEnt(nullptr)
 {
-	_mSceneManager = RenderMain::getInstance()->getSceneManager();
+	_mSceneManager = VernierEngine::getInstance()->getRenderMain()->getSceneManager();
 }
 
 MeshRenderer::MeshRenderer(std::map<std::string, std::string> args) : _ogreEnt(nullptr), _mesh(args["Mesh"])
 {
-	_mSceneManager = RenderMain::getInstance()->getSceneManager();
+	_mSceneManager = VernierEngine::getInstance()->getRenderMain()->getSceneManager();
 	start(_mesh);
 }
 
@@ -58,7 +59,7 @@ MeshRenderer::~MeshRenderer()
 	if (_node)
 		_node->detachObject(_ogreEnt);
 	_node = nullptr;
-	RenderMain::getInstance()->getSceneManager()->destroyEntity(_ogreEnt);
+	VernierEngine::getInstance()->getRenderMain()->getSceneManager()->destroyEntity(_ogreEnt);
 	_ogreEnt = nullptr;
 	//borrar basura creada al meter la mesh?� como el Ogre::Entity quizas no lo s�
 }

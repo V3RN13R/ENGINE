@@ -13,11 +13,12 @@
 
 #include "OgreDefaultDebugDrawer.h"
 #include "../Common/Light.h"
+#include "../Common/ENGINE.h"
 
 void WindowRender::setUpOgreRoot()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
-	_root = RenderMain::getInstance()->getRoot();
+	_root = VernierEngine::getInstance()->getRenderMain()->getRoot();
 	//_root->showConfigDialog(NULL);
 	if (!_root->showConfigDialog(NULL))
 		return;
@@ -25,7 +26,7 @@ void WindowRender::setUpOgreRoot()
 
 	_root->initialise(false);
 	setUpWindow();
-	_mSceneManager = RenderMain::getInstance()->getSceneManager();
+	_mSceneManager = VernierEngine::getInstance()->getRenderMain()->getSceneManager();
 
 	//_mSceneManager->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
 
