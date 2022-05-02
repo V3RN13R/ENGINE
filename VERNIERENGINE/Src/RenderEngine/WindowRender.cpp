@@ -47,7 +47,7 @@ void WindowRender::setUpWindow()
 
 	Uint32 flags = SDL_WINDOW_ALLOW_HIGHDPI;
 
-	_sDLWindow = SDL_CreateWindow("Motor", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen_width_, screen_height_, flags);
+	_sDLWindow = SDL_CreateWindow("Motor", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1900, 1060, flags);
 
 	//S_sdlwindow2 = SDL_CreateWindow("Interfaz", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 600, 600, flags);
 	//Create the renderer

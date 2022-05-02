@@ -12,6 +12,8 @@ private:
 	std::string _overlayName;
 	std::string _name;
 	UIImage* _img;
+	int _x, _y;
+	int _w, _h;
 public:
 	Image(){}
 	~Image(){}

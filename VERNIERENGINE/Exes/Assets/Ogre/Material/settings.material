@@ -1,11 +1,11 @@
-material altavoz {
+material settings {
     receive_shadows on
     technique {
         pass {
             diffuse 0.8 0.8 0.8 1.0
 
             texture_unit {
-                texture altavoz1.png
+                texture settings.png
                 tex_address_mode wrap
                 colour_op modulate
             }

@@ -50,3 +50,7 @@ void UIElement::setMaterial(std::string material) {
 
 	_material = material;
 }
+
+void UIElement::setRenderOrder(int z) {
+	_overlay->setZOrder(z);
+}

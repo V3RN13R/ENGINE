@@ -27,6 +27,7 @@ public:
 	void start();
 	static UIManager* setUpInstance();
 	static UIManager* getInstance();
+	int getNum();
 	UIImage* addImage(std::string overlayName, std::string image);
 	// UIImage* getImage(std::string imageName);
 };

@@ -2,21 +2,6 @@ menu = {
     entities = {"cubo1","mono2", "suelo2","camaraPrincipal2", "luz", "imagen"}
 }
 
-imagen = {
-    Active = true,
-    Listener = false,
-    Components = {"Transform", "Image"},
-    Transform = {
-        Position = "-100, 100, 0",
-        Scale = "1, 1, 1",
-        Rotation = "0, 0, 0"
-    },
-    Image = {
-        OverlayName = "imagen1",
-        Name = "altavoz"
-    }
-}
-
 dll={
     Active = true,
     Listener = false,
@@ -173,5 +158,21 @@ camaraPrincipal2={
         NearClipDistance = 1,
         FarClipDistance = 100000,
         AspectRatio = 1
+    }
+}
+
+
+imagen = {
+    Active = true,
+    Listener = false,
+    Components = {"Transform", "Image"},
+    Transform = {
+        Position = "-100, 100, 0",
+        Scale = "1, 1, 1",
+        Rotation = "0, 0, 0"
+    },
+    Image = {
+        OverlayName = "imagen1",
+        Name = "play"
     }
 }

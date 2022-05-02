@@ -35,6 +35,7 @@ void UIManager::initOverlaySystem() {
     _instance->_overlaySys = new Ogre::OverlaySystem();
     _instance->_overlayMng = Ogre::OverlayManager::getSingletonPtr();
     _instance->_overlay = _overlayMng->create("OverlayName");
+    _instance->_num = 0;
     WindowRender::getInstance()->getSceneManager()->addRenderQueueListener(_instance->_overlaySys);
 }
 
@@ -43,10 +44,16 @@ void UIManager::start() {
         _instance->_overlayElements[i]->show();
     }
 }
+
 UIImage* UIManager::addImage(std::string overlayname, std::string image){
-    auto imagen = new UIImage(overlayname, _overlayElements.size(), image);
+    auto imagen = new UIImage(overlayname, _num, image);
     _instance->_overlayElements.push_back(imagen);
+    _num++;
     return imagen;
+}
+
+int UIManager::getNum() {
+    return _num;
 }
 
 //UIImage* UIManager::getImage(std::string image) {

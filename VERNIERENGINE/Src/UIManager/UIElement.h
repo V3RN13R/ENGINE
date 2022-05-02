@@ -38,10 +38,10 @@ public:
 	void setDimensions(int dx, int dy);
 	void setSize(int w, int h);
 	void setMaterial(std::string material);
+	void setRenderOrder(int z);
 
 	// GETTERS
 	std::pair<int, int> getPosition() { return { _x, _y }; }
 	std::pair<int, int> getSize()     { return { _w, _h }; }
-	std::string getMaterial()		  { return _material; }
-
+	std::string getMaterial()		  { return  _material; }
 };

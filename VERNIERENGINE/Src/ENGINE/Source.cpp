@@ -84,13 +84,13 @@ int main()
 		std::cout << "Se ha leido la DLL\n";
 		lua_pop(L, 1);
 		lua_close(L);
-		VernierEngine::setupInstance("WILDLESS", "prueba2.lua", "prueba2");
+		VernierEngine::setupInstance("WILDLESS", "menuprincipal.lua", "menuprincipal");
 		/*if (!ftry) {
 			std::cout << "ERROR\n";
 		}
 		else
 			ftry();*/
-		VernierEngine::getInstance()->startScene("prueba2.lua", "prueba2");
+		VernierEngine::getInstance()->startScene("menuprincipal.lua", "menuprincipal");
 		FreeLibrary(hDLL);
 	}
 	bool stay = true;

@@ -10,7 +10,7 @@ UIImage::UIImage(std::string name, int order, std::string image) {
 	_overlayCont->setPosition(-100, -100);
 	_overlayCont->setMaterialName(image);
 
-	_overlay = _overlayMng->create(name);
+	_overlay = _overlayMng->create(name + std::to_string(order));
 	_overlay->add2D(_overlayCont);
 	_overlayCont->show();
 }
