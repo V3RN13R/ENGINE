@@ -127,6 +127,15 @@ public:
 	virtual ~HealthFactory() { delete _c; };
 };
 
+class TextFactory : public Factory
+{
+private:
+	Component* _c;
+public:
+	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
+	virtual ~TextFactory() { delete _c; };
+};
+
 class BananaMovementFactory : public Factory
 {
 private:
