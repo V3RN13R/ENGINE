@@ -2,7 +2,6 @@
 #include <vector>
 #include "Vector3D.h"
 
-
 class Entity;
 
 class Component {

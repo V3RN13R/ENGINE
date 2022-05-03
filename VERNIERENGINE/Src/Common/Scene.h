@@ -9,8 +9,10 @@
 
 namespace luabridge {
 	class LuaRef;
-}
+	//class lua_State;
 
+}
+typedef struct lua_State lua_State;
 class GameStateMachine;
 
 class Scene {
@@ -29,7 +31,8 @@ private:
 
 	bool sceneStarted = false;
 	std::string _name;
-
+	lua_State* _state = nullptr;
+	lua_State* _stateAux = nullptr;
 public:
 	Scene(const std::string& file, const std::string& name, GameStateMachine* gsm);
 	~Scene();
