@@ -6,6 +6,7 @@
 
 #include "Vector3D.h"
 #include <iostream>
+//#include "checkML.h"
 
 
 PhysicsManager* PhysicsManager::_instance = nullptr;
@@ -142,19 +143,21 @@ PhysicsManager::~PhysicsManager()
 		delete shape;
 	}
 
-
+	/*for (auto it = collisions.begin(); it != collisions.end();) {
+		if ((*it).rb == rb) {
+			((*it).trigger) ? entity_->onTriggerExit((*it).rb->entity_, (*it).point) : entity_->onCollisionExit((*it).rb->entity_, (*it).point);
+			it = collisions.erase(it);
+			return;
+		}
+		else
+			it++;
+	}*/
 	delete dynamicsWorld;
 	delete collConfig;
 	delete collDispatcher;
 	delete broadPhaseInterface;
 	delete constraintSolver;
 	delete mDebugDrawer_;
-
-
-
-
-
-
 }
 
 

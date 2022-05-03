@@ -40,8 +40,19 @@ Rigidbody::Rigidbody(std::map<std::string, std::string> args) : _position(args["
 
 Rigidbody::~Rigidbody()
 {
-	/*PhysicsManager::getInstance()->getDynamicsWorld()->removeRigidBody(_brb);
-	delete _brb;*/
+
+	/*for (auto it = collisions.begin(); it != collisions.end();) {
+		if ((*it).rb == rb) {
+			((*it).trigger) ? entity_->onTriggerExit((*it).rb->entity_, (*it).point) : entity_->onCollisionExit((*it).rb->entity_, (*it).point);
+			it = collisions.erase(it);
+			return;
+		}
+		else
+			it++;
+	}*/
+	PhysicsManager::getInstance()->getDynamicsWorld()->removeRigidBody(_brb);
+	delete _brb->getUserPointer();
+	delete _brb;
 }
 
 void Rigidbody::addSphereRigidbody(float mass, float radius, Vector3D pos, bool statc)
@@ -112,7 +123,7 @@ Vector3D Rigidbody::getPosition()
 void Rigidbody::resetTransform(Vector3D v1, float q1, float q2, float q3, float q4)
 {
 	btTransform tr = _brb->getCenterOfMassTransform();
-	Transform* transform = entity_->getComponent<Transform>();
+	//Transform* transform = entity_->getComponent<Transform>();
 
 	tr.setOrigin(btVector3(v1.getX(), v1.getY(), v1.getZ()));
 	btQuaternion(q1, q2, q3, q4);

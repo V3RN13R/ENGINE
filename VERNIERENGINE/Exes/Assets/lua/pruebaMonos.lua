@@ -31,7 +31,7 @@ luz = {
 mono1={
     Active = true,
     Listener = true,
-    Components = {"Transform","MeshRenderer", "Rigidbody","MovementPlayer", "MonkeyStats"},
+    Components = {"Transform","MeshRenderer", "Rigidbody"},
 
     Transform = {
         Position = "0,300,0",
@@ -47,22 +47,13 @@ mono1={
         Mass = "1",
         Radius = "10",
         Position = "0,300,0"
-    },
-    MovementPlayer = {
-        Vel = "10",
-        Entity = "camaraPrincipal2"
-    },
-    MonkeyStats = {
-        Lives = 5,
-        Speed = 0.8,
-        Jump = 0.8
     }
 }
 
 mono2={
     Active = true,
     Listener = true,
-    Components = {"Transform","MeshRenderer", "Rigidbody","MovementPlayer", "MonkeyStats"},
+    Components = {"Transform","MeshRenderer", "Rigidbody"},
 
     Transform = {
         Position = "0,300,0",
@@ -78,22 +69,13 @@ mono2={
         Mass = "1",
         Radius = "10",
         Position = "0,300,0"
-    },
-    MovementPlayer = {
-        Vel = "10",
-        Entity = "camaraPrincipal2"
-    },
-    MonkeyStats = {
-        Lives = 4,
-        Speed = 1,
-        Jump = 1
     }
 }
 
 mono3={
     Active = true,
     Listener = true,
-    Components = {"Transform","MeshRenderer", "Rigidbody","MovementPlayer", "MonkeyStats"},
+    Components = {"Transform","MeshRenderer", "Rigidbody"},
 
     Transform = {
         Position = "0,300,0",
@@ -109,15 +91,6 @@ mono3={
         Mass = "1",
         Radius = "10",
         Position = "0,300,0"
-    },
-    MovementPlayer = {
-        Vel = "10",
-        Entity = "camaraPrincipal2"
-    },
-    MonkeyStats = {
-        Lives = 3,
-        Speed = 1.2,
-        Jump = 1.2
     }
 }
 

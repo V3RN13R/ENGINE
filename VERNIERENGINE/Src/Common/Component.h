@@ -2,34 +2,23 @@
 #include <vector>
 #include "Vector3D.h"
 
-
 class Entity;
 
 class Component {
 public:
-	Component(Entity* e = nullptr) :
-		entity_(e) {
-	}
+	Component(Entity* e = nullptr) : entity_(e) {}
 
 	virtual ~Component() {}
 
 	virtual void start() {}
 
-	inline void setEntity(Entity* e) {
-		entity_ = e;
-	}
+	inline void setEntity(Entity* e) {entity_ = e;}
 
-	inline Entity* getEntity() {
-		return entity_;
-	}
+	inline Entity* getEntity() {return entity_;}
 
-	inline bool getEnable() {
-		return _enable;
-	}
+	inline bool getEnable() {return _enable;}
 
-	virtual bool init() {
-		return false;
-	}
+	virtual bool init() {return false;}
 
 	inline bool isEnable() { return _enable; }
 

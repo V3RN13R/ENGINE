@@ -15,6 +15,7 @@
     <ClCompile Include="..\..\Src\RenderEngine\WindowRender.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Src\RenderEngine\checkML.h" />
     <ClInclude Include="..\..\Src\RenderEngine\RenderMain.h" />
     <ClInclude Include="..\..\Src\RenderEngine\WindowRender.h" />
   </ItemGroup>

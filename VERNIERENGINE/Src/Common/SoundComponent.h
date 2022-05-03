@@ -1,10 +1,11 @@
 #pragma once
 
 #include "Component.h"
+#include "EngineDll.h"
 #include <string>
 #include <map>
 
-class SoundComponent : public Component
+class V3RN13R_API SoundComponent : public Component
 {
 private: 
 	std::string _route;

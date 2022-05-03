@@ -1,5 +1,5 @@
 menu = {
-    entities = {"cubo1","mono2", "suelo2","camaraPrincipal2", "luz", "imagen"}
+    entities = {"cubo1", "suelo2","camaraPrincipal2", "luz", "imagen"}
 }
 
 dll={
@@ -65,7 +65,7 @@ luz = {
 mono2={
     Active = true,
     Listener = true,
-    Components = {"Transform","MeshRenderer", "Rigidbody","MovementPlayer", "Health", "Shoot"},
+    Components = {"Transform","MeshRenderer", "Rigidbody"},
 
     Transform = {
         Position = "0,300,0",
@@ -81,20 +81,6 @@ mono2={
         Mass = "1",
         Radius = "40",
         Position = "0,300,0"
-    },
-    MovementPlayer = {
-        Vel = "30",
-        Entity = "camaraPrincipal2",
-        Speed = 1,
-        Jump = 1
-    },
-    Health = {
-        Lives = 4
-    },
-    Shoot={
-        File = "bala.lua",
-        Name = "bala",
-        PrefabName= "bala"
     }
 }
 

@@ -5,7 +5,7 @@ prueba = {
 mono={
     Active = true,
     Listener = true,
-    Components = {"Transform","MeshRenderer", "Rigidbody", "MovementPlayer"},
+    Components = {"Transform","MeshRenderer", "Rigidbody"},
 
     Transform = {
         Position = "0,100,0",
@@ -20,13 +20,7 @@ mono={
         Mass = "1",
         Radius = "10",
         Position = "0,0,0"
-    },
-    MovementPlayer = {
-        Vel = "10",
-        Entity = "camaraPrincipal",
-        Speed = 1,
-        Jump = 1
-    },
+    }
 }
 
 camaraPrincipal={

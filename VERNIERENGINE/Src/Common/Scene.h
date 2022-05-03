@@ -2,18 +2,22 @@
 
 #include <string>
 #include <vector>
+#include "EngineDll.h"
 #include "Entity.h"
-#include "FactoryManager.h"
-#include "InputManager.h"
 #include "Utils.h"
 
 namespace luabridge {
 	class LuaRef;
-}
+	//class lua_State;
 
+}
+typedef struct lua_State lua_State;
+
+class FactoryManager;
+class InputManager;
 class GameStateMachine;
 
-class Scene {
+class V3RN13R_API Scene {
 private:
 	std::vector<Entity*> _entities;
 	std::vector<Entity*> _listeners;
@@ -29,7 +33,8 @@ private:
 
 	bool sceneStarted = false;
 	std::string _name;
-
+	lua_State* _state = nullptr;
+	lua_State* _stateAux = nullptr;
 public:
 	Scene(const std::string& file, const std::string& name, GameStateMachine* gsm);
 	~Scene();

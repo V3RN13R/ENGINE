@@ -1,5 +1,5 @@
 prueba2 = {
-    entities = {"cubo1","mono2", "suelo2","camaraPrincipal2", "luz","dll"}
+    entities = {"cubo1","mono2", "suelo2","camaraPrincipal2", "luz", "dll"}
 }
 
 dll={
@@ -17,7 +17,7 @@ dll={
 cubo1={
     Active = true,
     Listener = false,
-    Components = {"Transform","MeshRenderer", "Rigidbody", "Ground", "Destroyable"},
+    Components = {"Transform","MeshRenderer", "Rigidbody"},
 
     Transform = {
         Position = "200,100,0",
@@ -34,12 +34,6 @@ cubo1={
         Mass = "0",
         Scale = "100,100,100",
         Position = "200,100,0"
-    },
-    Ground ={
-
-    },
-    Destroyable ={
-
     }
 }
 
@@ -72,17 +66,13 @@ luz = {
 mono2={
     Active = true,
     Listener = true,
-    Components = {"Player", "Transform","MeshRenderer", "Rigidbody","MovementPlayer", "Health", "Shoot", "SoundComponent"},
+    Components = {"Transform","MeshRenderer", "Rigidbody", "SoundComponent"},
 
-    Player = {
-
-    },
     Transform = {
         Position = "0,300,0",
         Scale = "1,1,1",
         Rotation = "0,0,0"
-    },
-	
+    },	
 	MeshRenderer = {
         Mesh = "Sphere"
     },
@@ -91,20 +81,6 @@ mono2={
         Mass = "1",
         Radius = "40",
         Position = "0,300,0"
-    },
-    MovementPlayer = {
-        Vel = "30",
-        Entity = "camaraPrincipal2",
-        Speed = 1,
-        Jump = 1
-    },
-    Health = {
-        Lives = 4
-    },
-    Shoot={
-        File = "bala.lua",
-        Name = "bala",
-        NameInGame= "banana"
     },
     SoundComponent={
         Ruta =  "./Assets/Sounds/",
@@ -117,7 +93,7 @@ mono2={
 suelo2={
     Active = true,
     Listener = false,
-    Components = {"Transform","MeshRenderer", "Rigidbody", "Ground"},
+    Components = {"Transform","MeshRenderer", "Rigidbody"},
 
     Transform = {
         Position = "0,0,0",
@@ -134,11 +110,7 @@ suelo2={
         Mass = "0",
         Scale = "1000,1,1000",
         Position = "0, 0,0"
-    },
-    Ground = {
-
-    }
-    
+    }    
 }
 
 bala={

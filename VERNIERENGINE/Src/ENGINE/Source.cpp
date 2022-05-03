@@ -32,6 +32,7 @@ extern "C"
 #include "lualib.h"
 #include "lauxlib.h"
 #include <SDL_render.h>
+#include "checkML.h"
 }
 
 
@@ -55,8 +56,10 @@ int main()
 	std::wstring dllNameW = std::wstring(dllName.begin(), dllName.end());
 	HINSTANCE hDLL = LoadLibrary(dllNameW.c_str());
 	lua_pop(L, 1);
-	if (hDLL == NULL)
-		std::cout << "Failed Load " << dllName << ".dll\n";
+	if (hDLL == NULL) {
+		std::cout << "Failed Load " << dllName << "\n";
+		lua_close(L);
+	}
 	else {
 		std::cout << "LoadDll\n";
 		lua_getglobal(L, "WindowName");
@@ -81,7 +84,7 @@ int main()
 			return 0;
 		}
 		else {
-			std::cout << "Cargando la función e iniciando el motor\n";
+			std::cout << "Cargando la funciï¿½n e iniciando el motor\n";
 			lua_pop(L, 1);
 			lua_close(L);
 			VernierEngine::setupInstance(appName, sceneFile, scene);
@@ -92,8 +95,8 @@ int main()
 				stay = VernierEngine::getInstance()->processFrame();
 			} while (stay);
 
-			FreeLibrary(hDLL);
 			delete VernierEngine::getInstance();
+			FreeLibrary(hDLL);
 		}
 
 	}

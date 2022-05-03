@@ -4,13 +4,13 @@
 #include "GameStateMachine.h"
 #include "RenderMain.h"
 #include "Scene.h"
-#include <Ogre.h>
 #include "Transform.h"
-#include "Component.h"
 #include "OgreMath.h"
 #include "Transform.h"
 #include "SoundComponent.h"
+#include "InputManager.h"
 #include <iostream>
+#include <Ogre.h>
 #include <math.h>
 //#include "checkML.h"
 

@@ -1,6 +1,8 @@
 #include "SoundManager.h"
 #include <iostream>
 #include <vector>
+#include "checkML.h"
+
 SoundManager* SoundManager::_instance = nullptr;
 SoundManager* SoundManager::getInstance()
 {
@@ -35,6 +37,7 @@ void SoundManager::deleteInstance()
 
 SoundManager::~SoundManager()
 {
+	_instance->_System->close();
 }
 
 void SoundManager::update() {

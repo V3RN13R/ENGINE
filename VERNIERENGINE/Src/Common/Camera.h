@@ -1,20 +1,13 @@
 #pragma once
 
 #include "Component.h"
-#include <string>
-#include "Vector3D.h"
-#include <map>
 #include "Utils.h"
+#include "EngineDll.h"
+#include <map>
 #include <string>
-class Component;
+
 class Transform;
 class SoundComponent;
-
-//
-//
-//const float _PI = 3.1416;
-//const float toRadians = _PI / 180.0;
-//const float toAngles = 180.0 / _PI;
 
 namespace Ogre {
 	class Root;
@@ -26,7 +19,7 @@ namespace Ogre {
 	class Viewport;
 	
 }
-class Camera : public Component {
+class V3RN13R_API Camera : public Component {
 private:
 	Ogre::Camera* _camera=nullptr;
 	Ogre::SceneNode* mNodeCamera;
@@ -64,5 +57,4 @@ public:
 	void onEnable() override;
 	//virtual void sendEvent(MessageType msg){}
 	void receiveEvent(int msg, Entity* e) override;
-
 };
