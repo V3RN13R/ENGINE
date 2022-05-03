@@ -2,6 +2,7 @@
 #include <Ogre.h>
 #include <iostream>
 #include "OgreFileSystemLayer.h"
+#include "SoundManager.h"
 //#include "checkML.h"
 std::unique_ptr<ResourceManager> ResourceManager::_instance;
 
@@ -95,6 +96,8 @@ void ResourceManager::loadResources()
 
 	// load located resources
 	Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
+	
+	SoundManager::getInstance()->addRoute("/Assets/Sounds/");
 }
 
 ResourceManager::ResourceManager(std::string assetsPath)

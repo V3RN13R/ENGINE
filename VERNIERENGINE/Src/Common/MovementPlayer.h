@@ -10,12 +10,14 @@ class btRigidBody;
 class btVector3;
 class Rigidbody;
 class Transform;
+class SoundComponent;
 
 class MovementPlayer : public Component {
 private:
 	Vector3D dirFinal = Vector3D(0, 0, 0);
 	Rigidbody* _rbToMove = nullptr;
 	Transform* transformCamara = nullptr;
+	SoundComponent* _sc = nullptr;
 	std::string _entidadBuscar;
 	int jumps;
 	float  _vel;

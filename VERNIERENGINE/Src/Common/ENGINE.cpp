@@ -52,6 +52,8 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	FactoryManager::setUpInstance();
 	setupFactories();
 
+	SoundManager::setUpInstance();
+	_soundManager = getSoundMng();
 	////Resources
 	readAssetsPath();
 	ResourceManager::init(_assetsPath);
@@ -73,8 +75,6 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 
 	//SoundManager
 	//inicializa la intancia y llama al init() de Soundmanager
-	SoundManager::setUpInstance();
-	_soundManager = getSoundMng();
 	//_soundManager->playSound("main theme.mp3", 1.0f);
 
 	InputManager::setUpInstance();

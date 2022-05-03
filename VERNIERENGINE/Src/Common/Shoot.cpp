@@ -27,7 +27,8 @@ void Shoot::receiveEvent(int msg, Entity* e) {
 void Shoot::onDisable()
 {
 	Component::onDisable();
-	_sc->stopAllSounds();
+	if (_sc)
+		_sc->stopAllSounds();
 }
 
 void Shoot::start()

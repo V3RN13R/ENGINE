@@ -6,6 +6,7 @@
 #include "Entity.h"
 #include "RigidBody.h"
 #include "Transform.h"
+#include "SoundComponent.h"
 #include "Scene.h"
 #include "ENGINE.h"
 #include "VernierTime.h"
@@ -27,6 +28,7 @@ void MovementPlayer::start()
 {
 	transformCamara = static_cast<Transform*>(entity_->getScene()->getObjectWithName(_entidadBuscar)->getComponent("Transform"));
 	_rbToMove = static_cast<Rigidbody*>(entity_->getComponent("Rigidbody"));
+	_sc = (SoundComponent*)entity_->getComponent("SoundComponent");
 
 }
 
@@ -38,6 +40,8 @@ void MovementPlayer::update() {
 			if (_lastTime + 0.5f < currentTime) {
 				float multiplier = 2;
 				_rbToMove->addImpulse(Vector3D(0, 50, 0) * _jump * multiplier);
+				if (_sc)
+					_sc->playsound("Jump");
 				jumps--;
 				_lastTime = currentTime;
 			}
