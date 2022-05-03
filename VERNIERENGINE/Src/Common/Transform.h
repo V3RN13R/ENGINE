@@ -4,11 +4,12 @@
 #include "Vector3D.h"
 #include <map>
 #include <iostream>
+#include "EngineDll.h"
 
 class Component;
 
 
-class Transform : public Component {
+class V3RN13R_API Transform : public Component {
 	enum Axis :uint8_t { x, y, z };
 public:
 	/*Transform() :

@@ -1,10 +1,11 @@
 #pragma once
 
 #include <chrono>
+#include "EngineDll.h"
 
 const int NFrames = 50;
 
-class VernierTime {
+class V3RN13R_API VernierTime {
 private:
     double deltaTime_;
     double fixedDeltaTime_;

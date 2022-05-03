@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Component.h"
+#include "EngineDll.h"
 #include <string>
 #include <map>
 
@@ -18,7 +19,7 @@ enum PrefabType {
 	PT_SPHERE
 };
 
-class MeshRenderer : public Component {
+class V3RN13R_API MeshRenderer : public Component {
 private:
 	Ogre::SceneNode* _node;
 	Ogre::SceneManager* _mSceneManager;

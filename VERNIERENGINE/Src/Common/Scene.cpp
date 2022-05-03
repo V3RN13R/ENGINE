@@ -1,5 +1,7 @@
 #include "Scene.h"
 #include "LuaManager.h"
+#include "FactoryManager.h"
+#include "InputManager.h"
 #include <algorithm>
 #include <SDL.h>
 //#include "checkML.h"
