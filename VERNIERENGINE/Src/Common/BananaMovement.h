@@ -10,7 +10,6 @@ class btRigidBody;
 class btVector3;
 class Rigidbody;
 class Transform;
-
 class BananaMovement : public Component {
 private:
 	float _ttl;

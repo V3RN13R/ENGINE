@@ -3,6 +3,7 @@
 #include "Utils.h"
 #include <vector>
 #include <SDL_scancode.h>
+#include "EngineDll.h"
 class Entity;
 
 struct MousePositionAbsolute
@@ -21,7 +22,7 @@ struct MouseButtons {
 	bool middleDown = false;
 	bool rightDown = false;
 };
-class InputManager  {
+class V3RN13R_API InputManager  {
 private:
 	InputManager();
 

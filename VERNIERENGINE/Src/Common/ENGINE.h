@@ -3,7 +3,7 @@
 #include <string>
 #include <memory>
 #define SDL_MAIN_HANDLED
-
+#include "EngineDll.h"
 
 //class SDL_Renderer;
 class RenderMain;
@@ -21,7 +21,7 @@ class VernierTime;
 
 class GameStateMachine;
 
-class VernierEngine {
+class V3RN13R_API VernierEngine {
 public:
 	void startGame(int (*a)());
 	static VernierEngine* getInstance() { return _instance; }

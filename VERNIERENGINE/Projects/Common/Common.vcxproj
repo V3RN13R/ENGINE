@@ -19,13 +19,13 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -45,13 +45,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)Lib\$(Platform)\$(Configuration)</OutDir>
+    <OutDir>$(SolutionDir)Exes</OutDir>
     <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Src\PhysicsEngine\;$(SolutionDir)Src\Common\;$(SolutionDir)Src\RenderEngine\;$(SolutionDir)Src\SoundEngine\;$(SolutionDir)Src\LuaBridge\;$(IncludePath)</IncludePath>
+    <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)Lib\$(Platform)\$(Configuration)</OutDir>
+    <OutDir>$(SolutionDir)Exes</OutDir>
     <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Src\PhysicsEngine\;$(SolutionDir)Src\Common\;$(SolutionDir)Src\RenderEngine\;$(SolutionDir)Src\SoundEngine\;$(SolutionDir)Src\LuaBridge\;$(IncludePath)</IncludePath>
   </PropertyGroup>
@@ -59,7 +60,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>V3RN13R_ENGINE;V3RN13R_ENGINE_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Bullet\Src\src\;$(SolutionDir)Dependencies\Lua\Src;$(SolutionDir)Dependencies\LuaBridge\Distribution;$(SolutionDir)Src\UIManager;$(SolutionDir)Dependencies\Ogre\Src\Components\Overlay\include;$(SolutionDir)Exes;$(SolutionDir)Dependencies\Fmod\include;$(SolutionDir)Src\RenderEngine;$(SolutionDir)Src\PhysicsEngine;$(SolutionDir)Src\SoundEngine;$(SolutionDir)Src\Common;$(SolutionDir)Dependencies\Ogre\Build\x64\include;$(SolutionDir)Dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Build\x64\Dependencies\include\SDL2</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -67,6 +68,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\Lua\Lua\$(Platform)\$(Configuration);$(SolutionDir)Dependencies\SDL\SDL2_image-2.0.5\lib\x64;$(SolutionDir)Dependencies\Lua\Lua\$(Platform)\$(Configuration);$(SolutionDir)Dependencies\Bullet\Build\$(Platform)\lib\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Lua_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\SDL\SDL2_image-2.0.5\lib\x64;$(SolutionDir)Dependencies\Lua\Lua\$(Platform)\$(Configuration);$(SolutionDir)Dependencies\Bullet\Build\$(Platform)\lib\$(Configuration)</AdditionalLibraryDirectories>
@@ -78,7 +81,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>V3RN13R_ENGINE;V3RN13R_ENGINENDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Bullet\Src\src\;$(SolutionDir)Dependencies\Lua\Src;$(SolutionDir)Dependencies\LuaBridge\Distribution;$(SolutionDir)Src\UIManager;$(SolutionDir)Dependencies\Ogre\Src\Components\Overlay\include;$(SolutionDir)Exes;$(SolutionDir)Dependencies\Fmod\include;$(SolutionDir)Src\RenderEngine;$(SolutionDir)Src\PhysicsEngine;$(SolutionDir)Src\SoundEngine;$(SolutionDir)Src\Common;$(SolutionDir)Dependencies\Ogre\Build\x64\include;$(SolutionDir)Dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependencies\Ogre\Build\x64\Dependencies\include\SDL2</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -88,6 +91,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\Lua\Lua\$(Platform)\$(Configuration);$(SolutionDir)Dependencies\SDL\SDL2_image-2.0.5\lib\x64;$(SolutionDir)Dependencies\Lua\Lua\$(Platform)\$(Configuration);$(SolutionDir)Dependencies\Bullet\Build\$(Platform)\lib\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Lua.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\SDL\SDL2_image-2.0.5\lib\x64;$(SolutionDir)Dependencies\Lua\Lua\$(Platform)\$(Configuration);$(SolutionDir)Dependencies\Bullet\Build\$(Platform)\lib\$(Configuration)</AdditionalLibraryDirectories>
@@ -139,6 +144,7 @@
     <ClInclude Include="..\..\Src\Common\ecs.h" />
     <ClInclude Include="..\..\Src\Common\ecs_defs.h" />
     <ClInclude Include="..\..\Src\Common\ENGINE.h" />
+    <ClInclude Include="..\..\Src\Common\EngineDll.h" />
     <ClInclude Include="..\..\Src\Common\Entity.h" />
     <ClInclude Include="..\..\Src\Common\Factory.h" />
     <ClInclude Include="..\..\Src\Common\FactoryManager.h" />

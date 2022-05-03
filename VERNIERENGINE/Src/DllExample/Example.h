@@ -11,6 +11,8 @@ class EXAMPLE_API Example:public Component
 public:
 	Example();
 	void update() override;
+	void fixedUpdate() override {};
+	void lateUpdate() override {};
 	static VernierEngine* _instanceMotor;
 };
 

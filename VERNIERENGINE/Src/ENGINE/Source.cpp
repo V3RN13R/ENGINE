@@ -85,11 +85,11 @@ int main()
 		lua_pop(L, 1);
 		lua_close(L);
 		VernierEngine::setupInstance("WILDLESS", sceneFile, scene);
-		/*if (!ftry) {
+		if (!ftry) {
 			std::cout << "ERROR\n";
 		}
 		else
-			ftry();*/
+			ftry();
 		VernierEngine::getInstance()->startScene(sceneFile, scene);
 		FreeLibrary(hDLL);
 	}

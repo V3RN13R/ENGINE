@@ -3,9 +3,10 @@
 #include <string>
 #include "Component.h"
 #include <memory>
+#include "EngineDll.h"
 class Factory;
 
-class FactoryManager {
+class V3RN13R_API FactoryManager {
 public:
 	~FactoryManager();
 
