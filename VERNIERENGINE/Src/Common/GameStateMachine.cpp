@@ -1,5 +1,6 @@
 #include "GameStateMachine.h"
 #include "Scene.h"
+#include "InputManager.h"
 #include "SDL.h"
 #include "../UIManager/UIManager.h"
 //#include "checkML.h"

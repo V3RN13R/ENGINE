@@ -1,17 +1,17 @@
 #pragma once
 #include "Component.h"
+#include "EngineDll.h"
 #include "Vector3D.h"
 #include <map>
 enum CT_Collider;
 class btRigidBody;
-class Component;
 
 class btManifoldPoint;
 
 const float TIME_TO_EXIT = 0.1f;
 
 
-class Rigidbody: public Component
+class V3RN13R_API Rigidbody: public Component
 {
 public:
 	Rigidbody(Entity* e = nullptr) {};

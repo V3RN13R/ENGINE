@@ -2,9 +2,8 @@
 
 #include <string>
 #include <vector>
+#include "EngineDll.h"
 #include "Entity.h"
-#include "FactoryManager.h"
-#include "InputManager.h"
 #include "Utils.h"
 
 namespace luabridge {
@@ -13,9 +12,12 @@ namespace luabridge {
 
 }
 typedef struct lua_State lua_State;
+
+class FactoryManager;
+class InputManager;
 class GameStateMachine;
 
-class Scene {
+class V3RN13R_API Scene {
 private:
 	std::vector<Entity*> _entities;
 	std::vector<Entity*> _listeners;

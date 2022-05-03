@@ -1,10 +1,10 @@
 #pragma once
 
 #include "Component.h"
-#include <string>
 #include "Vector3D.h"
-#include <map>
 #include "Utils.h"
+#include "EngineDll.h"
+#include <map>
 #include <string>
 class Component;
 class Transform;
@@ -26,7 +26,7 @@ namespace Ogre {
 	class Viewport;
 	
 }
-class Camera : public Component {
+class V3RN13R_API Camera : public Component {
 private:
 	Ogre::Camera* _camera=nullptr;
 	Ogre::SceneNode* mNodeCamera;

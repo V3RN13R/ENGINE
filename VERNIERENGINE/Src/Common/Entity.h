@@ -8,6 +8,7 @@
 #include "Component.h"
 #include "ecs.h"
 #include <unordered_map>
+#include "EngineDll.h"
 
 class Vector3D;
 //class Manager;
@@ -17,7 +18,7 @@ namespace Ogre {
 
 class Scene;
 
-class Entity {
+class V3RN13R_API Entity {
 	//friend Manager;
 
 public:

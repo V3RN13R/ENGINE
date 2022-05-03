@@ -11,6 +11,7 @@
 #include "Transform.h"
 #include "SoundComponent.h"
 #include <iostream>
+#include "InputManager.h"
 #include <math.h>
 //#include "checkML.h"
 

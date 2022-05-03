@@ -56,8 +56,10 @@ int main()
 	std::wstring dllNameW = std::wstring(dllName.begin(), dllName.end());
 	HINSTANCE hDLL = LoadLibrary(dllNameW.c_str());
 	lua_pop(L, 1);
-	if (hDLL == NULL)
-		std::cout << "Failed Load " << dllName << ".dll\n";
+	if (hDLL == NULL) {
+		std::cout << "Failed Load " << dllName << "\n";
+		lua_close(L);
+	}
 	else {
 		std::cout << "LoadDll\n";
 		lua_getglobal(L, "WindowName");

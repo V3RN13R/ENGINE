@@ -4,8 +4,9 @@
 #include <map>
 #include <memory>
 #include <string>
+#include "EngineDll.h"
 
-class Callbacks {
+class V3RN13R_API Callbacks {
 
 public:
 	~Callbacks() {};
