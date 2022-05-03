@@ -40,8 +40,19 @@ Rigidbody::Rigidbody(std::map<std::string, std::string> args) : _position(args["
 
 Rigidbody::~Rigidbody()
 {
-	/*PhysicsManager::getInstance()->getDynamicsWorld()->removeRigidBody(_brb);
-	delete _brb;*/
+
+	/*for (auto it = collisions.begin(); it != collisions.end();) {
+		if ((*it).rb == rb) {
+			((*it).trigger) ? entity_->onTriggerExit((*it).rb->entity_, (*it).point) : entity_->onCollisionExit((*it).rb->entity_, (*it).point);
+			it = collisions.erase(it);
+			return;
+		}
+		else
+			it++;
+	}*/
+	PhysicsManager::getInstance()->getDynamicsWorld()->removeRigidBody(_brb);
+	delete _brb->getUserPointer();
+	delete _brb;
 }
 
 void Rigidbody::addSphereRigidbody(float mass, float radius, Vector3D pos, bool statc)

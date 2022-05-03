@@ -2,7 +2,7 @@
 #include "LuaManager.h"
 #include <algorithm>
 #include <SDL.h>
-//#include "checkML.h"
+#include "checkML.h"
 
 Scene::Scene(const std::string& file, const std::string& name, GameStateMachine* gsm) {
 	//_fmanager->setUpInstance(); //se puede quitar en el main se debe de instanciar
@@ -250,8 +250,8 @@ void Scene::clearEntities()
 		if ((*it)->getDestroy()) {
 			(*it)->onDisable();
 			Entity* e = (*it);
-			it = _entities.erase(it);
 			delete e;
+			it = _entities.erase(it);
 			e = nullptr;
 		}
 		else

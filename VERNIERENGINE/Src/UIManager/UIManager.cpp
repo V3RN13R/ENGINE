@@ -11,6 +11,7 @@
 #include "OgreSceneManager.h"
 #include "OgreOverlaySystem.h"
 #include "../RenderEngine/WindowRender.h"
+#include "checkML.h"
 
 
 UIManager* UIManager::_instance = nullptr;
@@ -29,6 +30,27 @@ UIManager* UIManager::getInstance()
 {
     assert(_instance != nullptr);
     return _instance;
+}
+
+void UIManager::deleteInstance() {
+    delete _instance;
+}
+
+UIManager::~UIManager() {
+
+
+    for (UIElement* elem : _overlayElements) {
+        delete elem;
+        elem = nullptr;
+    }
+    _overlayElements.clear();
+    _overlayMng->destroyAll();
+    _overlay = nullptr;
+    delete _overlaySys;
+
+    //delete _overlayMng;
+
+
 }
 
 

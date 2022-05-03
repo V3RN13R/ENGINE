@@ -4,6 +4,7 @@
 #include "RenderMain.h"
 #include "WindowRender.h"
 #include <OgreRoot.h>
+//#include "checkML.h"
 
 RenderMain* RenderMain::_instance = nullptr;
 RenderMain* RenderMain::setUpInstance(const std::string& appName)
@@ -23,7 +24,6 @@ bool RenderMain::init(const std::string& name)
 {
 	//_windowRender = new WindowRender(_appName);
 	WindowRender::instance()->setUpOgreRoot(name);
-	Ogre::Entity* ogreEnt_ = WindowRender::instance()->getSceneManager()->createEntity(Ogre::SceneManager::PrefabType::PT_SPHERE);
 	return true;
 }
 

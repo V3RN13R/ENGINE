@@ -19,6 +19,7 @@
 #include "SoundComponent.h"
 #include "Destroyable.h"
 #include <ENGINE.h>
+#include "checkML.h"
 
 Component* TransformFactory::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {

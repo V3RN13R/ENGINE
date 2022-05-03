@@ -32,6 +32,7 @@ extern "C"
 #include "lualib.h"
 #include "lauxlib.h"
 #include <SDL_render.h>
+#include "checkML.h"
 }
 
 
@@ -71,7 +72,7 @@ int main()
 		lua_call(L, 0, 1);
 		const std::string scene = lua_tostring(L, -1);
 		lua_pop(L, 1);
-		//VernierEngine::setupInstance(appName, sceneFile, scene);//lamar desde la dll
+		VernierEngine::setupInstance(appName, sceneFile, scene);//lamar desde la dll
 		typedef int (*funcFirstTry) ();
 		lua_getglobal(L, "FunctionName");
 		lua_call(L, 0, 1);

@@ -138,19 +138,20 @@ bool VernierEngine::processFrame()
 	if (/*_ogre->pollEvents()*/  getInputMng()->pollEvents()) {
 		//InputManager::getInstance()->Update();
 		//PhysicsManager::getInstance()->Update();
-		_vernierTime->frameStarted();
-		_physics->stepPhysics();
-		_soundManager->update();
-		_gSM->fixedUpdate();
-		_gSM->update();
-		_gSM->lateUpdate();
-		_gSM->lastUpdate();
-
+		if(_vernierTime)_vernierTime->frameStarted();
+		if(_physics)_physics->stepPhysics();
+		if(_soundManager)_soundManager->update();
+		if (_gSM) {
+			_gSM->fixedUpdate();
+			_gSM->update();
+			_gSM->lateUpdate();
+			_gSM->lastUpdate();
+		}
 		//tr->setPosition(Vector3D(tr->getPos().getX(), tr->getPos().getY() - 0.0001, tr->getPos().getZ()));
 		//tr2->rotate(0.01, 2);
-		_ogre->updateWindow();
+		if(_ogre)_ogre->updateWindow();
 		// LoadImages::instance()->renderTexturas();
-		InputManager::getInstance()->resetMousePosRel();
+		if(_input)InputManager::getInstance()->resetMousePosRel();
 
 	}
 	else return false;
@@ -162,10 +163,16 @@ void VernierEngine::startGame(int (*a)()) {
 }
 VernierEngine::~VernierEngine()
 {
+	delete _vernierTime;
 
+	InputManager::deleteInstance();
+	_input = nullptr;
 
-	/*delete (*_gsm)->getScene();
-	_gsm.release();*/
+	GameStateMachine::deleteInstance();
+	_gSM = nullptr;
+
+	SoundManager::deleteInstance();
+	_soundManager = nullptr;
 
 	PhysicsManager::deleteInstance();
 	_physics = nullptr;
@@ -173,6 +180,9 @@ VernierEngine::~VernierEngine()
 
 	RenderMain::deleteInstance();//borra el RenderMain
 	_ogre = nullptr;
+
+	UIManager::deleteInstance();
+	
 }
 
 void VernierEngine::readAssetsPath()
