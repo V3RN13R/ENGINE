@@ -17,6 +17,11 @@
     <ClInclude Include="..\..\Src\DllExample\Example.h" />
     <ClInclude Include="..\..\Src\DllExample\ExampleDll.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.vcxproj">
+      <Project>{b7c268c4-6df9-4667-849b-9d96e7b8c922}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

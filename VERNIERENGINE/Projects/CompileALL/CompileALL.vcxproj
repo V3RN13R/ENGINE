@@ -141,9 +141,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.vcxproj">
-      <Project>{b7c268c4-6df9-4667-849b-9d96e7b8c922}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\DllExample\DllExample.vcxproj">
       <Project>{f0848000-afd6-4765-8fee-e25b427b7061}</Project>
     </ProjectReference>
