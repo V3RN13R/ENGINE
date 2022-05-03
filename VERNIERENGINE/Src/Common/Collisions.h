@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Vector3D.h"
+class Vector3D;
 
 class Collisions {
 public:
