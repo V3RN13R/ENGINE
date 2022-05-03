@@ -31,6 +31,13 @@ void Shoot::onDisable()
 		_sc->stopAllSounds();
 }
 
+void Shoot::onEnable()
+{
+	Component::onEnable();
+	if (_sc)
+		_sc->resumeAllSounds();
+}
+
 void Shoot::start()
 {
 	_sc = (SoundComponent*)entity_->getComponent("SoundComponent");

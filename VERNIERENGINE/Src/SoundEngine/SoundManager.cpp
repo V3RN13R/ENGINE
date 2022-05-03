@@ -111,13 +111,25 @@ void SoundManager::stopChannel(int channelId)
 	auto found = _instance->getSoundChannels().find(channelId);
 	if (found == _instance->getSoundChannels().end())
 		return;
-	errorCheck(found->second->stop());
+	errorCheck(found->second->setPaused(true));
+}
+void SoundManager::resumeChannel(int channelId)
+{
+	auto found = _instance->getSoundChannels().find(channelId);
+	if (found == _instance->getSoundChannels().end())
+		return;
+	errorCheck(found->second->setPaused(false));
 }
 
 void SoundManager::stopAllChannels()
 {
 	for (auto x : _instance->getSoundChannels())
-		errorCheck(x.second->stop());
+		errorCheck(x.second->setPaused(true));
+}
+void SoundManager::resumeAllChannels()
+{
+	for (auto x : _instance->getSoundChannels())
+		errorCheck(x.second->setPaused(false));
 }
 void SoundManager::setChannelvolume(int channelId, float volumedB)
 {

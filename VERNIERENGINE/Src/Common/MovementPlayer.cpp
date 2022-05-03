@@ -32,6 +32,20 @@ void MovementPlayer::start()
 
 }
 
+void MovementPlayer::onDisable()
+{
+	Component::onDisable();
+	if (_sc)
+		_sc->stopAllSounds();
+}
+
+void MovementPlayer::onEnable()
+{
+	Component::onEnable();
+	if (_sc)
+		_sc->resumeAllSounds();
+}
+
 void MovementPlayer::update() {
 	dirFinal = Vector3D(0, 0, 0);
 	if (VernierEngine::getInstance()->getInputMng()->getKeyDown(SDL_SCANCODE_SPACE)) {

@@ -94,14 +94,23 @@ void Camera::start() {
 	_camera->setAspectRatio(_aspectRatio);
 
 	_camTr = (Transform*)entity_->getComponent("Transform");
-	SoundComponent* sc = (SoundComponent*)entity_->getComponent("SoundComponent");
-	if(sc)
-		sc->playMusic("Music", 0.1f);
+	 _sc = (SoundComponent*)entity_->getComponent("SoundComponent");
+	if(_sc)
+		_sc->playMusic("Music", 0.1f);
 }
 
 void Camera::onDisable()
 {
+	Component::onDisable();
+	if (_sc)
+		_sc->stopAllSounds();
+}
 
+void Camera::onEnable()
+{
+	Component::onEnable();
+	if (_sc)
+		_sc->resumeAllSounds();
 }
 
 

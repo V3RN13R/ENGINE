@@ -34,6 +34,8 @@ public:
 	MovementPlayer(std::map<std::string, std::string> args);
 	~MovementPlayer() {}
 	void start();
+	void onDisable();
+	void onEnable();
 	virtual void onCollisionEnter(Entity* other, Vector3D point, Vector3D normal);
 	virtual void onCollisionStay(Entity* ohter, Vector3D point) {};
 

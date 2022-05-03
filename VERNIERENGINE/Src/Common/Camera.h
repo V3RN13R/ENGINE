@@ -8,6 +8,7 @@
 #include <string>
 class Component;
 class Transform;
+class SoundComponent;
 
 //
 //
@@ -45,6 +46,8 @@ private:
 
 	Transform* _camTr;
 	std::string _camName;
+
+	SoundComponent* _sc;
 public:
 	Camera(std::map<std::string, std::string> args, Entity* ent);
 	virtual ~Camera();
@@ -58,6 +61,7 @@ public:
 	void setMonkePos(Vector3D* pos);
 	void start();
 	void onDisable() override;
+	void onEnable() override;
 	//virtual void sendEvent(MessageType msg){}
 	void receiveEvent(int msg, Entity* e) override;
 

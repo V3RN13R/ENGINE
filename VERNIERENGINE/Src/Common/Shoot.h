@@ -20,5 +20,6 @@ public:
 	void dispara();
 	virtual void receiveEvent(int msg, Entity* e) override;
 	void onDisable() override;
+	void onEnable() override;
 	void start() override;
 };

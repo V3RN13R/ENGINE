@@ -97,7 +97,7 @@ void ResourceManager::loadResources()
 	// load located resources
 	Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 	
-	SoundManager::getInstance()->addRoute("/Assets/Sounds/");
+	//SoundManager::getInstance()->setRoute("/Assets/Sounds/");
 }
 
 ResourceManager::ResourceManager(std::string assetsPath)

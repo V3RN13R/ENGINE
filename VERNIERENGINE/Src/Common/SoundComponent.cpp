@@ -2,13 +2,15 @@
 #include "ENGINE.h"
 #include "SoundManager.h"
 
-SoundComponent::SoundComponent(std::map<std::string, std::string> args, Entity* ent) : Component(ent)
+SoundComponent::SoundComponent(std::map<std::string, std::string> args, Entity* ent) : Component(ent), _route(args["Ruta"])
 {
     auto iter = args.begin();
     while (iter != args.end()) {
-        _sounds[iter->first] = { iter->second, -1 };
+        if(iter->first != "Ruta" )
+            _sounds[iter->first] = { _route + iter->second, -1 };
         ++iter;
     }
+    SoundManager::getInstance()->setRoute(_route);
 }
 
 void SoundComponent::playMusic(std::string s, float volume)
@@ -27,11 +29,25 @@ void SoundComponent::stopSound(std::string sound)
     VernierEngine::getInstance()->getSoundMng()->stopChannel(_sounds[sound].second);
 }
 
+void SoundComponent::resumeSound(std::string sound)
+{
+    VernierEngine::getInstance()->getSoundMng()->resumeChannel(_sounds[sound].second);
+}
+
 void SoundComponent::stopAllSounds()
 {
     auto iter = _sounds.begin();
     while (iter != _sounds.end()) {
         stopSound(iter->first);
+        ++iter;
+    }
+}
+
+void SoundComponent::resumeAllSounds()
+{
+    auto iter = _sounds.begin();
+    while (iter != _sounds.end()) {
+        resumeSound(iter->first);
         ++iter;
     }
 }

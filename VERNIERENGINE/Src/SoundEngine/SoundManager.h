@@ -13,7 +13,7 @@ public:
 	static SoundManager* getInstance();
 	static bool setUpInstance();
 	static void deleteInstance();
-	void addRoute(std::string route) { _route = route; }
+	void setRoute(std::string route) { _route = route; }
 	/**
 	*	Si el sonido está en el map, no hace nada, si no, lo crea
 	**/ 
@@ -22,7 +22,9 @@ public:
 	void update();
 
 	void stopChannel(int id);
+	void resumeChannel(int id);
 	void stopAllChannels();
+	void resumeAllChannels();
 	void setChannelvolume(int nChannelId, float volumedB);
 
 	typedef std::map<std::string, FMOD::Sound*> SoundMap;

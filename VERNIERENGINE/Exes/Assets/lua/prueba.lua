@@ -1,5 +1,5 @@
 prueba = {
-    entities = { "suelo", "camaraPrincipal", "fotoprueba"}
+    entities = { "suelo", "camaraPrincipal"}
 }
 
 mono={
