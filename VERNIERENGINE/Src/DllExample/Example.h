@@ -9,7 +9,7 @@ class VernierEngine;
 class EXAMPLE_API Example:public Component
 {
 public:
-	Example();
+	Example(std::map<std::string, std::string> args);
 	void update() override;
 	void fixedUpdate() override {};
 	void lateUpdate() override {};

@@ -6,7 +6,7 @@
 //#include "checkML.h"
 VernierEngine* _instanceMotor = nullptr;
 
-Example::Example()
+Example::Example(std::map<std::string, std::string> args)
 {
 	std::cout << "Constructor de una clase desde dll\n";
 }
@@ -26,11 +26,10 @@ extern "C" {
 
 		_instanceMotor = VernierEngine::getInstance();
 		_instanceMotor->getFactoryMng()->addFactory("Example", new ExportFactories());
-			
 	}
 }
 
 Component* ExportFactories::createComponent(std::map<std::string, std::string> args, Entity* ent)
 {
-	return new Example();
+	return new Example(args);
 }

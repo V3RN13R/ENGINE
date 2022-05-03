@@ -91,12 +91,13 @@ int main()
 		else
 			ftry();
 		VernierEngine::getInstance()->startScene(sceneFile, scene);
-		FreeLibrary(hDLL);
 	}
 	bool stay = true;
 	do {
 		stay = VernierEngine::getInstance()->processFrame();
 	} while (stay);
+
+	FreeLibrary(hDLL);
 
 	delete VernierEngine::getInstance();
 	//se acaba el programa

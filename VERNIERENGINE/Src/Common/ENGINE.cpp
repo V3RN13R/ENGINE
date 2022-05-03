@@ -134,7 +134,7 @@ VernierTime* VernierEngine::getTime()
 
 bool VernierEngine::processFrame()
 {
-	//std::cout << "updating...\n";
+	std::cout << "updating...\n";
 	if (/*_ogre->pollEvents()*/  getInputMng()->pollEvents()) {
 		//InputManager::getInstance()->Update();
 		//PhysicsManager::getInstance()->Update();
