@@ -93,8 +93,8 @@ int main()
 				stay = VernierEngine::getInstance()->processFrame();
 			} while (stay);
 
-			FreeLibrary(hDLL);
 			delete VernierEngine::getInstance();
+			FreeLibrary(hDLL);
 		}
 
 	}
