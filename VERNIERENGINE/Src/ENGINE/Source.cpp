@@ -32,6 +32,7 @@ extern "C"
 #include "lualib.h"
 #include "lauxlib.h"
 #include <SDL_render.h>
+#include "checkML.h"
 }
 
 
@@ -81,7 +82,7 @@ int main()
 			return 0;
 		}
 		else {
-			std::cout << "Cargando la función e iniciando el motor\n";
+			std::cout << "Cargando la funciï¿½n e iniciando el motor\n";
 			lua_pop(L, 1);
 			lua_close(L);
 			VernierEngine::setupInstance(appName, sceneFile, scene);

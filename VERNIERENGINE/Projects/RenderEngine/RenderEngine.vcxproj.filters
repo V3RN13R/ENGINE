@@ -29,5 +29,8 @@
     <ClInclude Include="..\..\Src\RenderEngine\WindowRender.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Src\RenderEngine\checkML.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

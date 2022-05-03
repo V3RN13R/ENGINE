@@ -8,7 +8,7 @@ private:
 	Component* _c;
 public:
 	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
-	virtual ~TransformFactory() { delete _c; };
+	//virtual ~TransformFactory() { if (_c != nullptr) delete _c; };
 };
 
 class MeshRendererFactory : public Factory
@@ -17,7 +17,7 @@ private:
 	Component* _c;
 public:
 	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
-	virtual ~MeshRendererFactory() { if(_c == nullptr) delete _c; };
+	//virtual ~MeshRendererFactory() { if(_c != nullptr) delete _c; };
 };
 
 class RigidBodyFactory : public Factory
@@ -26,7 +26,7 @@ private:
 	Component* _c;
 public:
 	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
-	virtual ~RigidBodyFactory() { delete _c; };
+	//virtual ~RigidBodyFactory() { if (_c != nullptr) delete _c; };
 };
 
 class ShootFactory : public Factory
@@ -35,7 +35,7 @@ private:
 	Component* _c;
 public:
 	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
-	virtual ~ShootFactory() { delete _c; };
+	//virtual ~ShootFactory() { if (_c != nullptr) delete _c; };
 };
 
 class CameraFactory : public Factory
@@ -44,7 +44,7 @@ private:
 	Component* _c;
 public:
 	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
-	virtual ~CameraFactory() { delete _c; };
+	//virtual ~CameraFactory() { if (_c != nullptr)delete _c; };
 };
 
 class MovementPlayerFactory : public Factory
@@ -53,7 +53,7 @@ private:
 	Component* _c;
 public:
 	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
-	virtual ~MovementPlayerFactory() { delete _c; };
+	//virtual ~MovementPlayerFactory() { if (_c != nullptr) delete _c; };
 };
 
 class GroundFactory : public Factory
@@ -62,7 +62,7 @@ private:
 	Component* _c;
 public:
 	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
-	virtual ~GroundFactory() { delete _c; };
+	//virtual ~GroundFactory() { if (_c != nullptr) delete _c; };
 };
 
 class PickableFactory : public Factory
@@ -71,7 +71,7 @@ private:
 	Component* _c;
 public:
 	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
-	virtual ~PickableFactory() { delete _c; };
+	//virtual ~PickableFactory() { if (_c != nullptr) delete _c; };
 };
 
 
@@ -81,7 +81,7 @@ private:
 	Component* _c;
 public:
 	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
-	virtual ~PlayerFactory() { delete _c; };
+	//virtual ~PlayerFactory() { if (_c != nullptr) delete _c; };
 };
 
 class ImageFactory : public Factory
@@ -90,7 +90,7 @@ private:
 	Component* _c;
 public:
 	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
-	virtual ~ImageFactory() { delete _c; };
+	//virtual ~ImageFactory() { if (_c != nullptr) delete _c; };
 };
 
 
@@ -109,7 +109,7 @@ private:
 	Component* _c;
 public:
 	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
-	virtual ~Light_Factory() { delete _c; };
+	//virtual ~Light_Factory() { if (_c != nullptr) delete _c; };
 };
 
 //class MonkeyStatsFactory : public Factory
@@ -124,7 +124,7 @@ private:
 	Component* _c;
 public:
 	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
-	virtual ~HealthFactory() { delete _c; };
+	//virtual ~HealthFactory() { if (_c != nullptr) delete _c; };
 };
 
 class TextFactory : public Factory
@@ -133,7 +133,7 @@ private:
 	Component* _c;
 public:
 	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
-	virtual ~TextFactory() { delete _c; };
+	//virtual ~TextFactory() { if (_c != nullptr)delete _c; };
 };
 
 class BananaMovementFactory : public Factory
@@ -142,7 +142,7 @@ private:
 	Component* _c;
 public:
 	Component* createComponent(std::map<std::string, std::string> args, Entity* ent) override;
-	virtual ~BananaMovementFactory() { if (_c == nullptr) delete _c; };
+	//virtual ~BananaMovementFactory() { if (_c != nullptr) delete _c; };
 };
 class SoundComponentFactory : public Factory
 {

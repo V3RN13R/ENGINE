@@ -2,14 +2,13 @@
 #include "LuaManager.h"
 #include <algorithm>
 #include <SDL.h>
-//#include "checkML.h"
+#include "checkML.h"
 
 Scene::Scene(const std::string& file, const std::string& name, GameStateMachine* gsm) {
 	//_fmanager->setUpInstance(); //se puede quitar en el main se debe de instanciar
 
 	_GSM = gsm;
-	lua_State* _state = nullptr;
-
+	//lua_State* _state = nullptr;
 	// Cargamos todas las imagenes desde un archivo .lua
 	//LoadImages::instance()->cargaImagen("imagenes.lua", "imagenes");
 
@@ -62,6 +61,8 @@ Scene::Scene(const std::string& file, const std::string& name, GameStateMachine*
 		std::cout << "\n";
 	}
 	std::cout << "Listo.\n\n-------------------------\n\n";
+
+
 
 	//LoadImage::instance()->cargaImagen("prueba2.lua", "prueba2");
 }
@@ -125,10 +126,10 @@ Entity* Scene::createEntity(const std::string& entityName, LuaRef entInfo)
 Entity* Scene::createEntityByPrefab(const std::string& file, const std::string& nameInFile, const std::string& nameInGame)
 {
 	std::cout << "\n\n";
-
-	lua_State* state = nullptr;
+	if (_stateAux)
+		lua_close(_stateAux);
 	try {
-		state = readFileLua(file);
+		_stateAux = readFileLua(file);
 		std::cout << "Archivo " << file << " abierto con �xito\n";
 	}
 	catch (std::string& error) {
@@ -136,14 +137,14 @@ Entity* Scene::createEntityByPrefab(const std::string& file, const std::string& 
 		std::cout << error << '\n';
 		return nullptr;
 	}
-	if (state == nullptr) {
+	if (_stateAux == nullptr) {
 		std::cout << "ERROR al leer el archivo " << file << "\n";
 		return nullptr;
 	}
 
 	LuaRef refEntity = NULL;
 	try {
-		refEntity = readElementFromFile(state, nameInFile);
+		refEntity = readElementFromFile(_stateAux, nameInFile);
 	}
 	catch (...) {
 		std::cout << "ERROR al cargar la entidad del archivo " << file << "\n";
@@ -168,6 +169,12 @@ Scene::~Scene()
 		delete qEnt;
 		qEnt = nullptr;
 	}
+	//delete _state;
+
+	//hay que borrar el estado de lua
+	lua_close(_state);
+	if(_stateAux)lua_close(_stateAux);
+
 }
 
 void Scene::addEntity(Entity* e)
@@ -250,8 +257,8 @@ void Scene::clearEntities()
 		if ((*it)->getDestroy()) {
 			(*it)->onDisable();
 			Entity* e = (*it);
-			it = _entities.erase(it);
 			delete e;
+			it = _entities.erase(it);
 			e = nullptr;
 		}
 		else

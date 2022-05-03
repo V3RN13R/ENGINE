@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Src\LuaBridge\checkML.h" />
     <ClInclude Include="..\..\..\Src\LuaBridge\LuaManager.h" />
   </ItemGroup>
   <ItemGroup>

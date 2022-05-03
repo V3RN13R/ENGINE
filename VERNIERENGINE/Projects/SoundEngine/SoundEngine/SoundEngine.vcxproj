@@ -97,6 +97,7 @@
     <ClCompile Include="..\..\..\Src\SoundEngine\SoundManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Src\SoundEngine\checkML.h" />
     <ClInclude Include="..\..\..\Src\SoundEngine\Music.h" />
     <ClInclude Include="..\..\..\Src\SoundEngine\SoundManager.h" />
   </ItemGroup>

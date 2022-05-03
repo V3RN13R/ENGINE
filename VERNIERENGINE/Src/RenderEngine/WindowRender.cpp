@@ -13,6 +13,7 @@
 #include "OgreDefaultDebugDrawer.h"
 #include "../Common/Light.h"
 #include "../Common/ENGINE.h"
+#include "checkML.h"
 
 void WindowRender::setUpOgreRoot(const std::string& name)
 {
