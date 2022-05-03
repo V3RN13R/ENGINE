@@ -11,6 +11,7 @@ Scene::Scene(const std::string& file, const std::string& name, GameStateMachine*
 	//lua_State* _state = nullptr;
 	// Cargamos todas las imagenes desde un archivo .lua
 	//LoadImages::instance()->cargaImagen("imagenes.lua", "imagenes");
+	if (_state)lua_close(_state);
 
 	try {
 		_state = readFileLua(file);
@@ -172,7 +173,7 @@ Scene::~Scene()
 	//delete _state;
 
 	//hay que borrar el estado de lua
-	lua_close(_state);
+	if (_state)lua_close(_state);
 	if(_stateAux)lua_close(_stateAux);
 
 }
