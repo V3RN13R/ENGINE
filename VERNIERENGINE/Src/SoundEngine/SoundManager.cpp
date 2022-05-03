@@ -1,5 +1,4 @@
 #include "SoundManager.h"
-#include "Vector3D.h"
 #include <iostream>
 #include <vector>
 SoundManager* SoundManager::_instance = nullptr;
@@ -55,9 +54,11 @@ void SoundManager::update() {
 	}
 	errorCheck(_instance->_System->update());
 }
-void SoundManager::createSound(const std::string sound, bool b3d, bool bLooping, bool bStream)
+void SoundManager::createSound(std::string sound, bool b3d, bool bLooping, bool bStream)
 {
-	auto found = _instance->getSoundMap().find(sound);
+	std::string nameFinal = _route + sound;
+
+	auto found = _instance->getSoundMap().find(nameFinal);
 	if (found != _instance->getSoundMap().end())
 		return;
 
@@ -72,18 +73,20 @@ void SoundManager::createSound(const std::string sound, bool b3d, bool bLooping,
 	_instance->errorCheck(_System->createSound(sound.c_str(), eMode, 0, &fSonido));
 	
 	if (fSonido) {
-		_instance->getSoundMap()[sound] = fSonido;
+		_instance->getSoundMap()[nameFinal] = fSonido;
 	}
 }
 
-int SoundManager::playSound(const std::string& strSoundName, float volumedB)
+int SoundManager::playSound(std::string& strSoundName, float volumedB)
 {
+	std::string nameFinal = _route + strSoundName;
+
 	int nChannelId = _instance->getNextChannelId()++;
-	auto found = _instance->getSoundMap().find(strSoundName);
+	auto found = _instance->getSoundMap().find(nameFinal);
 	if (found == _instance->getSoundMap().end())
 	{
 		createSound(strSoundName);
-		found = _instance->getSoundMap().find(strSoundName);
+		found = _instance->getSoundMap().find(nameFinal);
 		if (found == _instance->getSoundMap().end())
 		{
 			return nChannelId;

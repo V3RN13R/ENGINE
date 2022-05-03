@@ -107,7 +107,8 @@ mono2={
         NameInGame= "banana"
     },
     SoundComponent={
-        Shoot = "shoot.wav"
+        Shoot = "/Assets/Sounds/shoot.wav",
+        Jump = "/Assets/Sounds/jump.wav"
     }
 }
 
@@ -186,6 +187,6 @@ camaraPrincipal2={
         AspectRatio = 1
     },
     SoundComponent={
-        Music="main theme.mp3"
+        Music="./Assets/Sounds/main theme.mp3"
     }
 }

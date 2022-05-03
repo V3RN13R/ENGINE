@@ -13,11 +13,12 @@ public:
 	static SoundManager* getInstance();
 	static bool setUpInstance();
 	static void deleteInstance();
+	void addRoute(std::string route) { _route = route; }
 	/**
 	*	Si el sonido está en el map, no hace nada, si no, lo crea
 	**/ 
-	void createSound(const std::string sound, bool b3d = true, bool bLooping = false, bool bStream = false);
-	int  playSound(const std::string& strSoundName, float fVolumedB = 1.0f);
+	void createSound(std::string sound, bool b3d = true, bool bLooping = false, bool bStream = false);
+	int  playSound(std::string& strSoundName, float fVolumedB = 1.0f);
 	void update();
 
 	void stopChannel(int id);
@@ -30,6 +31,7 @@ private:
 	SoundManager() {};
 	virtual ~SoundManager();
 	static SoundManager* _instance;
+	std::string _route;
 	void init();
 
 	SoundMap _SoundMap;
