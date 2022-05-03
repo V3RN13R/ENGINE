@@ -13,7 +13,6 @@ Example::Example(std::map<std::string, std::string> args)
 
 void Example::update()
 {
-	std::cout << "jaja example\n";
 	if (VernierEngine::getInstance()->getInputMng()->getKeyDown(SDL_SCANCODE_G)) {
 
 		std::cout << "G\n\n\n";
