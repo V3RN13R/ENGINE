@@ -1,32 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\..\Src\Common\BananaMovement.cpp" />
     <ClCompile Include="..\..\Src\Common\Callbacks.cpp" />
     <ClCompile Include="..\..\Src\Common\Camera.cpp" />
     <ClCompile Include="..\..\Src\Common\Collisions.cpp" />
     <ClCompile Include="..\..\Src\Common\Component.cpp" />
-    <ClCompile Include="..\..\Src\Common\Destroyable.cpp" />
     <ClCompile Include="..\..\Src\Common\ENGINE.cpp" />
     <ClCompile Include="..\..\Src\Common\Entity.cpp" />
     <ClCompile Include="..\..\Src\Common\Factory.cpp" />
     <ClCompile Include="..\..\Src\Common\FactoryManager.cpp" />
     <ClCompile Include="..\..\Src\Common\GameStateMachine.cpp" />
-    <ClCompile Include="..\..\Src\Common\Ground.cpp" />
-    <ClCompile Include="..\..\Src\Common\Health.cpp" />
     <ClCompile Include="..\..\Src\Common\Image.cpp" />
     <ClCompile Include="..\..\Src\Common\InitFactories.cpp" />
     <ClCompile Include="..\..\Src\Common\InputManager.cpp" />
     <ClCompile Include="..\..\Src\Common\MeshRenderer.cpp" />
-    <ClCompile Include="..\..\Src\Common\MonkeyStats.cpp" />
-    <ClCompile Include="..\..\Src\Common\MovementPlayer.cpp" />
     <ClCompile Include="..\..\Src\Common\Light.cpp" />
-    <ClCompile Include="..\..\Src\Common\Pickable.cpp" />
-    <ClCompile Include="..\..\Src\Common\Player.cpp" />
     <ClCompile Include="..\..\Src\Common\ResourceManager.cpp" />
     <ClCompile Include="..\..\Src\Common\RigidBody.cpp" />
     <ClCompile Include="..\..\Src\Common\Scene.cpp" />
-    <ClCompile Include="..\..\Src\Common\Shoot.cpp" />
     <ClCompile Include="..\..\Src\Common\SoundComponent.cpp" />
     <ClCompile Include="..\..\Src\Common\TEST-Componente1.cpp" />
     <ClCompile Include="..\..\Src\Common\TEST-Componente2.cpp" />
@@ -36,13 +27,11 @@
     <ClCompile Include="..\..\Src\Common\VernierTime.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Src\Common\BananaMovement.h" />
     <ClInclude Include="..\..\Src\Common\Callbacks.h" />
     <ClInclude Include="..\..\Src\Common\Camera.h" />
     <ClInclude Include="..\..\Src\Common\checkML.h" />
     <ClInclude Include="..\..\Src\Common\Collisions.h" />
     <ClInclude Include="..\..\Src\Common\Component.h" />
-    <ClInclude Include="..\..\Src\Common\Destroyable.h" />
     <ClInclude Include="..\..\Src\Common\ecs.h" />
     <ClInclude Include="..\..\Src\Common\ecs_defs.h" />
     <ClInclude Include="..\..\Src\Common\ENGINE.h" />
@@ -50,22 +39,15 @@
     <ClInclude Include="..\..\Src\Common\Factory.h" />
     <ClInclude Include="..\..\Src\Common\FactoryManager.h" />
     <ClInclude Include="..\..\Src\Common\GameStateMachine.h" />
-    <ClInclude Include="..\..\Src\Common\Ground.h" />
-    <ClInclude Include="..\..\Src\Common\Health.h" />
     <ClInclude Include="..\..\Src\Common\Image.h" />
     <ClInclude Include="..\..\Src\Common\InitFactories.h" />
     <ClInclude Include="..\..\Src\Common\InputManager.h" />
     <ClInclude Include="..\..\Src\Common\Light.h" />
     <ClInclude Include="..\..\Src\Common\MeshRenderer.h" />
-    <ClInclude Include="..\..\Src\Common\MonkeyStats.h" />
-    <ClInclude Include="..\..\Src\Common\MovementPlayer.h" />
     <ClInclude Include="..\..\Src\Common\mpl.h" />
-    <ClInclude Include="..\..\Src\Common\Pickable.h" />
-    <ClInclude Include="..\..\Src\Common\Player.h" />
     <ClInclude Include="..\..\Src\Common\ResourceManager.h" />
     <ClInclude Include="..\..\Src\Common\RigidBody.h" />
     <ClInclude Include="..\..\Src\Common\Scene.h" />
-    <ClInclude Include="..\..\Src\Common\Shoot.h" />
     <ClInclude Include="..\..\Src\Common\Singleton.h" />
     <ClInclude Include="..\..\Src\Common\SoundComponent.h" />
     <ClInclude Include="..\..\Src\Common\TEST-Componente1.h" />
