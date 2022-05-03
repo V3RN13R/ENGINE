@@ -41,6 +41,10 @@ public:
 	void setVelocity(Vector3D dir);
 	void addImpulse(Vector3D dir);
 	void addForce(Vector3D dir);
+
+	//ESTE METODO SOLO SE DEBE LLAMAR DESDE TRANSFORM
+	//void setTransformPos(Vector3D pos);
+
 	Vector3D getGravity();
 	Vector3D getVel();
 

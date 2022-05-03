@@ -129,13 +129,7 @@ void Rigidbody::resetTransform(Vector3D v1, float q1, float q2, float q3, float 
 	btQuaternion(q1, q2, q3, q4);
 	tr.setRotation(btQuaternion(q1, q2, q3, q4));
 
-	//tr.setOrigin({ transform->getPos().getX(), transform->getPos().getY(), transform->getPos().getZ() });
-	//tr.setRotation({ transform->getRot().getX(), transform->getRot().getY(), transform->getRot().getZ() });
-
-	_brb->setWorldTransform(tr);
-	//_brb->getCollisionShape()->setLocalScaling({ transform->getScale().getX()/100, transform->getScale().getY()/100, transform->getScale().getZ()/100});
-	_brb->getMotionState()->setWorldTransform(tr);
-
+	_brb->setCenterOfMassTransform(tr);
 }
 
 void Rigidbody::clearForce()
@@ -226,6 +220,7 @@ void Rigidbody::addForce(Vector3D dir)
 	_brb->applyCentralForce(btVector3(dir.getX(), dir.getY(), dir.getZ()));
 
 };
+
 Vector3D Rigidbody::getGravity() {
 	return Vector3D(_brb->getGravity().getX(), _brb->getGravity().getY(), _brb->getGravity().getZ());
 
