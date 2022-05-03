@@ -56,7 +56,7 @@ int main()
 	HINSTANCE hDLL = LoadLibrary(dllNameW.c_str());
 	lua_pop(L, 1);
 	if (hDLL == NULL)
-		std::cout << "Failed Load DLL\n";
+		std::cout << "Failed Load " << dllName << ".dll\n";
 	else {
 		std::cout << "LoadDll\n";
 		lua_getglobal(L, "WindowName");
@@ -71,35 +71,32 @@ int main()
 		lua_call(L, 0, 1);
 		const std::string scene = lua_tostring(L, -1);
 		lua_pop(L, 1);
-		//VernierEngine::setupInstance(appName, sceneFile, scene);//lamar desde la dll
 		typedef int (*funcFirstTry) ();
 		lua_getglobal(L, "FunctionName");
 		lua_call(L, 0, 1);
 		funcFirstTry ftry = (funcFirstTry)GetProcAddress(hDLL, lua_tostring(L, -1));
 		if (ftry == nullptr)
 		{
-			std::cout << "No se ha abierto la DLL correctamente\n";
+			std::cout << "No se ha encontrado la funcion en la dll\n";
 			return 0;
 		}
-		std::cout << "Se ha leido la DLL\n";
-		lua_pop(L, 1);
-		lua_close(L);
-		VernierEngine::setupInstance("WILDLESS", sceneFile, scene);
-		if (!ftry) {
-			std::cout << "ERROR\n";
-		}
-		else
+		else {
+			std::cout << "Cargando la función e iniciando el motor\n";
+			lua_pop(L, 1);
+			lua_close(L);
+			VernierEngine::setupInstance(appName, sceneFile, scene);
 			ftry();
-		VernierEngine::getInstance()->startScene(sceneFile, scene);
+			VernierEngine::getInstance()->startScene(sceneFile, scene);
+			bool stay = true;
+			do {
+				stay = VernierEngine::getInstance()->processFrame();
+			} while (stay);
+
+			FreeLibrary(hDLL);
+			delete VernierEngine::getInstance();
+		}
+
 	}
-	bool stay = true;
-	do {
-		stay = VernierEngine::getInstance()->processFrame();
-	} while (stay);
-
-	FreeLibrary(hDLL);
-
-	delete VernierEngine::getInstance();
 	//se acaba el programa
 	std::cout << "Hola\n";
 	return 0;
