@@ -14,7 +14,7 @@ Transform::Transform(Vector3D position, Vector3D scale, Vector3D rotation) : _po
 
 Transform::Transform(std::map<std::string, std::string> args) : _position(args["Position"]), _scale(args["Scale"]), _rotation(args["Rotation"])
 {
-	
+
 	std::cout << "Contructora lua transform\n";
 	std::cout << "Rotación en x" << _scale.getX() << "\n";
 }
@@ -36,7 +36,7 @@ void Transform::rotate(Vector3D rotation)
 
 void Transform::rotate(float degree, uint8_t axis)
 {
-		Rigidbody* rb = entity_->getComponent<Rigidbody>();
+	Rigidbody* rb = dynamic_cast<Rigidbody*>(entity_->getComponent("Rigidbody"));
 	switch (axis)
 	{
 	case 0:
@@ -89,7 +89,7 @@ Ogre::Matrix3 Transform::fromEulerAngleToRotationMatrix(Vector3D vec)
 
 void Transform::update() //Falta bullet
 {
-	entity_->getNode()->setPosition(Ogre::Vector3(_position.getX(), _position.getY() , _position.getZ()));
+	entity_->getNode()->setPosition(Ogre::Vector3(_position.getX(), _position.getY(), _position.getZ()));
 	//setRotation(Vector3D(entity_->getNode()->getOrientation().x, entity_->getNode()->getOrientation().y, entity_->getNode()->getOrientation().z));
 }
 

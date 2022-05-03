@@ -123,7 +123,7 @@ Vector3D Rigidbody::getPosition()
 void Rigidbody::resetTransform(Vector3D v1, float q1, float q2, float q3, float q4)
 {
 	btTransform tr = _brb->getCenterOfMassTransform();
-	Transform* transform = entity_->getComponent<Transform>();
+	//Transform* transform = entity_->getComponent<Transform>();
 
 	tr.setOrigin(btVector3(v1.getX(), v1.getY(), v1.getZ()));
 	btQuaternion(q1, q2, q3, q4);
