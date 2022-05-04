@@ -13,6 +13,7 @@
 #include "../RenderEngine/WindowRender.h"
 #include "checkML.h"
 #include "OgreFont.h"
+#include "OgreResourceManager.h"
 #include "../Common/GameStateMachine.h"
 #include "../Common/Scene.h"
 
@@ -68,6 +69,7 @@ void UIManager::initOverlaySystem() {
     _instance->_overlayMng = Ogre::OverlayManager::getSingletonPtr();
     _instance->_overlay = _overlayMng->create("OverlayName");
     _instance->_num = 0;
+   Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
     WindowRender::getInstance()->getSceneManager()->addRenderQueueListener(_instance->_overlaySys);
 }
 
@@ -82,11 +84,12 @@ UIImage* UIManager::addImage(std::string overlayname, std::string image){
     return imagen;
 }
 
-UIText* UIManager::addText(std::string overlayName, std::string fontName, int fontSize, int order, std::string text, int r, int g, int b, int x, int y) {
+UIText* UIManager::addText(std::string overlayName, std::string fontName, int fontSize, int order, std::string text, int rT, int gT, int bT, int rD, int gD, int bD, int x, int y) {
     //Ogre::FontManager::getSingleton().getByName("DejaVu/SerifCondensedItalic");
-    auto texto = new UIText(overlayName, fontName, fontSize, order, text, r, g, b, x, y);
+    auto texto = new UIText(overlayName, fontName, fontSize, order, text, rT, gT, bT,  rD,  gD,  bD, x, y);
     _instance->_overlayElements.push_back(texto);
     _num++;
+    GameStateMachine::getInstance()->getScene()->addUIElem(texto);
     return texto;
 }
 

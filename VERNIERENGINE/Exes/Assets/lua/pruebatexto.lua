@@ -1,5 +1,5 @@
 pruebatexto = {
-    entities = {"texto", "camaraPrincipal2"}
+    entities = {"texto","texto2",  "camaraPrincipal2"}
 }
 
 dll={
@@ -20,19 +20,41 @@ texto = {
     Components = {"Text"},
     Text = {
         OverlayName = "texto1",
-        Name = "texto",
+        Name = "Gemstone",
         X = "0",
         Y = "0",
-        FontSize = "5",
+        FontSize = "75",
         Order = "100",
         Text = "Hola 23",
-        R = 0,
-        G = 0,
-        B = 0
+        RT = 0,
+        GT = 0,
+        BT = 1,
+        RD = 1,
+        GD = 1,
+        BD = 1
     }
 }
 
-
+texto2 = {
+    Active = true,
+    Listener = false,
+    Components = {"Text"},
+    Text = {
+        OverlayName = "texto2",
+        Name = "TURU",
+        X = "0",
+        Y = "300",
+        FontSize = "25",
+        Order = "101",
+        Text = "Hola 23",
+        RT = 1,
+        GT = 0,
+        BT = 0,
+        RD = 0,
+        GD = 1,
+        BD = 0
+    }
+}
 camaraPrincipal2={
     Active = true,
     Listener = true,

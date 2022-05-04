@@ -11,7 +11,7 @@ private:
 	std::string _name;
 	std::string _text;
 	int _x, _y;
-	int _r, _g, _b;
+	int _rT, _gT, _bT, _rD,_gD,_bD;
 	int _size;
 	int _order;
 

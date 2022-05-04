@@ -8,7 +8,7 @@ namespace Ogre {
 class UIText : public UIElement
 {
 public:
-	UIText(std::string overlayName, std::string fontName, int fontSize, int order, std::string text, int r, int g, int b, int x, int y);
+	UIText(std::string overlayName, std::string fontName, int fontSize, int order, std::string text, int rT, int gT, int bT, int rD, int gD, int bD, int x, int y);
 	~UIText() {}
 
 	//Im pretty sure size is based on font for text
