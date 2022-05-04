@@ -11,6 +11,7 @@ Scene::Scene(const std::string& file, const std::string& name, GameStateMachine*
 	//_fmanager->setUpInstance(); //se puede quitar en el main se debe de instanciar
 
 	_GSM = gsm;
+	_name = name;
 	//lua_State* _state = nullptr;
 	// Cargamos todas las imagenes desde un archivo .lua
 	//LoadImages::instance()->cargaImagen("imagenes.lua", "imagenes");

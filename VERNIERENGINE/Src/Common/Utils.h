@@ -24,6 +24,7 @@ public:
 	static const int CLICKIZ = 18;
 	static const int CLICKDE = 19;
 	static const int LAST = 20;
+	static const int UNO = 21;
 
 };
 const float _PI = 3.1416;

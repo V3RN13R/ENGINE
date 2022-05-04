@@ -96,6 +96,12 @@ void InputManager::manageInput(SDL_Event evt)
 					e->receiveEvent(MessageType::DISPARO, e);
 				}
 			}
+			if (evt.key.keysym.scancode == SDL_SCANCODE_V)
+			{
+				for (Entity* e : *_listenersScene) {
+					e->receiveEvent(MessageType::UNO, e);
+				}
+			}
 #pragma endregion
 		}
 		else if (evt.type == SDL_KEYUP)

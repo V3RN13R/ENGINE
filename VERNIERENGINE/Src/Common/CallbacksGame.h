@@ -5,6 +5,8 @@
 class CallbacksGame : public Callbacks {
 private:
 	static void menuSeleccion();
+	static void jugar();
+	static void volver();
 	CallbacksGame();
 public:
 	~CallbacksGame() {};

@@ -12,6 +12,7 @@
 #include <iostream>
 #include <Ogre.h>
 #include <math.h>
+#include <ENGINE.h>
 //#include "checkML.h"
 
 
@@ -124,6 +125,10 @@ void Camera::receiveEvent(int msg, Entity* e) {
 
 	if (msg == MessageType::R)
 		entity_->getScene()->getGSM()->popScene();
+
+	if (msg == MessageType::UNO)
+		if (VernierEngine::getInstance()->getGSM()->getScene()->getName() == "prueba2")
+			entity_->getScene()->getGSM()->changeScene("menupausa.lua", "menupausa", true);
 
 	Transform* camTr = static_cast<Transform*>(entity_->getComponent("Transform"));
 	if (camTr) {

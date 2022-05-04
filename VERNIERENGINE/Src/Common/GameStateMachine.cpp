@@ -44,6 +44,7 @@ void GameStateMachine::deleteInstance()
 
 void GameStateMachine::clearScenes() {
 	while (!_sceneStack.empty()) {
+		_sceneStack.top()->hideUI();
 		delete _sceneStack.top();
 		_sceneStack.pop();
 	}
@@ -113,11 +114,13 @@ bool GameStateMachine::lastUpdate()
 		else if (_load || _push) {
 			if (_load)
 				clearScenes();
-			_sceneStack.top()->hideUI();
+			else {
+				_sceneStack.top()->hideUI();
+				getScene()->setSceneActive(false);
+			}
 			//_sceneStack.top()->onDisable();
 
 			//UIManager::getInstance()->clearOverlay();
-			getScene()->setSceneActive(false);
 
 			Scene* scene = new Scene(_file, _name, _instance);
 			_sceneStack.push(scene);

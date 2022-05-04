@@ -1,5 +1,5 @@
 menupausa = {
-    entities = { "continue", "ajustes",  "salir", "camaraPrincipal2"}
+    entities = { "continue", "ajustes",  "salir", "camaraPrincipal7"}
 }
 
 dll={
@@ -17,7 +17,7 @@ dll={
 continue = {
     Active = true,
     Listener = false,
-    Components = {"Image"},
+    Components = {"Image", "Button1"},
     Image = {
         OverlayName = "imagen2",
         Name = "Continue",
@@ -25,6 +25,9 @@ continue = {
         Y = "0",
         W = "650",
         H = "650"
+    },
+    Button1 = {
+        Callback = "volver"
     }
 }
 
@@ -56,7 +59,7 @@ salir = {
     }
 }
 
-camaraPrincipal2={
+camaraPrincipal7={
     Active = true,
     Listener = true,
     Components = {"Transform","Camera"},
@@ -70,7 +73,7 @@ camaraPrincipal2={
     Camera = {
         PosRel = "0,100,500",
         BackgroundColor = "0.8,0.1,0.3",
-        CameraName = "MainCamera2",
+        CameraName = "MainCamera7",
         Looking = "0,0,0",
         NearClipDistance = 1,
         FarClipDistance = 100000,
