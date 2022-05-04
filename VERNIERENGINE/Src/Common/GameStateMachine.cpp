@@ -101,14 +101,16 @@ bool GameStateMachine::lastUpdate()
 			if (_sceneStack.empty())
 				return false;
 			getScene()->setSceneActive(true);
-			_sceneStack.top()->onEnable();
+			//_sceneStack.top()->onEnable();
 			InputManager::getInstance()->setListenersVector(_sceneStack.top()->getListeners());
 			_pop = false;
 		}
 		else if (_load || _push) {
 			if (_load)
 				clearScenes();
-			_sceneStack.top()->onDisable();
+			//_sceneStack.top()->onDisable();
+			getScene()->setSceneActive(false);
+
 			Scene* scene = new Scene(_file, _name, _instance);
 			_sceneStack.push(scene);
 			InputManager::getInstance()->setListenersVector(_sceneStack.top()->getListeners());

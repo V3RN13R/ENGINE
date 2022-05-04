@@ -126,8 +126,8 @@ void Rigidbody::resetTransform(Vector3D v1, float q1, float q2, float q3, float 
 	//Transform* transform = entity_->getComponent<Transform>();
 
 	tr.setOrigin(btVector3(v1.getX(), v1.getY(), v1.getZ()));
-	btQuaternion(q1, q2, q3, q4);
-	tr.setRotation(btQuaternion(q1, q2, q3, q4));
+	//btQuaternion(q1, q2, q3, q4);
+	//tr.setRotation(btQuaternion(q1, q2, q3, q4));
 
 	_brb->setCenterOfMassTransform(tr);
 }

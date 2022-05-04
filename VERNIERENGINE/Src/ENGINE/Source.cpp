@@ -52,7 +52,11 @@ int main()
 	lua_getglobal(L, "DLLName");
 	lua_call(L, 0, 1);
 	std::string dllName = lua_tostring(L, -1);
+#ifdef _DEBUG
+	dllName += "_d.dll";
+#else
 	dllName += ".dll";
+#endif // _DEBUG
 	std::wstring dllNameW = std::wstring(dllName.begin(), dllName.end());
 	HINSTANCE hDLL = LoadLibrary(dllNameW.c_str());
 	lua_pop(L, 1);

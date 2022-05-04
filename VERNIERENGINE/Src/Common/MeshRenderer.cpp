@@ -13,10 +13,11 @@ MeshRenderer::MeshRenderer(Entity* e) : Component(e), _ogreEnt(nullptr)
 	_mSceneManager = VernierEngine::getInstance()->getRenderMain()->getSceneManager();
 }
 
-MeshRenderer::MeshRenderer(std::map<std::string, std::string> args) : _ogreEnt(nullptr), _mesh(args["Mesh"])
+MeshRenderer::MeshRenderer(std::map<std::string, std::string> args) : _ogreEnt(nullptr), _mesh(args["Mesh"]), _materialName(args["Material"])
 {
 	_mSceneManager = VernierEngine::getInstance()->getRenderMain()->getSceneManager();
 	start(_mesh);
+	setMaterial(_materialName);
 }
 
 void MeshRenderer::onEnable()
