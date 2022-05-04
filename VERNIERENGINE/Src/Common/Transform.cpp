@@ -66,11 +66,13 @@ void Transform::rotate(float degree, uint8_t axis)
 void Transform::setRotation(Vector3D rotation)
 {
 
-	entity_->getNode()->pitch(Ogre::Degree(rotation.getX()));
-	entity_->getNode()->yaw(Ogre::Degree(rotation.getY()));
-	entity_->getNode()->roll(Ogre::Degree(rotation.getZ()));
+	if (rotation != _rotation) {
+		entity_->getNode()->pitch(Ogre::Degree(rotation.getX() - _rotation.getX()));
+		entity_->getNode()->yaw(Ogre::Degree(rotation.getY() - _rotation.getY()));
+		entity_->getNode()->roll(Ogre::Degree(rotation.getZ() - _rotation.getZ()));
 
-	_rotation = rotation;
+		_rotation = rotation;
+	}
 }
 
 Ogre::Matrix3 Transform::fromEulerAngleToRotationMatrix(Vector3D vec)

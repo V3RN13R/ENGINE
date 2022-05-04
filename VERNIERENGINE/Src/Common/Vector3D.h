@@ -154,6 +154,18 @@ public:
 		return *this;
 	}
 
+	inline bool operator==(const Vector3D& v) {
+
+		return (x_ == v.x_ &&
+			y_ == v.y_ &&
+			z_ == v.z_);
+	}
+	inline bool operator!=(const Vector3D& v) {
+
+		return !(x_ == v.x_ &&
+			y_ == v.y_ &&
+			z_ == v.z_);
+	}
 	// ** various operations
 
 	// length of the vector
