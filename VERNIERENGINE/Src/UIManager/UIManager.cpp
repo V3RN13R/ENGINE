@@ -83,7 +83,9 @@ UIImage* UIManager::addImage(std::string overlayname, std::string image){
     _num++;
     return imagen;
 }
-
+void UIManager::addText(UIText* txt) {
+    GameStateMachine::getInstance()->getScene()->addUIElem(txt);
+}
 UIText* UIManager::addText(std::string overlayName, std::string fontName, int fontSize, int order, std::string text, int rT, int gT, int bT, int rD, int gD, int bD, int x, int y) {
     //Ogre::FontManager::getSingleton().getByName("DejaVu/SerifCondensedItalic");
     auto texto = new UIText(overlayName, fontName, fontSize, order, text, rT, gT, bT,  rD,  gD,  bD, x, y);
@@ -92,7 +94,13 @@ UIText* UIManager::addText(std::string overlayName, std::string fontName, int fo
     GameStateMachine::getInstance()->getScene()->addUIElem(texto);
     return texto;
 }
-
+UIText* UIManager::createText(std::string overlayName, std::string fontName, int fontSize, int order, std::string text, int rT, int gT, int bT, int rD, int gD, int bD, int x, int y) {
+    //Ogre::FontManager::getSingleton().getByName("DejaVu/SerifCondensedItalic");
+    auto texto = new UIText(overlayName, fontName, fontSize, order, text, rT, gT, bT, rD, gD, bD, x, y);
+    _instance->_overlayElements.push_back(texto);
+    _num++;
+    return texto;
+}
 int UIManager::getNum() {
     return _num;
 }

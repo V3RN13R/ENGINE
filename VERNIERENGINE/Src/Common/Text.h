@@ -14,11 +14,14 @@ private:
 	int _rT, _gT, _bT, _rD,_gD,_bD;
 	int _size;
 	int _order;
+	bool _begin;
 
 public:
 	Text(std::map<std::string, std::string> args);
 	~Text(){}
-
+	void showText();
+	void hideText();
+	void changeText(std::string txt);
 	void start();
 
 };

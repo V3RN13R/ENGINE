@@ -29,7 +29,8 @@ public:
 	static UIManager* getInstance();
 	static void deleteInstance();
 	void clearOverlay();
-
+	UIText* createText(std::string overlayName, std::string fontName, int fontSize, int order, std::string text, int rT, int gT, int bT, int rD, int gD, int bD, int x, int y);
+	void addText(UIText* txt);
 	void initOverlaySystem();
 	void start();
 	int getNum();
