@@ -1,10 +1,10 @@
 #pragma once
 #include "Component.h"
 #include <map>
-
+#include "EngineDll.h"
 class UIText;
 
-class Text : public Component {
+class V3RN13R_API Text : public Component {
 private:
 	UIText* _uitxt;
 	std::string _overlayName;
