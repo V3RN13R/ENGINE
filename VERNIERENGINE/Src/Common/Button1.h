@@ -3,13 +3,13 @@
 #include <map>
 #include <functional>
 
-class Transform;
+class Image;
 class GameStateMachine;
 
 class Button1 : public Component {
 private:
     Entity* _ent;
-    Transform* _tr;
+    Image* _img;
     std::string _callbackName;
 
 public:

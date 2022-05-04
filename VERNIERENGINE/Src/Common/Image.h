@@ -1,6 +1,7 @@
 #pragma once
 #include "Component.h"
 #include <map>
+#include "Vector3D.h"
 
 class UIImage;
 
@@ -9,7 +10,7 @@ private:
 	std::string _overlayName;
 	std::string _name;
 	UIImage* _img;
-	int _x, _y;
+	float _x, _y;
 	int _w, _h;
 public:
 	Image(){}
@@ -19,4 +20,7 @@ public:
 	
 	void start();
 	void show();
+	Vector3D getPos3D() { return { _x, _y, 0 }; }
+	int getW() { return _w; }
+	int getH() { return _h; }
 };

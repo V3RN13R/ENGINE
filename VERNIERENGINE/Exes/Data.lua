@@ -20,9 +20,9 @@ function WindowName()
 end
 
 function SceneFile()
-    return "pruebatexto.lua"
+    return "pruebaboton2.lua"
 end
 
 function SceneName()
-    return "pruebatexto"
+    return "pruebaboton2"
 end

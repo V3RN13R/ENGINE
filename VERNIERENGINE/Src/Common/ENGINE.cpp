@@ -28,6 +28,7 @@
 #include "UIManager.h"
 #include "UIImage.h"
 #include "VernierTime.h"
+#include "Callbacks.h"
 
 //LUA
 extern "C"
@@ -63,6 +64,7 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	UIManager::setUpInstance();
 	getUIMng()->initOverlaySystem();
 
+	Callbacks::init();
 	//UIImage* image = new UIImage("imagen", "imagenp", "altavoz");
 
 	//Physics

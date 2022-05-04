@@ -9,6 +9,7 @@
 #include "Image.h"
 #include "Text.h"
 #include "SoundComponent.h"
+#include "Button1.h"
 #include <ENGINE.h>
 //#include "checkML.h"
 
@@ -57,6 +58,11 @@ Component* TextFactory::createComponent(std::map<std::string, std::string> args,
 	return new Text(args);
 };
 
+Component* Button1Factory::createComponent(std::map<std::string, std::string> args, Entity* ent)
+{
+	return new Button1(args, ent);
+};
+
 //Component* Button1Factory::createComponent(std::map<std::string, std::string> args, Entity* ent) {
 //	return new Button1(args, ent);
 //}
@@ -73,6 +79,7 @@ void setupFactories()
 	_fM->addFactory("Text", new TextFactory());
 	_fM->addFactory("Light", new Light_Factory());
 	_fM->addFactory("SoundComponent", new SoundComponentFactory());
+	_fM->addFactory("Button1", new Button1Factory());
 
 	//_fM->addFactory("Button1", new Button1Factory());
 }

@@ -85,7 +85,7 @@ public:
 	MouseButtons getMouseButtons() const;
 
 	const std::pair<Sint32, Sint32>& getMousePos() {
-		return _mousePos;
+		return {mousePositionAbsolute_.x, mousePositionAbsolute_.y};
 	}
 
 	static InputManager* getInstance();
