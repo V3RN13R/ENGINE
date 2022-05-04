@@ -18,6 +18,7 @@ public:
     void start() override;
     void update() override;
     void setCallBackFunction(std::string callBackName);
-    void callback();
+    std::function<void()> callback;
+    void setCallback();
     void setCallBackFunction(std::function<void()> callBack);
 };

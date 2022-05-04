@@ -1,5 +1,5 @@
 menuseleccionpersonajes = {
-    entities = {"fondo", "carta1", "carta2", "carta3", "exit", "camaraPrincipal2"}
+    entities = {"fondo1", "carta1", "carta2", "carta3", "exit2", "camaraPrincipal3"}
 }
 
 dll={
@@ -15,7 +15,7 @@ dll={
 }
 
 
-fondo = {
+fondo1 = {
     Active = true,
     Listener = false,
     Components = {"Image"},
@@ -72,7 +72,7 @@ carta3 = {
     }
 }
 
-exit = {
+exit2 = {
     Active = true,
     Listener = false,
     Components = {"Image"},
@@ -86,7 +86,7 @@ exit = {
     }
 }
 
-camaraPrincipal2={
+camaraPrincipal3={
     Active = true,
     Listener = true,
     Components = {"Transform","Camera"},
@@ -100,7 +100,7 @@ camaraPrincipal2={
     Camera = {
         PosRel = "0,100,500",
         BackgroundColor = "0.8,0.1,0.3",
-        CameraName = "MainCamera2",
+        CameraName = "MainCamera3",
         Looking = "0,0,0",
         NearClipDistance = 1,
         FarClipDistance = 100000,

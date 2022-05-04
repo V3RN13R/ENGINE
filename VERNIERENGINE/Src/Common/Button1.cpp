@@ -13,7 +13,7 @@ Button1::Button1(std::map<std::string, std::string> args, Entity* ent) : _callba
 void Button1::start() {
     _img = static_cast<Image*>(_ent->getComponent("Image"));
 
-    setCallBackFunction(_callbackName);
+    setCallback();
 }
 
 void Button1::update() {
@@ -29,7 +29,8 @@ void Button1::update() {
    // std::cout << _img->getPos3D().getX() << " " << _img->getPos3D().getY() << "\n";
     // Detectamos el click en la zona.
     if (Collisions::collides(vRaton, 10, 10, _img->getPos3D(), _img->getW(), _img->getH()) && InputManager::getInstance()->getMouseDown()) {
-        callback();
+        if (callback != nullptr)
+            callback();
     }
 }
 
@@ -44,6 +45,6 @@ void Button1::setCallBackFunction(std::function<void()> callBack)
     //element_->subscribeEvent(CEGUI::PushButton::EventClicked, callBack);
 }
 
-void Button1::callback() {
-    Callbacks::instance()->getMethod(_callbackName);
+void Button1::setCallback() {
+    callback = Callbacks::instance()->getMethod(_callbackName);
 }
