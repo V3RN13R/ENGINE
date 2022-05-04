@@ -1,32 +1,22 @@
 #pragma once
-#include <cassert>
-#include <functional>
+#include "CallbacksGame.h"
+#include "Callbacks.h"
+#include "GameStateMachine.h"
 #include <map>
-#include <memory>
-#include <string>
 
-class CallBacks {
+CallbacksGame::CallbacksGame() : Callbacks() {
 
-public:
-	~CallBacks() {};
+}
 
-	static  CallBacks* init();
+void CallbacksGame::menuSeleccion() {
+	GameStateMachine::getInstance()->changeScene("menuprincipal.lua", "menuprincipal");
+}
 
-	static CallBacks* instance() {
-		assert(_instance.get() != nullptr);
-		return _instance.get();
-	}
+void CallbacksGame::initCallbacks(){
+	_instance->addMethod("menuSeleccion", menuSeleccion);
+}
 
-	void addMethod(std::string name, void (*func)());
-
-	std::function<void()> getMethod(std::string name);
-
-private:
-	std::map<std::string, std::function<void()>> _methods;
-
-	CallBacks();
-
-protected:
-	static std::unique_ptr<CallBacks> _instance;
-
-};
+bool CallbacksGame::init() {
+	initCallbacks();
+	return true;
+}

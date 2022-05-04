@@ -29,7 +29,7 @@ void Button1::update() {
    // std::cout << _img->getPos3D().getX() << " " << _img->getPos3D().getY() << "\n";
     // Detectamos el click en la zona.
     if (Collisions::collides(vRaton, 10, 10, _img->getPos3D(), _img->getW(), _img->getH()) && InputManager::getInstance()->getMouseDown()) {
-        std::cout << "COLISIONES" << std::endl;
+        callback();
     }
 }
 
@@ -42,4 +42,8 @@ void Button1::setCallBackFunction(std::function<void()> callBack)
 {
     //element_->removeAllEvents();
     //element_->subscribeEvent(CEGUI::PushButton::EventClicked, callBack);
+}
+
+void Button1::callback() {
+    Callbacks::instance()->getMethod(_callbackName);
 }

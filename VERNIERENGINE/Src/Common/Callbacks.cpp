@@ -21,6 +21,7 @@ void Callbacks::addMethod(std::string name, void(*func)())
 	_methods.insert({ name, func });
 }
 
+
 std::function<void()> Callbacks::getMethod(std::string name)
 {
 	auto m = _methods.find(name);

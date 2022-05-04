@@ -43,7 +43,7 @@ play = {
         H = "256"
     },
     Button1 = {
-        Callback = "menuSP"
+        Callback = "menuSeleccion"
     }
 }
 

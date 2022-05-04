@@ -22,12 +22,10 @@ public:
 
 	std::function<void()> getMethod(std::string name);
 
-private:
-	std::map<std::string, std::function<void()>> _methods;
-
-	Callbacks();
+	void menuSeleccion();
 
 protected:
+	Callbacks();
 	static std::unique_ptr<Callbacks> _instance;
-
+	std::map<std::string, std::function<void()>> _methods;
 };

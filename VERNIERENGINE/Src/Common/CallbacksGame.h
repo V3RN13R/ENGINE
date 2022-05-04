@@ -2,15 +2,12 @@
 
 #include "Callbacks.h"
 
-class CallbacksGame {
-
+class CallbacksGame : public Callbacks {
 private:
-	static std::unique_ptr<CallbacksGame> instance_;
-	void initCallbacks();
-	static void toScene2();
+	static void menuSeleccion();
+	CallbacksGame();
 public:
-	CallbacksGame() {};
 	~CallbacksGame() {};
+	static void initCallbacks();
 	static bool init();
-	static CallbacksGame* instance();
 };
