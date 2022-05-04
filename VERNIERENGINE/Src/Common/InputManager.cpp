@@ -14,7 +14,6 @@ void InputManager::manageInput(SDL_Event evt)
 			mousePositionAbsolute_ = { evt.motion.x , evt.motion.y };
 			mousePositionRelative_.x = evt.motion.xrel;
 			mousePositionRelative_.y = evt.motion.yrel;
-			std::cout << mousePositionRelative_.x << "\n";
 			break;
 		case SDL_MOUSEBUTTONDOWN: case SDL_MOUSEBUTTONUP:
 			switch (evt.button.button)
