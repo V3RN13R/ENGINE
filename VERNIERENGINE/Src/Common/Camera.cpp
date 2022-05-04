@@ -127,7 +127,9 @@ void Camera::receiveEvent(int msg, Entity* e) {
 		entity_->getScene()->getGSM()->popScene();
 
 	if (msg == MessageType::UNO)
-		if (VernierEngine::getInstance()->getGSM()->getScene()->getName() == "prueba2")
+		if (VernierEngine::getInstance()->getGSM()->getScene()->getName() == "jugar1" ||
+		VernierEngine::getInstance()->getGSM()->getScene()->getName() == "jugar2" ||
+		VernierEngine::getInstance()->getGSM()->getScene()->getName() == "jugar3")
 			entity_->getScene()->getGSM()->changeScene("menupausa.lua", "menupausa", true);
 
 	Transform* camTr = static_cast<Transform*>(entity_->getComponent("Transform"));

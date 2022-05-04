@@ -1,5 +1,5 @@
 menupausa = {
-    entities = { "continue", "ajustes",  "salir", "camaraPrincipal7"}
+    entities = { "fondo4", "continue", "ajustes",  "salir", "camaraPrincipal7"}
 }
 
 dll={
@@ -83,3 +83,17 @@ camaraPrincipal7={
 }
 
 
+
+fondo4 = {
+    Active = true,
+    Listener = false,
+    Components = {"Image"},
+    Image = {
+        OverlayName = "imagenfondo4",
+        Name = "fondoSeleccionPersonajes",
+        X = "0",
+        Y = "0",
+        W = "1920",
+        H = "1080"
+    }
+}
