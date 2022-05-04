@@ -89,6 +89,7 @@ UIText* UIManager::addText(std::string overlayName, std::string fontName, int fo
     auto texto = new UIText(overlayName, fontName, fontSize, order, text, rT, gT, bT,  rD,  gD,  bD, x, y);
     _instance->_overlayElements.push_back(texto);
     _num++;
+    GameStateMachine::getInstance()->getScene()->addUIElem(texto);
     return texto;
 }
 
