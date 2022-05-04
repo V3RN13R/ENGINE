@@ -1,0 +1,7 @@
+font Gemstone 
+{
+type truetype
+source Gemstone.font
+size 15
+resolution 72
+}

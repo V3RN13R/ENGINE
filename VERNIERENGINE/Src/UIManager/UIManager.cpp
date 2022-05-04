@@ -12,6 +12,7 @@
 #include "OgreOverlaySystem.h"
 #include "../RenderEngine/WindowRender.h"
 #include "checkML.h"
+#include "OgreFont.h"
 
 
 UIManager* UIManager::_instance = nullptr;
@@ -76,6 +77,7 @@ UIImage* UIManager::addImage(std::string overlayname, std::string image){
 }
 
 UIText* UIManager::addText(std::string overlayName, std::string fontName, int fontSize, int order, std::string text, int r, int g, int b, int x, int y) {
+    //Ogre::FontManager::getSingleton().getByName("DejaVu/SerifCondensedItalic");
     auto texto = new UIText(overlayName, fontName, fontSize, order, text, r, g, b, x, y);
     _instance->_overlayElements.push_back(texto);
     _num++;

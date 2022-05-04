@@ -1,13 +1,15 @@
 #include "UIElement.h"
 #include <string>
 #include "../Common/Vector3D.h"
-#include <OgreTextAreaOverlayElement.h>
+namespace Ogre {
+	class TextAreaOverlayElement;
+}
 
 class UIText : public UIElement
 {
 public:
 	UIText(std::string overlayName, std::string fontName, int fontSize, int order, std::string text, int r, int g, int b, int x, int y);
-	virtual ~UIText();
+	~UIText() {}
 
 	//Im pretty sure size is based on font for text
 	virtual void setPosition(int x, int y);

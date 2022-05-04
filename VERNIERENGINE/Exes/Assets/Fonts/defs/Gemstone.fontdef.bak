@@ -1,0 +1,7 @@
+font Gemstone 
+{
+type image
+source Gemstone.ttf
+size 15
+resolution 72
+}

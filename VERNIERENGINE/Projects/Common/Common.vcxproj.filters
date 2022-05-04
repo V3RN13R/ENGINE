@@ -27,31 +27,61 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Common\Callbacks.h" />
-    <ClInclude Include="..\..\Src\Common\Camera.h" />
-    <ClInclude Include="..\..\Src\Common\checkML.h" />
-    <ClInclude Include="..\..\Src\Common\Collisions.h" />
-    <ClInclude Include="..\..\Src\Common\Component.h" />
-    <ClInclude Include="..\..\Src\Common\ENGINE.h" />
-    <ClInclude Include="..\..\Src\Common\Entity.h" />
-    <ClInclude Include="..\..\Src\Common\Factory.h" />
-    <ClInclude Include="..\..\Src\Common\FactoryManager.h" />
-    <ClInclude Include="..\..\Src\Common\GameStateMachine.h" />
-    <ClInclude Include="..\..\Src\Common\Image.h" />
-    <ClInclude Include="..\..\Src\Common\InitFactories.h" />
-    <ClInclude Include="..\..\Src\Common\InputManager.h" />
-    <ClInclude Include="..\..\Src\Common\Light.h" />
-    <ClInclude Include="..\..\Src\Common\MeshRenderer.h" />
-    <ClInclude Include="..\..\Src\Common\ResourceManager.h" />
-    <ClInclude Include="..\..\Src\Common\RigidBody.h" />
-    <ClInclude Include="..\..\Src\Common\Scene.h" />
-    <ClInclude Include="..\..\Src\Common\Singleton.h" />
-    <ClInclude Include="..\..\Src\Common\SoundComponent.h" />
-    <ClInclude Include="..\..\Src\Common\Text.h" />
-    <ClInclude Include="..\..\Src\Common\Transform.h" />
-    <ClInclude Include="..\..\Src\Common\Utils.h" />
-    <ClInclude Include="..\..\Src\Common\Vector3D.h" />
-    <ClInclude Include="..\..\Src\Common\VernierTime.h" />
-    <ClInclude Include="..\..\Src\Common\EngineDll.h" />
-    <ClInclude Include="..\..\Src\Common\Button1.h" />
+    <ClInclude Include="..\..\Src\Common\MonkeyStats.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\Health.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\BananaMovement.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\Ground.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\Pickable.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\Player.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\Image.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\ENGINE.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\VernierTime.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\MovementPlayer.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\checkML.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\Text.h">
+    <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\SoundComponent.h">
+     <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\Destroyable.h">
+      <Filter>components</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="ecs">
+      <UniqueIdentifier>{4b8408fb-7561-4e0f-b98d-7b054dd9ba57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="components">
+      <UniqueIdentifier>{b320766d-aa8b-455d-8780-2326d1cac17d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{faca7998-f635-4f0f-b0da-683ac3e2e63f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game">
+      <UniqueIdentifier>{c9ec22b9-2cef-4f57-b557-d84432d47a97}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

@@ -14,5 +14,6 @@ void Text::start() {
 	_uitxt = UIManager::getInstance()->addText(_overlayName, _name, _size, _order, _text, _r, _g, _b, _x, _y);
 	_uitxt->setPosition(_x, _y);
 	_uitxt->setSize(_size, _size);
-	_uitxt->setRenderOrder(5);
+	//_uitxt->setFont("fuentes/Gemstone");
+	//_uitxt->setRenderOrder(5);
 }

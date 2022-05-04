@@ -5,6 +5,7 @@ FileSystem=../Dependencies/Ogre/Src/Media/O/RTShaderLib/materials
 FileSystem=../Dependencies/Ogre/Src/Media/O/RTShaderLib/GLSL
 FileSystem=../Dependencies/Ogre/Src/Media/O/RTShaderLib/HLSL_Cg
 FileSystem=../Dependencies/Ogre/Src/Media/O/Terrain/
+FileSystem=../Dependencies/Ogre/Src/Tests/Media/
 
 # Resources required by the sample browser and most samples.
 [Essential]
@@ -13,6 +14,9 @@ Zip=../Dependencies/Ogre/Src/Media/O/packs/profiler.zip
 
 #Nuestros recursos de Ogre
 [General]
-FileSystem= /Assets/Ogre/Mesh
-FileSystem= /Assets/Ogre/Material
+FileSystem= ./Assets/Ogre/Mesh
+FileSystem= ./Assets/Ogre/Material
 FileSystem= /Assets/Interfaz
+
+[Fonts]
+FileSystem= ./Assets/Fonts

@@ -4,6 +4,9 @@
 #include <OgreOverlayManager.h>
 #include <OgreTextAreaOverlayElement.h>
 #include <OgreOverlay.h>
+#include <OgreFont.h>
+#include <OgreFontManager.h>
+#include <OgreResourceManager.h>
 
 UIText::UIText(std::string overlayName, std::string fontName, int fontSize, int order, std::string text, int r, int g, int b, int x, int y) : UIElement()
 {
@@ -16,11 +19,8 @@ UIText::UIText(std::string overlayName, std::string fontName, int fontSize, int 
 	_txt->setMetricsMode(Ogre::GMM_PIXELS);
 	_txt->setCaption(text);
 	_txt->setCharHeight(fontSize);
-
-	//Default font
-	//textArea_->setFontName(fontName);
-	_txt->setColourBottom(Ogre::ColourValue(r, g, b));
-	_txt->setColourTop(Ogre::ColourValue(r, g, b));
+	_txt->setColourBottom(Ogre::ColourValue(0.5, 0.5, 0.5, 1));
+	_txt->setColourTop(Ogre::ColourValue(0.5, 0.5, 0.5, 1));
 
 	// Create an overlay, and add the panel
 	_overlay = _overlayMng->create(overlayName);
@@ -28,7 +28,6 @@ UIText::UIText(std::string overlayName, std::string fontName, int fontSize, int 
 
 }
 
-UIText::~UIText() = default;
 
 void UIText::setPosition(int x, int y) {
 	_txt->setPosition(x, y);
