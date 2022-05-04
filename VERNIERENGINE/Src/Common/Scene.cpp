@@ -4,6 +4,7 @@
 #include "InputManager.h"
 #include <algorithm>
 #include <SDL.h>
+#include "UIElement.h"
 //#include "checkML.h"
 
 Scene::Scene(const std::string& file, const std::string& name, GameStateMachine* gsm) {
@@ -196,6 +197,18 @@ void Scene::addListener(Entity* e)
 GameStateMachine* Scene::getGSM()
 {
 	return _GSM;;
+}
+
+void Scene::hideUI() {
+	for (int i = 0; i < _uielements.size(); i++) {
+		_uielements[i]->hide();
+	}
+}
+
+void Scene::showUI() {
+	for (int i = 0; i < _uielements.size(); i++) {
+		_uielements[i]->show();
+	}
 }
 
 void Scene::start() {

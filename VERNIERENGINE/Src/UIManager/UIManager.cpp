@@ -14,6 +14,8 @@
 #include "checkML.h"
 #include "OgreFont.h"
 #include "OgreResourceManager.h"
+#include "../Common/GameStateMachine.h"
+#include "../Common/Scene.h"
 
 UIManager* UIManager::_instance = nullptr;
 
@@ -72,14 +74,12 @@ void UIManager::initOverlaySystem() {
 }
 
 void UIManager::start() {
-    for (int i = 0; i < _overlayElements.size(); i++) {
-        _instance->_overlayElements[i]->show();
-    }
 }
 
 UIImage* UIManager::addImage(std::string overlayname, std::string image){
     auto imagen = new UIImage(overlayname, _num, image);
     _instance->_overlayElements.push_back(imagen);
+    GameStateMachine::getInstance()->getScene()->addUIElem(imagen);
     _num++;
     return imagen;
 }

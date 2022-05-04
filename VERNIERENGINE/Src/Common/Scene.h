@@ -16,11 +16,13 @@ typedef struct lua_State lua_State;
 class FactoryManager;
 class InputManager;
 class GameStateMachine;
+class UIElement;
 
 class V3RN13R_API Scene {
 private:
 	std::vector<Entity*> _entities;
 	std::vector<Entity*> _listeners;
+	std::vector<UIElement*> _uielements;
 
 	GameStateMachine* _GSM;
 
@@ -58,6 +60,12 @@ public:
 	void update();
 
 	void clearEntities();
+
+	void addUIElem(UIElement* uielem) { _uielements.push_back(uielem); }
+
+	void hideUI();
+
+	void showUI();
 
 	std::string getName() { return _name; }
 

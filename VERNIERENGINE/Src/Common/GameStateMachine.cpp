@@ -13,7 +13,8 @@ void GameStateMachine::initScene(const std::string& sceneFile, const std::string
 	_sceneStack.push((new Scene(sceneFile, scene, _instance)));
 	InputManager::getInstance()->setListenersVector(_sceneStack.top()->getListeners());
 	_sceneStack.top()->start();
-	UIManager::getInstance()->start();
+	_sceneStack.top()->showUI();
+	//UIManager::getInstance()->start();
 	_sceneStack.top()->onEnable();
 }
 
@@ -97,21 +98,25 @@ bool GameStateMachine::lastUpdate()
 	if (!_sceneStack.empty()) {
 		_sceneStack.top()->clearEntities();
 		if (_pop) {
+			_sceneStack.top()->hideUI();
 			delete _sceneStack.top();
 			_sceneStack.pop();
 			if (_sceneStack.empty())
 				return false;
 			getScene()->setSceneActive(true);
+			_sceneStack.top()->showUI();
 			//_sceneStack.top()->onEnable();
 			InputManager::getInstance()->setListenersVector(_sceneStack.top()->getListeners());
 			_pop = false;
-			UIManager::getInstance()->clearOverlay();
+			//UIManager::getInstance()->clearOverlay();
 		}
 		else if (_load || _push) {
 			if (_load)
 				clearScenes();
+			_sceneStack.top()->hideUI();
 			//_sceneStack.top()->onDisable();
-			UIManager::getInstance()->clearOverlay();
+
+			//UIManager::getInstance()->clearOverlay();
 			getScene()->setSceneActive(false);
 
 			Scene* scene = new Scene(_file, _name, _instance);
@@ -119,7 +124,8 @@ bool GameStateMachine::lastUpdate()
 			InputManager::getInstance()->setListenersVector(_sceneStack.top()->getListeners());
 			scene->start();
 			scene->onEnable();
-			UIManager::getInstance()->start();
+			//UIManager::getInstance()->start();
+			_sceneStack.top()->showUI();
 			_load = false;
 			_push = false;
 		}
