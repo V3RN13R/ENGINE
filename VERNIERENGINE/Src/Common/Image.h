@@ -20,6 +20,7 @@ public:
 	
 	void start();
 	void show();
+	void hide();
 	Vector3D getPos3D() { return { _x, _y, 0 }; }
 	int getW() { return _w; }
 	int getH() { return _h; }

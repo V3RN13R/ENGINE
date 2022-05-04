@@ -54,6 +54,7 @@ void GameStateMachine::popScene() {
 
 
 void GameStateMachine::changeScene(std::string file, std::string name, bool push) {
+	//UIManager::getInstance()->clearOverlay();
 	if (_sceneStack.empty()) {
 		Scene* scene = new Scene(file, name, _instance);
 		_sceneStack.push(scene);
@@ -104,11 +105,13 @@ bool GameStateMachine::lastUpdate()
 			//_sceneStack.top()->onEnable();
 			InputManager::getInstance()->setListenersVector(_sceneStack.top()->getListeners());
 			_pop = false;
+			UIManager::getInstance()->clearOverlay();
 		}
 		else if (_load || _push) {
 			if (_load)
 				clearScenes();
 			//_sceneStack.top()->onDisable();
+			UIManager::getInstance()->clearOverlay();
 			getScene()->setSceneActive(false);
 
 			Scene* scene = new Scene(_file, _name, _instance);
@@ -116,6 +119,7 @@ bool GameStateMachine::lastUpdate()
 			InputManager::getInstance()->setListenersVector(_sceneStack.top()->getListeners());
 			scene->start();
 			scene->onEnable();
+			UIManager::getInstance()->start();
 			_load = false;
 			_push = false;
 		}

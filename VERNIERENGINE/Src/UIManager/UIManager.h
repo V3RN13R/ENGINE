@@ -28,7 +28,7 @@ public:
 	static UIManager* setUpInstance();
 	static UIManager* getInstance();
 	static void deleteInstance();
-
+	void clearOverlay();
 
 	void initOverlaySystem();
 	void start();

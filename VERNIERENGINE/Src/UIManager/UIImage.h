@@ -9,6 +9,7 @@ public:
 	~UIImage() {}
 
 	void show();
+	void hide();
 
 	std::string getName() { return _name; }
 	Ogre::Overlay* getOverlay() { return _overlay; }

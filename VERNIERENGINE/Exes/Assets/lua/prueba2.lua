@@ -1,5 +1,5 @@
 prueba2 = {
-    entities = {"cubo1","mono2", "suelo2","camaraPrincipal2", "luz", "dll"}
+    entities = {"cubo1","mono2", "suelo2","camaraPrincipal1", "luz", "dll", "imagen"}
 }
 
 dll={
@@ -13,7 +13,19 @@ dll={
     },
     Example={}
 }
-
+imagen = {
+    Active = true,
+    Listener = false,
+    Components = {"Image"},
+    Image = {
+        OverlayName = "imagen100",
+        Name = "fondomenu",
+        X = "0",
+        Y = "0",
+        W = "100",
+        H = "200"
+    }
+}
 cubo1={
     Active = true,
     Listener = false,
@@ -137,7 +149,7 @@ bala={
     },
 }
 
-camaraPrincipal2={
+camaraPrincipal1={
     Active = true,
     Listener = true,
     Components = {"Transform","Camera", "SoundComponent"},
@@ -153,7 +165,7 @@ camaraPrincipal2={
         PosRel = "0,100,500",
         Entity = "mono2",
         BackgroundColor = "0.8,0.1,0.3",
-        CameraName = "MainCamera2",
+        CameraName = "MainCamera1",
         Looking = "0,0,0",
         NearClipDistance = 1,
         FarClipDistance = 100000,

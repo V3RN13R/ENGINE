@@ -37,14 +37,21 @@ void UIManager::deleteInstance() {
     delete _instance;
 }
 
+void UIManager::clearOverlay() {
+    if (!_overlayElements.empty()) {
+        for (UIElement* elem : _overlayElements) {
+            elem->hide();
+            delete elem;
+            elem = nullptr;
+        }
+        _overlayElements.clear();
+    }
+}
+
 UIManager::~UIManager() {
 
 
-    for (UIElement* elem : _overlayElements) {
-        delete elem;
-        elem = nullptr;
-    }
-    _overlayElements.clear();
+    clearOverlay();
     _overlayMng->destroyAll();
     _overlay = nullptr;
     delete _overlaySys;
