@@ -27,7 +27,7 @@ protected:
 public:
 	// CONSTRUCTORA / DESTRUCTORA
 	UIElement();
-	~UIElement(){}
+	virtual ~UIElement(){}
 
 	// MUESTRA EN PANTALLA EL OVERLAY
 	void show();
