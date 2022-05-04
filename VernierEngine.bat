@@ -7,5 +7,5 @@
 
 @REM :: Una vez compiladas las dependencias pasamos a compilar nuestro motor como tal 
 cd VERNIERENGINE
-msbuild "VERNIERENGINE.sln" /p:configuration=Debug
-::msbuild "VERNIERENGINE.sln" /p:configuration=Release
+msbuild "VERNIERENGINE.sln" /p:configuration=Debug /p:platform=x64
+msbuild "VERNIERENGINE.sln" /p:configuration=Release /p:platform=x64
