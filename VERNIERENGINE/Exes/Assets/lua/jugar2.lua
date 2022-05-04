@@ -1,5 +1,5 @@
-prueba2 = {
-    entities = {"cubo1","mono2", "suelo2","camaraPrincipal1", "luz", "dll", "imagen"}
+jugar2 = {
+    entities = {"monito2", "suelo2","camaraPrincipal1", "luz", "dll", "imagen"}
 }
 
 dll={
@@ -75,7 +75,7 @@ luz = {
 	
 }
 
-mono2={
+monito2 = {
     Active = true,
     Listener = true,
     Components = {"Transform","MeshRenderer", "Rigidbody", "SoundComponent"},
@@ -87,12 +87,12 @@ mono2={
     },	
 	MeshRenderer = {
         Mesh = "mono1.mesh",
-        Material = "mono1tt"
+        Material = "mono2tt"
     },
     Rigidbody = {
         Type = "Sphere",
         Mass = "1",
-        Radius = "40",
+        Radius = "200",
         Position = "0,300,0"
     },
     SoundComponent={
@@ -164,7 +164,7 @@ camaraPrincipal1={
     Camera = {
         Sensibilidad = "-1",
         PosRel = "0,100,500",
-        Entity = "mono2",
+        Entity = "monito2",
         BackgroundColor = "0.8,0.1,0.3",
         CameraName = "MainCamera1",
         Looking = "0,0,0",

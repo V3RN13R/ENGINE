@@ -5,7 +5,10 @@
 class CallbacksGame : public Callbacks {
 private:
 	static void menuSeleccion();
-	static void jugar();
+	// Dependiendo del mono que escojas.
+	static void jugar1();
+	static void jugar2();
+	static void jugar3();
 	static void volver();
 	CallbacksGame();
 public:

@@ -1,5 +1,5 @@
 menuseleccionpersonajes = {
-    entities = {"fondo1", "carta1", "carta2", "carta3", "exit2", "camaraPrincipal3", "boton"}
+    entities = {"fondo1", "carta1", "carta2", "carta3", "exit2", "camaraPrincipal3", "boton", "foto1", "foto2", "foto3"}
 }
 
 dll={
@@ -14,21 +14,59 @@ dll={
     Example={}
 }
 
-boton = {
+foto1 = {
     Active = true,
     Listener = false,
     Components = {"Image", "Button1"},
     Image = {
-        OverlayName = "imatge1",
-        Name = "play",
-        X = "0",
-        Y = "0",
-        W = "200",
-        H = "400"
+        OverlayName = "monito1",
+        Name = "mono1",
+        X = "175",
+        Y = "242",
+        W = "400",
+        H = "415"
     },
     
     Button1 = {
-        Callback = "jugar"
+        Callback = "jugar1"
+    }
+}
+
+
+foto2 = {
+    Active = true,
+    Listener = false,
+    Components = {"Image", "Button1"},
+    Image = {
+        OverlayName = "monito2",
+        Name = "mono2",
+        X = "745",
+        Y = "242",
+        W = "400",
+        H = "415"
+    },
+    
+    Button1 = {
+        Callback = "jugar2"
+    }
+}
+
+
+foto3 = {
+    Active = true,
+    Listener = false,
+    Components = {"Image", "Button1"},
+    Image = {
+        OverlayName = "monito3",
+        Name = "mono3",
+        X = "1320",
+        Y = "242",
+        W = "400",
+        H = "415"
+    },
+    
+    Button1 = {
+        Callback = "jugar3"
     }
 }
 

@@ -15,8 +15,16 @@ void CallbacksGame::menuSeleccion() {
 	std::cout << "Cambiado a menú selección de personajes" << "\n";
 }
 
-void CallbacksGame::jugar() {
-	VernierEngine::getInstance()->getGSM()->changeScene("prueba2.lua", "prueba2", false);
+void CallbacksGame::jugar1() {
+	VernierEngine::getInstance()->getGSM()->changeScene("jugar1.lua", "jugar1", false);
+	std::cout << "Cambiado a pantalla de jugar" << "\n";
+}
+void CallbacksGame::jugar2() {
+	VernierEngine::getInstance()->getGSM()->changeScene("jugar2.lua", "jugar2", false);
+	std::cout << "Cambiado a pantalla de jugar" << "\n";
+}
+void CallbacksGame::jugar3() {
+	VernierEngine::getInstance()->getGSM()->changeScene("jugar3.lua", "jugar3", false);
 	std::cout << "Cambiado a pantalla de jugar" << "\n";
 }
 
@@ -27,7 +35,9 @@ void CallbacksGame::volver() {
 
 void CallbacksGame::initCallbacks(){
 	_instance->addMethod("menuSeleccion", menuSeleccion);
-	_instance->addMethod("jugar", jugar);
+	_instance->addMethod("jugar1", jugar1);
+	_instance->addMethod("jugar2", jugar2);
+	_instance->addMethod("jugar3", jugar3);
 	_instance->addMethod("volver", volver);
 }
 
