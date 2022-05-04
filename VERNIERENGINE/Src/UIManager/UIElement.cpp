@@ -13,6 +13,10 @@ void UIElement::show() {
 	_overlay->show();
 }
 
+void UIElement::hide() {
+	_overlay->hide();
+}
+
 void UIElement::setMetricsMode(MetricsMode mmode) {
 	switch (mmode) {
 	case GMM_PIXELS:

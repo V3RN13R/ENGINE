@@ -1,5 +1,20 @@
 prueba = {
-    entities = { "suelo", "camaraPrincipal"}
+    entities = { "suelo", "camaraPrincipal", "imagen4555"}
+}
+
+imagen4555 = {
+    Active = true,
+    Listener = false,
+    Components = {"Image"},
+    Image = {
+        OverlayName = "imagen1030",
+        Name = "altavoz",
+        X = "300",
+        Y = "0",
+        W = "100",
+        H = "200"
+
+    }
 }
 
 mono={

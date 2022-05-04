@@ -16,4 +16,9 @@ UIImage::UIImage(std::string name, int order, std::string image) {
 }
 
 void UIImage::show() { 
+	_overlayCont->show();
+}
+
+void UIImage::hide() {
+	_overlayCont->hide();
 }

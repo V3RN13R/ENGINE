@@ -11,7 +11,7 @@ CallbacksGame::CallbacksGame() : Callbacks() {
 }
 
 void CallbacksGame::menuSeleccion() {
-	VernierEngine::getInstance()->getGSM()->changeScene("menuseleccionpersonajes.lua", "menuseleccionpersonajes", true);
+	VernierEngine::getInstance()->getGSM()->changeScene("menuseleccionpersonajes.lua", "menuseleccionpersonajes");
 	std::cout << "Cambiado a menú selección de personajes" << "\n";
 }
 

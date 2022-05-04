@@ -31,6 +31,7 @@ public:
 
 	// MUESTRA EN PANTALLA EL OVERLAY
 	void show();
+	void hide();
 
 	// SETTERS
 	void setMetricsMode(MetricsMode mmode);
