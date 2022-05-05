@@ -38,7 +38,7 @@ public:
 	VernierTime* getTime();
 	Callbacks* getCbs();
 	bool processFrame();
-	bool getStay() { return play; }
+	bool getPlay() { return play; }
 	void closeGame() { play = false; }
 	~VernierEngine();
 private:
