@@ -5,7 +5,6 @@
 #include "Utils.h"
 #include <iostream>
 
-//#include "RenderMain.h"
 const float toRad = 3.1416 / 180;
 
 Transform::Transform(Vector3D position, Vector3D scale, Vector3D rotation) : _position(position), _scale(scale), _rotation(rotation)
@@ -92,7 +91,6 @@ Ogre::Matrix3 Transform::fromEulerAngleToRotationMatrix(Vector3D vec)
 void Transform::update() //Falta bullet
 {
 	entity_->getNode()->setPosition(Ogre::Vector3(_position.getX(), _position.getY(), _position.getZ()));
-	//setRotation(Vector3D(entity_->getNode()->getOrientation().x, entity_->getNode()->getOrientation().y, entity_->getNode()->getOrientation().z));
 }
 
 void Transform::setScale(Vector3D vec) {

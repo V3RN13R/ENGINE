@@ -15,7 +15,6 @@ private:
     std::stack<Scene*> _sceneStack;
     bool _load, _pop, _push;
     std::string _file, _name;
-    // bool keyPressed();
 public:
     static GameStateMachine* getInstance();
     static bool setUpInstance();

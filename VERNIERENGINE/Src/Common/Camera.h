@@ -55,6 +55,5 @@ public:
 	void start();
 	void onDisable() override;
 	void onEnable() override;
-	//virtual void sendEvent(MessageType msg){}
 	void receiveEvent(int msg, Entity* e) override;
 };

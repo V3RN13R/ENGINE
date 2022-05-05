@@ -12,10 +12,6 @@ class Component;
 class V3RN13R_API Transform : public Component {
 	enum Axis :uint8_t { x, y, z };
 public:
-	/*Transform() :
-		_position(), _scale(), _rotation(0,0,0) {
-		std::cout << "Constructora default transform\n";
-	}*/
 
 	Transform(Vector3D position, Vector3D scale, Vector3D rotation);
 	

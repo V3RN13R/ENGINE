@@ -4,7 +4,6 @@
 
 #include <Ogre.h>
 #include <ENGINE.h>
-//#include "checkML.h"
 
 using OgrePrefab = Ogre::SceneManager::PrefabType;
 
@@ -26,7 +25,6 @@ void MeshRenderer::onEnable()
 	_visible = true;
 
 	if (_firstEnable) {
-		//node_ = transform->getNode();
 		_node = _mSceneManager->getSceneNode(entity_->getName());
 		if (_ogreEnt)
 			_node->attachObject(_ogreEnt);
@@ -63,7 +61,6 @@ MeshRenderer::~MeshRenderer()
 	_node = nullptr;
 	VernierEngine::getInstance()->getRenderMain()->getSceneManager()->destroyEntity(_ogreEnt);
 	_ogreEnt = nullptr;
-	//borrar basura creada al meter la mesh?� como el Ogre::Entity quizas no lo s�
 }
 
 Ogre::Mesh* MeshRenderer::getMesh() const

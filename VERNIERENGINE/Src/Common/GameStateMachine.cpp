@@ -3,7 +3,6 @@
 #include "InputManager.h"
 #include "SDL.h"
 #include "../UIManager/UIManager.h"
-//#include "checkML.h"
 
 GameStateMachine* GameStateMachine::_instance = nullptr;
 
@@ -14,7 +13,6 @@ void GameStateMachine::initScene(const std::string& sceneFile, const std::string
 	InputManager::getInstance()->setListenersVector(_sceneStack.top()->getListeners());
 	_sceneStack.top()->start();
 	_sceneStack.top()->showUI();
-	//UIManager::getInstance()->start();
 	_sceneStack.top()->onEnable();
 }
 
@@ -56,7 +54,6 @@ void GameStateMachine::popScene() {
 
 
 void GameStateMachine::changeScene(std::string file, std::string name, bool push) {
-	//UIManager::getInstance()->clearOverlay();
 	if (_sceneStack.empty()) {
 		Scene* scene = new Scene(file, name, _instance);
 		_sceneStack.push(scene);
@@ -106,10 +103,8 @@ bool GameStateMachine::lastUpdate()
 				return false;
 			getScene()->setSceneActive(true);
 			_sceneStack.top()->showUI();
-			//_sceneStack.top()->onEnable();
 			InputManager::getInstance()->setListenersVector(_sceneStack.top()->getListeners());
 			_pop = false;
-			//UIManager::getInstance()->clearOverlay();
 		}
 		else if (_load || _push) {
 			if (_load) {
@@ -120,16 +115,12 @@ bool GameStateMachine::lastUpdate()
 				_sceneStack.top()->hideUI();
 				getScene()->setSceneActive(false);
 			}
-			//_sceneStack.top()->onDisable();
-
-			//UIManager::getInstance()->clearOverlay();
 
 			Scene* scene = new Scene(_file, _name, _instance);
 			_sceneStack.push(scene);
 			InputManager::getInstance()->setListenersVector(_sceneStack.top()->getListeners());
 			scene->start();
 			scene->onEnable();
-			//UIManager::getInstance()->start();
 			_sceneStack.top()->showUI();
 			_load = false;
 			_push = false;

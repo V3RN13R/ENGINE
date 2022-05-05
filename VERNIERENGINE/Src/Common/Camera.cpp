@@ -13,7 +13,6 @@
 #include <Ogre.h>
 #include <math.h>
 #include <ENGINE.h>
-//#include "checkML.h"
 
 
 Camera::Camera(std::map<std::string, std::string> args, Entity* ent) : Component(ent),
@@ -47,8 +46,6 @@ void Camera::update() {
 	if (mono) {
 		_monkePos = &(static_cast<Transform*>(mono->getComponent("Transform")))->getPos();
 		if (_camTr != nullptr) {
-			/*Vector3D nuevaPos = Vector3D(_monkePos->getX() + _monkeRadio * std::cos( _monkeAngle*toRadians), _monkePos->getY() + 0 , _monkePos->getZ() + _monkeRadio * std::sin(_monkeAngle*toRadians));
-			camTr->setPosition(nuevaPos)*/;
 			//camtTr para mover al nodo padre y mNodeCamera para mover la posición del nodo hijo que es donde se encuentra la cámara
 			_camTr->setPosition(Vector3D(_monkePos->getX(), _monkePos->getY(), _monkePos->getZ()));
 			mNodeCamera->lookAt(Ogre::Vector3(_monkePos->getX(), _monkePos->getY(), _monkePos->getZ()), Ogre::Node::TS_WORLD, Ogre::Vector3::NEGATIVE_UNIT_Z);
@@ -61,7 +58,6 @@ void Camera::update() {
 		float rotar = _sensibilidad * mousePosRel.x;
 		Transform* camTr = static_cast<Transform*>(entity_->getComponent("Transform"));
 		camTr->rotate(Vector3D(0, rotar, 0));
-		//_oNode->yaw(Ogre::Degree(-5));
 		mNodeCamera->yaw(Ogre::Degree(-rotar));
 		_monkeAngle = fmod((_monkeAngle + rotar), 360.f);//modulo entre dos floats
 	}
@@ -79,7 +75,6 @@ void Camera::start() {
 	_camera->setAutoAspectRatio(true);
 	mNodeCamera = entity_->getNode()->createChildSceneNode();
 	mNodeCamera->attachObject(_camera);
-	//mNodeCamera->yaw(Ogre::Degree(90));
 
 	mNodeCamera->setPosition(_posRel.getX(), _posRel.getY(), _posRel.getZ());
 	mNodeCamera->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
@@ -115,15 +110,6 @@ void Camera::onEnable()
 
 
 void Camera::receiveEvent(int msg, Entity* e) {
-	//Para probar el cambio de escena
-	if (msg == MessageType::T) {
-
-		entity_->getScene()->getGSM()->changeScene("prueba.lua", "prueba", true);
-	}
-
-	if (msg == MessageType::R)
-		entity_->getScene()->getGSM()->popScene();
-
 	if (msg == MessageType::UNO)
 		if (VernierEngine::getInstance()->getGSM()->getScene()->getName() == "jugar1" ||
 		VernierEngine::getInstance()->getGSM()->getScene()->getName() == "jugar2" ||
@@ -136,20 +122,13 @@ void Camera::receiveEvent(int msg, Entity* e) {
 		switch (msg) {
 		case MessageType::PULSA_Q:
 			camTr->rotate(Vector3D(0, _sensibilidad, 0));
-			//_oNode->yaw(Ogre::Degree(-5));
 			mNodeCamera->yaw(Ogre::Degree(-_sensibilidad));
 			_monkeAngle = fmod((_monkeAngle + _sensibilidad), 360.f);//modulo entre dos floats
-			//camTr->setRotation()
-			//_oNode->getOrientation(). * toAngles;
-			//std::cout << "AnguloCam mono: " << //camTr->setRotation()
-			//	_oNode->getOrientation() * toAngles << "\n";
 			break;
 		case MessageType::PULSA_E:
 			camTr->rotate(Vector3D(0, -_sensibilidad, 0));
-			//_oNode->yaw(Ogre::Degree(5));
 			mNodeCamera->yaw(Ogre::Degree(_sensibilidad));
 			_monkeAngle = fmod((_monkeAngle - _sensibilidad), 360.f);
-			//std::cout << "AnguloCam mono: " << _monkeAngle << "\n";
 			break;
 		}
 	}

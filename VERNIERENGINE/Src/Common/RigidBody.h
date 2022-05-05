@@ -19,7 +19,6 @@ public:
 	~Rigidbody();
 	void addSphereRigidbody (float mass,float radius,Vector3D pos, bool statc=false);
 	void addBoxRigidbody(float mass, Vector3D pos, Vector3D size, bool statc=false);
-	//virtual void preUpdate() override;
 
 	virtual void update() override;
 	virtual void fixedUpdate() override;
@@ -27,9 +26,7 @@ public:
 	virtual void onEnable() override;
 	virtual void onDisable() override;
 	Vector3D getPosition();
-	//virtual void sendEvent(MessageType msg) {}
-	//virtual void receiveEvent(MessageType msg) {}
-	//virtual void lateUpdate() override;
+
 	void resetTransform(Vector3D v1, float q1, float q2, float q3, float q4);
 	void clearForce();
 	void setCenterRb(Vector3D dir);
@@ -41,9 +38,6 @@ public:
 	void setVelocity(Vector3D dir);
 	void addImpulse(Vector3D dir);
 	void addForce(Vector3D dir);
-
-	//ESTE METODO SOLO SE DEBE LLAMAR DESDE TRANSFORM
-	//void setTransformPos(Vector3D pos);
 
 	Vector3D getGravity();
 	Vector3D getVel();

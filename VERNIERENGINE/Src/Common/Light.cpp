@@ -6,7 +6,6 @@
 #include <OgreLight.h>
 #include <OgreSceneNode.h>
 #include <OgreSceneManager.h>
-//#include "checkML.h"
 
 
 Light::Light(std::map<std::string, std::string> args, Entity* ent) : Component(ent), _node(nullptr), _light(nullptr), _firstEnable(true),
@@ -39,7 +38,7 @@ void Light::onEnable()
 	if (_firstEnable) {
 		_light = WindowRender::getInstance()->createLight((Ogre::LightTypes)_lightType);
 		
-		_node = entity_->getNode()->createChildSceneNode("_" + entity_->getName()); //entity_->getName()
+		_node = entity_->getNode()->createChildSceneNode("_" + entity_->getName()); 
 		_node->attachObject(_light);
 		_node->lookAt(RenderMain::toOgre(_direction), Ogre::Node::TransformSpace::TS_WORLD); // toOgrePosition
 
@@ -98,7 +97,6 @@ void Light::setType(LightMode type)
 
 void Light::setDistance(float distance)
 {
-	//Atten = 1/( att0i + att1i * d + att2i * d²) formula calcula atenuacion
 	_distance = distance;
 	float linear = 4.5 / distance;
 	float quadratic = 75.0 / pow(pow(_distance, 3), 2);

@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-//enum class MessageType { DEFAULT, MOVIMIENTO, MOVERW, MOVERA, MOVERS, MOVERD, W, A, S, D, ESPACIO, DISPARO, PULSA_Q, PULSA_E, R, T, ESCENA1, ESCENA2, CLICKIZ, CLICKDE };
 class MessageType {
 public:
 	static const int DEFAULT = 0;

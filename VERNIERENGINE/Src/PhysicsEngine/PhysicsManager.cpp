@@ -6,7 +6,6 @@
 
 #include "Vector3D.h"
 #include <iostream>
-//#include "checkML.h"
 
 
 PhysicsManager* PhysicsManager::_instance = nullptr;
@@ -66,42 +65,10 @@ void PhysicsManager::resumeObjectSimulation(btRigidBody* brb) {
 
 
 PhysicsManager::PhysicsManager() {
-	//registerComponent("RigidBody", 0, []() -> RigidBody * { return new RigidBody(); });
 
 }
 PhysicsManager::~PhysicsManager()
 {
-
-	//delete dynamicsWorld;
-	//delete collConfig;
-	//delete collDispatcher;
-	//delete broadPhaseInterface;
-	//delete constraintSolver;
-	//delete mDebugDrawer_;
-
-	//for (int x = 0; x < collisionShapes.size(); x++) {
-	//	delete collisionShapes[x];
-	//}
-	//collisionShapes.clear();
-
-	///*int i;
-	//for (i = dynamicsWorld->getNumCollisionObjects() - 1; i >= 0; i--)
-	//{
-	//	btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[i];
-	//	dynamicsWorld->removeCollisionObject(obj);
-	//	delete obj;
-	//}*/
-	//
-	//for (std::map<const btCollisionObject*, std::pair<CollisionObject*, CollisionObject*>>::iterator itr = contacts.begin(); itr != contacts.end(); itr++)
-	//{
-	//	std::cout << contacts.size() << "\n";
-	//	delete (itr->first);
-	//	delete (itr->second.first);
-	//	delete (itr->second.second);
-	//}
-	//contacts.clear();
-
-
 	//cleanup in the reverse order of creation/initialization
 
 		//remove the rigidbodies from the dynamics world and delete them
@@ -120,15 +87,6 @@ PhysicsManager::~PhysicsManager()
 		delete shape;
 	}
 
-	/*for (auto it = collisions.begin(); it != collisions.end();) {
-		if ((*it).rb == rb) {
-			((*it).trigger) ? entity_->onTriggerExit((*it).rb->entity_, (*it).point) : entity_->onCollisionExit((*it).rb->entity_, (*it).point);
-			it = collisions.erase(it);
-			return;
-		}
-		else
-			it++;
-	}*/
 	delete dynamicsWorld;
 	delete collConfig;
 	delete collDispatcher;
@@ -153,11 +111,6 @@ void PhysicsManager::init(const Vector3D gravity)
 
 	_firstTime = (double)GetTickCount64() / 1000.0;
 	_lastFrameTime = _firstTime - 0.01;
-	/*mDebugDrawer_ = new OgreDebugDrawer(OgreContext::getInstance()->getSceneManager());
-	mDebugDrawer_->setDebugMode(btIDebugDraw::DBG_DrawWireframe);
-	dynamicsWorld->setDebugDrawer(mDebugDrawer_);*/
-
-
 }
 
 btRigidBody* PhysicsManager::addSphereRigidbody(float mass, float radius, btVector3 pos, void(*d)(void*, void* other, const btManifoldPoint& mnf), void* listener)
@@ -176,7 +129,6 @@ btRigidBody* PhysicsManager::addSphereRigidbody(float mass, float radius, btVect
 	rb->setUserPointer(new CollisionListener(d,listener));
 	rb->setCcdMotionThreshold(1e-7);
 	rb->setCcdSweptSphereRadius(0.50);
-	//rb->setDamping(0, 0);
 	dynamicsWorld->addRigidBody(rb);
 
 	return rb;

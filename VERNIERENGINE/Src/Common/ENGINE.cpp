@@ -8,7 +8,6 @@
 #include "ENGINE.h"
 #include "RenderMain.h"
 #include "PhysicsManager.h"
-//#include "PruebaBullet.h"
 #include "FactoryManager.h"
 #include "Transform.h"
 #include "Rigidbody.h"
@@ -64,19 +63,12 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	getUIMng()->initOverlaySystem();
 
 	Callbacks::init();
-	//UIImage* image = new UIImage("imagen", "imagenp", "altavoz");
 
 	//Physics
 	if (!PhysicsManager::setUpInstance()) {
 		throw std::exception("ERROR: Couldn't load PhysicsManager\n");
 	}
 	_physics = getPhysicsMng();
-
-	//PruebaBullet::mainPhys();
-
-	//SoundManager
-	//inicializa la intancia y llama al init() de Soundmanager
-	//_soundManager->playSound("main theme.mp3", 1.0f);
 
 	InputManager::setUpInstance();
 	_input = InputManager::getInstance();
@@ -138,9 +130,8 @@ Callbacks* VernierEngine::getCbs() {
 
 bool VernierEngine::processFrame()
 {
-	if (/*_ogre->pollEvents()*/  getInputMng()->pollEvents()) {
-		//InputManager::getInstance()->Update();
-		//PhysicsManager::getInstance()->Update();
+	if (getInputMng()->pollEvents()) {
+
 		if(_vernierTime)_vernierTime->frameStarted();
 		if(_physics)_physics->stepPhysics();
 		if(_soundManager)_soundManager->update();
@@ -150,10 +141,8 @@ bool VernierEngine::processFrame()
 			_gSM->lateUpdate();
 			_gSM->lastUpdate();
 		}
-		//tr->setPosition(Vector3D(tr->getPos().getX(), tr->getPos().getY() - 0.0001, tr->getPos().getZ()));
-		//tr2->rotate(0.01, 2);
+
 		if(_ogre)_ogre->updateWindow();
-		// LoadImages::instance()->renderTexturas();
 		if(_input)InputManager::getInstance()->resetMousePosRel();
 
 	}
@@ -203,68 +192,6 @@ void VernierEngine::readAssetsPath()
 	}
 }
 
-//int main()
-//{
-//
-//	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-//
-//	lua_State* L;
-//
-//	// initialize Lua interpreter
-//	L = luaL_newstate();
-//
-//	// load Lua base libraries (print / math / etc)
-//	luaL_openlibs(L);
-//	luaL_dofile(L, "Data.lua");
-//	lua_getglobal(L, "DLLName");
-//	lua_call(L, 0, 1);
-//	std::string dllName = lua_tostring(L, -1);
-//	dllName += ".dll";
-//	std::wstring dllNameW = std::wstring(dllName.begin(), dllName.end());
-//	HINSTANCE hDLL = LoadLibrary(dllNameW.c_str());
-//	lua_pop(L, 1);
-//	if (hDLL == NULL)
-//		std::cout << "Failed Load DLL\n";
-//	else {
-//		std::cout << "LoadDll\n";
-//		lua_getglobal(L, "WindowName");
-//		lua_call(L, 0, 1);
-//		const std::string appName = lua_tostring(L, -1);
-//		lua_pop(L, 1);
-//		lua_getglobal(L, "SceneFile");
-//		lua_call(L, 0, 1);
-//		const std::string sceneFile = lua_tostring(L, -1);
-//		lua_pop(L, 1);
-//		lua_getglobal(L, "SceneName");
-//		lua_call(L, 0, 1);
-//		const std::string scene = lua_tostring(L, -1);
-//		lua_pop(L, 1);
-//		//VernierEngine::setupInstance(appName, sceneFile, scene);//lamar desde la dll
-//		typedef int (*funcFirstTry) ();
-//		lua_getglobal(L, "FunctionName");
-//		lua_call(L, 0, 1);
-//		funcFirstTry ftry = (funcFirstTry)GetProcAddress(hDLL, lua_tostring(L, -1));
-//		lua_pop(L, 1);
-//		lua_close(L);
-//		if (!ftry) {
-//			std::cout << "ERROR\n";
-//		}
-//		else
-//			ftry();
-//		VernierEngine::getInstance()->startScene(sceneFile,scene);
-//		FreeLibrary(hDLL);
-//	}
-//	bool stay = true;
-//	do {
-//		stay = VernierEngine::getInstance()->processFrame();
-//	} while (stay);
-//
-//	delete VernierEngine::getInstance();
-//	//se acaba el programa
-//	std::cout << "Hola\n";
-//	return 0;
-//}
-
 VernierEngine* VernierEngine::setupInstance(const std::string& appName, const std::string& sceneFile, const std::string& scene)
 {
 	if (_instance == nullptr)
@@ -279,31 +206,3 @@ void VernierEngine::startScene(const std::string& sceneFile, const std::string& 
 {
 	_gSM->initScene(sceneFile, scene);
 }
-
-//bool VernierEngine::loadGame()
-//{
-//	// game .dll loading
-//#ifndef _DEBUG
-//	game = LoadLibrary(TEXT("./DllExample_d.dll"));
-//#endif 
-//#ifdef _DEBUG
-//	game = LoadLibrary(TEXT("./DllExample_d.dll"));
-//#endif 
-//
-//	if (game == nullptr)
-//	{
-//		std::cout << "Game .dll unable to load";
-//		return 0;
-//	}
-//	std::cout << "Game load success";
-//
-//	// game functions load
-//	
-//	ftry = (funcFirstTry)GetProcAddress(game, "prueba2.lua");
-//	if (!ftry) {
-//		std::cout << "ERROR\n";
-//		return 0;
-//	}
-//	
-//	return 1;
-//}

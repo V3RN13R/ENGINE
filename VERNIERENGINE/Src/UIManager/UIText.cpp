@@ -30,7 +30,6 @@ UIText::UIText(std::string overlayName, std::string fontName, int fontSize, int 
 	_txt->setPosition(0, 0);
 	_txt->setDimensions(10000000, 10000000);
 #pragma region CARGA_FUENTE
-	//Ogre::FontManager* fontMgr = Ogre::FontManager::getSingletonPtr();
 	//// create a font resource
 	Ogre::ResourcePtr font = Ogre::FontManager::getSingletonPtr()->getByName(fontName, "Fonts");
 	if (!font) {

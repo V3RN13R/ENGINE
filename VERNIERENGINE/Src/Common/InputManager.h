@@ -57,9 +57,6 @@ public:
 		_isKeyUpEvent = false;
 		_isMouseButtonEvent = false;
 		_isMouseMotionEvent = false;
-		//for (auto i = 0u; i < 3; i++) {
-			//_mbState[i] = false;
-		//}
 	}
 
 	virtual ~InputManager() {}
@@ -73,11 +70,6 @@ public:
 	bool getKeyUp(SDL_Scancode code);
 	void setListenersVector(const std::vector<Entity*>* listeners) { _listenersScene = listeners; };
 	bool getMouseDown() { return _isMouseButtonEvent; }
-
-	//inline int getMouseButtonState(MOUSEBUTTON b) {
-	//	return _mbState[b];
-	//}
-
 
 	void resetMousePosRel();
 	MousePositionRelative getMousePosRel() const;

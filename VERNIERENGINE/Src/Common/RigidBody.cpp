@@ -6,7 +6,6 @@
 #include "VernierTime.h"
 #include "PhysicsManager.h"
 #include <btBulletDynamicsCommon.h>
-//#include "checkML.h"
 
 
 Rigidbody::Rigidbody(std::map<std::string, std::string> args) : _position(args["Position"]) , _type(args["Type"])
@@ -40,16 +39,6 @@ Rigidbody::Rigidbody(std::map<std::string, std::string> args) : _position(args["
 
 Rigidbody::~Rigidbody()
 {
-
-	/*for (auto it = collisions.begin(); it != collisions.end();) {
-		if ((*it).rb == rb) {
-			((*it).trigger) ? entity_->onTriggerExit((*it).rb->entity_, (*it).point) : entity_->onCollisionExit((*it).rb->entity_, (*it).point);
-			it = collisions.erase(it);
-			return;
-		}
-		else
-			it++;
-	}*/
 	PhysicsManager::getInstance()->getDynamicsWorld()->removeRigidBody(_brb);
 	delete _brb->getUserPointer();
 	delete _brb;
@@ -79,7 +68,6 @@ void Rigidbody::update()
 
 void Rigidbody::fixedUpdate()
 {
-	//clearForce();
 
 }
 
@@ -123,11 +111,8 @@ Vector3D Rigidbody::getPosition()
 void Rigidbody::resetTransform(Vector3D v1, float q1, float q2, float q3, float q4)
 {
 	btTransform tr = _brb->getCenterOfMassTransform();
-	//Transform* transform = entity_->getComponent<Transform>();
 
 	tr.setOrigin(btVector3(v1.getX(), v1.getY(), v1.getZ()));
-	//btQuaternion(q1, q2, q3, q4);
-	//tr.setRotation(btQuaternion(q1, q2, q3, q4));
 
 	_brb->setCenterOfMassTransform(tr);
 }
@@ -170,15 +155,6 @@ void Rigidbody::contact(Rigidbody* other, const btManifoldPoint& manifold)
 		}
 		
 	}
-
-	/*for (CollisionInfo& obj : collisions) {
-		if (obj.rb == other) {
-			obj.time = 0;
-			obj.point = Vector3D((float)v.x(), (float)v.y(), (float)v.z());
-			entity_->onCollisionStay(other->entity_, obj.point);
-			return;
-		}
-	}*/
 	
 	Vector3D p = Vector3D((float)v.x(), (float)v.y(), (float)v.z());
 	collisions.push_back({ other,0 , p , other->_isTrigger || _isTrigger });
@@ -187,22 +163,7 @@ void Rigidbody::contact(Rigidbody* other, const btManifoldPoint& manifold)
 }
 
 void Rigidbody::setVelocity(Vector3D dir) {
-	/*_brb->activate();*/
 	_brb->setLinearVelocity(btVector3(dir.getX(), dir.getY(), dir.getZ()));
-
-
-	//_brb->applyCentralForce(btVector3(dir.getX(), dir.getY(), dir.getZ())*50);
-	//_brb->applyCentralImpulse(btVector3(dir.getX(), dir.getY(), dir.getZ()));
-	//_brb->setLinearVelocity(btVector3(dir.getX(), dir.getY(), dir.getZ()));
-
-
-
-	/*btTransform transform = _brb->getCenterOfMassTransform();
-	transform.setOrigin(btVector3(transform.getOrigin().getX() + dir.getX(), transform.getOrigin().getY() + dir.getY(), transform.getOrigin().getZ() + dir.getZ()));
-	_brb->setCenterOfMassTransform(transform);*/
-
-
-	//std::cout << "Vel X bullet: " << _brb->getLinearVelocity().getX() << "\n";
 }
 
 void Rigidbody::setCenterRb(Vector3D dir) {

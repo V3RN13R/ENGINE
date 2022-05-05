@@ -4,7 +4,6 @@
 #include "RenderMain.h"
 #include "WindowRender.h"
 #include <OgreRoot.h>
-//#include "checkML.h"
 
 RenderMain* RenderMain::_instance = nullptr;
 RenderMain* RenderMain::setUpInstance(const std::string& appName)
@@ -22,7 +21,6 @@ RenderMain* RenderMain::getInstance()
 
 bool RenderMain::init(const std::string& name)
 {
-	//_windowRender = new WindowRender(_appName);
 	WindowRender::instance()->setUpOgreRoot(name);
 	return true;
 }
@@ -37,7 +35,7 @@ Ogre::Root* RenderMain::getRoot()
 	if (_root == nullptr)
 	{
 #ifdef _DEBUG
-		_root = new Ogre::Root(/*"plugins_d.cfg"*/);
+		_root = new Ogre::Root();
 #else
 		_root = new Ogre::Root();
 

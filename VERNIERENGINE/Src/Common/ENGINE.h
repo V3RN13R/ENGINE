@@ -5,7 +5,6 @@
 #define SDL_MAIN_HANDLED
 #include "EngineDll.h"
 
-//class SDL_Renderer;
 class RenderMain;
 class PhysicsManager;
 class WindowRender;
@@ -25,7 +24,6 @@ class V3RN13R_API VernierEngine {
 public:
 	void startGame(int (*a)());
 	static VernierEngine* getInstance() { return _instance; }
-	//static bool setupInstance(const std::string& appName, const std::string& sceneFile, const std::string& scene);
 	static VernierEngine* setupInstance(const std::string& appName, const std::string& sceneFile, const std::string& scene);
 	void startScene(const std::string& sceneFile, const std::string& scene);
 	VernierEngine(const std::string& appName, const std::string& sceneFile, const std::string& value);
@@ -40,9 +38,6 @@ public:
 	VernierTime* getTime();
 	Callbacks* getCbs();
 	bool processFrame();
-
-	//bool CheckLua(lua_State* L, int r);
-	//int initialiseDLLs();
 
 	~VernierEngine();
 private:
@@ -60,9 +55,5 @@ private:
 	Transform* tr = nullptr;
 	Transform* tr2 = nullptr;
 
-	//SDL_Renderer* _renderer = nullptr;
 	std::string _assetsPath = "";
-
-	//HMODULE game;
-	//Scene* _scene;
 };

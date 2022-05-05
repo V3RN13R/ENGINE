@@ -20,8 +20,6 @@ Entity::~Entity() {
 	_components.clear();
 	_cmps.clear();
 
-
-	//RenderMain::getInstance()->getSceneManager()->destroyAllMovableObjects(_oNode);
 	_oNode->removeAndDestroyAllChildren();
 	VernierEngine::getInstance()->getRenderMain()->getSceneManager()->destroySceneNode(_oNode);
 }

@@ -9,8 +9,6 @@ private:
 	Ogre::FileSystemLayer* _FSLayer;
 
 	void loadResources();
-	//bool initRTShaderSystem();
-	//void wipeRTShaderSystem();
 
 public:
 	ResourceManager(std::string assetsPath);

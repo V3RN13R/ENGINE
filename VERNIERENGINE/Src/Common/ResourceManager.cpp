@@ -3,7 +3,6 @@
 #include <iostream>
 #include "OgreFileSystemLayer.h"
 #include "SoundManager.h"
-//#include "checkML.h"
 std::unique_ptr<ResourceManager> ResourceManager::_instance;
 
 void ResourceManager::loadResources()
@@ -43,8 +42,6 @@ void ResourceManager::loadResources()
 
 	sec = Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME;
 	const Ogre::ResourceGroupManager::LocationList genLocs = Ogre::ResourceGroupManager::getSingleton().getResourceLocationList(sec);
-
-	//OgreAssert(!genLocs.empty(), ("Resource Group '" + sec + "' must contain at least one entry").c_str());
 
 	arch = genLocs.front().archive->getName();
 	type = genLocs.front().archive->getType();
@@ -97,7 +94,6 @@ void ResourceManager::loadResources()
 	// load located resources
 	Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 	
-	//SoundManager::getInstance()->setRoute("/Assets/Sounds/");
 }
 
 ResourceManager::ResourceManager(std::string assetsPath)
@@ -126,5 +122,4 @@ ResourceManager* ResourceManager::getInstance()
 void ResourceManager::setUp()
 {
 	loadResources();
-	//meter lo de lo shader por si acaso
 }

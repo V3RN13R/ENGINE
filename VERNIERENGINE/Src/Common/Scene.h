@@ -8,7 +8,6 @@
 
 namespace luabridge {
 	class LuaRef;
-	//class lua_State;
 
 }
 typedef struct lua_State lua_State;

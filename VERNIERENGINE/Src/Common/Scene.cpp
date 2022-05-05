@@ -8,13 +8,10 @@
 //#include "checkML.h"
 
 Scene::Scene(const std::string& file, const std::string& name, GameStateMachine* gsm) {
-	//_fmanager->setUpInstance(); //se puede quitar en el main se debe de instanciar
 
 	_GSM = gsm;
 	_name = name;
-	//lua_State* _state = nullptr;
-	// Cargamos todas las imagenes desde un archivo .lua
-	//LoadImages::instance()->cargaImagen("imagenes.lua", "imagenes");
+
 	if (_state)lua_close(_state);
 
 	try {
@@ -67,9 +64,6 @@ Scene::Scene(const std::string& file, const std::string& name, GameStateMachine*
 	}
 	std::cout << "Listo.\n\n-------------------------\n\n";
 
-
-
-	//LoadImage::instance()->cargaImagen("prueba2.lua", "prueba2");
 }
 
 Entity* Scene::createEntity(const std::string& entityName, LuaRef entInfo)
@@ -78,7 +72,7 @@ Entity* Scene::createEntity(const std::string& entityName, LuaRef entInfo)
 
 	std::cout << "-------------------------------- Creando entidad " << entityName << " --------------------------------\n";
 
-	if (entInfo == NULL || entInfo.isNil()) { //|| entInfo.isRefNil()
+	if (entInfo == NULL || entInfo.isNil()) { 
 		std::cout << "ERROR: No se encontro la informacion de la entidad\n";
 		return nullptr;
 	}
@@ -96,24 +90,11 @@ Entity* Scene::createEntity(const std::string& entityName, LuaRef entInfo)
 		_entity->addComponent(components[i], _fmanager->getInstance()->findAndCreate(components[i], entInfo.rawget(components[i]),_entity));
 	}
 
-	//LuaRef children = entInfo.rawget("Children");
-	//LuaRef list = children.rawget("entities");
-	//if (!list.isNil()) {
-	//	for (int i = 1; i <= list.length(); i++) {
-	//		enableExceptions(list[i]);
-	//		createEntity(list[i], children.rawget(list[i]))->transform()->setParent(_entity->transform());
-	//	}
-	//}
 
 	std::cout << "\n	Fin de la lectura de componentes\n";
 	bool active = true;
 	bool correct = readVariable<bool>(entInfo, "Active", &active);
 	if (correct) _entity->setActive(active);
-
-	/*std::string tag = "Default";
-	correct = readVariable<std::string>(entInfo, "Tag", &tag);
-	if (correct)
-		_entity->setTag(tag);*/
 
 	addEntity(_entity);
 

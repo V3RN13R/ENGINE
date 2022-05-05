@@ -17,13 +17,6 @@ enum class LightMode
 	SPOTLIGHT = 2
 };
 
-//int SconvertToInt(const std::string& str)
-//{
-//	if (str == "POINTLIGHT") return 0;
-//	else if (str == "DIRECTIONAL_LIGHT") return 1;
-//	else if (str == "SPOTLIGHT") return 2;
-//};
-
 class Light: public Component {
 private:
 
@@ -57,9 +50,6 @@ public:
 
 	static std::string GetName() { return "Light"; }
 		
-
-	//virtual bool init(LuaBridge::LuaRef parameterTable = { nullptr }) override;
-
 	virtual void onEnable() override;
 
 	virtual void onDisable() override;

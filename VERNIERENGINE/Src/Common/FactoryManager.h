@@ -17,9 +17,6 @@ public:
 	Component* findAndCreate(const std::string& name, std::map<std::string, std::string> args, Entity* ent = nullptr);  //pasarle argumentos
 
 	void addFactory(const std::string& name, Factory* fact);
-
-	void initEngineFactories();
-
 private:
 	static FactoryManager* _instance;	
 	std::map<std::string, Factory*> _map;

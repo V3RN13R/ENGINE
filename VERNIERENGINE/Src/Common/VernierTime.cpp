@@ -1,35 +1,7 @@
 
 #include "VernierTime.h"
 #include <OgreTimer.h>
-//#include "checkML.h"
 
-//#include <Windows.h>
-
-//
-//VernierTime* VernierTime::getInstance()
-//{
-//    return _instance;
-//}
-//
-// 
-//bool VernierTime::setUpInstance()
-//{
-//    if (_instance == nullptr) {
-//        try {
-//            _instance = new VernierTime();
-//        }
-//        catch (...) {
-//            return false;
-//        }
-//    }
-//
-//    return true;
-//}
-//
-//void VernierTime::deleteInstance()
-//{
-//    delete _instance;
-//}
 
 VernierTime::VernierTime() : deltaTime_(0), time_(0), nextFixedTime_(0), fixedDeltaTime_(1.0 / NFrames)
 {

@@ -22,8 +22,6 @@ public:
 
 	std::function<void()> getMethod(std::string name);
 
-	void menuSeleccion();
-
 protected:
 	Callbacks();
 	static std::unique_ptr<Callbacks> _instance;

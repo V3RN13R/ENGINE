@@ -57,10 +57,6 @@ UIManager::~UIManager() {
     _overlayMng->destroyAll();
     _overlay = nullptr;
     delete _overlaySys;
-
-    //delete _overlayMng;
-
-
 }
 
 
@@ -87,7 +83,6 @@ void UIManager::addText(UIText* txt) {
     GameStateMachine::getInstance()->getScene()->addUIElem(txt);
 }
 UIText* UIManager::addText(std::string overlayName, std::string fontName, int fontSize, int order, std::string text, int rT, int gT, int bT, int rD, int gD, int bD, int x, int y) {
-    //Ogre::FontManager::getSingleton().getByName("DejaVu/SerifCondensedItalic");
     auto texto = new UIText(overlayName, fontName, fontSize, _num, text, rT, gT, bT, rD, gD, bD, x, y);
     _instance->_overlayElements.push_back(texto);
     _num++;
@@ -95,7 +90,6 @@ UIText* UIManager::addText(std::string overlayName, std::string fontName, int fo
     return texto;
 }
 UIText* UIManager::createText(std::string overlayName, std::string fontName, int fontSize, int order, std::string text, int rT, int gT, int bT, int rD, int gD, int bD, int x, int y) {
-    //Ogre::FontManager::getSingleton().getByName("DejaVu/SerifCondensedItalic");
     auto texto = new UIText(overlayName, fontName, fontSize, _num, text, rT, gT, bT, rD, gD, bD, x, y);
     _instance->_overlayElements.push_back(texto);
     _num++;
@@ -104,31 +98,3 @@ UIText* UIManager::createText(std::string overlayName, std::string fontName, int
 int UIManager::getNum() {
     return _num;
 }
-
-//UIImage* UIManager::getImage(std::string image) {
-//    auto it = _overlayElements.begin();
-//    for (it; it != _overlayElements.end(); it++) {
-//        if (static_cast<UIImage*>(*it)->getName() == image) 
-//            return static_cast<UIImage*>(*it);
-//    }
-//    if (it == _overlayElements.end() || _overlayElements.size() == 0) 
-//        return nullptr;
-//}
-
-//void UIManager::createPanel() {
-//    // Create a panel
-//
-//    Ogre::OverlayContainer* panel = static_cast<Ogre::OverlayContainer*>(_overlayMng->createOverlayElement("Panel", "PanelName"));
-//    panel->setMetricsMode(Ogre::GMM_PIXELS);
-//    panel->setPosition(10, 10);
-//    panel->setDimensions(100, 100);
-//    // panel->setMaterialName("Material/blanco"); // Optional background material
-//
-//    panel->setMaterialName("BaseWhite");
-//
-//     // Create an overlay, and add the panel
-//    _instance->_overlay->add2D(panel);
-//
-//    // Show the overlay
-//    _instance->_overlay->show();
-//}
