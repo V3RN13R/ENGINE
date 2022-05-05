@@ -27,8 +27,6 @@ Camera::Camera(std::map<std::string, std::string> args, Entity* ent) : Component
 Camera::~Camera() {
 	
 	RenderMain::getInstance()->getSceneManager()->destroyCamera(_camera);
-	//RenderMain::getInstance()->getSceneManager()->destroySceneNode(mNodeCamera);
-	//delete _camera;
 }
 
 void Camera::setBckgColor(Vector3D color)

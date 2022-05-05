@@ -19,7 +19,7 @@ bool PhysicsManager::setUpInstance() {
 	if (_instance == nullptr) {
 		try {
 			_instance = new PhysicsManager();
-			_instance->init(Vector3D(0.0, -9.8, 0.0));
+			_instance->init(Vector3D(0.0, -800, 0.0));
 		}
 		catch (...) {
 			return false;
@@ -31,7 +31,7 @@ bool PhysicsManager::setUpInstance() {
 
 void PhysicsManager::stepPhysics()
 {
-	dynamicsWorld->stepSimulation(1.f / 60.f, 10);
+	dynamicsWorld->stepSimulation((1.f / 60.f, 10));
 	/*for (int j = dynamicsWorld->getNumCollisionObjects() - 1; j >= 0; j--) {
 		btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[j];
 		btRigidBody* body = btRigidBody::upcast(obj);
