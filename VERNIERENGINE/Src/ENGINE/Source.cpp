@@ -100,7 +100,7 @@ WinMain(HINSTANCE hinstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nCmdSh
 			bool stay = true;
 			do {
 				stay = VernierEngine::getInstance()->processFrame();
-			} while (stay&&VernierEngine::getInstance()->getStay());
+			} while (stay&&VernierEngine::getInstance()->getPlay());
 
 			delete VernierEngine::getInstance();
 			FreeLibrary(hDLL);
