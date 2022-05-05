@@ -39,7 +39,7 @@ public:
 	Callbacks* getCbs();
 	bool processFrame();
 	bool getPlay() { return play; }
-	void closeGame() { play = true; }
+	void closeGame() { play = false; }
 	~VernierEngine();
 private:
 	void readAssetsPath();
@@ -53,8 +53,6 @@ private:
 	SoundManager* _soundManager = nullptr;
 	GameStateMachine* _gSM = nullptr;
 	InputManager* _input = nullptr;
-	Transform* tr = nullptr;
-	Transform* tr2 = nullptr;
-	bool play = false;
+	bool play = true;
 	std::string _assetsPath = "";
 };
