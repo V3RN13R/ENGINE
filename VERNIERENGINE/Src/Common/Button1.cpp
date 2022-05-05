@@ -21,12 +21,9 @@ void Button1::update() {
     float mX = InputManager::getInstance()->getMousePos().first;
     float mY = InputManager::getInstance()->getMousePos().second;
 
-    //std::cout << mX << " " << mY << "\n";
     // Creamos el Vector3D con las coordenadas del rat�n.
     Vector3D vRaton(mX, mY, 0);
-    //std::cout << vRaton.getX() << " " << vRaton.getY() << std::endl;
-   // std::cout << _img->getW() << " " << _img->getH() << "\n";
-   // std::cout << _img->getPos3D().getX() << " " << _img->getPos3D().getY() << "\n";
+
     // Detectamos el click en la zona.
     if (Collisions::collides(vRaton, 10, 10, _img->getPos3D(), _img->getW(), _img->getH()) && InputManager::getInstance()->getMouseDown()) {
         if (callback != nullptr)
