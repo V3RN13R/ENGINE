@@ -96,7 +96,7 @@ int main()
 			bool stay = true;
 			do {
 				stay = VernierEngine::getInstance()->processFrame();
-			} while (stay);
+			} while (stay&&VernierEngine::getInstance()->getStay());
 
 			delete VernierEngine::getInstance();
 			FreeLibrary(hDLL);
