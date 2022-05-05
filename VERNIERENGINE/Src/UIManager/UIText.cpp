@@ -65,7 +65,7 @@ UIText::UIText(std::string overlayName, std::string fontName, int fontSize, int 
 	setFont(fontName);
 	panel->addChild(_txt);
 	// Create an overlay, and add the panel
-	_overlay = _overlayMng->create(overlayName);
+	_overlay = _overlayMng->create(overlayName + std::to_string(order));
 	_overlay->add2D(panel);
 
 }

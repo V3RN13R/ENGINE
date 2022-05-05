@@ -88,7 +88,7 @@ void UIManager::addText(UIText* txt) {
 }
 UIText* UIManager::addText(std::string overlayName, std::string fontName, int fontSize, int order, std::string text, int rT, int gT, int bT, int rD, int gD, int bD, int x, int y) {
     //Ogre::FontManager::getSingleton().getByName("DejaVu/SerifCondensedItalic");
-    auto texto = new UIText(overlayName, fontName, fontSize, order, text, rT, gT, bT,  rD,  gD,  bD, x, y);
+    auto texto = new UIText(overlayName, fontName, fontSize, _num, text, rT, gT, bT, rD, gD, bD, x, y);
     _instance->_overlayElements.push_back(texto);
     _num++;
     GameStateMachine::getInstance()->getScene()->addUIElem(texto);
@@ -96,7 +96,7 @@ UIText* UIManager::addText(std::string overlayName, std::string fontName, int fo
 }
 UIText* UIManager::createText(std::string overlayName, std::string fontName, int fontSize, int order, std::string text, int rT, int gT, int bT, int rD, int gD, int bD, int x, int y) {
     //Ogre::FontManager::getSingleton().getByName("DejaVu/SerifCondensedItalic");
-    auto texto = new UIText(overlayName, fontName, fontSize, order, text, rT, gT, bT, rD, gD, bD, x, y);
+    auto texto = new UIText(overlayName, fontName, fontSize, _num, text, rT, gT, bT, rD, gD, bD, x, y);
     _instance->_overlayElements.push_back(texto);
     _num++;
     return texto;

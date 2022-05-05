@@ -112,8 +112,10 @@ bool GameStateMachine::lastUpdate()
 			//UIManager::getInstance()->clearOverlay();
 		}
 		else if (_load || _push) {
-			if (_load)
+			if (_load) {
+				getScene()->setSceneActive(false);
 				clearScenes();
+			}
 			else {
 				_sceneStack.top()->hideUI();
 				getScene()->setSceneActive(false);
