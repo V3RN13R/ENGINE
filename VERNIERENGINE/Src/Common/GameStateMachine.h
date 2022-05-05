@@ -2,9 +2,11 @@
 #include <string>
 #include <memory>
 #include <stack>
+#include "EngineDll.h"
+
 class Scene;
 
-class GameStateMachine {
+class V3RN13R_API GameStateMachine {
 
 private:
     GameStateMachine();
