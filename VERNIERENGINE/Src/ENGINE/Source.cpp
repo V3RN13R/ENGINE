@@ -24,7 +24,6 @@
 #include "SoundManager.h"
 #include "UIManager.h"
 #include "UIImage.h"
-//#include "checkML.h"
 //LUA
 extern "C"
 {

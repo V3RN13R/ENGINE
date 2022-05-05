@@ -69,8 +69,6 @@ public:
 	void update() override;
 	void fixedUpdate() override;
 	void onDisable() override;
-	//virtual void sendEvent(MessageType msg) {}
-	virtual void receiveEvent(int msg, Entity* e) override;
 private:
 	Vector3D _position;
 	Vector3D _glbposition;

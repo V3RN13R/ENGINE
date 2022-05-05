@@ -107,29 +107,3 @@ void Camera::onEnable()
 		_sc->resumeAllSounds();
 }
 
-
-
-void Camera::receiveEvent(int msg, Entity* e) {
-	if (msg == MessageType::UNO)
-		if (VernierEngine::getInstance()->getGSM()->getScene()->getName() == "jugar1" ||
-		VernierEngine::getInstance()->getGSM()->getScene()->getName() == "jugar2" ||
-		VernierEngine::getInstance()->getGSM()->getScene()->getName() == "jugar3")
-			entity_->getScene()->getGSM()->changeScene("menupausa.lua", "menupausa", true);
-
-	Transform* camTr = static_cast<Transform*>(entity_->getComponent("Transform"));
-	if (camTr) {
-
-		switch (msg) {
-		case MessageType::PULSA_Q:
-			camTr->rotate(Vector3D(0, _sensibilidad, 0));
-			mNodeCamera->yaw(Ogre::Degree(-_sensibilidad));
-			_monkeAngle = fmod((_monkeAngle + _sensibilidad), 360.f);//modulo entre dos floats
-			break;
-		case MessageType::PULSA_E:
-			camTr->rotate(Vector3D(0, -_sensibilidad, 0));
-			mNodeCamera->yaw(Ogre::Degree(_sensibilidad));
-			_monkeAngle = fmod((_monkeAngle - _sensibilidad), 360.f);
-			break;
-		}
-	}
-}

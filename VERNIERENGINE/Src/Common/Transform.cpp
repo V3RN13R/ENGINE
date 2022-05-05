@@ -88,7 +88,7 @@ Ogre::Matrix3 Transform::fromEulerAngleToRotationMatrix(Vector3D vec)
 	return (r_x * r_y * r_z);
 }
 
-void Transform::update() //Falta bullet
+void Transform::update() 
 {
 	entity_->getNode()->setPosition(Ogre::Vector3(_position.getX(), _position.getY(), _position.getZ()));
 }
@@ -111,11 +111,3 @@ void Transform::onDisable()
 	_enable = false;
 }
 
-void Transform::receiveEvent(int msg, Entity* e)
-{
-	//PRUEBA
-	switch (msg) {
-	case MessageType::PULSA_Q:
-		break;
-	}
-}

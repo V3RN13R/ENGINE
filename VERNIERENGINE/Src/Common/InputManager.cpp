@@ -60,48 +60,6 @@ void InputManager::manageInput(SDL_Event evt)
 				_keys[code]._pressed = true;
 				_keys[code]._up = false;
 			}
-#pragma region BORRAR
-			//ESTO EXISTE PARA NO TENER QUE CAMBIAR TODO EL CODIGO DE LAS PRUEBAS PERO HAY QUE BORRARLO
-
-			if (evt.key.keysym.scancode == SDL_SCANCODE_Q)
-			{
-				for (Entity* e : *_listenersScene) {
-					e->receiveEvent(MessageType::PULSA_Q, e);
-				}
-			}
-			else if (evt.key.keysym.scancode == SDL_SCANCODE_E)
-			{
-				for (Entity* e : *_listenersScene) {
-					e->receiveEvent(MessageType::PULSA_E, e);
-				}
-			}
-
-			if (evt.key.keysym.scancode == SDL_SCANCODE_R)
-			{
-				for (Entity* e : *_listenersScene) {
-					e->receiveEvent(MessageType::R, e);
-				}
-			}
-
-			if (evt.key.keysym.scancode == SDL_SCANCODE_T)
-			{
-				for (Entity* e : *_listenersScene) {
-					e->receiveEvent(MessageType::T, e);
-				}
-			}
-			if (evt.key.keysym.scancode == SDL_SCANCODE_F)
-			{
-				for (Entity* e : *_listenersScene) {
-					e->receiveEvent(MessageType::DISPARO, e);
-				}
-			}
-			if (evt.key.keysym.scancode == SDL_SCANCODE_V)
-			{
-				for (Entity* e : *_listenersScene) {
-					e->receiveEvent(MessageType::UNO, e);
-				}
-			}
-#pragma endregion
 		}
 		else if (evt.type == SDL_KEYUP)
 		{

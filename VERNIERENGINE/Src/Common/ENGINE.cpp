@@ -1,5 +1,4 @@
-// ENGINE.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//#include "checkML.h"
+
 #include "OgreRoot.h"
 #include <iostream>
 #include <cstdlib>

@@ -55,5 +55,4 @@ public:
 	void start();
 	void onDisable() override;
 	void onEnable() override;
-	void receiveEvent(int msg, Entity* e) override;
 };
