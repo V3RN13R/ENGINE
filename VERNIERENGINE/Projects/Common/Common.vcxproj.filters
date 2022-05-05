@@ -24,7 +24,6 @@
     <ClCompile Include="..\..\Src\Common\Vector3D.cpp" />
     <ClCompile Include="..\..\Src\Common\VernierTime.cpp" />
     <ClCompile Include="..\..\Src\Common\Button1.cpp" />
-    <ClCompile Include="..\..\Src\Common\CallbacksGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Common\Callbacks.h" />
@@ -66,7 +65,6 @@
     <ClInclude Include="..\..\Src\Common\Transform.h" />
     <ClInclude Include="..\..\Src\Common\Utils.h" />
     <ClInclude Include="..\..\Src\Common\Vector3D.h" />
-    <ClInclude Include="..\..\Src\Common\CallbacksGame.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ecs">
