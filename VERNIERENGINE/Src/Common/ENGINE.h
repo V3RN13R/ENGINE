@@ -39,7 +39,7 @@ public:
 	Callbacks* getCbs();
 	bool processFrame();
 	bool getPlay() { return play; }
-	void closeGame() { play = false; }
+	void closeGame() { play = true; }
 	~VernierEngine();
 private:
 	void readAssetsPath();
