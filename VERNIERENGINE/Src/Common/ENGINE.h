@@ -38,7 +38,8 @@ public:
 	VernierTime* getTime();
 	Callbacks* getCbs();
 	bool processFrame();
-
+	bool getStay() { return play; }
+	void closeGame() { play = false; }
 	~VernierEngine();
 private:
 	void readAssetsPath();
@@ -54,6 +55,6 @@ private:
 	InputManager* _input = nullptr;
 	Transform* tr = nullptr;
 	Transform* tr2 = nullptr;
-
+	bool play = false;
 	std::string _assetsPath = "";
 };
