@@ -56,7 +56,8 @@ private:
 	PhysicsManager();
 	virtual ~PhysicsManager();
 	static PhysicsManager* _instance;
-
+	double _firstTime;
+	double _lastFrameTime;
 	//cosas de bullet
 	//Configuracion sobre la gestion de colisiones con bullet, nosotros usaremos la configuracion por defecto
 	btDefaultCollisionConfiguration* collConfig = nullptr;
