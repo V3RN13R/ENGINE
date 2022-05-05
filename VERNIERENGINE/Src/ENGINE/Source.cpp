@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cstdlib>
 
-
 #include "ENGINE.h"
 #include "RenderMain.h"
 #include "PhysicsManager.h"
@@ -34,8 +33,13 @@ extern "C"
 #include "checkML.h"
 }
 
-
-int main()
+#ifdef  _DEBUG
+int main(int argc, char* argv[])
+#else
+#include <Windows.h>
+int WINAPI
+WinMain(HINSTANCE hinstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nCmdShow)
+#endif
 {
 
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
