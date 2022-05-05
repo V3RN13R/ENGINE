@@ -18,7 +18,7 @@ class SoundManager;
 class FactoryManager;
 class UIManager;
 class VernierTime;
-
+class Callbacks;
 class GameStateMachine;
 
 class V3RN13R_API VernierEngine {
@@ -38,6 +38,7 @@ public:
 	UIManager* getUIMng();
 	GameStateMachine* getGSM();
 	VernierTime* getTime();
+	Callbacks* getCbs();
 	bool processFrame();
 
 	//bool CheckLua(lua_State* L, int r);

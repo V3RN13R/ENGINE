@@ -23,12 +23,11 @@
 #include "Scene.h"
 #include "GameStateMachine.h"
 #include "InitFactories.h"
-
+#include "Callbacks.h"
 #include "SoundManager.h"
 #include "UIManager.h"
 #include "UIImage.h"
 #include "VernierTime.h"
-#include "CallbacksGame.h"
 
 //LUA
 extern "C"
@@ -65,7 +64,6 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	getUIMng()->initOverlaySystem();
 
 	Callbacks::init();
-	CallbacksGame::init();
 	//UIImage* image = new UIImage("imagen", "imagenp", "altavoz");
 
 	//Physics
@@ -134,6 +132,9 @@ VernierTime* VernierEngine::getTime()
 	return _vernierTime;
 }
 
+Callbacks* VernierEngine::getCbs() {
+	return Callbacks::instance();
+}
 
 bool VernierEngine::processFrame()
 {
