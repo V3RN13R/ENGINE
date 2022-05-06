@@ -30,29 +30,23 @@ private:
 	Vector3D _bckgColor = { 0, 0, 0 }; //color por defecto
 	Ogre::Viewport* _vp;
 	Entity* mono;
-	std::string entidadBuscar;
 	float _sensibilidad;
-	float _monkeAngle = 0;
-	float _monkeRadio = 500;
-	Vector3D* _monkePos = nullptr;
 	Vector3D _posRel;;
 
 	Transform* _camTr;
 	std::string _camName;
-
-	SoundComponent* _sc;
 public:
 	Camera(std::map<std::string, std::string> args, Entity* ent);
 	virtual ~Camera();
-	virtual void update();
 
 	void setNearClipDist(float n) { _nearClipDist = n; }
 	void setFarClipDist(float n) { _farClipDist = n; }
 	void setAspectRatio(float n) { _aspectRatio = n; }
 	void setLooking(Vector3D look) { _looking = look; }
 	void setBckgColor(Vector3D color);
-	void setMonkePos(Vector3D* pos);
 	void start();
-	void onDisable() override;
-	void onEnable() override;
+	void lookAt(Vector3D v);
+	void yaw(float d);
+	void pitch(float d);
+	void roll(float d);
 };

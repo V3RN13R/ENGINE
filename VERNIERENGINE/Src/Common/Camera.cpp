@@ -20,7 +20,6 @@ Camera::Camera(std::map<std::string, std::string> args, Entity* ent) : Component
 	_nearClipDist = std::stof(args["NearClipDistance"]);
 	_farClipDist = std::stof(args["FarClipDistance"]);
 	_aspectRatio = std::stof(args["AspectRatio"]);
-	entidadBuscar = args["Entity"];
 }
 
 Camera::~Camera() {
@@ -32,41 +31,10 @@ void Camera::setBckgColor(Vector3D color)
 {
 	_bckgColor = color;
 	_vp->setBackgroundColour(Ogre::ColourValue(_bckgColor.getX(), _bckgColor.getY(), _bckgColor.getZ()));
-	SoundComponent* _sc = (SoundComponent*)entity_->getComponent("SoundComponent");
 }
 
-
-
-void Camera::setMonkePos(Vector3D* monPos) {
-	_monkePos = monPos;
-}
-
-
-void Camera::update() {
-	if (mono) {
-		_monkePos = &(static_cast<Transform*>(mono->getComponent("Transform")))->getPos();
-		if (_camTr != nullptr) {
-			//camtTr para mover al nodo padre y mNodeCamera para mover la posición del nodo hijo que es donde se encuentra la cámara
-			_camTr->setPosition(Vector3D(_monkePos->getX(), _monkePos->getY(), _monkePos->getZ()));
-			mNodeCamera->lookAt(Ogre::Vector3(_monkePos->getX(), _monkePos->getY(), _monkePos->getZ()), Ogre::Node::TS_WORLD, Ogre::Vector3::NEGATIVE_UNIT_Z);
-		}
-	}	
-
-
-	MousePositionRelative mousePosRel = InputManager::getInstance()->getMousePosRel();
-	if (InputManager::getInstance()->getMouseButtons().leftDown) {
-		float rotar = _sensibilidad * mousePosRel.x;
-		Transform* camTr = static_cast<Transform*>(entity_->getComponent("Transform"));
-		camTr->rotate(Vector3D(0, rotar, 0));
-		mNodeCamera->yaw(Ogre::Degree(-rotar));
-		_monkeAngle = fmod((_monkeAngle + rotar), 360.f);//modulo entre dos floats
-	}
-	
-	
-}
 
 void Camera::start() {
-	mono = entity_->getScene()->getObjectWithName(entidadBuscar);
 
 	_camera = RenderMain::getInstance()->getSceneManager()->createCamera(_camName);
 
@@ -88,22 +56,19 @@ void Camera::start() {
 	_camera->setAspectRatio(_aspectRatio);
 
 	_camTr = (Transform*)entity_->getComponent("Transform");
-	 _sc = (SoundComponent*)entity_->getComponent("SoundComponent");
-	if(_sc)
-		_sc->playMusic("Music", 0.1f);
 }
 
-void Camera::onDisable()
-{
-	Component::onDisable();
-	if (_sc)
-		_sc->stopAllSounds();
+void Camera::lookAt(Vector3D v) {
+	mNodeCamera->lookAt(Ogre::Vector3(v.getX(), v.getY(), v.getZ()), Ogre::Node::TS_WORLD, Ogre::Vector3::NEGATIVE_UNIT_Z);
 }
-
-void Camera::onEnable()
-{
-	Component::onEnable();
-	if (_sc)
-		_sc->resumeAllSounds();
+void Camera::yaw(float d){
+	mNodeCamera->yaw(Ogre::Degree(d));
 }
+void Camera::pitch(float d) {
+	mNodeCamera->pitch(Ogre::Degree(d));
 
+}
+void Camera::roll(float d) {
+	mNodeCamera->roll(Ogre::Degree(d));
+
+}
