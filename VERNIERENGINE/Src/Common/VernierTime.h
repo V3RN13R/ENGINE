@@ -12,16 +12,12 @@ private:
     double time_;
     double nextFixedTime_;
     std::chrono::time_point<std::chrono::high_resolution_clock> lastFrameTime_;
-    double firstTime_;
+    std::chrono::time_point<std::chrono::high_resolution_clock> initTime_;
 
 public:
     VernierTime();
 
     virtual ~VernierTime();
-
-    void resetTimer();
-
-    double getRealtimeSinceStartup();
 
     double getTime();
 
@@ -32,5 +28,4 @@ public:
     double fixedDeltaTime();
 
     double Time();
-
 };

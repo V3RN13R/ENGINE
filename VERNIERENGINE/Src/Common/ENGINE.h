@@ -58,4 +58,5 @@ private:
     bool play = true;
     std::string _assetsPath = "";
     double deltaTime = 0;
+    double lastFrameTime = 0;
 };

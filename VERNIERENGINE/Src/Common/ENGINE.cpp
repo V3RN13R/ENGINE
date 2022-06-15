@@ -156,9 +156,10 @@ void VernierEngine::startGame(int (*a)()) {
 }
 bool VernierEngine::update()
 {
-	_vernierTime->resetTimer();
+	double t = _vernierTime->getTime(); // Obtener el tiempo actual
+	deltaTime = t - lastFrameTime;		// Resta entre el tiempo actual y el del último frame
+	lastFrameTime = t;
 	bool b = processFrame(deltaTime);
-	deltaTime = _vernierTime->getTime();
 	return b;
 }
 VernierEngine::~VernierEngine()

@@ -6,12 +6,12 @@
 VernierTime::VernierTime() : deltaTime_(0), time_(0), nextFixedTime_(0), fixedDeltaTime_(1.0 / NFrames)
 {
     lastFrameTime_ = std::chrono::high_resolution_clock::now();
+    initTime_ = std::chrono::high_resolution_clock::now();
 }
 
 
 VernierTime::~VernierTime()
-{
-}
+{}
 
 double VernierTime::deltaTime() {
     return deltaTime_;
@@ -44,19 +44,9 @@ bool VernierTime::frameStarted()
     return false;
 }
 
-void VernierTime::resetTimer()
-{
-    firstTime_ = (double)GetTickCount64() / 1000.0;
-}
-
 double VernierTime::getTime()
 {
-    return getRealtimeSinceStartup() - firstTime_;
+    auto currentTime = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed = currentTime - initTime_;
+    return (double)elapsed.count();   
 }
-
-
-double VernierTime::getRealtimeSinceStartup()
-{
-    return (double)GetTickCount64() / 1000.0;
-}
-
