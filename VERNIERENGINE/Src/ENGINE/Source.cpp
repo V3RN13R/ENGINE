@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <cstdlib>
 
@@ -23,6 +24,9 @@
 #include "SoundManager.h"
 #include "UIManager.h"
 #include "UIImage.h"
+
+#include "VernierTime.h"
+
 //LUA
 extern "C"
 {
@@ -98,9 +102,11 @@ WinMain(HINSTANCE hinstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nCmdSh
 			ftry();
 			VernierEngine::getInstance()->startScene(sceneFile, scene);
 			bool stay = true;
+			
+
 			do {
-				stay = VernierEngine::getInstance()->processFrame();
-			} while (stay&&VernierEngine::getInstance()->getPlay());
+				stay = VernierEngine::getInstance()->update();
+			} while (stay && VernierEngine::getInstance()->getPlay());
 
 			delete VernierEngine::getInstance();
 			FreeLibrary(hDLL);

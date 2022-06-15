@@ -28,11 +28,9 @@ bool PhysicsManager::setUpInstance() {
 	return true;
 }
 
-void PhysicsManager::stepPhysics()
+void PhysicsManager::stepPhysics(const float& dt)
 {
-	double time = (double)GetTickCount64() / 1000.0 - _firstTime;
-	dynamicsWorld->stepSimulation((time - _lastFrameTime, 10));
-	_lastFrameTime = time;
+	dynamicsWorld->stepSimulation(dt);
 
 	int numManifolds = dynamicsWorld->getDispatcher()->getNumManifolds();
 	auto manifolds = dynamicsWorld->getDispatcher()->getInternalManifoldPointer();
@@ -46,7 +44,7 @@ void PhysicsManager::stepPhysics()
 			if (body0 && body1) {
 				body0->p(body0->obj, body1->obj, mp);
 				body1->p(body1->obj, body0->obj, mp);
-			}				
+			}
 		}
 	}
 }
@@ -104,7 +102,7 @@ void PhysicsManager::init(const Vector3D gravity)
 
 	broadPhaseInterface = new btDbvtBroadphase();
 	constraintSolver = new btSequentialImpulseConstraintSolver();
-	
+
 	dynamicsWorld = new btDiscreteDynamicsWorld(collDispatcher, broadPhaseInterface, constraintSolver, collConfig);
 
 	dynamicsWorld->setGravity(btVector3(gravity.getX(), gravity.getY(), gravity.getZ()));
@@ -126,7 +124,7 @@ btRigidBody* PhysicsManager::addSphereRigidbody(float mass, float radius, btVect
 
 
 	btRigidBody* rb = new btRigidBody(mass, new btDefaultMotionState(startTransform), sphereShape, btVector3(0, 0, 0));
-	rb->setUserPointer(new CollisionListener(d,listener));
+	rb->setUserPointer(new CollisionListener(d, listener));
 	rb->setCcdMotionThreshold(1e-7);
 	rb->setCcdSweptSphereRadius(0.50);
 	dynamicsWorld->addRigidBody(rb);

@@ -78,6 +78,11 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	_vernierTime = new VernierTime();
 }
 
+VernierTime* VernierEngine::getTime()
+{
+	return _vernierTime;
+}
+
 RenderMain* VernierEngine::getRenderMain()
 {
 	return RenderMain::getInstance();
@@ -118,22 +123,18 @@ GameStateMachine* VernierEngine::getGSM()
 	return GameStateMachine::getInstance();
 }
 
-VernierTime* VernierEngine::getTime()
-{
-	return _vernierTime;
-}
-
 Callbacks* VernierEngine::getCbs() {
 	return Callbacks::instance();
 }
 
-bool VernierEngine::processFrame()
+bool VernierEngine::processFrame(double dt)
 {
+	deltaTime = dt;
 	if (getInputMng()->pollEvents()) {
 
-		if(_vernierTime)_vernierTime->frameStarted();
-		if(_physics)_physics->stepPhysics();
-		if(_soundManager)_soundManager->update();
+		if (_vernierTime)_vernierTime->frameStarted();
+		if (_physics)_physics->stepPhysics(dt);
+		if (_soundManager)_soundManager->update();
 		if (_gSM) {
 			_gSM->fixedUpdate();
 			_gSM->update();
@@ -141,21 +142,28 @@ bool VernierEngine::processFrame()
 			_gSM->lastUpdate();
 		}
 
-		if(_ogre)_ogre->updateWindow();
-		if(_input)InputManager::getInstance()->resetMousePosRel();
+		if (_ogre)_ogre->updateWindow();
+		if (_input)InputManager::getInstance()->resetMousePosRel();
 
 	}
 	else return false;
 
 }
 
+
 void VernierEngine::startGame(int (*a)()) {
 	a();
+}
+bool VernierEngine::update()
+{
+	_vernierTime->resetTimer();
+	processFrame(deltaTime);
+	deltaTime = _vernierTime->getTime();
+	return false;
 }
 VernierEngine::~VernierEngine()
 {
 	delete _vernierTime;
-
 	InputManager::deleteInstance();
 	_input = nullptr;
 
@@ -173,7 +181,7 @@ VernierEngine::~VernierEngine()
 	_ogre = nullptr;
 
 	UIManager::deleteInstance();
-	
+
 }
 
 void VernierEngine::readAssetsPath()

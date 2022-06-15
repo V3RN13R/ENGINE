@@ -41,7 +41,7 @@ public:
 
 	btDiscreteDynamicsWorld* getDynamicsWorld() { return dynamicsWorld; }
 	std::vector<btCollisionShape*> getCollisionShapes() { return collisionShapes; }
-	void stepPhysics();
+	void stepPhysics(const float& dt);
 	void stopObjectSimulation(btRigidBody* brb);
 	void resumeObjectSimulation(btRigidBody* brb);
 	//void trackRigidBodyWithName(btRigidBody* body, std::string physicsCubeName) { physicsAccessors.insert({ std::string("cube"), body }); }
@@ -50,7 +50,7 @@ public:
 	// 
 	//inicializa todas las variables fisicas asi como el "mundo" a partir de dichas variables
 	void init(const Vector3D gravity);
-	btRigidBody* addSphereRigidbody(float mass, float radius, btVector3 pos, void(*d)(void*, void* other, const btManifoldPoint& mnf),void* listener);
+	btRigidBody* addSphereRigidbody(float mass, float radius, btVector3 pos, void(*d)(void*, void* other, const btManifoldPoint& mnf), void* listener);
 	btRigidBody* addBoxRigidbody(float mass, btVector3 pos, btVector3 size, void(*d)(void*, void* other, const btManifoldPoint& mnf), void* listener);
 private:
 	PhysicsManager();

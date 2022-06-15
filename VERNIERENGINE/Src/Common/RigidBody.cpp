@@ -8,7 +8,7 @@
 #include <btBulletDynamicsCommon.h>
 
 
-Rigidbody::Rigidbody(std::map<std::string, std::string> args) : _position(args["Position"]) , _type(args["Type"])
+Rigidbody::Rigidbody(std::map<std::string, std::string> args) : _position(args["Position"]), _type(args["Type"])
 {
 	std::cout << "Masa en cosntructora lua: " << args["Mass"] << "\n";
 	_isNew = true;
@@ -18,8 +18,8 @@ Rigidbody::Rigidbody(std::map<std::string, std::string> args) : _position(args["
 	else {
 		_isTrigger = false;
 	}
-	
-	
+
+
 	_mass = std::stof(args["Mass"]);
 	if (_type == "Sphere") {
 		_radius = std::stof(args["Radius"]);
@@ -48,7 +48,7 @@ void Rigidbody::addSphereRigidbody(float mass, float radius, Vector3D pos, bool 
 {
 	_brb = VernierEngine::getInstance()->getPhysicsMng()->addSphereRigidbody(mass, radius, { pos.getX(),pos.getY(),pos.getZ() }, &sendContacts, this);
 	setTrigger(_isTrigger);
-	
+
 	_brb->setActivationState(DISABLE_DEACTIVATION);
 }
 
@@ -62,7 +62,7 @@ void Rigidbody::addBoxRigidbody(float mass, Vector3D pos, Vector3D size, bool st
 void Rigidbody::update()
 {
 	for (CollisionInfo& cI : collisions) {
-		cI.time += VernierEngine::getInstance()->getTime()->deltaTime();
+		cI.time += VernierEngine::getInstance()->getDeltaTime();
 	}
 }
 
@@ -153,13 +153,13 @@ void Rigidbody::contact(Rigidbody* other, const btManifoldPoint& manifold)
 			entity_->onCollisionStay(other->entity_, it->point);
 			return;
 		}
-		
+
 	}
-	
+
 	Vector3D p = Vector3D((float)v.x(), (float)v.y(), (float)v.z());
 	collisions.push_back({ other,0 , p , other->_isTrigger || _isTrigger });
-	(other->_isTrigger  || _isTrigger) ? entity_->onTriggerEnter(other->entity_, p) : entity_->onCollisionEnter(other->entity_, p, Vector3D(manifold.m_normalWorldOnB.getX(), manifold.m_normalWorldOnB.getY(), manifold.m_normalWorldOnB.getZ()));
-	
+	(other->_isTrigger || _isTrigger) ? entity_->onTriggerEnter(other->entity_, p) : entity_->onCollisionEnter(other->entity_, p, Vector3D(manifold.m_normalWorldOnB.getX(), manifold.m_normalWorldOnB.getY(), manifold.m_normalWorldOnB.getZ()));
+
 }
 
 void Rigidbody::setVelocity(Vector3D dir) {

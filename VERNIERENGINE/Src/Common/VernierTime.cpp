@@ -1,5 +1,5 @@
-
 #include "VernierTime.h"
+#include <Windows.h> 
 #include <OgreTimer.h>
 
 
@@ -43,3 +43,20 @@ bool VernierTime::frameStarted()
     }
     return false;
 }
+
+void VernierTime::resetTimer()
+{
+    firstTime_ = (double)GetTickCount64() / 1000.0;
+}
+
+double VernierTime::getTime()
+{
+    return getRealtimeSinceStartup() - firstTime_;
+}
+
+
+double VernierTime::getRealtimeSinceStartup()
+{
+    return (double)GetTickCount64() / 1000.0;
+}
+
