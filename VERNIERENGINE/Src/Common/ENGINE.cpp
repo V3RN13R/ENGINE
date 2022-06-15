@@ -157,9 +157,9 @@ void VernierEngine::startGame(int (*a)()) {
 bool VernierEngine::update()
 {
 	_vernierTime->resetTimer();
-	processFrame(deltaTime);
+	bool b = processFrame(deltaTime);
 	deltaTime = _vernierTime->getTime();
-	return false;
+	return b;
 }
 VernierEngine::~VernierEngine()
 {

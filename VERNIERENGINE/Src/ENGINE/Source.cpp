@@ -101,8 +101,7 @@ WinMain(HINSTANCE hinstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nCmdSh
 			VernierEngine::setupInstance(appName, sceneFile, scene);
 			ftry();
 			VernierEngine::getInstance()->startScene(sceneFile, scene);
-			bool stay = true;
-			
+			bool stay = true;	
 
 			do {
 				stay = VernierEngine::getInstance()->update();
