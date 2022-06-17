@@ -57,10 +57,6 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 	ResourceManager::init(_assetsPath);
 	getResourceMng()->setUp(); //Carga de recursos
 
-
-	UIManager::setUpInstance();
-	getUIMng()->initOverlaySystem();
-
 	Callbacks::init();
 
 	//Physics
@@ -74,6 +70,9 @@ VernierEngine::VernierEngine(const std::string& appName, const std::string& scen
 
 	GameStateMachine::setUpInstance();
 	_gSM = GameStateMachine::getInstance();
+
+	UIManager::setUpInstance();
+	getUIMng()->initOverlaySystem();
 
 	_vernierTime = new VernierTime();
 }
@@ -176,12 +175,12 @@ VernierEngine::~VernierEngine()
 
 	PhysicsManager::deleteInstance();
 	_physics = nullptr;
+
+	UIManager::deleteInstance();
 	FactoryManager::deleteInstance();
 
 	RenderMain::deleteInstance();//borra el RenderMain
 	_ogre = nullptr;
-
-	UIManager::deleteInstance();
 
 }
 

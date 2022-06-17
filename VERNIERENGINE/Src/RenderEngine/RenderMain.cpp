@@ -96,5 +96,6 @@ RenderMain::~RenderMain()
 	//delete _root; //_root lo tiene que borrar WindowRender que es el que lo crea
 	//delete _mSceneManager; //Se borra desde WindowRender
 	_mSceneManager->destroyAllMovableObjects();
-	delete _windowRender;
+	delete WindowRender::instance();
+	//delete _windowRender;
 }

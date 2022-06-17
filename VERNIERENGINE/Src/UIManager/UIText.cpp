@@ -7,7 +7,6 @@
 #include <OgreFont.h>
 #include <OgreFontManager.h>
 #include <OgreResourceManager.h>
-#include "LuaManager.h"
 extern "C"
 {
 #include "lua.h"
@@ -33,7 +32,8 @@ UIText::UIText(std::string overlayName, std::string fontName, int fontSize, int 
 	//// create a font resource
 	Ogre::ResourcePtr font = Ogre::FontManager::getSingletonPtr()->getByName(fontName, "Fonts");
 	if (!font) {
-		lua_State* state = readFileLua("Fonts.lua");
+		_a = 1;
+		state = readFileLua("Fonts.lua");
 		LuaRef refFont = readElementFromFile(state, fontName);
 		std::string type;
 		readVariable<std::string>(refFont, "type", &type);

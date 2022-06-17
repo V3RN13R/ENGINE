@@ -41,6 +41,8 @@ Rigidbody::~Rigidbody()
 {
 	PhysicsManager::getInstance()->getDynamicsWorld()->removeRigidBody(_brb);
 	delete _brb->getUserPointer();
+	delete _brb->getCollisionShape();
+	delete _brb->getMotionState();
 	delete _brb;
 }
 

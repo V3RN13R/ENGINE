@@ -130,5 +130,6 @@ WindowRender::~WindowRender()
 	_root->destroySceneManager(_mSceneManager);
 	SDL_DestroyWindow(_sDLWindow);
 	SDL_Quit();
+	_root->shutdown();
 	delete _root;
 }
