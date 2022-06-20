@@ -73,9 +73,9 @@ void GameStateMachine::changeScene(std::string file, std::string name, bool push
 	}
 }
 
-void GameStateMachine::fixedUpdate() {
+void GameStateMachine::firstUpdate() {
 	if (!_sceneStack.empty())
-		_sceneStack.top()->fixedUpdate();
+		_sceneStack.top()->firstUpdate();
 }
 
 void GameStateMachine::update() {

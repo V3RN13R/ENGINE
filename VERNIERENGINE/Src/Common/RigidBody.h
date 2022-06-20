@@ -21,7 +21,7 @@ public:
 	void addBoxRigidbody(float mass, Vector3D pos, Vector3D size, bool statc=false);
 
 	virtual void update() override;
-	virtual void fixedUpdate() override;
+	virtual void firstUpdate() override;
 	virtual void lateUpdate() override;
 	virtual void onEnable() override;
 	virtual void onDisable() override;

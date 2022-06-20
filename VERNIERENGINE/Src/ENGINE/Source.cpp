@@ -53,6 +53,13 @@ WinMain(HINSTANCE hinstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nCmdSh
 	// initialize Lua interpreter
 	L = luaL_newstate();
 
+#ifdef _DEBUG
+	char* c = new char[1000];
+#endif 
+	//Como hablamos el dia de la revision, esta linea deja basura sin el metodo (_CrtDumpMemoryLeaks())
+	//Por lo que el checkML si dejaba basura y la eliminamos por completo, como hablamos el dia 20 hemos borrado
+	//una gran cantidad de basura (13.500 aprox)
+
 	// load Lua base libraries (print / math / etc)
 	luaL_openlibs(L);
 	luaL_dofile(L, "Data.lua");
@@ -112,6 +119,7 @@ WinMain(HINSTANCE hinstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nCmdSh
 		}
 
 	}
+	//_CrtDumpMemoryLeaks();
 	//se acaba el programa
 	std::cout << "Hola\n";
 	return 0;

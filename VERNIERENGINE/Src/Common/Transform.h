@@ -67,7 +67,7 @@ public:
 
 
 	void update() override;
-	void fixedUpdate() override;
+	void firstUpdate() override;
 	void onDisable() override;
 private:
 	Vector3D _position;

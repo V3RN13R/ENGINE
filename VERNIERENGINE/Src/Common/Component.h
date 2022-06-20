@@ -35,7 +35,7 @@ public:
 	virtual void preUpdate() {}
 	virtual void update() {}	
 	virtual void lateUpdate() {}
-	virtual void fixedUpdate() {}
+	virtual void firstUpdate() {}
 	virtual void render() {}
 	virtual void onEnable() { _enable = true; }
 	virtual void onDisable() { _enable = false; }

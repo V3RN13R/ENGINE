@@ -52,7 +52,7 @@ public:
 
 	void onDisable();	
 
-	void fixedUpdate();
+	void firstUpdate();
 
 	void lateUpdate();
 

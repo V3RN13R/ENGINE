@@ -98,7 +98,7 @@ void Transform::setScale(Vector3D vec) {
 	entity_->getNode()->setScale(_scale.getX(), _scale.getY(), _scale.getZ());
 }
 
-void Transform::fixedUpdate()
+void Transform::firstUpdate()
 {
 	Rigidbody* rb1 = static_cast<Rigidbody*>(entity_->getComponent("Rigidbody"));
 	if (rb1) {

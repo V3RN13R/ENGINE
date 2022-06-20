@@ -220,12 +220,12 @@ void Scene::onDisable() {
 
 //Ver si hace falta el render()
 
-void Scene::fixedUpdate()
+void Scene::firstUpdate()
 {
 	size_t n = _entities.size();
 	for (int i = 0; i < n; i++) {
 		if (!_entities[i]->getDestroy() && _entities[i]->isActive())
-			_entities[i]->fixedUpdate();
+			_entities[i]->firstUpdate();
 	}
 }
 

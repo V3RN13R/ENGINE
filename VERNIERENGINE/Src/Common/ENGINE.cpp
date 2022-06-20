@@ -135,7 +135,7 @@ bool VernierEngine::processFrame(double dt)
 		if (_physics)_physics->stepPhysics(dt);
 		if (_soundManager)_soundManager->update();
 		if (_gSM) {
-			_gSM->fixedUpdate();
+			_gSM->firstUpdate();
 			_gSM->update();
 			_gSM->lateUpdate();
 			_gSM->lastUpdate();

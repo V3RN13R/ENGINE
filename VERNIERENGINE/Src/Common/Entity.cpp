@@ -148,12 +148,12 @@ void Entity::lateUpdate()
 	}
 }
 
-void Entity::fixedUpdate()
+void Entity::firstUpdate()
 {
 	std::size_t n = _components.size();
 	for (auto i = 0u; i < n; i++) {
 		if (_components[i]->getEnable())
-			_components[i]->fixedUpdate();
+			_components[i]->firstUpdate();
 	}
 }
 

@@ -50,7 +50,7 @@ public:
 
 	void lateUpdate();
 
-	void fixedUpdate();
+	void firstUpdate();
 
 	std::string getName() {return _entityName;}
 

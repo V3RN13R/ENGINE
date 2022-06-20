@@ -68,7 +68,7 @@ void Rigidbody::update()
 	}
 }
 
-void Rigidbody::fixedUpdate()
+void Rigidbody::firstUpdate()
 {
 
 }
